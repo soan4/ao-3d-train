@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.5</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.6</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🚃 2・3りょう れんけつ　🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🚃 2・3りょうを えらべる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.6</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🚃 くるくる しゃりん　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛞 カーブで だいしゃが まがる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script type="module">
 import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
@@ -105,10 +105,11 @@ addCrossing(3,2);
 
 function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
 station(0,2,mats.yellow);station(4,2,mats.blue);
-// Ver.0.5: detailed original red commuter train. Its nose faces +Z in local coordinates.
+// Ver.0.6: detailed original red commuter train. Its nose faces +Z in local coordinates.
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];let carCount=3;
+const bogiesByCar=[];const wheelSpinners=[];
 const paint=new THREE.MeshStandardMaterial({color:0xce273d,metalness:.31,roughness:.31});
 const paintLight=new THREE.MeshStandardMaterial({color:0xee4a52,metalness:.24,roughness:.32});
 const cream=new THREE.MeshStandardMaterial({color:0xfff9eb,metalness:.10,roughness:.4});
@@ -170,19 +171,38 @@ function railTrainCar(number){
  // Cab's rear face also has a window.
  cube(car,.48,.20,.035,glassTrim,0,.82,-.619);
  cube(car,.44,.16,.040,darkGlass,0,.82,-.642);
- // Bogies: two wheelsets with axles, side beams and secondary hub disks.
- cube(car,.68,.105,1.05,chassisMat,0,.37,0);
- for(const z of [-.39,.39]){
-  cube(car,.64,.09,.30,steel,0,.28,z);
-  const axle=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.70,12),steel);
-  axle.rotation.z=Math.PI/2;axle.position.set(0,.24,z);car.add(axle);
-  for(const x of [-.416,.416]){
-   const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.145,.145,.09,20),rubber);
-   wheel.rotation.z=Math.PI/2;wheel.position.set(x,.24,z);wheel.castShadow=true;car.add(wheel);
-   const hub=new THREE.Mesh(new THREE.CylinderGeometry(.060,.060,.095,16),steel);
-   hub.rotation.z=Math.PI/2;hub.position.set(x*1.06,.24,z);car.add(hub);
+ // Independent articulated bogies. Their pivots sit under each car; each
+ // rotates relative to its car as the underlying track curves.
+ cube(car,.68,.075,.92,chassisMat,0,.385,0);
+ const bogies=[];
+ for(const pivotZ of [-.355,.355]){
+  const truck=new THREE.Group();truck.position.set(0,0,pivotZ);car.add(truck);
+  // Bogie frame and realistic paired wheelsets.
+  cube(truck,.65,.095,.35,chassisMat,0,.29,0);
+  for(const side of [-1,1]){
+   cube(truck,.064,.13,.37,steel,side*.32,.28,0);
+   cube(truck,.075,.048,.23,rubber,side*.35,.355,0);
   }
+  for(const axleZ of [-.115,.115]){
+   const axle=new THREE.Mesh(new THREE.CylinderGeometry(.042,.042,.85,12),steel);
+   axle.rotation.z=Math.PI/2;axle.position.set(0,.24,axleZ);truck.add(axle);
+   for(const side of [-1,1]){
+    // Rotating group is aligned with wheel axis (X in car coordinates).
+    const spin=new THREE.Group();spin.position.set(side*.417,.24,axleZ);truck.add(spin);
+    const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.135,.135,.085,20),rubber);
+    wheel.rotation.z=Math.PI/2;wheel.castShadow=true;spin.add(wheel);
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(.088,.012,6,18),steel);
+    ring.rotation.y=Math.PI/2;ring.position.x=side*.047;spin.add(ring);
+    // Small eccentric marker makes wheel rotation visually evident.
+    const marker=cube(spin,.018,.032,.040,cream,side*.061,.075,0);
+    wheelSpinners.push(spin);
+   }
+  }
+  // Central bolster/suspension.
+  cube(truck,.42,.07,.17,steel,0,.345,0);
+  bogies.push({group:truck,offset:pivotZ});
  }
+ bogiesByCar[number]=bogies;
  // End marker and inter-car coupler on local -Z end.
  cube(car,.15,.055,.13,chassisMat,0,.30,-.70);
  // Small connecting diaphragms and a subtle side identification mark.
@@ -191,8 +211,31 @@ function railTrainCar(number){
  return car;
 }
 for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
+// Connections between adjacent cars, rebuilt in-place each animation frame.
+const couplerMaterial=new THREE.MeshStandardMaterial({color:0x454e59,metalness:.42,roughness:.5});
+const couplers=[];
+for(let i=0;i<2;i++){
+ const bar=new THREE.Mesh(new THREE.CylinderGeometry(.034,.034,1,10),couplerMaterial);
+ bar.castShadow=true;scene.add(bar);couplers.push(bar);
+}
+const couplerAxis=new THREE.Vector3(0,1,0);
+const tmpA=new THREE.Vector3(),tmpB=new THREE.Vector3();
+function positionCouplers(){
+ trainCars.forEach(c=>c.updateMatrixWorld(true));
+ for(let i=0;i<couplers.length;i++){
+  const link=couplers[i];link.visible=i<carCount-1;
+  if(!link.visible)continue;
+  trainCars[i].localToWorld(tmpA.set(0,.33,-.67));
+  trainCars[i+1].localToWorld(tmpB.set(0,.33,.67));
+  const between=tmpB.clone().sub(tmpA),length=between.length();
+  link.position.copy(tmpA).add(tmpB).multiplyScalar(.5);
+  link.scale.set(1,Math.max(.06,length),1);
+  link.quaternion.setFromUnitVectors(couplerAxis,between.normalize());
+ }
+}
+
 const carSpacing=1.37;
-function setCarCount(n){carCount=n;trainCars.forEach((c,i)=>c.visible=i<n);document.getElementById('cars').textContent='🚃 '+n+'りょう'}
+function setCarCount(n){carCount=n;trainCars.forEach((c,i)=>c.visible=i<n);document.getElementById('cars').textContent='🚃 '+n+'りょう';positionCouplers()}
 // A continuous arclength-parameterized route. Quadratic rounded corners
 // avoid the abrupt 90-degree rotations of the original per-tile interpolation.
 const waypoints=path.map(([x,y])=>pos(x,y));
@@ -243,9 +286,18 @@ function positionAllCars(){
   const {position,heading}=sampleRoute(startDistance+distanceTravelled-i*carSpacing);
   car.position.copy(position);car.position.y=.12;
   car.rotation.y=heading;
+  // Sample the route below each bogie pivot, not only at the car center.
+  // Angle subtraction gives a steering angle relative to this car body.
+  for(const bogie of bogiesByCar[i]){
+   const sample=sampleRoute(startDistance+distanceTravelled-i*carSpacing+bogie.offset);
+   let relative=sample.heading-heading;
+   relative=Math.atan2(Math.sin(relative),Math.cos(relative));
+   bogie.group.rotation.y=THREE.MathUtils.clamp(relative,-.65,.65);
+  }
  }
+ positionCouplers();
 }
-function placeTrain(){distanceTravelled=0;train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
+function placeTrain(){distanceTravelled=0;wheelSpinners.forEach(w=>w.rotation.x=0);train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
 function newPuzzle(){playing=false;ready=false;placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
@@ -309,5 +361,5 @@ document.getElementById('reset').onclick=newPuzzle;
 document.getElementById('cars').onclick=()=>{if(playing)return;setCarCount(carCount===3?2:3);positionAllCars();msg.textContent='🚃 '+carCount+'りょう へんせいに したよ！'};
 document.getElementById('run').onclick=()=>{if(playing)return;if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}elapsed=0;distanceTravelled=0;playing=true;msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！'};
 function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=innerWidth<innerHeight?49:39;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();setCarCount(3);newPuzzle();
-let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}if(playing){elapsed+=dt;distanceTravelled+=dt*1.7;positionAllCars();if(startDistance+distanceTravelled>=finishDistance+(carCount-1)*carSpacing){playing=false;msg.textContent='🎉 '+carCount+'りょう ぜんぶ とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
+let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}if(playing){elapsed+=dt;const advance=dt*1.7;distanceTravelled+=advance;for(const wheel of wheelSpinners)wheel.rotation.x-=advance/.135;positionAllCars();if(startDistance+distanceTravelled>=finishDistance+(carCount-1)*carSpacing){playing=false;msg.textContent='🎉 '+carCount+'りょう ぜんぶ とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
 </script></body></html>
