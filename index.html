@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.4</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.5</title>
 <style>
-*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
+*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🚃 リアルなでんしゃ　🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🚃 2・3りょう れんけつ　🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🚃 2・3りょうを えらべる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script type="module">
 import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
@@ -34,10 +34,15 @@ for(let y=0;y<5;y++)for(let x=0;x<5;x++){
  const rail=new THREE.Group();rail.position.set(p.x,.08,p.z);scene.add(rail);
  const con=connectionsAt(idx);con.forEach(d=>segment(rail,d));tiles.set(key(x,y),{x,y,rail,con,step:0,idx});clickable.push(base);
 }
+// Permanent approach track behind the start station, for the trailing carriages.
+for(const y of [3,4]){
+ const p=pos(0,y),g=new THREE.Group();g.position.set(p.x,.08,p.z);scene.add(g);
+ segment(g,0);segment(g,2);
+}
 // Decorative river and bridge-like water patches, trees and small houses, away from path.
 const water=new THREE.MeshStandardMaterial({color:0x53bee3,roughness:.28,transparent:true,opacity:.82});
 for(const [x,y] of [[1,3],[2,3],[1,4],[2,4]]){const p=pos(x,y);cube(scene,1.40,.025,1.35,water,p.x,.115,p.z)}
-for(const [x,y] of [[4,0],[3,0],[1,0],[0,4]]){const p=pos(x,y);cylinder(scene,.13,.7,mats.wood,p.x,.55,p.z);const leaves=new THREE.Mesh(new THREE.ConeGeometry(.47,1.15,7),new THREE.MeshStandardMaterial({color:0x268d54}));leaves.position.set(p.x,1.4,p.z);leaves.castShadow=true;scene.add(leaves)}
+for(const [x,y] of [[4,0],[3,0],[1,0]]){const p=pos(x,y);cylinder(scene,.13,.7,mats.wood,p.x,.55,p.z);const leaves=new THREE.Mesh(new THREE.ConeGeometry(.47,1.15,7),new THREE.MeshStandardMaterial({color:0x268d54}));leaves.position.set(p.x,1.4,p.z);leaves.castShadow=true;scene.add(leaves)}
 
 // Ver.0.3: bridges, tunnel, crossing. Decorative meshes never enter clickable list.
 const stone=new THREE.MeshStandardMaterial({color:0x929a9d,roughness:.84});
@@ -100,9 +105,10 @@ addCrossing(3,2);
 
 function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
 station(0,2,mats.yellow);station(4,2,mats.blue);
-// Ver.0.4: detailed original red commuter train. Its nose faces +Z in local coordinates.
+// Ver.0.5: detailed original red commuter train. Its nose faces +Z in local coordinates.
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
+const trainCars=[];let carCount=3;
 const paint=new THREE.MeshStandardMaterial({color:0xce273d,metalness:.31,roughness:.31});
 const paintLight=new THREE.MeshStandardMaterial({color:0xee4a52,metalness:.24,roughness:.32});
 const cream=new THREE.MeshStandardMaterial({color:0xfff9eb,metalness:.10,roughness:.4});
@@ -115,8 +121,9 @@ const lightMat=new THREE.MeshStandardMaterial({color:0xfff6bb,emissive:0xe8b95b,
 const tailMat=new THREE.MeshStandardMaterial({color:0xff4545,emissive:0x7a1010,emissiveIntensity:.5});
 const doorLine=new THREE.MeshStandardMaterial({color:0x7b2634,roughness:.48});
 function sphere(parent,r,mat,x,y,z,sx=1,sy=1,sz=1){const m=new THREE.Mesh(new THREE.SphereGeometry(r,12,8),mat);m.scale.set(sx,sy,sz);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
-function railTrainCar(){
+function railTrainCar(number){
  const car=new THREE.Group();train.add(car);
+ car.userData.number=number;
  // Slim box with rounded roof and realistic body height, one-unit length for narrow curves.
  cube(car,.79,.61,1.20,paint,0,.70,0);
  cube(car,.79,.12,1.21,cream,0,1.025,0);
@@ -176,10 +183,69 @@ function railTrainCar(){
    hub.rotation.z=Math.PI/2;hub.position.set(x*1.06,.24,z);car.add(hub);
   }
  }
+ // End marker and inter-car coupler on local -Z end.
+ cube(car,.15,.055,.13,chassisMat,0,.30,-.70);
+ // Small connecting diaphragms and a subtle side identification mark.
+ cube(car,.51,.42,.025,glassTrim,0,.73,-.626);
+ for(const x of [-.404,.404])cube(car,.018,.09,.16,cream,x,.55,-.04);
  return car;
 }
-railTrainCar();
-function placeTrain(){const p=pos(...path[0]);train.position.set(p.x,.12,p.z);train.rotation.y=Math.PI;train.visible=true}
+for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
+const carSpacing=1.37;
+function setCarCount(n){carCount=n;trainCars.forEach((c,i)=>c.visible=i<n);document.getElementById('cars').textContent='🚃 '+n+'りょう'}
+// A continuous arclength-parameterized route. Quadratic rounded corners
+// avoid the abrupt 90-degree rotations of the original per-tile interpolation.
+const waypoints=path.map(([x,y])=>pos(x,y));
+const travel=[waypoints[0].clone()];
+const cornerRadius=.52,cornerSubdivisions=12;
+for(let i=1;i<waypoints.length-1;i++){
+ const prev=waypoints[i-1],p=waypoints[i],next=waypoints[i+1];
+ const incoming=p.clone().sub(prev).normalize(),outgoing=next.clone().sub(p).normalize();
+ if(incoming.distanceTo(outgoing)<.001){travel.push(p.clone());continue}
+ const before=p.clone().addScaledVector(incoming,-cornerRadius),after=p.clone().addScaledVector(outgoing,cornerRadius);
+ travel.push(before);
+ for(let k=1;k<=cornerSubdivisions;k++){
+   const t=k/cornerSubdivisions;
+   travel.push(before.clone().multiplyScalar((1-t)*(1-t)).addScaledVector(p,2*(1-t)*t).addScaledVector(after,t*t));
+ }
+}
+travel.push(waypoints[waypoints.length-1].clone());
+const routePoints=[],routeLengths=[0];
+const backDir=waypoints[1].clone().sub(waypoints[0]).normalize();
+const forwardDir=waypoints.at(-1).clone().sub(waypoints.at(-2)).normalize();
+routePoints.push(waypoints[0].clone().addScaledVector(backDir,-3.8));
+routePoints.push(...travel);
+routePoints.push(waypoints.at(-1).clone().addScaledVector(forwardDir,1.8));
+for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths[i-1]+routePoints[i].distanceTo(routePoints[i-1]));
+const startDistance=routeLengths[1],finishDistance=routeLengths[routePoints.length-2];
+function sampleRoute(distance){
+ const s=Math.max(0,Math.min(routeLengths.at(-1)-.001,distance));
+ let lo=0,hi=routeLengths.length-1;
+ while(lo+1<hi){const m=(lo+hi)>>1;if(routeLengths[m]<=s)lo=m;else hi=m}
+ const a=routePoints[lo],b=routePoints[lo+1];
+ const r=(s-routeLengths[lo])/(routeLengths[lo+1]-routeLengths[lo]);
+ const position=a.clone().lerp(b,r);
+ // Smooth tangent over a small window so individual cars lean gently into bends.
+ const pa=routePositionRaw(Math.max(0,s-.12)),pb=routePositionRaw(Math.min(routeLengths.at(-1),s+.12));
+ const tangent=pb.sub(pa).normalize();
+ return {position,heading:Math.atan2(tangent.x,tangent.z)};
+}
+function routePositionRaw(distance){
+ let s=Math.max(0,Math.min(routeLengths.at(-1),distance)),i=0;
+ while(i+1<routeLengths.length-1&&routeLengths[i+1]<s)i++;
+ const r=(s-routeLengths[i])/(routeLengths[i+1]-routeLengths[i]);
+ return routePoints[i].clone().lerp(routePoints[i+1],r);
+}
+let distanceTravelled=0;
+function positionAllCars(){
+ for(let i=0;i<trainCars.length;i++){
+  const car=trainCars[i];if(i>=carCount)continue;
+  const {position,heading}=sampleRoute(startDistance+distanceTravelled-i*carSpacing);
+  car.position.copy(position);car.position.y=.12;
+  car.rotation.y=heading;
+ }
+}
+function placeTrain(){distanceTravelled=0;train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
 function newPuzzle(){playing=false;ready=false;placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
@@ -240,7 +306,8 @@ document.getElementById('zoomIn').onclick=()=>cameraZoom(.82);
 document.getElementById('zoomOut').onclick=()=>cameraZoom(1.22);
 document.getElementById('cameraReset').onclick=cameraHome;
 document.getElementById('reset').onclick=newPuzzle;
-document.getElementById('run').onclick=()=>{if(playing)return;if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}elapsed=0;playing=true;msg.textContent='🚃 しゅっぱつ しんこう！'};
-function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=innerWidth<innerHeight?49:39;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
-let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}if(playing){elapsed+=dt*1.15;const i=Math.min(path.length-2,Math.floor(elapsed));const a=pos(...path[i]),b=pos(...path[i+1]);const t=Math.min(1,elapsed-i);train.position.lerpVectors(a,b,t);train.position.y=.12;train.rotation.y=Math.atan2(b.x-a.x,b.z-a.z);if(elapsed>=path.length-1){playing=false;msg.textContent='🎉 やったね！ えきに とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
+document.getElementById('cars').onclick=()=>{if(playing)return;setCarCount(carCount===3?2:3);positionAllCars();msg.textContent='🚃 '+carCount+'りょう へんせいに したよ！'};
+document.getElementById('run').onclick=()=>{if(playing)return;if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}elapsed=0;distanceTravelled=0;playing=true;msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！'};
+function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=innerWidth<innerHeight?49:39;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();setCarCount(3);newPuzzle();
+let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}if(playing){elapsed+=dt;distanceTravelled+=dt*1.7;positionAllCars();if(startDistance+distanceTravelled>=finishDistance+(carCount-1)*carSpacing){playing=false;msg.textContent='🎉 '+carCount+'りょう ぜんぶ とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
 </script></body></html>
