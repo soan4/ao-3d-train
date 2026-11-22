@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.7</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.8</title>
 <style>
-*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
+*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#mode{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 98px);z-index:5;display:flex;gap:5px}#mode button{font-size:13px;padding:9px 11px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#mode button.active{background:#ffcf54;color:#503700}#tools{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 86px);display:none;gap:6px;z-index:5;justify-content:center;flex-wrap:wrap}#tools button{font-size:13px;min-height:43px;padding:10px 10px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#tools button.active{background:#ffce4c;color:#583800}#hint{bottom:calc(env(safe-area-inset-bottom) + 84px)}body.free #hint{bottom:calc(env(safe-area-inset-bottom) + 145px);max-width:min(68vw,260px);font-size:11px}body.free #tools{display:flex}body.free #features{display:none}body.free #mode{top:calc(env(safe-area-inset-top) + 93px)}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.7</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🛤️ なめらかレール　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛤️ カーブの レールに そって はしる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.8</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛤️ カーブの レールに そって はしる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script type="module">
 import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
@@ -25,10 +25,10 @@ const path=[[0,2],[0,1],[1,1],[2,1],[2,2],[3,2],[3,3],[4,3],[4,2]];
 const dir=[[0,-1],[1,0],[0,1],[-1,0]]; // N E S W
 const key=(x,y)=>x+','+y;
 const pathMap=new Map(path.map((p,i)=>[key(...p),i]));
-const tiles=new Map(), clickable=[];let playing=false,elapsed=0,ready=false;
+const tiles=new Map(), clickable=[];let playing=false,elapsed=0,ready=false;let gameMode="puzzle",selectedTool="straight";
 function pos(x,y){return new THREE.Vector3((x-2)*1.65,0,(y-2)*1.65)}
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
-// Ver.0.7: Each tile has genuine continuous 3D rails. Curves use precisely
+// Ver.0.8: Each tile has genuine continuous 3D rails. Curves use precisely
 // the same rounded corner geometry as the vehicle's path below.
 const railSteel=new THREE.MeshStandardMaterial({color:0xb8c9d5,metalness:.72,roughness:.27});
 const sleeperMat=new THREE.MeshStandardMaterial({color:0x75513a,roughness:.92});
@@ -89,11 +89,12 @@ function makeTrack(parent,positions){
 for(let y=0;y<5;y++)for(let x=0;x<5;x++){
  const p=pos(x,y),idx=pathMap.get(key(x,y));
  const base=cube(scene,1.55,.16,1.55,idx===undefined?mats.tile:mats.white,p.x,.01,p.z);
- base.userData.tileKey=idx===undefined?null:key(x,y);
+ base.userData.tileKey=key(x,y);
+ clickable.push(base);
  if(idx===undefined)continue;
  const rail=new THREE.Group();rail.position.set(p.x,.08,p.z);scene.add(rail);
  const con=connectionsAt(idx);makeTrack(rail,tileRailPoints(con));
- tiles.set(key(x,y),{x,y,rail,con,step:0,idx});clickable.push(base);
+ tiles.set(key(x,y),{x,y,rail,con,step:0,idx});
 }
 // Fixed approach track to accommodate the 2- and 3-car formations.
 // It also runs halfway through the start tile; its end joins the rotated
@@ -172,7 +173,7 @@ addCrossing(3,2);
 
 function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
 station(0,2,mats.yellow);station(4,2,mats.blue);
-// Ver.0.7: detailed original red commuter train. Its nose faces +Z in local coordinates.
+// Ver.0.8: detailed original red commuter train. Its nose faces +Z in local coordinates.
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];let carCount=3;
@@ -320,14 +321,14 @@ for(let i=1;i<waypoints.length-1;i++){
  }
 }
 travel.push(waypoints[waypoints.length-1].clone());
-const routePoints=[],routeLengths=[0];
+let routePoints=[],routeLengths=[0];
 const backDir=waypoints[1].clone().sub(waypoints[0]).normalize();
 const forwardDir=waypoints.at(-1).clone().sub(waypoints.at(-2)).normalize();
 routePoints.push(waypoints[0].clone().addScaledVector(backDir,-3.8));
 routePoints.push(...travel);
 routePoints.push(waypoints.at(-1).clone().addScaledVector(forwardDir,1.8));
 for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths[i-1]+routePoints[i].distanceTo(routePoints[i-1]));
-const startDistance=routeLengths[1],finishDistance=routeLengths[routePoints.length-2];
+let startDistance=routeLengths[1],finishDistance=routeLengths[routePoints.length-2];
 function sampleRoute(distance){
  const s=Math.max(0,Math.min(routeLengths.at(-1)-.001,distance));
  let lo=0,hi=routeLengths.length-1;
@@ -365,9 +366,116 @@ function positionAllCars(){
  positionCouplers();
 }
 function placeTrain(){distanceTravelled=0;wheelSpinners.forEach(w=>w.rotation.x=0);train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
-function newPuzzle(){playing=false;ready=false;placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
+function resetPuzzleRoute(){
+ routePoints=[waypoints[0].clone().addScaledVector(backDir,-3.8),...travel,waypoints.at(-1).clone().addScaledVector(forwardDir,1.8)];
+ rebuildDistances();startDistance=routeLengths[1];finishDistance=routeLengths[routePoints.length-2];
+}
+function rebuildDistances(){routeLengths=[0];for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths.at(-1)+routePoints[i].distanceTo(routePoints[i-1]));}
+function newPuzzle(){playing=false;ready=false;resetPuzzleRoute();placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
+
+// Ver.0.8: free-build mode. Connectivity is checked in both directions.
+// The path finder also tracks entry directions, so a junction cannot teleport
+// a train from a disconnected edge to another piece.
+const freeTracks=new Map();
+const freeShapes={straight:[0,2],curve:[0,1],branch:[0,1,3]};
+const startKey=key(0,2),goalKey=key(4,2);
+const opposite=d=>(d+2)%4;
+function freeCon(t){return t.con.map(d=>(d+t.step)%4)}
+function clearFreeVisual(){for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
+function addFreeTile(x,y,shape,step=0){
+ const k=key(x,y);if(freeTracks.has(k))removeFreeTile(k);
+ const con=[...freeShapes[shape]],rail=new THREE.Group(),p=pos(x,y);
+ rail.position.set(p.x,.08,p.z);scene.add(rail);
+ // Branch draws each arm; every rail endpoint terminates at the same center.
+ if(con.length===3){for(const d of con)makeTrack(rail,[new THREE.Vector3(0,0,0),edge(d)]);}
+ else makeTrack(rail,tileRailPoints(con));
+ const t={x,y,shape,con,step,rail};rail.rotation.y=-step*Math.PI/2;freeTracks.set(k,t);
+}
+function removeFreeTile(k){const t=freeTracks.get(k);if(!t)return;scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()});freeTracks.delete(k)}
+function updateRunButton(){document.getElementById('run').textContent=playing?'🚃 はしってる！':'🚃 はっしゃ！'}
+function selectTool(tool){selectedTool=tool;document.querySelectorAll('#tools button').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool))}
+function setMode(mode){
+ playing=false;gameMode=mode;document.body.classList.toggle('free',mode==='free');
+ document.getElementById('puzzleMode').classList.toggle('active',mode==='puzzle');
+ document.getElementById('freeMode').classList.toggle('active',mode==='free');
+ document.getElementById('reset').textContent=mode==='free'?'🧹 けす':'🔀 まぜる';
+ for(const t of tiles.values())t.rail.visible=mode==='puzzle';
+ for(const t of freeTracks.values())t.rail.visible=mode==='free';
+ deco.visible=mode==='puzzle';
+ updateRunButton();
+ if(mode==='free'){resetFree();}else{newPuzzle();document.getElementById('hint').innerHTML='👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小'}
+}
+function resetFree(){
+ playing=false;clearFreeVisual();
+ // Start connects south (the approach line) and east; goal faces west.
+ addFreeTile(0,2,'curve',1); // base [N,E] -> [E,S]
+ addFreeTile(4,2,'straight',1); // [E,W], goal station face west
+ // A very short example track shows how building works; leave gaps to fill.
+ addFreeTile(1,2,'straight',1);
+ for(const t of freeTracks.values())t.rail.visible=true;
+ resetPuzzleRoute();placeTrain();updateRunButton();
+ document.getElementById('hint').innerHTML='🧩 パーツをえらんで マスをタップ<br>↻ まわす／✕ けす<br>☝️ スライド：カメラ　✌️ 2本指：ズーム';
+ msg.textContent='🛠️ あおだけの せんろを つくろう！';
+}
+function editFreeTile(k){
+ if(playing)return;
+ if(k===startKey||k===goalKey){msg.textContent='🚉 えきの せんろは そのままに しよう！';return}
+ const [x,y]=k.split(',').map(Number),old=freeTracks.get(k);
+ if(selectedTool==='erase'){removeFreeTile(k);msg.textContent='✕ せんろを けしたよ';}
+ else if(selectedTool==='rotate'){
+  if(!old){msg.textContent='せんろを おいてから まわそう！';return}
+  old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;msg.textContent='↻ せんろを まわしたよ';
+ }else{addFreeTile(x,y,selectedTool);msg.textContent='🛤️ せんろを おいたよ！';}
+ // Update the train preview after every edit to keep it at the starting station.
+ resetPuzzleRoute();placeTrain();
+ const route=findFreeRoute();if(route)msg.textContent='✨ えきまで つながった！ はっしゃ できるよ！';
+}
+function findFreeRoute(){
+ const start=freeTracks.get(startKey),goal=freeTracks.get(goalKey);
+ if(!start||!goal||!freeCon(start).includes(2))return null;
+ const queue=[{k:startKey,entry:2,steps:[]}],visited=new Set([startKey+':2']);
+ for(let qi=0;qi<queue.length;qi++){
+  const state=queue[qi],t=freeTracks.get(state.k);if(!t)continue;
+  const exits=freeCon(t).filter(d=>d!==state.entry);
+  if(state.k===goalKey){if(state.entry===3)return [...state.steps,{k:state.k,entry:state.entry,exit:1}];continue}
+  for(const out of exits){
+   const [dx,dy]=dir[out],nk=key(t.x+dx,t.y+dy),nt=freeTracks.get(nk),incoming=opposite(out);
+   if(!nt||!freeCon(nt).includes(incoming))continue;
+   if(nk===startKey)continue;
+   const stateKey=nk+':'+incoming;if(visited.has(stateKey))continue;
+   visited.add(stateKey);
+   queue.push({k:nk,entry:incoming,steps:[...state.steps,{k:state.k,entry:state.entry,exit:out}]});
+  }
+ }
+ return null;
+}
+function installFreeRoute(steps){
+ const points=[],stationPos=pos(0,2);
+ // The approach rail extends south from the start tile.
+ points.push(stationPos.clone().addScaledVector(vecDir(2),3.8));
+ for(const st of steps){
+  const t=freeTracks.get(st.k),center=pos(t.x,t.y);
+  let local;
+  if(st.k===goalKey){local=[edge(st.entry),new THREE.Vector3(0,0,0)];}
+  else{local=tileRailPoints([st.entry,st.exit]);}
+  for(const lp of local){
+   const point=center.clone().add(lp);point.y=0;
+   if(!points.length||points.at(-1).distanceTo(point)>.002)points.push(point);
+  }
+ }
+ const finish=points.at(-1).clone();
+ // A small terminus extension accommodates the head of the train.
+ points.push(finish.clone().addScaledVector(vecDir(1),.25));
+ routePoints=points;rebuildDistances();
+ startDistance=3.8;finishDistance=routeLengths[routeLengths.length-2];
+}
+document.getElementById('puzzleMode').onclick=()=>setMode('puzzle');
+document.getElementById('freeMode').onclick=()=>setMode('free');
+document.querySelectorAll('#tools button').forEach(b=>b.addEventListener('click',()=>selectTool(b.dataset.tool)));
+selectTool('straight');
+
 // Ver.0.3: one finger rotates orbit camera, two fingers pinch to zoom.
 // Single taps still rotate track tiles. Pointer capture prevents touch loss.
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();
@@ -414,9 +522,11 @@ function handlePointerEnd(e,cancelled){
  const rect=canvas.getBoundingClientRect();
  pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);
  ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(clickable)[0];if(!hit)return;
- const t=tiles.get(hit.object.userData.tileKey);if(!t)return;
+ const cell=hit.object.userData.tileKey;
+ if(gameMode==='free'){editFreeTile(cell);return;}
+ const t=tiles.get(cell);if(!t)return;
  t.step=(t.step+1)%4;t.rail.rotation.y=-t.step*Math.PI/2;
- msg.textContent=valid()?'✨ つながった！ はっしゃボタンをおそう！':'せんろを タッチして まわそう！';
+ msg.textContent=valid()?'✨ つながった！ はっしゃボタンを おそう！':'せんろを タッチして まわそう！';
 }
 canvas.addEventListener('pointerup',e=>handlePointerEnd(e,false));
 canvas.addEventListener('pointercancel',e=>handlePointerEnd(e,true));
@@ -424,9 +534,16 @@ canvas.addEventListener('wheel',e=>{e.preventDefault();cameraZoom(Math.exp(e.del
 document.getElementById('zoomIn').onclick=()=>cameraZoom(.82);
 document.getElementById('zoomOut').onclick=()=>cameraZoom(1.22);
 document.getElementById('cameraReset').onclick=cameraHome;
-document.getElementById('reset').onclick=newPuzzle;
+document.getElementById('reset').onclick=()=>gameMode==='free'?resetFree():newPuzzle();
 document.getElementById('cars').onclick=()=>{if(playing)return;setCarCount(carCount===3?2:3);positionAllCars();msg.textContent='🚃 '+carCount+'りょう へんせいに したよ！'};
-document.getElementById('run').onclick=()=>{if(playing)return;if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}elapsed=0;distanceTravelled=0;playing=true;msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！'};
+document.getElementById('run').onclick=()=>{
+ if(playing)return;
+ if(gameMode==='free'){
+  const selected=findFreeRoute();if(!selected){msg.textContent='⚠️ ふたつの えきを せんろで つなごう！';return}
+  installFreeRoute(selected);
+ }else if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}
+ placeTrain();elapsed=0;distanceTravelled=0;playing=true;updateRunButton();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
+};
 function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=innerWidth<innerHeight?49:39;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();setCarCount(3);newPuzzle();
-let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}if(playing){elapsed+=dt;const advance=dt*1.7;distanceTravelled+=advance;for(const wheel of wheelSpinners)wheel.rotation.x-=advance/.135;positionAllCars();if(startDistance+distanceTravelled>=finishDistance+(carCount-1)*carSpacing){playing=false;msg.textContent='🎉 '+carCount+'りょう ぜんぶ とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
+let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}if(playing){elapsed+=dt;const advance=dt*1.7;distanceTravelled+=advance;for(const wheel of wheelSpinners)wheel.rotation.x-=advance/.135;positionAllCars();if(startDistance+distanceTravelled>=finishDistance+(carCount-1)*carSpacing){playing=false;updateRunButton();msg.textContent='🎉 '+carCount+'りょう ぜんぶ とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
 </script></body></html>
