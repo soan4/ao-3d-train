@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.3</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.4</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ</div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🚃 リアルなでんしゃ　🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script type="module">
 import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
@@ -100,10 +100,87 @@ addCrossing(3,2);
 
 function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
 station(0,2,mats.yellow);station(4,2,mats.blue);
-// Train model faces +Z in local coordinates.
-const train=new THREE.Group();scene.add(train);cube(train,.72,.50,1.02,mats.red,0,.61,0);cube(train,.76,.16,1.03,mats.white,0,.93,0);cube(train,.56,.24,.055,mats.window,0,.72,.515);cube(train,.52,.20,.055,mats.window,0,.73,-.515);for(const x of [-.32,.32])for(const z of [-.33,.33]){const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.13,.13,.09,16),mats.black);wheel.rotation.z=Math.PI/2;wheel.position.set(x,.33,z);train.add(wheel)}cube(train,.24,.10,.08,mats.yellow,0,.47,.54);
+// Ver.0.4: detailed original red commuter train. Its nose faces +Z in local coordinates.
+// Geometry is created in Three.js; no external model files required.
+const train=new THREE.Group();scene.add(train);
+const paint=new THREE.MeshStandardMaterial({color:0xce273d,metalness:.31,roughness:.31});
+const paintLight=new THREE.MeshStandardMaterial({color:0xee4a52,metalness:.24,roughness:.32});
+const cream=new THREE.MeshStandardMaterial({color:0xfff9eb,metalness:.10,roughness:.4});
+const darkGlass=new THREE.MeshStandardMaterial({color:0x193c57,metalness:.25,roughness:.15});
+const glassTrim=new THREE.MeshStandardMaterial({color:0x172d3e,metalness:.45,roughness:.28});
+const steel=new THREE.MeshStandardMaterial({color:0x858f9c,metalness:.72,roughness:.28});
+const chassisMat=new THREE.MeshStandardMaterial({color:0x303944,metalness:.4,roughness:.55});
+const rubber=new THREE.MeshStandardMaterial({color:0x1a2027,roughness:.96});
+const lightMat=new THREE.MeshStandardMaterial({color:0xfff6bb,emissive:0xe8b95b,emissiveIntensity:1.2});
+const tailMat=new THREE.MeshStandardMaterial({color:0xff4545,emissive:0x7a1010,emissiveIntensity:.5});
+const doorLine=new THREE.MeshStandardMaterial({color:0x7b2634,roughness:.48});
+function sphere(parent,r,mat,x,y,z,sx=1,sy=1,sz=1){const m=new THREE.Mesh(new THREE.SphereGeometry(r,12,8),mat);m.scale.set(sx,sy,sz);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
+function railTrainCar(){
+ const car=new THREE.Group();train.add(car);
+ // Slim box with rounded roof and realistic body height, one-unit length for narrow curves.
+ cube(car,.79,.61,1.20,paint,0,.70,0);
+ cube(car,.79,.12,1.21,cream,0,1.025,0);
+ cube(car,.80,.075,1.19,paintLight,0,.96,0);
+ // Shoulder/roof: a slightly rounded cross-section at the top.
+ // Low equipment housing instead of tall pantograph, so train fits tunnel.
+ cube(car,.27,.055,.42,steel,0,1.112,-.15);
+ for(const z of [-.37,.27])cube(car,.18,.025,.12,chassisMat,0,1.15,z);
+ // Ivory band along bottom and top of side panels.
+ for(const x of [-.402,.402]){
+  cube(car,.013,.065,1.17,cream,x,.48,0);
+  cube(car,.014,.050,1.16,cream,x,.89,0);
+  // Middle passenger windows at either end of a central pair of doors.
+  for(const z of [-.40,.40]){
+   cube(car,.022,.23,.20,glassTrim,x*1.015,.77,z);
+   cube(car,.025,.20,.167,darkGlass,x*1.027,.77,z);
+   cube(car,.030,.018,.17,steel,x*1.065,.77,z);
+  }
+  // Two sliding door panels: seams and slim vertical glass.
+  for(const z of [-.105,.105]){
+   cube(car,.022,.46,.184,paintLight,x*1.014,.69,z);
+   cube(car,.028,.21,.105,darkGlass,x*1.052,.785,z);
+   cube(car,.034,.025,.11,steel,x*1.079,.785,z);
+  }
+  cube(car,.030,.47,.015,doorLine,x*1.06,.695,0);
+  cube(car,.026,.026,.20,steel,x*1.065,.46,0);
+ }
+ // Panoramic windshield and destination blind on the front end (+Z).
+ cube(car,.63,.31,.032,glassTrim,0,.80,.615);
+ cube(car,.57,.255,.036,darkGlass,0,.80,.639);
+ cube(car,.42,.065,.040,chassisMat,0,.970,.632);
+ cube(car,.36,.039,.045,lightMat,0,.973,.656);
+ // Split front windshield with thin center pillar and a tiny wiper.
+ cube(car,.018,.29,.047,steel,0,.80,.674);
+ const wiper=cube(car,.25,.012,.027,chassisMat,-.13,.705,.679);wiper.rotation.z=-.16;
+ // Headlights, tail markers and nose detail.
+ for(const x of [-.28,.28]){
+  sphere(car,.062,lightMat,x,.56,.644,1,.72,.32);
+  sphere(car,.036,tailMat,x,.47,.647,1,.7,.32);
+ }
+ cube(car,.54,.085,.045,cream,0,.41,.642);
+ cube(car,.29,.08,.11,chassisMat,0,.34,.671);
+ cube(car,.22,.028,.045,steel,0,.31,.733);
+ // Cab's rear face also has a window.
+ cube(car,.48,.20,.035,glassTrim,0,.82,-.619);
+ cube(car,.44,.16,.040,darkGlass,0,.82,-.642);
+ // Bogies: two wheelsets with axles, side beams and secondary hub disks.
+ cube(car,.68,.105,1.05,chassisMat,0,.37,0);
+ for(const z of [-.39,.39]){
+  cube(car,.64,.09,.30,steel,0,.28,z);
+  const axle=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.70,12),steel);
+  axle.rotation.z=Math.PI/2;axle.position.set(0,.24,z);car.add(axle);
+  for(const x of [-.416,.416]){
+   const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.145,.145,.09,20),rubber);
+   wheel.rotation.z=Math.PI/2;wheel.position.set(x,.24,z);wheel.castShadow=true;car.add(wheel);
+   const hub=new THREE.Mesh(new THREE.CylinderGeometry(.060,.060,.095,16),steel);
+   hub.rotation.z=Math.PI/2;hub.position.set(x*1.06,.24,z);car.add(hub);
+  }
+ }
+ return car;
+}
+railTrainCar();
 function placeTrain(){const p=pos(...path[0]);train.position.set(p.x,.12,p.z);train.rotation.y=Math.PI;train.visible=true}
-function newPuzzle(){playing=false;ready=false;placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🌉 はし・⛰️ トンネル・🚦 ふみきりを とおろう！'}
+function newPuzzle(){playing=false;ready=false;placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
 // Ver.0.3: one finger rotates orbit camera, two fingers pinch to zoom.
