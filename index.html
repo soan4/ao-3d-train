@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.6</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.7</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.6</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🚃 くるくる しゃりん　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル　🚦 ふみきり</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛞 カーブで だいしゃが まがる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.7</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="features">🛤️ なめらかレール　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛤️ カーブの レールに そって はしる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script type="module">
 import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
@@ -28,16 +28,83 @@ const pathMap=new Map(path.map((p,i)=>[key(...p),i]));
 const tiles=new Map(), clickable=[];let playing=false,elapsed=0,ready=false;
 function pos(x,y){return new THREE.Vector3((x-2)*1.65,0,(y-2)*1.65)}
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
-function segment(parent,angle){const arm=new THREE.Group();arm.rotation.y=-angle*Math.PI/2;parent.add(arm);for(const x of [-.22,.22])cube(arm,.075,.065,.86,mats.metal,x,.27,-.40);for(const z of [-.17,-.40,-.65])cube(arm,.78,.08,.15,mats.wood,0,.20,z)}
-for(let y=0;y<5;y++)for(let x=0;x<5;x++){
- const p=pos(x,y),idx=pathMap.get(key(x,y));const base=cube(scene,1.55,.16,1.55,idx===undefined?mats.tile:mats.white,p.x,.01,p.z);base.userData.tileKey=idx===undefined?null:key(x,y);if(idx===undefined)continue;
- const rail=new THREE.Group();rail.position.set(p.x,.08,p.z);scene.add(rail);
- const con=connectionsAt(idx);con.forEach(d=>segment(rail,d));tiles.set(key(x,y),{x,y,rail,con,step:0,idx});clickable.push(base);
+// Ver.0.7: Each tile has genuine continuous 3D rails. Curves use precisely
+// the same rounded corner geometry as the vehicle's path below.
+const railSteel=new THREE.MeshStandardMaterial({color:0xb8c9d5,metalness:.72,roughness:.27});
+const sleeperMat=new THREE.MeshStandardMaterial({color:0x75513a,roughness:.92});
+const ballastMat=new THREE.MeshStandardMaterial({color:0xabb3a9,roughness:1});
+const railGauge=.81,halfTile=.825,curveRadius=.52;
+function edge(d){return new THREE.Vector3(dir[d][0]*halfTile,0,dir[d][1]*halfTile)}
+function vecDir(d){return new THREE.Vector3(dir[d][0],0,dir[d][1])}
+function tileRailPoints(con){
+ if(con.length===1){const d=con[0];return [new THREE.Vector3(0,0,0),edge(d).clone()];}
+ const a=con[0],b=con[1];
+ const eA=edge(a),eB=edge(b),uA=vecDir(a),uB=vecDir(b);
+ if((a+2)%4===b)return [eA,eB];
+ const pre=uA.clone().multiplyScalar(curveRadius),post=uB.clone().multiplyScalar(curveRadius);
+ const points=[eA,pre];
+ for(let i=1;i<=16;i++){
+  const t=i/16;
+  points.push(pre.clone().multiplyScalar((1-t)*(1-t)).addScaledVector(new THREE.Vector3(),2*t*(1-t)).addScaledVector(post,t*t));
+ }
+ points.push(eB);
+ return points;
 }
-// Permanent approach track behind the start station, for the trailing carriages.
+function makeTrack(parent,positions){
+ // The same sampled centerline is used for both steel rails and timber sleepers.
+ // Everything belongs to the rotating tile group, including curved sleepers.
+ const fine=[];
+ for(let i=0;i<positions.length-1;i++){
+  const a=positions[i],b=positions[i+1],n=Math.max(1,Math.ceil(a.distanceTo(b)/.07));
+  for(let j=0;j<n;j++)fine.push(a.clone().lerp(b,j/n));
+ }
+ fine.push(positions.at(-1).clone());
+ const arc=[0];for(let i=1;i<fine.length;i++)arc.push(arc.at(-1)+fine[i].distanceTo(fine[i-1]));
+ const total=arc.at(-1);
+ function at(s){s=Math.max(0,Math.min(total,s));let i=0;while(i+1<arc.length-1&&arc[i+1]<s)i++;const t=(s-arc[i])/(arc[i+1]-arc[i]||1);return fine[i].clone().lerp(fine[i+1],t)}
+ function orientAt(s){const t=at(Math.min(total,s+.045)).sub(at(Math.max(0,s-.045))).normalize();return {forward:t,side:new THREE.Vector3(t.z,0,-t.x)}}
+ // Continuous parallel rails: offset from centerline instead of approximating
+ // corners with short orthogonal straight sections.
+ for(const sign of [-1,1]){
+  const railPoints=fine.map((p,i)=>{
+   const s=arc[i],side=orientAt(s).side;
+   return p.clone().addScaledVector(side,sign*railGauge/2).add(new THREE.Vector3(0,.206,0));
+  });
+  const curve=new THREE.CatmullRomCurve3(railPoints,false,'centripetal');
+  const mesh=new THREE.Mesh(new THREE.TubeGeometry(curve,Math.max(16,railPoints.length*2),.027,6,false),railSteel);
+  mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);
+ }
+ // Ballast is small, discrete plates to avoid covering the movable tile.
+ const sleeperCount=Math.max(2,Math.floor(total/.23));
+ for(let i=0;i<=sleeperCount;i++){
+  const s=(i+.5)/(sleeperCount+1)*total,p=at(s),{forward}=orientAt(s);
+  const tie=cube(parent,1.04,.075,.115,sleeperMat,p.x,.15,p.z);
+  tie.rotation.y=Math.atan2(forward.x,forward.z);
+  for(const sign of [-1,1]){
+   const side=orientAt(s).side;
+   cube(parent,.11,.024,.105,railSteel,p.x+side.x*sign*railGauge/2,.187,p.z+side.z*sign*railGauge/2).rotation.y=tie.rotation.y;
+  }
+ }
+}
+for(let y=0;y<5;y++)for(let x=0;x<5;x++){
+ const p=pos(x,y),idx=pathMap.get(key(x,y));
+ const base=cube(scene,1.55,.16,1.55,idx===undefined?mats.tile:mats.white,p.x,.01,p.z);
+ base.userData.tileKey=idx===undefined?null:key(x,y);
+ if(idx===undefined)continue;
+ const rail=new THREE.Group();rail.position.set(p.x,.08,p.z);scene.add(rail);
+ const con=connectionsAt(idx);makeTrack(rail,tileRailPoints(con));
+ tiles.set(key(x,y),{x,y,rail,con,step:0,idx});clickable.push(base);
+}
+// Fixed approach track to accommodate the 2- and 3-car formations.
+// It also runs halfway through the start tile; its end joins the rotated
+// first movable segment only after that tile points north.
 for(const y of [3,4]){
  const p=pos(0,y),g=new THREE.Group();g.position.set(p.x,.08,p.z);scene.add(g);
- segment(g,0);segment(g,2);
+ makeTrack(g,[edge(0),edge(2)]);
+}
+{
+ const p=pos(0,2),g=new THREE.Group();g.position.set(p.x,.08,p.z);scene.add(g);
+ makeTrack(g,[new THREE.Vector3(0,0,0),edge(2)]);
 }
 // Decorative river and bridge-like water patches, trees and small houses, away from path.
 const water=new THREE.MeshStandardMaterial({color:0x53bee3,roughness:.28,transparent:true,opacity:.82});
@@ -105,7 +172,7 @@ addCrossing(3,2);
 
 function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
 station(0,2,mats.yellow);station(4,2,mats.blue);
-// Ver.0.6: detailed original red commuter train. Its nose faces +Z in local coordinates.
+// Ver.0.7: detailed original red commuter train. Its nose faces +Z in local coordinates.
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];let carCount=3;
@@ -284,7 +351,7 @@ function positionAllCars(){
  for(let i=0;i<trainCars.length;i++){
   const car=trainCars[i];if(i>=carCount)continue;
   const {position,heading}=sampleRoute(startDistance+distanceTravelled-i*carSpacing);
-  car.position.copy(position);car.position.y=.12;
+  car.position.copy(position);car.position.y=.20;
   car.rotation.y=heading;
   // Sample the route below each bogie pivot, not only at the car center.
   // Angle subtraction gives a steering angle relative to this car body.
