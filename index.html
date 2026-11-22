@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.8</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.0.9</title>
 <style>
-*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#mode{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 98px);z-index:5;display:flex;gap:5px}#mode button{font-size:13px;padding:9px 11px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#mode button.active{background:#ffcf54;color:#503700}#tools{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 86px);display:none;gap:6px;z-index:5;justify-content:center;flex-wrap:wrap}#tools button{font-size:13px;min-height:43px;padding:10px 10px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#tools button.active{background:#ffce4c;color:#583800}#hint{bottom:calc(env(safe-area-inset-bottom) + 84px)}body.free #hint{bottom:calc(env(safe-area-inset-bottom) + 145px);max-width:min(68vw,260px);font-size:11px}body.free #tools{display:flex}body.free #features{display:none}body.free #mode{top:calc(env(safe-area-inset-top) + 93px)}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
+*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#mode{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 98px);z-index:5;display:flex;gap:5px}#mode button{font-size:13px;padding:9px 11px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#mode button.active{background:#ffcf54;color:#503700}#tools{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 88px);display:none;gap:6px;z-index:5;justify-content:center;flex-wrap:wrap}#tools button{font-size:13px;min-height:43px;padding:10px 10px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#tools button.active{background:#ffce4c;color:#583800}#hint{bottom:calc(env(safe-area-inset-bottom) + 84px)}body.free #hint{bottom:calc(env(safe-area-inset-bottom) + 184px);max-width:min(68vw,260px);font-size:11px}body.free #tools{display:flex}body.free #features{display:none}body.free #mode{top:calc(env(safe-area-inset-top) + 93px)}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.8</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛤️ カーブの レールに そって はしる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v0.9</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button></div><div id="hint">🛤️ カーブの レールに そって はしる！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script type="module">
 import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
@@ -19,16 +19,16 @@ scene.add(new THREE.HemisphereLight(0xffffff,0x83b16f,2.4));const sun=new THREE.
 const mats={grass:new THREE.MeshStandardMaterial({color:0x8cce80}),tile:new THREE.MeshStandardMaterial({color:0xb3dba0}),wood:new THREE.MeshStandardMaterial({color:0x8c6243}),metal:new THREE.MeshStandardMaterial({color:0xd8e1eb,metalness:.55,roughness:.36}),red:new THREE.MeshStandardMaterial({color:0xe94242}),white:new THREE.MeshStandardMaterial({color:0xfaf9e6}),black:new THREE.MeshStandardMaterial({color:0x303a41}),yellow:new THREE.MeshStandardMaterial({color:0xffd344}),blue:new THREE.MeshStandardMaterial({color:0x338cc9}),roof:new THREE.MeshStandardMaterial({color:0xe75b43}),window:new THREE.MeshStandardMaterial({color:0x97e5fa,metalness:.1,roughness:.2})};
 function cube(parent,w,h,d,mat,x=0,y=0,z=0){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
 function cylinder(parent,r,h,mat,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,16),mat);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
-const ground=cube(scene,12,.4,12,mats.grass,0,-.27,0);
+const ground=cube(scene,13.7,.4,13.7,mats.grass,0,-.27,0);
 // Board coordinates: columns left-to-right, rows top-to-bottom.
 const path=[[0,2],[0,1],[1,1],[2,1],[2,2],[3,2],[3,3],[4,3],[4,2]];
 const dir=[[0,-1],[1,0],[0,1],[-1,0]]; // N E S W
 const key=(x,y)=>x+','+y;
 const pathMap=new Map(path.map((p,i)=>[key(...p),i]));
 const tiles=new Map(), clickable=[];let playing=false,elapsed=0,ready=false;let gameMode="puzzle",selectedTool="straight";
-function pos(x,y){return new THREE.Vector3((x-2)*1.65,0,(y-2)*1.65)}
+function pos(x,y){return new THREE.Vector3((x-3)*1.65,0,(y-3)*1.65)}
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
-// Ver.0.8: Each tile has genuine continuous 3D rails. Curves use precisely
+// Ver.0.9: Each tile has genuine continuous 3D rails. Curves use precisely
 // the same rounded corner geometry as the vehicle's path below.
 const railSteel=new THREE.MeshStandardMaterial({color:0xb8c9d5,metalness:.72,roughness:.27});
 const sleeperMat=new THREE.MeshStandardMaterial({color:0x75513a,roughness:.92});
@@ -86,7 +86,7 @@ function makeTrack(parent,positions){
   }
  }
 }
-for(let y=0;y<5;y++)for(let x=0;x<5;x++){
+for(let y=0;y<7;y++)for(let x=0;x<7;x++){
  const p=pos(x,y),idx=pathMap.get(key(x,y));
  const base=cube(scene,1.55,.16,1.55,idx===undefined?mats.tile:mats.white,p.x,.01,p.z);
  base.userData.tileKey=key(x,y);
@@ -122,8 +122,8 @@ const warningMat=new THREE.MeshStandardMaterial({color:0xffbc25});
 const signalRed=new THREE.MeshStandardMaterial({color:0xe93238,emissive:0x4e0000});
 const signalOff=new THREE.MeshStandardMaterial({color:0x512f32});
 const deco=new THREE.Group();scene.add(deco);
-function addBridge(x,y){
- const p=pos(x,y),g=new THREE.Group();g.position.copy(p);deco.add(g);
+function addBridge(x,y,parent=deco){
+ const p=pos(x,y),g=new THREE.Group();g.position.copy(p);parent.add(g);
  // Water below rail and stone foundation along both sides of the track.
  cube(g,1.49,.035,1.48,water,0,.12,0);
  cube(g,1.22,.13,1.22,stone,0,.19,0);
@@ -133,10 +133,11 @@ function addBridge(x,y){
    for(const z of [-.48,0,.48])cube(g,.12,.42,.12,stone,side*.67,.33,z);
  }
  for(const z of [-.68,.68])cube(g,1.35,.13,.16,stone,0,.18,z);
+ return g;
 }
 addBridge(2,2);
-function addTunnel(x,y){
- const p=pos(x,y),g=new THREE.Group();g.position.copy(p);deco.add(g);
+function addTunnel(x,y,parent=deco){
+ const p=pos(x,y),g=new THREE.Group();g.position.copy(p);parent.add(g);
  // A simple open portal arch (back side remains visible).
  const passage=1.12;
  for(const x of [-.67,.67]){
@@ -152,6 +153,7 @@ function addTunnel(x,y){
    cube(g,.30,.94,.08,stone,.68,.76,z);
    cube(g,1.62,.22,.08,stone,0,1.34,z);
  }
+ return g;
 }
 addTunnel(3,3);
 const crossingLights=[];
@@ -171,9 +173,13 @@ function addCrossing(x,y){
 }
 addCrossing(3,2);
 
-function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
-station(0,2,mats.yellow);station(4,2,mats.blue);
-// Ver.0.8: detailed original red commuter train. Its nose faces +Z in local coordinates.
+function station(x,y,color,parent=scene){const p=parent===scene?pos(x,y):new THREE.Vector3();const g=new THREE.Group();g.position.copy(p);parent.add(g);
+ cube(g,.83,.63,.60,color,0,.48,.58);cube(g,1.10,.16,.85,mats.roof,0,.87,.58);cube(g,.23,.33,.06,mats.window,-.22,.52,.267);cube(g,.23,.33,.06,mats.window,.22,.52,.267);
+ cube(g,1.18,.07,.28,stone,0,.19,-.40);return g}
+const puzzleGoalStation=station(4,2,mats.blue);
+const freeGoalStation=station(6,2,mats.blue);freeGoalStation.visible=false;
+station(0,2,mats.yellow);
+// Ver.0.9: detailed original red commuter train. Its nose faces +Z in local coordinates.
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];let carCount=3;
@@ -375,15 +381,29 @@ function newPuzzle(){playing=false;ready=false;resetPuzzleRoute();placeTrain();f
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
 
-// Ver.0.8: free-build mode. Connectivity is checked in both directions.
+// Ver.0.9: free-build mode. Connectivity is checked in both directions.
 // The path finder also tracks entry directions, so a junction cannot teleport
 // a train from a disconnected edge to another piece.
-const freeTracks=new Map();
+const freeTracks=new Map(),freeDecor=new Map();
 const freeShapes={straight:[0,2],curve:[0,1],branch:[0,1,3]};
-const startKey=key(0,2),goalKey=key(4,2);
+const startKey=key(0,2),goalKey=key(6,2);
 const opposite=d=>(d+2)%4;
 function freeCon(t){return t.con.map(d=>(d+t.step)%4)}
-function clearFreeVisual(){for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
+function clearFreeVisual(){for(const k of [...freeDecor.keys()])removeFreeDecor(k);for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
+function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;scene.remove(item.group);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose()});freeDecor.delete(k)}
+function placeFreeDecor(x,y,type){
+ const k=key(x,y);removeFreeDecor(k);
+ const group=new THREE.Group();if(type==='station')group.position.copy(pos(x,y));scene.add(group);
+ const model=(type==='bridge')?addBridge(x,y,group):(type==='tunnel')?addTunnel(x,y,group):station(x,y,mats.yellow,group);
+ const item={group,model,type};freeDecor.set(k,item);syncFreeDecor(k);
+}
+function syncFreeDecor(k){const decoItem=freeDecor.get(k),t=freeTracks.get(k);if(!decoItem||!t)return;
+ // Align bridge and tunnel openings to the line of track.
+ if(decoItem.type!=='station'){
+  const c=freeCon(t);const horizontal=(c.includes(1)&&c.includes(3))||(c.includes(1)&&!c.includes(0)&&!c.includes(2));
+  decoItem.model.rotation.y=horizontal?Math.PI/2:0;
+ }
+}
 function addFreeTile(x,y,shape,step=0){
  const k=key(x,y);if(freeTracks.has(k))removeFreeTile(k);
  const con=[...freeShapes[shape]],rail=new THREE.Group(),p=pos(x,y);
@@ -393,7 +413,7 @@ function addFreeTile(x,y,shape,step=0){
  else makeTrack(rail,tileRailPoints(con));
  const t={x,y,shape,con,step,rail};rail.rotation.y=-step*Math.PI/2;freeTracks.set(k,t);
 }
-function removeFreeTile(k){const t=freeTracks.get(k);if(!t)return;scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()});freeTracks.delete(k)}
+function removeFreeTile(k){removeFreeDecor(k);const t=freeTracks.get(k);if(!t)return;scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()});freeTracks.delete(k)}
 function updateRunButton(){document.getElementById('run').textContent=playing?'🚃 はしってる！':'🚃 はっしゃ！'}
 function selectTool(tool){selectedTool=tool;document.querySelectorAll('#tools button').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool))}
 function setMode(mode){
@@ -403,7 +423,7 @@ function setMode(mode){
  document.getElementById('reset').textContent=mode==='free'?'🧹 けす':'🔀 まぜる';
  for(const t of tiles.values())t.rail.visible=mode==='puzzle';
  for(const t of freeTracks.values())t.rail.visible=mode==='free';
- deco.visible=mode==='puzzle';
+ deco.visible=mode==='puzzle';puzzleGoalStation.visible=mode==='puzzle';freeGoalStation.visible=mode==='free';
  updateRunButton();
  if(mode==='free'){resetFree();}else{newPuzzle();document.getElementById('hint').innerHTML='👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小'}
 }
@@ -411,13 +431,13 @@ function resetFree(){
  playing=false;clearFreeVisual();
  // Start connects south (the approach line) and east; goal faces west.
  addFreeTile(0,2,'curve',1); // base [N,E] -> [E,S]
- addFreeTile(4,2,'straight',1); // [E,W], goal station face west
+ addFreeTile(6,2,'straight',1); // [E,W], goal station face west
  // A very short example track shows how building works; leave gaps to fill.
  addFreeTile(1,2,'straight',1);
  for(const t of freeTracks.values())t.rail.visible=true;
  resetPuzzleRoute();placeTrain();updateRunButton();
- document.getElementById('hint').innerHTML='🧩 パーツをえらんで マスをタップ<br>↻ まわす／✕ けす<br>☝️ スライド：カメラ　✌️ 2本指：ズーム';
- msg.textContent='🛠️ あおだけの せんろを つくろう！';
+ document.getElementById('hint').innerHTML='7×7 の ひろい せかい！<br>🛤️ せんろ・🚉えき・🌉はし・⛰️トンネルをおこう<br>☝️ スライド：カメラ　✌️ 2本指：ズーム';
+ msg.textContent='🛠️ 7×7マスに せんろと まちを つくろう！';
 }
 function editFreeTile(k){
  if(playing)return;
@@ -426,7 +446,11 @@ function editFreeTile(k){
  if(selectedTool==='erase'){removeFreeTile(k);msg.textContent='✕ せんろを けしたよ';}
  else if(selectedTool==='rotate'){
   if(!old){msg.textContent='せんろを おいてから まわそう！';return}
-  old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;msg.textContent='↻ せんろを まわしたよ';
+  old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;syncFreeDecor(k);msg.textContent='↻ せんろを まわしたよ';
+ }else if(['station','bridge','tunnel'].includes(selectedTool)){
+  if(!old)addFreeTile(x,y,'straight');
+  placeFreeDecor(x,y,selectedTool);
+  msg.textContent=selectedTool==='station'?'🚉 あたらしい えきが できたよ！':selectedTool==='bridge'?'🌉 はしが できたよ！':'⛰️ トンネルが できたよ！';
  }else{addFreeTile(x,y,selectedTool);msg.textContent='🛤️ せんろを おいたよ！';}
  // Update the train preview after every edit to keep it at the starting station.
  resetPuzzleRoute();placeTrain();
@@ -480,15 +504,15 @@ selectTool('straight');
 // Single taps still rotate track tiles. Pointer capture prevents touch loss.
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();
 const cameraTarget=new THREE.Vector3(0,.22,0);
-const orbit={theta:.53,phi:.77,distance:24};
-const orbitLimits={minDist:10,maxDist:34,minPhi:.23,maxPhi:1.33};
+const orbit={theta:.53,phi:.77,distance:27};
+const orbitLimits={minDist:9,maxDist:42,minPhi:.23,maxPhi:1.33};
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 function applyOrbit(){
  const s=Math.sin(orbit.phi);
  camera.position.set(cameraTarget.x+orbit.distance*s*Math.sin(orbit.theta),cameraTarget.y+orbit.distance*Math.cos(orbit.phi),cameraTarget.z+orbit.distance*s*Math.cos(orbit.theta));
  camera.lookAt(cameraTarget);
 }
-function cameraHome(){orbit.theta=.53;orbit.phi=.77;orbit.distance=24;applyOrbit()}
+function cameraHome(){orbit.theta=.53;orbit.phi=.77;orbit.distance=27;applyOrbit()}
 function cameraZoom(factor){orbit.distance=clamp(orbit.distance*factor,orbitLimits.minDist,orbitLimits.maxDist);applyOrbit()}
 const activePointers=new Map();let gestureMoved=false,pinchDist=0,pinchDistanceBefore=orbit.distance;
 let singleStart=null;
