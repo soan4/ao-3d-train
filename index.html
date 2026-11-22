@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ</title>
+<style>
+*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
+</head>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ</div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<script type="module">
+import * as THREE from 'three';
+const root=document.getElementById('world'),msg=document.getElementById('msg');
+const scene=new THREE.Scene();scene.background=new THREE.Color(0xc5eaff);
+const camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,.1,100);
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;root.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0xffffff,0x83b16f,2.4));const sun=new THREE.DirectionalLight(0xffffff,2.1);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);
+const mats={grass:new THREE.MeshStandardMaterial({color:0x8cce80}),tile:new THREE.MeshStandardMaterial({color:0xb3dba0}),wood:new THREE.MeshStandardMaterial({color:0x8c6243}),metal:new THREE.MeshStandardMaterial({color:0xd8e1eb,metalness:.55,roughness:.36}),red:new THREE.MeshStandardMaterial({color:0xe94242}),white:new THREE.MeshStandardMaterial({color:0xfaf9e6}),black:new THREE.MeshStandardMaterial({color:0x303a41}),yellow:new THREE.MeshStandardMaterial({color:0xffd344}),blue:new THREE.MeshStandardMaterial({color:0x338cc9}),roof:new THREE.MeshStandardMaterial({color:0xe75b43}),window:new THREE.MeshStandardMaterial({color:0x97e5fa,metalness:.1,roughness:.2})};
+function cube(parent,w,h,d,mat,x=0,y=0,z=0){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
+function cylinder(parent,r,h,mat,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,16),mat);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
+const ground=cube(scene,12,.4,12,mats.grass,0,-.27,0);
+// Board coordinates: columns left-to-right, rows top-to-bottom.
+const path=[[0,2],[0,1],[1,1],[2,1],[2,2],[3,2],[3,3],[4,3],[4,2]];
+const dir=[[0,-1],[1,0],[0,1],[-1,0]]; // N E S W
+const key=(x,y)=>x+','+y;
+const pathMap=new Map(path.map((p,i)=>[key(...p),i]));
+const tiles=new Map(), clickable=[];let playing=false,elapsed=0,ready=false;
+function pos(x,y){return new THREE.Vector3((x-2)*1.65,0,(y-2)*1.65)}
+function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
+function segment(parent,angle){const arm=new THREE.Group();arm.rotation.y=-angle*Math.PI/2;parent.add(arm);for(const x of [-.22,.22])cube(arm,.075,.065,.86,mats.metal,x,.27,-.40);for(const z of [-.17,-.40,-.65])cube(arm,.78,.08,.15,mats.wood,0,.20,z)}
+for(let y=0;y<5;y++)for(let x=0;x<5;x++){
+ const p=pos(x,y),idx=pathMap.get(key(x,y));const base=cube(scene,1.55,.16,1.55,idx===undefined?mats.tile:mats.white,p.x,.01,p.z);base.userData.tileKey=idx===undefined?null:key(x,y);if(idx===undefined)continue;
+ const rail=new THREE.Group();rail.position.set(p.x,.08,p.z);scene.add(rail);
+ const con=connectionsAt(idx);con.forEach(d=>segment(rail,d));tiles.set(key(x,y),{x,y,rail,con,step:0,idx});clickable.push(base);
+}
+// Decorative river and bridge-like water patches, trees and small houses, away from path.
+const water=new THREE.MeshStandardMaterial({color:0x53bee3,roughness:.28,transparent:true,opacity:.82});
+for(const [x,y] of [[1,3],[2,3],[1,4],[2,4]]){const p=pos(x,y);cube(scene,1.40,.025,1.35,water,p.x,.115,p.z)}
+for(const [x,y] of [[4,0],[3,0],[1,0],[0,4]]){const p=pos(x,y);cylinder(scene,.13,.7,mats.wood,p.x,.55,p.z);const leaves=new THREE.Mesh(new THREE.ConeGeometry(.47,1.15,7),new THREE.MeshStandardMaterial({color:0x268d54}));leaves.position.set(p.x,1.4,p.z);leaves.castShadow=true;scene.add(leaves)}
+function station(x,y,color){const p=pos(x,y);cube(scene,.83,.63,.60,color,p.x,.48,p.z+.58);cube(scene,1.10,.16,.85,mats.roof,p.x,.87,p.z+.58);cube(scene,.23,.33,.06,mats.window,p.x-.22,.52,p.z+.267);cube(scene,.23,.33,.06,mats.window,p.x+.22,.52,p.z+.267)}
+station(0,2,mats.yellow);station(4,2,mats.blue);
+// Train model faces +Z in local coordinates.
+const train=new THREE.Group();scene.add(train);cube(train,.72,.50,1.02,mats.red,0,.61,0);cube(train,.76,.16,1.03,mats.white,0,.93,0);cube(train,.56,.24,.055,mats.window,0,.72,.515);cube(train,.52,.20,.055,mats.window,0,.73,-.515);for(const x of [-.32,.32])for(const z of [-.33,.33]){const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.13,.13,.09,16),mats.black);wheel.rotation.z=Math.PI/2;wheel.position.set(x,.33,z);train.add(wheel)}cube(train,.24,.10,.08,mats.yellow,0,.47,.54);
+function placeTrain(){const p=pos(...path[0]);train.position.set(p.x,.12,p.z);train.rotation.y=Math.PI;train.visible=true}
+function newPuzzle(){playing=false;ready=false;placeTrain();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='せんろを タッチして つなげよう！'}
+function conNow(t){return t.con.map(d=>(d+t.step)%4)}
+function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
+const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let touchStart=null;
+renderer.domElement.addEventListener('pointerdown',e=>{touchStart=[e.clientX,e.clientY]});
+renderer.domElement.addEventListener('pointerup',e=>{if(playing||!touchStart)return;if(Math.hypot(e.clientX-touchStart[0],e.clientY-touchStart[1])>18)return;pointer.set(e.clientX/innerWidth*2-1,-e.clientY/innerHeight*2+1);ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(clickable)[0];if(!hit)return;const t=tiles.get(hit.object.userData.tileKey);if(!t)return;t.step=(t.step+1)%4;t.rail.rotation.y=-t.step*Math.PI/2;msg.textContent=valid()?'✨ つながった！ はっしゃボタンをおそう！':'せんろを タッチして まわそう！'});
+document.getElementById('reset').onclick=newPuzzle;
+document.getElementById('run').onclick=()=>{if(playing)return;if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}elapsed=0;playing=true;msg.textContent='🚃 しゅっぱつ しんこう！'};
+function resize(){camera.aspect=innerWidth/innerHeight;camera.position.set(10,innerWidth<innerHeight?15:12,17);camera.lookAt(0,.2,0);camera.fov=innerWidth<innerHeight?46:37;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)}window.addEventListener('resize',resize);resize();newPuzzle();
+let prev=performance.now();function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;if(playing){elapsed+=dt*1.15;const i=Math.min(path.length-2,Math.floor(elapsed));const a=pos(...path[i]),b=pos(...path[i+1]);const t=Math.min(1,elapsed-i);train.position.lerpVectors(a,b,t);train.position.y=.12;train.rotation.y=Math.atan2(b.x-a.x,b.z-a.z);if(elapsed>=path.length-1){playing=false;msg.textContent='🎉 やったね！ えきに とうちゃく！'}}renderer.render(scene,camera)}requestAnimationFrame(animate);
+</script></body></html>
