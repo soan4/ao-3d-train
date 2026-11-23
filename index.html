@@ -2,14 +2,14 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.1.3</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.1.3.1</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#mode{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 98px);z-index:5;display:flex;gap:5px}#mode button{font-size:13px;padding:9px 11px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#mode button.active{background:#ffcf54;color:#503700}#tools{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 88px);display:none;gap:6px;z-index:5;justify-content:center;flex-wrap:wrap}#tools button{font-size:13px;min-height:43px;padding:10px 10px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#tools button.active{background:#ffce4c;color:#583800}#hint{bottom:calc(env(safe-area-inset-bottom) + 84px)}body.free #hint{bottom:calc(env(safe-area-inset-bottom) + 184px);max-width:min(68vw,260px);font-size:11px}body.free #tools{display:flex}body.free #features{display:none}body.free #mode{top:calc(env(safe-area-inset-top) + 93px)}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 #missionPanel{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 142px);z-index:4;display:flex;flex-direction:column;gap:6px;max-width:185px}#missionPicker{display:flex;gap:5px}#missionPicker button{font-size:12px;padding:9px 9px;border-radius:11px;box-shadow:0 2px 0 #b5c5ca}#missionPicker button.active{background:#ffe07c;color:#593b00}#missionProgress{background:#fffffff0;padding:8px 10px;border-radius:11px;color:#22516b;font-size:12px;font-weight:900;line-height:1.45;box-shadow:0 2px 10px #33556622}body.free #missionPanel{top:calc(env(safe-area-inset-top) + 145px)}#missionBanner{display:none;position:fixed;top:38%;left:10%;right:10%;z-index:8;text-align:center;border-radius:20px;background:#fff8d8ef;padding:18px 12px;color:#184b61;font-size:22px;font-weight:900;box-shadow:0 8px 25px #31526344;pointer-events:none}#missionBanner.show{display:block}#missionBanner small{display:block;font-size:14px;margin-top:6px}#features{display:none}@media(max-height:670px){#missionPanel{top:calc(env(safe-area-inset-top) + 132px)}#missionPicker button{padding:6px}#missionProgress{padding:5px 8px}}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.3</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.3.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -236,7 +236,7 @@ const doorLine=new THREE.MeshStandardMaterial({color:0x7b2634,roughness:.48});
 const windowRiders=[];
 const riderShirts=[new THREE.MeshStandardMaterial({color:0x55b5e8}),new THREE.MeshStandardMaterial({color:0xffb15e})];
 // Transparent side glazing makes the seats and riders visible from outside.
-const sideGlass=new THREE.MeshStandardMaterial({color:0x6fb5d2,transparent:true,opacity:.50,roughness:.22,metalness:.05,depthWrite:false,side:THREE.DoubleSide});
+const sideGlass=new THREE.MeshStandardMaterial({color:0x9bdcf2,transparent:true,opacity:.22,roughness:.15,metalness:0,depthWrite:false,side:THREE.DoubleSide});
 const seatMat=new THREE.MeshStandardMaterial({color:0x3b7997,roughness:.8});
 function addInteriorSeats(car){
  for(const side of [-1,1])for(const z of [-.40,.40]){
@@ -288,7 +288,19 @@ function railTrainCar(number){
  const car=new THREE.Group();train.add(car);
  car.userData.number=number;
  // Slim box with rounded roof and realistic body height, one-unit length for narrow curves.
- cube(car,.79,.61,1.20,paint,0,.70,0);
+ // Hollow carriage shell: a solid cuboid blocked every "transparent" window.
+ // Build floor, end walls and thin side panels with actual apertures instead.
+ cube(car,.79,.14,1.20,paint,0,.465,0);
+ cube(car,.79,.14,1.20,paint,0,.965,0);
+ for(const z of [-.595,.595])cube(car,.79,.47,.025,paint,0,.705,z);
+ for(const side of [-1,1]){
+  const x=side*.39;
+  // Lower and upper side wall strips around the window line.
+  cube(car,.025,.21,1.19,paint,x,.57,0);
+  cube(car,.025,.085,1.19,paint,x,.925,0);
+  // Pillars between the side windows, the door opening and the car ends.
+  for(const z of [-.59,-.24,.24,.59])cube(car,.026,.26,.055,paint,x,.767,z);
+ }
  cube(car,.79,.12,1.21,cream,0,1.025,0);
  cube(car,.80,.075,1.19,paintLight,0,.96,0);
  // Shoulder/roof: a slightly rounded cross-section at the top.
@@ -301,8 +313,11 @@ function railTrainCar(number){
   cube(car,.014,.050,1.16,cream,x,.89,0);
   // Middle passenger windows at either end of a central pair of doors.
   for(const z of [-.40,.40]){
-   cube(car,.022,.23,.20,glassTrim,x*1.015,.77,z);
-   cube(car,.025,.20,.167,sideGlass,x*1.027,.77,z);
+   // Open window aperture, with frame only on the perimeter (no solid backing).
+   const wx=x*1.015;
+   for(const dz of [-.107,.107])cube(car,.029,.235,.018,glassTrim,wx,.770,z+dz);
+   for(const dy of [-.120,.120])cube(car,.029,.017,.216,glassTrim,wx,.770+dy,z);
+   cube(car,.012,.205,.180,sideGlass,x*1.042,.770,z);
    cube(car,.030,.018,.17,steel,x*1.065,.77,z);
   }
   // A genuine visible opening behind two separate sliding door panels.
