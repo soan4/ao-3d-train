@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.1.7</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.1.8</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#cars{background:#e7f4ff;flex:0 0 auto;min-width:78px}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px}#reset{flex:0 0 auto}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 84px);background:#ffffffdb;color:#24516b;font-size:12px;font-weight:800;border-radius:12px;padding:8px 10px;pointer-events:none;line-height:1.5;max-width:min(80vw,320px)}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#mode{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 98px);z-index:5;display:flex;gap:5px}#mode button{font-size:13px;padding:9px 11px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#mode button.active{background:#ffcf54;color:#503700}#tools{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 88px);display:none;gap:6px;z-index:5;justify-content:center;flex-wrap:wrap}#tools button{font-size:13px;min-height:43px;padding:10px 10px;border-radius:12px;box-shadow:0 3px 0 #b5c5ca}#tools button.active{background:#ffce4c;color:#583800}#hint{bottom:calc(env(safe-area-inset-bottom) + 84px)}body.free #hint{bottom:calc(env(safe-area-inset-bottom) + 184px);max-width:min(68vw,260px);font-size:11px}body.free #tools{display:flex}body.free #features{display:none}body.free #mode{top:calc(env(safe-area-inset-top) + 93px)}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 #missionPanel{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 142px);z-index:4;display:flex;flex-direction:column;gap:6px;max-width:185px}#missionPicker{display:flex;gap:5px}#missionPicker button{font-size:12px;padding:9px 9px;border-radius:11px;box-shadow:0 2px 0 #b5c5ca}#missionPicker button.active{background:#ffe07c;color:#593b00}#missionProgress{background:#fffffff0;padding:8px 10px;border-radius:11px;color:#22516b;font-size:12px;font-weight:900;line-height:1.45;box-shadow:0 2px 10px #33556622}body.free #missionPanel{top:calc(env(safe-area-inset-top) + 145px)}#missionBanner{display:none;position:fixed;top:38%;left:10%;right:10%;z-index:8;text-align:center;border-radius:20px;background:#fff8d8ef;padding:18px 12px;color:#184b61;font-size:22px;font-weight:900;box-shadow:0 8px 25px #31526344;pointer-events:none}#missionBanner.show{display:block}#missionBanner small{display:block;font-size:14px;margin-top:6px}#features{display:none}@media(max-height:670px){#missionPanel{top:calc(env(safe-area-inset-top) + 132px)}#missionPicker button{padding:6px}#missionProgress{padding:5px 8px}}
@@ -28,10 +28,19 @@ body.driving #msg{top:calc(env(safe-area-inset-top) + 62px);background:#ffffffe0
 #bottom button{min-height:68px}#run{font-size:clamp(17px,5vw,23px)}#mode button{min-height:48px}#tools{overflow-y:auto;max-height:160px}#tools button{min-height:50px}
 @media(max-width:390px){#drivePanel{left:5px;right:5px;padding:6px}#cabLayout{grid-template-columns:minmax(0,1fr) 73px;gap:6px}#masterArea{grid-template-columns:81px minmax(0,1fr);gap:6px}#leverHandle{width:67px}#exitDrive{font-size:26px}}
 @media(max-height:610px){#masterLever,#leverStops{height:136px}#masterArea{min-height:136px}#leverStops button{min-height:37px;font-size:13px}#leverHandle{height:39px}}
+
+/* Driving-view button: large enough for a preschooler's finger. */
+#viewToggle{display:none;min-width:70px!important;padding:8px 5px!important;font-size:22px!important;line-height:1.1}
+#viewToggle small{display:block;font-size:11px;font-weight:900;margin-top:2px}
+body.driving #viewToggle{display:block}
+body.cab-view #zoomIn,body.cab-view #zoomOut{display:none}
+body.cab-view #missionPanel{display:none}
+body.cab-view #msg{top:calc(env(safe-area-inset-top) + 56px);font-size:13px}
+@media(max-height:600px){#viewToggle{font-size:19px!important}#viewToggle small{font-size:10px}}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.7</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🧩 せんろパズル</button><button id="freeMode">🛠️ じぶんでつくる</button></div><div id="tools"><button data-tool="straight">🛤️ まっすぐ</button><button data-tool="curve">↪️ カーブ</button><button data-tool="branch">🔀 ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">🔄 まわす</button><button data-tool="erase">🧽 けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚦 はっしゃ！</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢 ゆっくり</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2">🚄 はやく</button><button type="button" data-gear="1">🐢 ゆっくり</button><button type="button" data-gear="0">🛑 とまる</button></div></div><button type="button" id="exitDrive" aria-label="線路づくり画面に戻る">↩️<span>もどる</span></button></div></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.8</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🧩 せんろパズル</button><button id="freeMode">🛠️ じぶんでつくる</button></div><div id="tools"><button data-tool="straight">🛤️ まっすぐ</button><button data-tool="curve">↪️ カーブ</button><button data-tool="branch">🔀 ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">🔄 まわす</button><button data-tool="erase">🧽 けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀<small>うんてんし</small></button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚦 はっしゃ！</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢 ゆっくり</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2">🚄 はやく</button><button type="button" data-gear="1">🐢 ゆっくり</button><button type="button" data-gear="0">🛑 とまる</button></div></div><button type="button" id="exitDrive" aria-label="線路づくり画面に戻る">↩️<span>もどる</span></button></div></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -604,7 +613,7 @@ function resetPuzzleRoute(){
  rebuildDistances();startDistance=routeLengths[1];finishDistance=routeLengths[routePoints.length-2];
 }
 function rebuildDistances(){routeLengths=[0];for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths.at(-1)+routePoints[i].distanceTo(routePoints[i-1]));}
-function newPuzzle(){playing=false;hideBoarding();ready=false;resetPuzzleRoute();placeTrain();resetMissionState();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
+function newPuzzle(){setCabView(false);playing=false;hideBoarding();ready=false;resetPuzzleRoute();placeTrain();resetMissionState();for(const t of tiles.values()){t.step=Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
 
@@ -699,11 +708,11 @@ masterLever.addEventListener('keydown',e=>{
 });
 document.querySelectorAll('#leverStops button').forEach(btn=>btn.addEventListener('click',()=>setDriveGear(Number(btn.dataset.gear))));
 document.getElementById('exitDrive').onclick=()=>{
- playing=false;currentSpeed=0;hideBoarding();resetPuzzleRoute();placeTrain();resetMissionState();setDriveGear(1);updateRunButton();refreshSpeedDisplay();msg.textContent='🛤️ せんろを つくろう！';
+ setCabView(false);playing=false;currentSpeed=0;hideBoarding();resetPuzzleRoute();placeTrain();resetMissionState();setDriveGear(1);updateRunButton();refreshSpeedDisplay();msg.textContent='🛤️ せんろを つくろう！';
 };
 function selectTool(tool){selectedTool=tool;document.querySelectorAll('#tools button').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool))}
 function setMode(mode){
- playing=false;hideBoarding();gameMode=mode;document.body.classList.toggle('free',mode==='free');
+ setCabView(false);playing=false;hideBoarding();gameMode=mode;document.body.classList.toggle('free',mode==='free');
  document.getElementById('puzzleMode').classList.toggle('active',mode==='puzzle');
  document.getElementById('freeMode').classList.toggle('active',mode==='free');
  document.getElementById('reset').textContent=mode==='free'?'🧹 けす':'🔀 まぜる';
@@ -714,7 +723,7 @@ function setMode(mode){
  if(mode==='free'){resetFree();}else{newPuzzle();document.getElementById('hint').innerHTML='👆 せんろをタッチして まわそう！<br>☝️ 1本指：カメラを回す　✌️ 2本指：ズーム・いどう'}
 }
 function resetFree(){
- playing=false;hideBoarding();clearFreeVisual();
+ setCabView(false);playing=false;hideBoarding();clearFreeVisual();
  // Start connects south (the approach line) and east; goal faces west.
  addFreeTile(0,2,'curve',1); // base [N,E] -> [E,S]
  addFreeTile(6,2,'straight',1); // [E,W], goal station face west
@@ -866,18 +875,47 @@ const cameraHomeTarget=new THREE.Vector3(0,.22,0);
 const orbit={theta:.53,phi:.77,distance:27};
 const orbitLimits={minDist:9,maxDist:42,minPhi:.23,maxPhi:1.33};
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+// A view just beyond the front windshield keeps the roof and driver model
+// from obscuring the track; its orientation follows the lead car on curves.
+let cabView=false;
+const viewToggle=document.getElementById('viewToggle');
+const cabEye=new THREE.Vector3();
+const cabLook=new THREE.Vector3();
+function updateCabCamera(){
+ if(!cabView)return;
+ const lead=trainCars[0];
+ lead.updateMatrixWorld(true);
+ lead.localToWorld(cabEye.set(0,.84,.76));
+ lead.localToWorld(cabLook.set(0,.76,6));
+ camera.position.copy(cabEye);
+ camera.lookAt(cabLook);
+}
+function setCabView(enabled){
+ cabView=Boolean(enabled);
+ document.body.classList.toggle('cab-view',cabView);
+ viewToggle.innerHTML=cabView?'🌍<small>ぜんたい</small>':'👀<small>うんてんし</small>';
+ viewToggle.setAttribute('aria-pressed',String(cabView));
+ viewToggle.setAttribute('aria-label',cabView?'全体の視点へ戻る':'運転士の視点に切り替える');
+ // Cab view uses a wider perspective to see the track and upcoming corners.
+ camera.fov=cabView?65:(innerWidth<innerHeight?49:39);
+ camera.updateProjectionMatrix();
+ if(cabView)updateCabCamera();else applyOrbit();
+}
+viewToggle.addEventListener('click',()=>setCabView(!cabView));
 function applyOrbit(){
+ if(cabView)return;
  const s=Math.sin(orbit.phi);
  camera.position.set(cameraTarget.x+orbit.distance*s*Math.sin(orbit.theta),cameraTarget.y+orbit.distance*Math.cos(orbit.phi),cameraTarget.z+orbit.distance*s*Math.cos(orbit.theta));
  camera.lookAt(cameraTarget);
 }
-function cameraHome(){orbit.theta=.53;orbit.phi=.77;orbit.distance=27;cameraTarget.copy(cameraHomeTarget);applyOrbit()}
-function cameraZoom(factor){orbit.distance=clamp(orbit.distance*factor,orbitLimits.minDist,orbitLimits.maxDist);applyOrbit()}
+function cameraHome(){if(cabView)setCabView(false);orbit.theta=.53;orbit.phi=.77;orbit.distance=27;cameraTarget.copy(cameraHomeTarget);applyOrbit()}
+function cameraZoom(factor){if(cabView)return;orbit.distance=clamp(orbit.distance*factor,orbitLimits.minDist,orbitLimits.maxDist);applyOrbit()}
 const activePointers=new Map();let gestureMoved=false,pinchDist=0,pinchDistanceBefore=orbit.distance;
 let singleStart=null,pinchMid={x:0,y:0};
 function pointerDistance(){const a=[...activePointers.values()];return Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}
 function pointerMidpoint(){const a=[...activePointers.values()];return{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}}
 function panCameraPixels(dx,dy){
+ if(cabView)return;
  const worldPerPixel=2*orbit.distance*Math.tan(THREE.MathUtils.degToRad(camera.fov*.5))/Math.max(1,renderer.domElement.clientHeight);
  const forward=new THREE.Vector3().subVectors(cameraTarget,camera.position).normalize();
  const right=new THREE.Vector3().crossVectors(forward,camera.up).normalize();
@@ -890,6 +928,7 @@ const canvas=renderer.domElement;
 canvas.style.touchAction='none';
 canvas.addEventListener('pointerdown',e=>{
  if(e.button!==0&&e.pointerType==='mouse')return;
+ if(cabView)return;
  canvas.setPointerCapture(e.pointerId);
  activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(activePointers.size===1){singleStart={id:e.pointerId,x:e.clientX,y:e.clientY};gestureMoved=false}
@@ -916,7 +955,7 @@ function handlePointerEnd(e,cancelled){
  activePointers.delete(e.pointerId);
  if(activePointers.size===1){singleStart=null;gestureMoved=true} // don't spin rails after pinch
  if(activePointers.size===0){singleStart=null;gestureMoved=false}
- if(!tap||playing)return;
+ if(!tap||playing||cabView)return;
  const rect=canvas.getBoundingClientRect();
  pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);
  ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(clickable)[0];if(!hit)return;
@@ -943,7 +982,7 @@ document.getElementById('run').onclick=()=>{
  }else if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}
  placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
-function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=innerWidth<innerHeight?49:39;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();setCarCount(3);newPuzzle();
+function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();setCarCount(3);newPuzzle();
 let prev=performance.now();function animate(now){
  requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;
  if(bannerTime>0){bannerTime-=dt;if(bannerTime<=0)bannerEl.classList.remove('show')}
@@ -979,6 +1018,7 @@ let prev=performance.now();function animate(now){
   }
   refreshSpeedDisplay();
  }
+ updateCabCamera();
  renderer.render(scene,camera)
 }requestAnimationFrame(animate);window.__aoLoaded=true;
 </script></body></html>
