@@ -9,7 +9,7 @@
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.3.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -237,7 +237,10 @@ const windowRiders=[];
 const riderShirts=[new THREE.MeshStandardMaterial({color:0x55b5e8}),new THREE.MeshStandardMaterial({color:0xffb15e})];
 // Transparent side glazing makes the seats and riders visible from outside.
 const sideGlass=new THREE.MeshStandardMaterial({color:0x9bdcf2,transparent:true,opacity:.22,roughness:.15,metalness:0,depthWrite:false,side:THREE.DoubleSide});
+const cabGlass=new THREE.MeshStandardMaterial({color:0xadddf4,transparent:true,opacity:.30,roughness:.08,metalness:0,depthWrite:false,side:THREE.DoubleSide});
 const seatMat=new THREE.MeshStandardMaterial({color:0x3b7997,roughness:.8});
+const driverCabCrew=[];
+const conductorCabCrew=[];
 function addInteriorSeats(car){
  for(const side of [-1,1])for(const z of [-.40,.40]){
   // Seats sit inside the outer shell, under the side windows. Each seat has
@@ -260,6 +263,33 @@ function addWindowRiders(car){
   cube(person,.118,.155,.10,riderShirts[i],0,.63,0);
  }
  riders.visible=false;windowRiders.push(riders);
+}
+function addCabCrew(car,number){
+ const driver=new THREE.Group();
+ car.add(driver);
+ // Driver in the leading cab, visible through the front windshield.
+ driver.position.set(-.08,0,.46);
+ sphere(driver,.078,skinMaterial,0,.80,.05,.9,1,1);
+ sphere(driver,.082,mats.black,0,.845,.02,.9,.34,1);
+ cube(driver,.13,.17,.11,new THREE.MeshStandardMaterial({color:0x2f77b8,roughness:.75}),0,.66,.01);
+ cube(driver,.16,.05,.15,steel,.04,.54,.16);
+ cube(driver,.18,.11,.06,chassisMat,.06,.60,.24);
+ driverCabCrew[number]=driver;
+ 
+ const conductor=new THREE.Group();
+ car.add(conductor);
+ // Conductor in the rear cab, visible through the rear window.
+ conductor.position.set(.08,0,-.47);
+ sphere(conductor,.074,skinMaterial,0,.80,-.02,.9,1,1);
+ sphere(conductor,.078,mats.black,0,.843,.00,.88,.32,1);
+ cube(conductor,.125,.165,.10,new THREE.MeshStandardMaterial({color:0x5a86c8,roughness:.76}),0,.655,-.01);
+ cube(conductor,.15,.05,.14,steel,-.03,.54,-.14);
+ cube(conductor,.17,.10,.06,chassisMat,-.03,.60,-.22);
+ conductorCabCrew[number]=conductor;
+}
+function updateCabCrewVisibility(){
+ driverCabCrew.forEach((g,i)=>{if(g)g.visible=i===0;});
+ conductorCabCrew.forEach((g,i)=>{if(g)g.visible=i===carCount-1;});
 }
 function updateWindowRiders(){windowRiders.forEach((r,i)=>{r.visible=i===0&&missionType==='passenger'&&missionLoaded;});}
 // Web Audio uses no external sound files. Creation/resume is initiated by a tap.
@@ -292,7 +322,12 @@ function railTrainCar(number){
  // Build floor, end walls and thin side panels with actual apertures instead.
  cube(car,.79,.14,1.20,paint,0,.465,0);
  cube(car,.79,.14,1.20,paint,0,.965,0);
- for(const z of [-.595,.595])cube(car,.79,.47,.025,paint,0,.705,z);
+ // End walls are also hollowed so the front and rear glazing can be seen through.
+ for(const z of [-.595,.595]){
+  cube(car,.79,.13,.025,paint,0,.49,z);      // lower skirt
+  cube(car,.79,.09,.025,paint,0,1.025,z);     // roof band above the cab windows
+  for(const x of [-.365,.365])cube(car,.06,.40,.025,paint,x,.76,z); // side pillars
+ }
  for(const side of [-1,1]){
   const x=side*.39;
   // Lower and upper side wall strips around the window line.
@@ -333,7 +368,7 @@ function railTrainCar(number){
  }
  // Panoramic windshield and destination blind on the front end (+Z).
  cube(car,.63,.31,.032,glassTrim,0,.80,.615);
- cube(car,.57,.255,.036,darkGlass,0,.80,.639);
+ cube(car,.57,.255,.036,cabGlass,0,.80,.639);
  cube(car,.42,.065,.040,chassisMat,0,.970,.632);
  cube(car,.36,.039,.045,lightMat,0,.973,.656);
  // Split front windshield with thin center pillar and a tiny wiper.
@@ -349,7 +384,7 @@ function railTrainCar(number){
  cube(car,.22,.028,.045,steel,0,.31,.733);
  // Cab's rear face also has a window.
  cube(car,.48,.20,.035,glassTrim,0,.82,-.619);
- cube(car,.44,.16,.040,darkGlass,0,.82,-.642);
+ cube(car,.44,.16,.040,cabGlass,0,.82,-.642);
  // Independent articulated bogies. Their pivots sit under each car; each
  // rotates relative to its car as the underlying track curves.
  cube(car,.68,.075,.92,chassisMat,0,.385,0);
@@ -383,6 +418,7 @@ function railTrainCar(number){
  }
  addInteriorSeats(car);
  addWindowRiders(car);
+ addCabCrew(car,number);
  bogiesByCar[number]=bogies;
  // End marker and inter-car coupler on local -Z end.
  cube(car,.15,.055,.13,chassisMat,0,.30,-.70);
@@ -392,6 +428,7 @@ function railTrainCar(number){
  return car;
 }
 for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
+updateCabCrewVisibility();
 // Connections between adjacent cars, rebuilt in-place each animation frame.
 const couplerMaterial=new THREE.MeshStandardMaterial({color:0x454e59,metalness:.42,roughness:.5});
 const couplers=[];
@@ -469,7 +506,7 @@ function updateBoarding(t){
 }
 hideBoarding();
 const carSpacing=1.37;
-function setCarCount(n){carCount=n;trainCars.forEach((c,i)=>c.visible=i<n);document.getElementById('cars').textContent='🚃 '+n+'りょう';positionCouplers()}
+function setCarCount(n){carCount=n;trainCars.forEach((c,i)=>c.visible=i<n);document.getElementById('cars').textContent='🚃 '+n+'りょう';positionCouplers();updateCabCrewVisibility()}
 // A continuous arclength-parameterized route. Quadratic rounded corners
 // avoid the abrupt 90-degree rotations of the original per-tile interpolation.
 const waypoints=path.map(([x,y])=>pos(x,y));
