@@ -9,7 +9,7 @@
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.4.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -218,7 +218,7 @@ moveMissionModel(2,2);
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];let carCount=3;
-const bogiesByCar=[];const wheelSpinners=[];const slidingDoors=[];
+const bogiesByCar=[];const wheelSpinners=[];const slidingDoors=[];const rearGangways=[];
 const paint=new THREE.MeshStandardMaterial({color:0xce273d,metalness:.31,roughness:.31});
 const paintLight=new THREE.MeshStandardMaterial({color:0xee4a52,metalness:.24,roughness:.32});
 const cream=new THREE.MeshStandardMaterial({color:0xfff9eb,metalness:.10,roughness:.4});
@@ -237,7 +237,7 @@ const windowRiders=[];
 const riderShirts=[new THREE.MeshStandardMaterial({color:0x55b5e8}),new THREE.MeshStandardMaterial({color:0xffb15e})];
 // Transparent side glazing makes the seats and riders visible from outside.
 const sideGlass=new THREE.MeshStandardMaterial({color:0x9bdcf2,transparent:true,opacity:.22,roughness:.15,metalness:0,depthWrite:false,side:THREE.DoubleSide});
-const cabGlass=new THREE.MeshStandardMaterial({color:0xadddf4,transparent:true,opacity:.30,roughness:.08,metalness:0,depthWrite:false,side:THREE.DoubleSide});
+const cabGlass=new THREE.MeshStandardMaterial({color:0xe7fbff,transparent:true,opacity:.10,roughness:.04,metalness:0,depthWrite:false,side:THREE.DoubleSide});
 const seatMat=new THREE.MeshStandardMaterial({color:0x3b7997,roughness:.8});
 const driverCabCrew=[];
 const conductorCabCrew=[];
@@ -268,28 +268,29 @@ function addCabCrew(car,number){
  const driver=new THREE.Group();
  car.add(driver);
  // Driver in the leading cab, visible through the front windshield.
- driver.position.set(-.08,0,.46);
- sphere(driver,.078,skinMaterial,0,.80,.05,.9,1,1);
- sphere(driver,.082,mats.black,0,.845,.02,.9,.34,1);
- cube(driver,.13,.17,.11,new THREE.MeshStandardMaterial({color:0x2f77b8,roughness:.75}),0,.66,.01);
- cube(driver,.16,.05,.15,steel,.04,.54,.16);
- cube(driver,.18,.11,.06,chassisMat,.06,.60,.24);
+ driver.position.set(0,0,.50);
+ sphere(driver,.090,skinMaterial,0,.81,.09,.92,1,1);
+ sphere(driver,.090,mats.black,0,.862,.05,.92,.34,1);
+ cube(driver,.15,.19,.12,new THREE.MeshStandardMaterial({color:0x2f77b8,roughness:.75}),0,.65,.04);
+ cube(driver,.18,.05,.17,steel,0,.54,.18);
+ cube(driver,.20,.11,.06,chassisMat,0,.60,.26);
  driverCabCrew[number]=driver;
  
  const conductor=new THREE.Group();
  car.add(conductor);
  // Conductor in the rear cab, visible through the rear window.
- conductor.position.set(.08,0,-.47);
- sphere(conductor,.074,skinMaterial,0,.80,-.02,.9,1,1);
- sphere(conductor,.078,mats.black,0,.843,.00,.88,.32,1);
- cube(conductor,.125,.165,.10,new THREE.MeshStandardMaterial({color:0x5a86c8,roughness:.76}),0,.655,-.01);
- cube(conductor,.15,.05,.14,steel,-.03,.54,-.14);
- cube(conductor,.17,.10,.06,chassisMat,-.03,.60,-.22);
+ conductor.position.set(0,0,-.50);
+ sphere(conductor,.086,skinMaterial,0,.81,-.08,.92,1,1);
+ sphere(conductor,.086,mats.black,0,.86,-.04,.90,.32,1);
+ cube(conductor,.145,.185,.11,new THREE.MeshStandardMaterial({color:0x5a86c8,roughness:.76}),0,.65,-.04);
+ cube(conductor,.17,.05,.16,steel,0,.54,-.18);
+ cube(conductor,.19,.10,.06,chassisMat,0,.60,-.26);
  conductorCabCrew[number]=conductor;
 }
 function updateCabCrewVisibility(){
  driverCabCrew.forEach((g,i)=>{if(g)g.visible=i===0;});
  conductorCabCrew.forEach((g,i)=>{if(g)g.visible=i===carCount-1;});
+ rearGangways.forEach((g,i)=>{if(g)g.visible=i<carCount-1;});
 }
 function updateWindowRiders(){windowRiders.forEach((r,i)=>{r.visible=i===0&&missionType==='passenger'&&missionLoaded;});}
 // Web Audio uses no external sound files. Creation/resume is initiated by a tap.
@@ -367,8 +368,8 @@ function railTrainCar(number){
   cube(car,.026,.026,.42,steel,x*1.065,.46,0);
  }
  // Panoramic windshield and destination blind on the front end (+Z).
- cube(car,.63,.31,.032,glassTrim,0,.80,.615);
- cube(car,.57,.255,.036,cabGlass,0,.80,.639);
+ cube(car,.66,.34,.020,glassTrim,0,.81,.618);
+ cube(car,.60,.28,.022,cabGlass,0,.81,.642);
  cube(car,.42,.065,.040,chassisMat,0,.970,.632);
  cube(car,.36,.039,.045,lightMat,0,.973,.656);
  // Split front windshield with thin center pillar and a tiny wiper.
@@ -383,8 +384,8 @@ function railTrainCar(number){
  cube(car,.29,.08,.11,chassisMat,0,.34,.671);
  cube(car,.22,.028,.045,steel,0,.31,.733);
  // Cab's rear face also has a window.
- cube(car,.48,.20,.035,glassTrim,0,.82,-.619);
- cube(car,.44,.16,.040,cabGlass,0,.82,-.642);
+ cube(car,.50,.23,.020,glassTrim,0,.82,-.620);
+ cube(car,.45,.18,.022,cabGlass,0,.82,-.644);
  // Independent articulated bogies. Their pivots sit under each car; each
  // rotates relative to its car as the underlying track curves.
  cube(car,.68,.075,.92,chassisMat,0,.385,0);
@@ -423,7 +424,7 @@ function railTrainCar(number){
  // End marker and inter-car coupler on local -Z end.
  cube(car,.15,.055,.13,chassisMat,0,.30,-.70);
  // Small connecting diaphragms and a subtle side identification mark.
- cube(car,.51,.42,.025,glassTrim,0,.73,-.626);
+ const rearGangway=cube(car,.51,.42,.025,glassTrim,0,.73,-.626);rearGangways[number]=rearGangway;
  for(const x of [-.404,.404])cube(car,.018,.09,.16,cream,x,.55,-.04);
  return car;
 }
