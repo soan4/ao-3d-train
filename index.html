@@ -9,7 +9,7 @@
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.2.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active">🎲 パズル</button><button id="freeMode">🛠️ じゆう</button></div><div id="tools"><button data-tool="straight">━ まっすぐ</button><button data-tool="curve">⌒ カーブ</button><button data-tool="branch">┬ ぶんき</button><button data-tool="station">🚉 えき</button><button data-tool="bridge">🌉 はし</button><button data-tool="tunnel">⛰️ トンネル</button><button data-tool="rotate">↻ まわす</button><button data-tool="erase">✕ けす</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active">🧒 おきゃく</button><button id="cargoMission">📦 にもつ</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">＋</button><button id="zoomOut" aria-label="カメラを縮小">－</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">⌂</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小</div><div id="bottom"><button id="reset">🔀 まぜる</button><button id="cars" aria-label="編成の両数を切り替える">🚃 3りょう</button><button id="run">🚃 はっしゃ！</button></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -35,7 +35,7 @@ const pathMap=new Map(path.map((p,i)=>[key(...p),i]));
 const tiles=new Map(), clickable=[];let playing=false,elapsed=0,ready=false;let gameMode="puzzle",selectedTool="straight";
 function pos(x,y){return new THREE.Vector3((x-3)*1.65,0,(y-3)*1.65)}
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
-// Ver.1.2: Each tile has genuine continuous 3D rails. Curves use precisely
+// Ver.1.2.1: Each tile has genuine continuous 3D rails. Curves use precisely
 // the same rounded corner geometry as the vehicle's path below.
 const railSteel=new THREE.MeshStandardMaterial({color:0xb8c9d5,metalness:.72,roughness:.27});
 const sleeperMat=new THREE.MeshStandardMaterial({color:0x75513a,roughness:.92});
@@ -187,7 +187,7 @@ const puzzleMidStation=station(2,2,mats.yellow);
 const puzzleGoalStation=station(4,2,mats.blue);
 const freeGoalStation=station(6,2,mats.blue);freeGoalStation.visible=false;
 station(0,2,mats.yellow);
-// Ver.1.2: a visible passenger or parcel waits at the intermediate station.
+// Ver.1.2.1: a visible passenger or parcel waits at the intermediate station.
 const missionProps=new THREE.Group();scene.add(missionProps);
 const parcelMaterial=new THREE.MeshStandardMaterial({color:0xe9b35a});
 const skinMaterial=new THREE.MeshStandardMaterial({color:0xf6c89a});
@@ -203,7 +203,7 @@ function addMissionModel(){
 const missionModel=addMissionModel();
 function moveMissionModel(x,y){const p=pos(x,y);missionProps.position.set(p.x+.46,.11,p.z+.48)}
 moveMissionModel(2,2);
-// Ver.1.2: detailed original red commuter train. Its nose faces +Z in local coordinates.
+// Ver.1.2.1: detailed original red commuter train. Its nose faces +Z in local coordinates.
 // Geometry is created in Three.js; no external model files required.
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];let carCount=3;
@@ -219,7 +219,7 @@ const rubber=new THREE.MeshStandardMaterial({color:0x1a2027,roughness:.96});
 const lightMat=new THREE.MeshStandardMaterial({color:0xfff6bb,emissive:0xe8b95b,emissiveIntensity:1.2});
 const tailMat=new THREE.MeshStandardMaterial({color:0xff4545,emissive:0x7a1010,emissiveIntensity:.5});
 const doorLine=new THREE.MeshStandardMaterial({color:0x7b2634,roughness:.48});
-// Ver.1.2: a tiny visible seated passenger behind each side window.
+// Ver.1.2.1: a tiny visible seated passenger behind each side window.
 // They are placed at the visible edge of the glazing so they remain readable
 // on small iPhone screens even with the stylized opaque blue glass material.
 const windowRiders=[];
@@ -499,7 +499,7 @@ function newPuzzle(){playing=false;hideBoarding();ready=false;resetPuzzleRoute()
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
 
-// Ver.1.2: free-build mode. Connectivity is checked in both directions.
+// Ver.1.2.1: free-build mode. Connectivity is checked in both directions.
 // The path finder also tracks entry directions, so a junction cannot teleport
 // a train from a disconnected edge to another piece.
 const freeTracks=new Map(),freeDecor=new Map();
@@ -627,8 +627,14 @@ const tokenPerson=new THREE.Group();carriedToken.add(tokenPerson);
 cylinder(tokenPerson,.095,.23,shirtMaterial,0,1.33,0);
 const tokenHead=new THREE.Mesh(new THREE.SphereGeometry(.10,10,8),skinMaterial);tokenHead.position.y=1.55;tokenPerson.add(tokenHead);
 function updateMissionVisual(){
- missionModel.parcel.visible=missionType==='cargo';missionModel.person.visible=missionType==='passenger';
- tokenBox.visible=missionType==='cargo';tokenPerson.visible=missionType==='passenger';carriedToken.visible=missionLoaded;
+ missionModel.parcel.visible=missionType==='cargo';
+ missionModel.person.visible=missionType==='passenger'&&!missionLoaded;
+ // Cargo uses a visible carried token on the lead car, but passengers should
+ // only appear inside the side windows after boarding. This avoids the
+ // accidental 'riding on the roof' look on iPhone.
+ tokenBox.visible=missionType==='cargo'&&missionLoaded;
+ tokenPerson.visible=false;
+ carriedToken.visible=missionType==='cargo'&&missionLoaded;
  updateWindowRiders();
 }
 function showMissionBanner(title,detail,duration=1.7){bannerEl.innerHTML=title+'<small>'+detail+'</small>';bannerEl.classList.add('show');bannerTime=duration}
