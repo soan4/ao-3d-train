@@ -209,7 +209,7 @@ body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}bod
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.3.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -236,7 +236,8 @@ const root=document.getElementById('world'),msg=document.getElementById('msg');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0xbfe9fb);
 const camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,.1,100);
 const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;root.appendChild(renderer.domElement);
-const skyLight=new THREE.HemisphereLight(0xeaf5ff,0x8b9272,2.0);scene.add(skyLight);const sun=new THREE.DirectionalLight(0xffeed7,2.6);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1536,1536);sun.shadow.normalBias=.025;sun.shadow.bias=-.00015;sun.shadow.camera.left=-16;sun.shadow.camera.right=16;sun.shadow.camera.top=16;sun.shadow.camera.bottom=-16;scene.add(sun);
+const skyLight=new THREE.HemisphereLight(0xeaf5ff,0x8b9272,2.0);scene.add(skyLight);const sun=new THREE.DirectionalLight(0xffeed7,2.6);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.radius=3;sun.shadow.normalBias=.025;sun.shadow.bias=-.00015;sun.shadow.camera.left=-16;sun.shadow.camera.right=16;sun.shadow.camera.top=16;sun.shadow.camera.bottom=-16;scene.add(sun);
+const bounceLight=new THREE.DirectionalLight(0xffecd5,.38);bounceLight.position.set(8,5,-9);scene.add(bounceLight);
 const mats={grass:new THREE.MeshStandardMaterial({color:0x8cce80}),tile:new THREE.MeshStandardMaterial({color:0xb3dba0}),wood:new THREE.MeshStandardMaterial({color:0x8c6243}),metal:new THREE.MeshStandardMaterial({color:0xd8e1eb,metalness:.55,roughness:.36}),red:new THREE.MeshStandardMaterial({color:0xe94242}),white:new THREE.MeshStandardMaterial({color:0xfaf9e6}),black:new THREE.MeshStandardMaterial({color:0x303a41}),yellow:new THREE.MeshStandardMaterial({color:0xffd344}),blue:new THREE.MeshStandardMaterial({color:0x338cc9}),roof:new THREE.MeshStandardMaterial({color:0xe75b43}),window:new THREE.MeshStandardMaterial({color:0x97e5fa,metalness:.1,roughness:.2})};
 const stationLampMat=new THREE.MeshStandardMaterial({color:0xfff3cb,emissive:0xffcc76,emissiveIntensity:0,roughness:.55});
 const interiorLampMat=stationLampMat.clone();
@@ -246,10 +247,10 @@ function cube(parent,w,h,d,mat,x=0,y=0,z=0){const m=new THREE.Mesh(toyBox(w,h,d)
 function cylinder(parent,r,h,mat,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,16),mat);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
 // Lightweight procedural surface textures: no extra network assets.
 function surfaceTexture(base, flecks, wood=false){
- const c=document.createElement('canvas');c.width=c.height=128;const ctx=c.getContext('2d');ctx.fillStyle=base;ctx.fillRect(0,0,128,128);
+ const c=document.createElement('canvas');c.width=c.height=256;const ctx=c.getContext('2d');ctx.fillStyle=base;ctx.fillRect(0,0,256,256);
  let seed=719;const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
- for(let i=0;i<1800;i++){ctx.fillStyle=flecks[i%flecks.length];ctx.fillRect(rand()*128,rand()*128,wood?6+rand()*22:1+rand()*3,wood?1:1+rand()*3);}
- const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;return t;
+ if(wood){for(let i=0;i<95;i++){const y=rand()*256,x=rand()*256,w=30+rand()*100;ctx.strokeStyle=flecks[i%flecks.length];ctx.globalAlpha=.24+rand()*.30;ctx.lineWidth=.6+rand()*1.3;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+w*.3,y+3*Math.sin(i),x+w*.7,y-3*Math.sin(i),x+w,y);ctx.stroke();}}else{for(let i=0;i<4500;i++){ctx.fillStyle=flecks[i%flecks.length];ctx.globalAlpha=.32+rand()*.45;ctx.fillRect(rand()*256,rand()*256,1+rand()*3,1+rand()*3);}}
+ ctx.globalAlpha=1;const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;return t;
 }
 const turfTexture=surfaceTexture('#a8cf79',['#a3c974','#b0d482','#a7cc78','#b5d687']);
 mats.grass.map=turfTexture;mats.grass.color.set(0xffffff);mats.grass.roughness=1;
@@ -259,8 +260,9 @@ const BOARD_SIZE=9,CELL_SIZE=1.65,BOARD_LAST=BOARD_SIZE-1,BOARD_CENTER=BOARD_LAS
 const TERRAIN_COLUMNS=[2,4,6];
 const boardWidth=BOARD_SIZE*CELL_SIZE+2.15;
 const ground=cube(scene,boardWidth,.4,boardWidth,mats.grass,0,-.27,0);
-const borderMat=new THREE.MeshStandardMaterial({color:0xc19055,roughness:.84});
+const borderMat=new THREE.MeshStandardMaterial({color:0xc19055,map:woodGrain,roughness:.7});
 cube(scene,boardWidth+.08,.24,boardWidth+.08,borderMat,0,-.49,0);
+const edgeWood=new THREE.MeshStandardMaterial({color:0x91663f,map:woodGrain,roughness:.68});cube(scene,boardWidth+.16,.08,boardWidth+.16,edgeWood,0,-.60,0);
 const surrounding=new THREE.MeshStandardMaterial({color:0xc2dc9e,roughness:1});cube(scene,70,.12,70,surrounding,0,-.68,0);
 scene.fog=new THREE.Fog(0xbfe9fb,42,100);
 // Board coordinates: columns left-to-right, rows top-to-bottom.
@@ -273,7 +275,8 @@ function pos(x,y){return new THREE.Vector3((x-BOARD_CENTER)*CELL_SIZE,0,(y-BOARD
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
 // Ver.1.2.1: Each tile has genuine continuous 3D rails. Curves use precisely
 // the same rounded corner geometry as the vehicle's path below.
-const railSteel=new THREE.MeshStandardMaterial({color:0xd3dce1,metalness:.37,roughness:.28});
+const railSteel=new THREE.MeshStandardMaterial({color:0xc3ccd1,metalness:.32,roughness:.34});
+const railTop=new THREE.MeshStandardMaterial({color:0xf3e5cb,metalness:.18,roughness:.36});
 const sleeperMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#c39157",["#bb854b","#d1a16b","#c69760"],true),roughness:.92});
 const ballastMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#d5b78c",["#cba97c","#dfc398","#d7b88d"],true),roughness:1});
 const railGauge=.81,halfTile=.825,curveRadius=.52;
@@ -316,6 +319,7 @@ function makeTrack(parent,positions){
   const curve=new THREE.CatmullRomCurve3(railPoints,false,'centripetal');
   const mesh=new THREE.Mesh(new THREE.TubeGeometry(curve,Math.max(16,railPoints.length*2),.027,6,false),railSteel);
   mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);
+  const cap=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(railPoints.map(p=>p.clone().add(new THREE.Vector3(0,.018,0)))),Math.max(16,railPoints.length*2),.014,5,false),railTop);parent.add(cap);
  }
  // Ballast is small, discrete plates to avoid covering the movable tile.
  const bedVertices=[],bedUV=[],bedIndices=[];
@@ -375,14 +379,14 @@ const ambientRiverLife=[];
 let ambientNightLevel=0;
 function scenicTree(x,z,scale=1){
  const g=new THREE.Group();
- g.position.set(x,.10,z);g.scale.setScalar(scale);scene.add(g);
+ g.position.set(x,-.62,z);g.scale.setScalar(scale);scene.add(g);
  cylinder(g,.095,.83,mats.wood,0,.42,0);
  const leaves=[];
  for(let i=0;i<5;i++){
   const a=i*2.4;
-  const leaf=new THREE.Mesh(new THREE.IcosahedronGeometry(i===0?.46:.34,2),leafMats[i%3]);
+  const leaf=new THREE.Mesh(new THREE.SphereGeometry(i===0?.46:.34,14,10),leafMats[i%3]);
   leaf.position.set(i===0?0:Math.cos(a)*.24,i===0?1.21:.93+(.08*(i%2)),i===0?0:Math.sin(a)*.24);
-  leaf.scale.y=1.18;leaf.castShadow=true;g.add(leaf);leaves.push(leaf);
+  leaf.scale.set(1.04,1.20,.98);leaf.castShadow=true;leaf.receiveShadow=true;g.add(leaf);leaves.push(leaf);
  }
  ambientTrees.push({g,leaves,phase:Math.random()*Math.PI*2});
  return g
@@ -396,6 +400,8 @@ function makeAmbientPerson(color=0x4fa0d8){
  cylinder(g,.075,.17,cloth,0,.20,0);
  ambientBall(g,.08,ambientSkinMat,0,.345,0);
  ambientBall(g,.085,ambientHairMat,0,.405,-.005,1,.34,1);
+ for(const x of [-.029,.029]){ambientBall(g,.008,ambientHairMat,x,.35,.074);ambientBall(g,.014,ambientSkinMat,x*2.5,.338,0);}
+ ambientBall(g,.009,ambientSkinMat,0,.329,.079);
  const arms=[],legs=[];
  for(const side of [-1,1]){
   const arm=new THREE.Group();arm.position.set(side*.078,.25,0);g.add(arm);cube(arm,.045,.10,.05,cloth,0,-.045,0);ambientBall(arm,.024,ambientSkinMat,0,-.095,0);arms.push(arm);
@@ -403,80 +409,58 @@ function makeAmbientPerson(color=0x4fa0d8){
  }
  return {g,arms,legs};
 }
-function addAmbientHouse(x,z){
- const g=new THREE.Group();g.position.set(x*1.25,-.52,z*1.25);scene.add(g);
- cube(g,1.2,.9,1.1,houseWall,0,.45,0);
- const roof=new THREE.Mesh(new THREE.ConeGeometry(.88,.52,4),houseRoof);roof.rotation.y=Math.PI/4;roof.position.y=1.15;roof.castShadow=true;g.add(roof);
- const windowMats=[];
- for(const xx of [-.32,.32]){
-  const wMat=mats.window.clone();wMat.emissive=new THREE.Color(0xffc476);wMat.emissiveIntensity=0;
-  windowMats.push(wMat);
-  cube(g,.24,.28,.035,wMat,xx,.57,.566);
- }
- cube(g,.26,.43,.04,mats.wood,0,.25,.57);
- cube(g,1.6,.04,.7,roadShoulder,0,.02,.95);
- const villager=makeAmbientPerson([0x4b96d2,0xe0a24d,0x6eb658][ambientHouses.length%3]);
- villager.g.visible=false;villager.g.position.set(0,.02,.72);g.add(villager.g);
- ambientHouses.push({g,walker:villager,lit:true,nextLight:Math.random()*6000+2000,nextWalk:Math.random()*8000+5000,walkActive:false,walkStart:0,walkDur:0,windowMats,walkBaseY:.02,walkBaseZ:.72,walkSpan:.72});
+function buildLivingHouse(model,scale=1,baseY=.15){
+ const h=new THREE.Group();h.position.y=baseY;h.scale.setScalar(scale);model.add(h);
+ const palette=[0xdb7654,0x6894a7,0xb58c53,0x79965b];const roofMat=new THREE.MeshStandardMaterial({color:palette[ambientHouses.length%4],map:woodGrain,roughness:.72});
+ const trim=new THREE.MeshStandardMaterial({color:0xe8d8b5,roughness:.8});
+ const windowMats=[];const ownMats=[roofMat,trim];
+ // House footprint .80 x .72; front wall has a genuine doorway.
+ cube(h,.82,.075,.75,trim,0,.037,0);
+ cube(h,.78,.56,.055,houseWall,0,.35,-.34);
+ for(const x of [-.365,.365])cube(h,.06,.56,.70,houseWall,x,.35,0);
+ for(const x of [-.265,.265])cube(h,.25,.56,.055,houseWall,x,.35,.34);
+ cube(h,.29,.19,.055,houseWall,0,.535,.34);
+ const shape=new THREE.Shape();shape.moveTo(-.44,0);shape.lineTo(0,.29);shape.lineTo(.44,0);shape.closePath();
+ const geo=new THREE.ExtrudeGeometry(shape,{depth:.77,bevelEnabled:false});geo.translate(0,0,-.385);const gable=new THREE.Mesh(geo,houseWall);gable.position.y=.63;gable.castShadow=true;h.add(gable);
+ for(const side of [-1,1]){const r=cube(h,.53,.055,.85,roofMat,side*.218,.787,0);r.rotation.z=-side*.58;}
+ cube(h,.07,.055,.86,roofMat,0,.936,0);cube(h,.10,.22,.10,trim,.23,.84,-.18);
+ const door=new THREE.Group();door.position.set(-.135,.075,.376);h.add(door);cube(door,.27,.36,.035,mats.wood,.135,.18,0);ambientBall(door,.015,mats.yellow,.23,.18,.024);
+ for(const x of [-.26,.26]){const wm=mats.window.clone();wm.emissive.setHex(0xffbc6b);wm.emissiveIntensity=0;windowMats.push(wm);ownMats.push(wm);cube(h,.21,.23,.028,trim,x,.405,.38);cube(h,.165,.18,.018,wm,x,.405,.401);cube(h,.012,.18,.022,trim,x,.405,.417);cube(h,.165,.012,.022,trim,x,.405,.417);cube(h,.23,.035,.065,trim,x,.285,.40);}
+ cube(h,.27,.032,.23,trim,0,.02,.49);
+ const walker=makeAmbientPerson([0x4b96d2,0xe0a24d,0x6eb658][ambientHouses.length%3]);walker.g.scale.setScalar(.70);walker.g.visible=false;h.add(walker.g);
+ const now=performance.now();const ref={g:h,walker,door,lit:true,nextLight:now+7000+Math.random()*12000,nextWalk:now+3000+Math.random()*6500,walkActive:false,walkStart:0,walkDur:0,windowMats,walkBaseY:.04,walkBaseZ:.37,walkSpan:.31,ownMats};ambientHouses.push(ref);return ref;
 }
-function attachBoardHouseLife(model){
- const windowMats=[];
- for(const xx of [-.25,.25]){
-  const wMat=mats.window.clone();wMat.emissive=new THREE.Color(0xffc476);wMat.emissiveIntensity=0;
-  windowMats.push(wMat);
-  cube(model,.17,.18,.035,wMat,xx,.54,.43);
+function addAmbientHouse(x,z){const g=new THREE.Group();g.position.set(x*1.25,-.62,z*1.25);scene.add(g);buildLivingHouse(g,1.35,0);}
+function attachBoardHouseLife(model){return buildLivingHouse(model,.88,.15);}
+
+function attachRiverLife(model,k){
+ const root=new THREE.Group();model.add(root);const ownMats=[];const ripples=[];
+ for(const [xx,zz,r,p] of [[-.18,-.34,.095,0],[.12,.06,.12,1.1],[-.04,.42,.08,2.2]]){
+  const mat=new THREE.MeshBasicMaterial({color:0xd7f9ff,transparent:true,opacity:.35,side:THREE.DoubleSide,depthWrite:false});ownMats.push(mat);
+  const ring=new THREE.Mesh(new THREE.RingGeometry(r*.87,r,24),mat);ring.rotation.x=-Math.PI/2;ring.position.set(xx,.158,zz);root.add(ring);ripples.push({mesh:ring,phase:p});
  }
- const villager=makeAmbientPerson([0x4b96d2,0xe0a24d,0x6eb658][ambientHouses.length%3]);
- villager.g.visible=false;villager.g.position.set(0,.12,.58);model.add(villager.g);
- const ref={g:model,walker:villager,lit:true,nextLight:Math.random()*6000+2000,nextWalk:Math.random()*7000+3500,walkActive:false,walkStart:0,walkDur:0,windowMats,walkBaseY:.12,walkBaseZ:.58,walkSpan:.28};
- ambientHouses.push(ref);
- return ref;
-}
-function attachRiverLife(model){
- const rippleMats=[];
- const ripples=[];
- for(const [xx,zz,s,p] of [[-.18,-.34,.10,0],[.12,.06,.12,1.1],[-.04,.42,.08,2.2]]){
-  const mat=new THREE.MeshStandardMaterial({color:0xd6fbff,roughness:.45,transparent:true,opacity:.42,side:THREE.DoubleSide});
-  rippleMats.push(mat);
-  const ring=new THREE.Mesh(new THREE.RingGeometry(s*.55,s,18),mat);ring.rotation.x=-Math.PI/2;ring.position.set(xx,.158,zz);model.add(ring);
-  ripples.push({mesh:ring,base:s,phase:p});
- }
- const fish=new THREE.Group();model.add(fish);
- const fishMat=new THREE.MeshStandardMaterial({color:0xf58f54,roughness:.7});
- const fishFin=new THREE.MeshStandardMaterial({color:0xffd48a,roughness:.7});
- const fishBody=ambientBall(fish,.08,fishMat,0,.155,-.22,1.45,.72,.7);
- const fishTail=new THREE.Mesh(new THREE.ConeGeometry(.045,.09,10),fishFin);fishTail.rotation.z=Math.PI/2;fishTail.position.set(-.10,.155,-.22);fishTail.castShadow=true;fish.add(fishTail);
- const duck=new THREE.Group();model.add(duck);
- const duckYellow=new THREE.MeshStandardMaterial({color:0xf1d45a,roughness:.75});
- const beakMat=new THREE.MeshStandardMaterial({color:0xe39a43,roughness:.75});
- ambientBall(duck,.10,duckYellow,0,.19,.18,1.2,.9,1.25);ambientBall(duck,.065,duckYellow,.08,.26,.21);cube(duck,.05,.018,.03,beakMat,.15,.25,.21);ambientBall(duck,.012,mats.black,.10,.275,.255);ambientBall(duck,.012,mats.black,.10,.275,.17);
- const ref={model,ripples,rippleMats,fish,fishBody,fishTail,duck,phase:Math.random()*Math.PI*2};
- ambientRiverLife.push(ref);
- return ref;
+ const fish=new THREE.Group();root.add(fish);const fishMat=new THREE.MeshStandardMaterial({color:0xe99456,roughness:.53});const fishFin=new THREE.MeshStandardMaterial({color:0xffce85,roughness:.65});ownMats.push(fishMat,fishFin);
+ ambientBall(fish,.08,fishMat,0,0,0,.72,.48,1.55);const fishTail=new THREE.Group();fishTail.position.z=-.095;fish.add(fishTail);
+ const fin=new THREE.Mesh(new THREE.ConeGeometry(.047,.085,3),fishFin);fin.rotation.x=-Math.PI/2;fin.position.z=-.03;fishTail.add(fin);
+ for(const x of [-.045,.045])ambientBall(fish,.009,mats.black,x,.012,.075);
+ const duck=new THREE.Group();root.add(duck);const duckYellow=new THREE.MeshStandardMaterial({color:0xffdd71,roughness:.65});const beakMat=new THREE.MeshStandardMaterial({color:0xe49a43,roughness:.75});ownMats.push(duckYellow,beakMat);
+ ambientBall(duck,.10,duckYellow,0,.035,0,.90,.7,1.24);ambientBall(duck,.065,duckYellow,0,.115,.072);ambientBall(duck,.036,beakMat,0,.099,.13,1,.38,1.2);
+ for(const x of [-.053,.053]){ambientBall(duck,.009,mats.black,x,.135,.095);ambientBall(duck,.051,duckYellow,x*1.35,.045,-.015,.38,.63,1.28);}
+ const wakeMat=new THREE.MeshBasicMaterial({color:0xf1ffff,transparent:true,opacity:.48,side:THREE.DoubleSide,depthWrite:false});ownMats.push(wakeMat);const wake=new THREE.Mesh(new THREE.RingGeometry(.12,.132,24),wakeMat);wake.rotation.x=-Math.PI/2;wake.position.set(0,.158,0);root.add(wake);
+ const ref={root,model,k,ripples,fish,fishTail,duck,wake,phase:Math.random()*Math.PI*2,ownMats};ambientRiverLife.push(ref);return ref;
 }
 function detachAmbientRef(item){
  if(!item||!item.ambientType||!item.ambientRef)return;
  const list=item.ambientType==='house'?ambientHouses:ambientRiverLife;
  const idx=list.indexOf(item.ambientRef);
  if(idx>=0)list.splice(idx,1);
+ for(const mat of item.ambientRef.ownMats||[])mat.dispose();
  item.ambientRef=null;
-}
-function addRiversideScene(x,z){
- const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);
- cube(g,1.95,.08,1.55,riverBank,0,.08,0);
- cube(g,1.18,.045,1.32,water,0,.105,0);
- for(const sx of [-1,1])cube(g,.11,.05,1.22,riverBank,sx*.53,.10,0);
- for(const zz of [-1,1])cube(g,1.10,.05,.12,riverBank,0,.10,zz*.60);
- cube(g,.46,.07,.18,mats.wood,-.62,.18,.42);cube(g,.05,.20,.05,mats.wood,-.80,.10,.42);cube(g,.05,.20,.05,mats.wood,-.44,.10,.42);
- const sitter=makeAmbientPerson(0x79b65c);sitter.g.position.set(-.62,.18,.28);sitter.g.rotation.y=.7;g.add(sitter.g);
- sitter.g.children[0].position.y=.16;
- sitter.legs[0].rotation.x=-1.1;sitter.legs[1].rotation.x=-1.1;sitter.arms[0].rotation.x=.45;sitter.arms[1].rotation.x=.25;
- ambientSitters.push({g:sitter.g,arms:sitter.arms,phase:Math.random()*Math.PI*2});
 }
 
 // Perimeter scenery stays outside all editable cells and the train route.
 for(const [x,z,k] of [[-7.8,-5.9,1.1],[-8.2,2.8,.85],[7.8,-3.8,1.2],[7.9,4.8,.9],[-3,-7.8,.85],[4.4,-8.1,1.1]])scenicTree(x*1.25,z*1.25,k);
-const houseWall=new THREE.MeshStandardMaterial({color:0xf1e1c5,roughness:.85});
+const houseWall=new THREE.MeshStandardMaterial({color:0xf1e1c5,map:woodGrain,roughness:.85});
 const houseRoof=new THREE.MeshStandardMaterial({color:0xd66b4c,roughness:.7});
 const roadShoulder=new THREE.MeshStandardMaterial({color:0x87908c,roughness:1});
 for(const [x,z] of [[-8,-1],[8,0],[1,-8]])addAmbientHouse(x,z);
@@ -508,6 +492,7 @@ function addBridge(x,y,parent=deco){
   for(const yy of [.23,.48])cube(g,.065,.055,1.56,steel,xx,yy,0);
   for(const z of [-.73,-.24,.24,.73])cube(g,.06,.27,.055,steel,xx,.355,z);
   for(const z of [-.49,0,.49]){const beam=cube(g,.045,.49,.045,steel,xx,.355,z);beam.rotation.x=.99;}
+  for(const z of [-.73,-.24,.24,.73]){cube(g,.08,.075,.085,chassisMat,xx,.235,z);}
  }
  return g;
 }
@@ -520,7 +505,8 @@ function addTunnel(x,y,parent=deco){
  }
  cube(g,1.57,.20,1.49,mountain,0,1.84,0);
  for(const z of [-.75,.75])cube(g,1.57,.16,.075,stone,0,1.82,z);
- const peak=new THREE.Mesh(new THREE.ConeGeometry(.72,.38,4),mountain);peak.rotation.y=Math.PI/4;peak.position.y=2.09;g.add(peak);
+ const peak=new THREE.Mesh(new THREE.SphereGeometry(.69,14,9),mountain);peak.scale.set(1,.30,1);peak.position.y=1.96;peak.castShadow=true;g.add(peak);
+ for(const z of [-.78,.78]){for(const side of [-1,1])for(let i=0;i<5;i++)cube(g,.15,.015,.025,steel,side*.71,.26+i*.29,z);cube(g,.32,.065,.025,darkTunnel,0,1.82,z);}
  return g;
 }
 function addCrossing(x,y,parent=deco){
@@ -550,6 +536,9 @@ function station(x,y,color,parent=scene){
  cube(g,.04,.18,.28,mats.wood,.765,.43,0);
  for(const z of [-.10,.10])cube(g,.035,.13,.035,steel,.70,.29,z);
  cube(g,.05,.16,.24,color,.77,.68,.35);
+ for(const z of [-.59,-.38,-.17,.04,.25,.46,.64])cube(g,.19,.006,.012,mats.wood,.69,.228,z);
+ const clock=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.025,20),mats.white);clock.rotation.z=Math.PI/2;clock.position.set(.545,.835,.43);g.add(clock);
+ const hand=cube(g,.014,.040,.010,mats.black,.529,.847,.43);hand.rotation.x=.5;
  g.userData.transferHide=g.children.slice(2); // temporarily reveal platform during direct handling
  return g;
 }
@@ -590,8 +579,8 @@ moveMissionModel(2,2);
 const train=new THREE.Group();scene.add(train);
 const trainCars=[];const carCount=3;
 const bogiesByCar=[];const wheelSpinners=[];const slidingDoors=[];const rearGangways=[];
-const paint=new THREE.MeshStandardMaterial({color:0xde5141,metalness:0,roughness:.52});
-const paintLight=new THREE.MeshStandardMaterial({color:0xf36a50,metalness:0,roughness:.52});
+const paint=new THREE.MeshStandardMaterial({color:0xde5141,metalness:0,roughness:.36});
+const paintLight=new THREE.MeshStandardMaterial({color:0xf36a50,metalness:0,roughness:.39});
 const cream=new THREE.MeshStandardMaterial({color:0xfff9eb,metalness:.10,roughness:.4});
 paint.map=woodGrain;paintLight.map=woodGrain;cream.map=woodGrain;
 // Shared body materials allow every car to change livery without rebuilding meshes.
@@ -750,6 +739,7 @@ function railTrainCar(number){
  cube(car,.27,.055,.42,steel,0,1.112,-.18);
  for(const z of [-.39,.31])cube(car,.18,.025,.12,chassisMat,0,1.15,z);
  for(let i=0;i<7;i++)cube(car,.23,.009,.018,chassisMat,0,1.145,-.31+i*.047);
+ for(const x of [-.09,.09]){const vent=new THREE.Mesh(new THREE.CylinderGeometry(.046,.046,.013,16),chassisMat);vent.position.set(x,1.146,-.33);car.add(vent);}
  for(const x of [-.32,.32])cube(car,.025,.025,1.12,steel,x,1.065,0);
  cube(car,.10,.03,.18,steel,.18,1.12,.17);
  cube(car,.10,.03,.18,steel,-.18,1.12,.17);
@@ -792,7 +782,8 @@ function railTrainCar(number){
  const wiper=cube(car,.25,.012,.027,chassisMat,-.13,.705,.679);wiper.rotation.z=-.16;
  // Headlights, tail markers and nose detail.
  for(const x of [-.28,.28]){
-  sphere(car,.062,lightMat,x,.56,.644,1,.72,.32);
+  sphere(car,.071,glassTrim,x,.56,.637,1,.74,.27);
+  sphere(car,.062,lightMat,x,.56,.656,1,.72,.32);
   sphere(car,.036,tailMat,x,.47,.647,1,.7,.32);
  }
  cube(car,.54,.085,.045,cream,0,.41,.642);
@@ -850,7 +841,7 @@ function railTrainCar(number){
  for(const x of [-.252,.252])cube(rearGangway,.028,.42,.025,glassTrim,x,.73,-.626);
  for(const y of [.526,.934])cube(rearGangway,.52,.028,.025,glassTrim,0,y,-.626);
  rearGangways[number]=rearGangway;
- for(const x of [-.404,.404])cube(car,.018,.09,.16,cream,x,.55,-.04);
+ for(const x of [-.404,.404]){cube(car,.018,.09,.16,cream,x,.55,-.04);for(const z of [-.40,.40]){cube(car,.016,.022,.29,paintLight,x,.64,z);cube(car,.014,.014,.17,steel,x,.50,z);}}
  return car;
 }
 for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
@@ -1070,7 +1061,7 @@ function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path
 // a train from a disconnected edge to another piece.
 const freeTracks=new Map(),freeDecor=new Map();
 const terrainTypes=new Set(['river','road','meadow','house']);
-const terrainWater=new THREE.MeshStandardMaterial({color:0x52b9df,roughness:.45});
+const terrainWater=new THREE.MeshStandardMaterial({color:0x67bfdf,roughness:.30,map:surfaceTexture("#ffffff",["#c4e9f1","#e4f6f8","#d8edf5"])});
 const terrainRipple=new THREE.MeshStandardMaterial({color:0xb4edf4,roughness:.55});
 const meadowMat=new THREE.MeshStandardMaterial({color:0x8bc45e,roughness:.95});
 const flowerMat=new THREE.MeshStandardMaterial({color:0xffd44e,roughness:.85});
@@ -1093,14 +1084,11 @@ function makeTerrain(x,y,type){
   }
  }else if(type==='house'){
   cube(model,1.48,.06,1.48,meadowMat,0,.12,0);
-  cube(model,.86,.62,.84,houseWall,0,.46,0);
-  const roof=new THREE.Mesh(new THREE.ConeGeometry(.74,.40,4),houseRoof);roof.rotation.y=Math.PI/4;roof.position.y=.97;roof.castShadow=true;model.add(roof);
-  cube(model,.19,.34,.035,mats.wood,0,.32,.43);
-  cube(model,.25,.025,.30,stone,0,.16,.60);
+  // The complete house and its resident are attached below as a single module.
  }
  const item={group,model,type,step:0};
  if(type==='house'){item.ambientType='house';item.ambientRef=attachBoardHouseLife(model);} 
- else if(type==='river'){item.ambientType='river';item.ambientRef=attachRiverLife(model);} 
+ else if(type==='river'){item.ambientType='river';item.ambientRef=attachRiverLife(model,k);} 
  freeDecor.set(k,item);
 }
 
@@ -1143,7 +1131,7 @@ function clearChallenge(){for(const item of challengeTerrain.values()){detachAmb
 function makeChallengeTerrain(x,y,type){
  if(type!=='mountain'){makeTerrain(x,y,type);const k=key(x,y),item=freeDecor.get(k);freeDecor.delete(k);challengeTerrain.set(k,item);return;}
  const group=new THREE.Group();group.position.copy(pos(x,y));scene.add(group);const model=new THREE.Group();group.add(model);
- cube(model,1.52,.09,1.52,mountain,0,.14,0);for(const [xx,zz,r] of [[-.34,-.28,.35],[.24,.22,.45],[.24,-.34,.30]]){const m=new THREE.Mesh(new THREE.DodecahedronGeometry(r,0),mountain);m.position.set(xx,.26,zz);m.scale.y=.76;m.castShadow=true;model.add(m);}challengeTerrain.set(key(x,y),{group,model,type});
+ cube(model,1.52,.09,1.52,mountain,0,.14,0);for(const [xx,zz,r] of [[-.34,-.28,.35],[.24,.22,.45],[.24,-.34,.30]]){const m=new THREE.Mesh(new THREE.IcosahedronGeometry(r,2),mountain);m.position.set(xx,.26,zz);m.scale.y=.76;m.castShadow=true;m.receiveShadow=true;model.add(m);}for(const [xx,zz] of [[-.52,.49],[.52,-.56]]){const rock=new THREE.Mesh(new THREE.DodecahedronGeometry(.12,0),stone);rock.position.set(xx,.24,zz);rock.scale.y=.65;model.add(rock);}challengeTerrain.set(key(x,y),{group,model,type});
 }
 function refreshTerrain(k){const item=challengeTerrain.get(k);if(item&&item.type==='mountain')item.group.visible=freeDecor.get(k)?.type!=='tunnel';}
 function challengeHint(icon,words){showMissionBanner(icon,words,2);const now=performance.now();if(soundEnabled&&window.speechSynthesis&&(lastHint!==words||now-lastHintAt>4500)){try{const u=new SpeechSynthesisUtterance(words);u.lang='ja-JP';u.rate=.88;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}catch(e){}lastHint=words;lastHintAt=now;}}
@@ -1359,6 +1347,7 @@ const transferFigures=toyColors.map((color,i)=>{
  const coat=new THREE.MeshStandardMaterial({color,roughness:.65});
  cylinder(person,.105,.21,coat,0,.22,0);sphere(person,.113,skinMaterial,0,.41,0);sphere(person,.117,mats.black,0,.479,-.013,1,.33,1);
  for(const x of [-.04,.04])sphere(person,.010,mats.black,x,.424,.102);
+ const smile=new THREE.Mesh(new THREE.TorusGeometry(.024,.005,5,12,Math.PI*.8),ambientHairMat);smile.rotation.z=Math.PI*1.1;smile.position.set(0,.392,.105);person.add(smile);
  const legs=[],arms=[];
  for(const side of [-1,1]){const leg=new THREE.Group();leg.position.set(side*.053,.15,0);person.add(leg);cube(leg,.065,.13,.08,mats.black,0,-.065,.012);legs.push(leg);const arm=new THREE.Group();arm.position.set(side*.105,.29,0);person.add(arm);cube(arm,.06,.13,.065,coat,0,-.05,0);sphere(arm,.035,skinMaterial,0,-.12,0);arms.push(arm);}
  cube(crate,.29,.29,.29,parcelMaterial,0,.15,0);for(const x of [-.12,.12])cube(crate,.035,.30,.30,mats.wood,x,.15,0);cube(crate,.30,.046,.30,mats.wood,0,.27,0);cube(crate,.305,.075,.305,coat,0,.15,0);
@@ -1684,7 +1673,7 @@ function updateDaylight(date=new Date()){
  const {colors,values}=daylightAt(hour);const [ambient,direct,night]=values;ambientNightLevel=night;
  scene.background.copy(colors[0]);scene.fog.color.copy(colors[0]);
  skyLight.color.copy(colors[1]);skyLight.groundColor.copy(colors[2]);skyLight.intensity=ambient;
- sun.color.copy(colors[3]);sun.intensity=direct;
+ sun.color.copy(colors[3]);sun.intensity=direct;bounceLight.intensity=.30*(1-night)+.10;
  const angle=Math.PI*THREE.MathUtils.clamp((hour-5)/14,0,1);
  sun.position.set(-10*Math.cos(angle),Math.max(3,12*Math.sin(angle)),7);
  stationLampMat.emissiveIntensity=night*1.6;interiorLampMat.emissiveIntensity=night*1.3;
@@ -1706,12 +1695,13 @@ function tickScenery(dt,now){
  for(const h of ambientHouses){
   if(now>=h.nextLight){h.lit=!h.lit;h.nextLight=now+(h.lit?(7000+Math.random()*7000):(1600+Math.random()*3200));}
   const glow=(ambientNightLevel>0.12?(h.lit?1:.08):0)*ambientNightLevel;
-  for(const m of h.windowMats)m.emissiveIntensity=.95*glow;
+  for(const m of h.windowMats){m.emissiveIntensity=1.35*glow;m.color.setHex(ambientNightLevel>.25?(h.lit?0xffd58e:0x26394b):0x97d4e6);}
   if(!h.walkActive&&now>=h.nextWalk){h.walkActive=true;h.walkStart=now;h.walkDur=5200+Math.random()*1800;h.walker.g.visible=true;h.nextWalk=now+14000+Math.random()*18000;}
   if(h.walkActive){
    const t=Math.min(1,(now-h.walkStart)/h.walkDur),out=t<.5?t/.5:(1-t)/.5;
    const baseY=h.walkBaseY??.02,baseZ=h.walkBaseZ??.72,span=h.walkSpan??.72;
    h.walker.g.position.set(0,baseY,baseZ+out*span);
+   if(h.door)h.door.rotation.y=-1.25*Math.min(1,t*12,(1-t)*12);
    h.walker.g.rotation.y=t<.5?0:Math.PI;
    h.walker.g.visible=true;
    h.walker.g.position.y=baseY+Math.sin(t*Math.PI*4)*.015;
@@ -1719,20 +1709,19 @@ function tickScenery(dt,now){
    h.walker.arms.forEach((arm,i)=>arm.rotation.x=-Math.sin(t*18+i*Math.PI)*.35);
    if(t>.36&&t<.62)h.walker.arms[1].rotation.z=.8+Math.sin(t*28)*.28; else h.walker.arms[1].rotation.z=0;
    if(t>=1){h.walkActive=false;h.walker.g.visible=false;h.walker.arms[1].rotation.z=0;}
-  }else h.walker.g.visible=false;
+  }else{h.walker.g.visible=false;if(h.door)h.door.rotation.y=0;}
  }
  for(const r of ambientRiverLife){
+  r.root.visible=freeDecor.get(r.k)?.type!=='bridge';if(!r.root.visible)continue;
   const a=now*.001+r.phase;
-  r.fish.position.set(Math.sin(a*.9)*.16,.155+Math.sin(a*1.9)*.012,-.18+Math.cos(a*.7)*.44);
-  r.fish.rotation.y=Math.atan2(.44*-.7*Math.sin(a*.7),.16*.9*Math.cos(a*.9));
-  r.fishTail.rotation.x=Math.sin(a*7)*.35;
-  r.duck.position.set(.14+Math.sin(a*.45)*.09,.185+Math.sin(a*2.1)*.01,.12+Math.cos(a*.38)*.18);
-  r.duck.rotation.y=.4+Math.sin(a*.55)*.6;
-  for(const rp of r.ripples){
-   const s=0.82+.18*Math.sin(a*1.6+rp.phase);
-   rp.mesh.scale.setScalar(s);
-   rp.mesh.material.opacity=.24+.18*(1+Math.sin(a*1.8+rp.phase))*.5;
-  }
+  const fx=-.13+Math.sin(a*.80)*.11,fz=Math.cos(a*.62)*.48;
+  r.fish.position.set(fx,.143+Math.sin(a*1.6)*.012,fz);r.fish.rotation.y=Math.atan2(.11*.80*Math.cos(a*.80),-.48*.62*Math.sin(a*.62));r.fishTail.rotation.y=Math.sin(a*8)*.48;
+  const dx=.17+Math.sin(a*.43)*.055,dz=Math.sin(a*.52)*.43;
+  r.duck.position.set(dx,.152+Math.sin(a*2)*.006,dz);r.duck.rotation.y=Math.atan2(.055*.43*Math.cos(a*.43),.43*.52*Math.cos(a*.52));
+  r.wake.position.set(dx,.157,dz);r.wake.scale.setScalar(1.05+.10*Math.sin(a*2));
+  for(const rp of r.ripples){const t=((a*.30+rp.phase)%1+1)%1;rp.mesh.scale.setScalar(.6+t*.7);rp.mesh.material.opacity=(1-t)*.40;}
+
+
  }
 }
 // Traffic is rebuilt only when the road layout or orientation changes.
@@ -1744,7 +1733,8 @@ function makeRoadCar(paint){
  cube(g,.24,.13,.43,paint,0,.22,0);cube(g,.21,.13,.24,paint,0,.33,-.015);
  cube(g,.17,.075,.016,glassTrim,0,.34,.111);cube(g,.17,.075,.016,glassTrim,0,.34,-.14);
  for(const x of [-.12,.12])for(const z of [-.13,.13]){const w=cylinder(g,.054,.036,mats.black,x,.18,z);w.rotation.z=Math.PI/2;}
- for(const x of [-.075,.075])cube(g,.045,.04,.012,mats.white,x,.23,.22);
+ for(const x of [-.075,.075]){cube(g,.045,.04,.012,mats.white,x,.23,.22);cube(g,.038,.026,.013,tailMat,x,.23,-.223);}
+ for(const x of [-.108,.108]){cube(g,.012,.075,.18,glassTrim,x,.34,-.015);cube(g,.023,.03,.045,paint,x*1.15,.29,.09);}
  return g;
 }
 function crossingActive(c){return c.g.parent!==deco&&freeDecor.get(key(c.x,c.y))?.model===c.g;}
