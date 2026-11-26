@@ -148,7 +148,7 @@ body[data-fleet="blue"] #run{--art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22h
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.6</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="cars" aria-label="編成の両数を切り替える">🚃🚃🚃</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.7</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="cars" aria-label="編成の両数を切り替える">🚃🚃🚃</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -161,8 +161,10 @@ const root=document.getElementById('world'),msg=document.getElementById('msg');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0xbfe9fb);
 const camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,.1,100);
 const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;root.appendChild(renderer.domElement);
-scene.add(new THREE.HemisphereLight(0xeaf5ff,0x8b9272,2.0));const sun=new THREE.DirectionalLight(0xffeed7,2.6);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1536,1536);sun.shadow.normalBias=.025;sun.shadow.bias=-.00015;sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);
+const skyLight=new THREE.HemisphereLight(0xeaf5ff,0x8b9272,2.0);scene.add(skyLight);const sun=new THREE.DirectionalLight(0xffeed7,2.6);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1536,1536);sun.shadow.normalBias=.025;sun.shadow.bias=-.00015;sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);
 const mats={grass:new THREE.MeshStandardMaterial({color:0x8cce80}),tile:new THREE.MeshStandardMaterial({color:0xb3dba0}),wood:new THREE.MeshStandardMaterial({color:0x8c6243}),metal:new THREE.MeshStandardMaterial({color:0xd8e1eb,metalness:.55,roughness:.36}),red:new THREE.MeshStandardMaterial({color:0xe94242}),white:new THREE.MeshStandardMaterial({color:0xfaf9e6}),black:new THREE.MeshStandardMaterial({color:0x303a41}),yellow:new THREE.MeshStandardMaterial({color:0xffd344}),blue:new THREE.MeshStandardMaterial({color:0x338cc9}),roof:new THREE.MeshStandardMaterial({color:0xe75b43}),window:new THREE.MeshStandardMaterial({color:0x97e5fa,metalness:.1,roughness:.2})};
+const stationLampMat=new THREE.MeshStandardMaterial({color:0xfff3cb,emissive:0xffcc76,emissiveIntensity:0,roughness:.55});
+const interiorLampMat=stationLampMat.clone();
 const toyGeometries=new Map();
 function toyBox(w,h,d){const id=[w,h,d].join(',');const r=Math.min(.055,w*.16,h*.16,d*.16);let geo;if(Math.min(w,h,d)<.075){geo=new THREE.BoxGeometry(w,h,d);}else{geo=new THREE.BoxGeometry(w,h,d,4,4,4);const p=geo.attributes.position;const half=[w/2,h/2,d/2];for(let i=0;i<p.count;i++){const v=[p.getX(i),p.getY(i),p.getZ(i)],q=v.map((a,j)=>Math.max(-half[j]+r,Math.min(half[j]-r,a)));const delta=v.map((a,j)=>a-q[j]);const len=Math.hypot(...delta)||1;p.setXYZ(i,...q.map((a,j)=>a+delta[j]*r/len));}geo.computeVertexNormals();}return geo;}
 function cube(parent,w,h,d,mat,x=0,y=0,z=0){const m=new THREE.Mesh(toyBox(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
@@ -358,6 +360,7 @@ function station(x,y,color,parent=scene){
  cube(g,.033,.012,1.48,mats.yellow,.565,.232,0);
  cube(g,.25,.065,1.15,mats.white,.68,.91,0);
  cube(g,.25,.065,1.15,color,.68,.96,0);
+ cube(g,.10,.018,.74,stationLampMat,.68,.868,0).castShadow=false;
  for(const z of [-.50,.50])cube(g,.04,.67,.04,steel,.775,.56,z);
  cube(g,.13,.045,.28,mats.wood,.70,.36,0);
  cube(g,.04,.18,.28,mats.wood,.765,.43,0);
@@ -646,6 +649,7 @@ function railTrainCar(number){
  for(const side of [-1,1]){cube(car,.018,.16,.018,steel,side*.33,.66,.63);cube(car,.018,.14,.018,steel,side*.22,.58,.67);}
  cube(car,.18,.016,.03,steel,0,.28,.70);
  addInteriorSeats(car);
+ cube(car,.12,.018,.96,interiorLampMat,0,.882,0).castShadow=false;
  addWindowRiders(car);
  addCabCrew(car,number);
  bogiesByCar[number]=bogies;
@@ -663,6 +667,10 @@ function railTrainCar(number){
 }
 for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
 updateCabCrewVisibility();
+// One non-shadow-casting headlight for the whole formation.
+const nightBeam=new THREE.SpotLight(0xffe7b6,0,5.5,.48,.65,2);
+nightBeam.position.set(0,.56,.70);nightBeam.target.position.set(0,.12,4);
+trainCars[0].add(nightBeam,nightBeam.target);
 // Connections between adjacent cars, rebuilt in-place each animation frame.
 const couplerMaterial=new THREE.MeshStandardMaterial({color:0x454e59,metalness:.42,roughness:.5});
 const couplers=[];
@@ -1247,8 +1255,44 @@ document.getElementById('run').onclick=()=>{
  placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
 function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();setCarCount(3);newPuzzle();
+// Local civil time: smoothly blend lighting throughout the day.
+const daylightProfiles=[
+ [0,0x172b50,0x8caeea,0x637a91,0xffd6a2,.92,.12,1],
+ [5,0x253957,0x9bb8ea,0x71859b,0xffc397,.95,.15,1],
+ [6,0xffc79d,0xffe2ca,0x9ba184,0xffb875,1.55,1.55,.35],
+ [8,0xbfe9fb,0xeaf5ff,0x8b9272,0xffeed7,2,2.6,0],
+ [16,0xbfe9fb,0xeaf5ff,0x8b9272,0xffeed7,2,2.6,0],
+ [17,0xf9c899,0xffd6bc,0x9f927b,0xffa86b,1.65,1.75,.25],
+ [18,0xb68fa7,0xd3b6e5,0x7e8191,0xffa077,1.25,.65,.75],
+ [19,0x172b50,0x8caeea,0x637a91,0xffd6a2,.92,.12,1],
+ [24,0x172b50,0x8caeea,0x637a91,0xffd6a2,.92,.12,1]
+];
+function daylightAt(hour){
+ let i=0;while(i<daylightProfiles.length-2&&hour>=daylightProfiles[i+1][0])i++;
+ const a=daylightProfiles[i],b=daylightProfiles[i+1];const x=(hour-a[0])/(b[0]-a[0]);const t=x*x*(3-2*x);
+ return {colors:[1,2,3,4].map(j=>new THREE.Color(a[j]).lerp(new THREE.Color(b[j]),t)),values:[5,6,7].map(j=>a[j]+(b[j]-a[j])*t)};
+}
+function updateDaylight(date=new Date()){
+ const hour=date.getHours()+date.getMinutes()/60+date.getSeconds()/3600;
+ const {colors,values}=daylightAt(hour);const [ambient,direct,night]=values;
+ scene.background.copy(colors[0]);scene.fog.color.copy(colors[0]);
+ skyLight.color.copy(colors[1]);skyLight.groundColor.copy(colors[2]);skyLight.intensity=ambient;
+ sun.color.copy(colors[3]);sun.intensity=direct;
+ const angle=Math.PI*THREE.MathUtils.clamp((hour-5)/14,0,1);
+ sun.position.set(-10*Math.cos(angle),Math.max(3,12*Math.sin(angle)),7);
+ stationLampMat.emissiveIntensity=night*1.6;interiorLampMat.emissiveIntensity=night*1.3;
+ mats.window.emissive.setHex(0xffbc68);mats.window.emissiveIntensity=night*.85;
+ lightMat.emissiveIntensity=1.2+night*2;tailMat.emissiveIntensity=.5+night;
+ nightBeam.intensity=night*9;nightBeam.visible=night>.01;
+ // Keep the transparent windows transparent; tint gently from the inside.
+ sideGlass.emissive.setHex(0xffdb9f);sideGlass.emissiveIntensity=night*.28;
+}
+updateDaylight();let lastDaylightCheck=0;
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDaylight()});
+window.addEventListener('pageshow',()=>updateDaylight());
 let prev=performance.now();function animate(now){
  requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;
+ if(now-lastDaylightCheck>10000){lastDaylightCheck=now;updateDaylight();}
  if(bannerTime>0){bannerTime-=dt;if(bannerTime<=0)bannerEl.classList.remove('show')}
  for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}
  if(playing){
