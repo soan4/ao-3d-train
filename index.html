@@ -209,7 +209,7 @@ body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}bod
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.3</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.3.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -369,15 +369,76 @@ function addRiverTile(x,y){
  return g;
 }
 const leafMats=[0x579d40,0x78b64d,0x91c65d].map(color=>new THREE.MeshStandardMaterial({color,roughness:1}));
-
-function scenicTree(x,z,scale=1){const g=new THREE.Group();g.position.set(x,.10,z);g.scale.setScalar(scale);scene.add(g);cylinder(g,.095,.83,mats.wood,0,.42,0);for(let i=0;i<5;i++){const a=i*2.4;const leaf=new THREE.Mesh(new THREE.IcosahedronGeometry(i===0?.46:.34,2),leafMats[i%3]);leaf.position.set(i===0?0:Math.cos(a)*.24,i===0?1.21:.93+(.08*(i%2)),i===0?0:Math.sin(a)*.24);leaf.scale.y=1.18;leaf.castShadow=true;g.add(leaf)}return g}
+const ambientTrees=[];
+const ambientHouses=[];
+const ambientSitters=[];
+let ambientNightLevel=0;
+function scenicTree(x,z,scale=1){
+ const g=new THREE.Group();
+ g.position.set(x,.10,z);g.scale.setScalar(scale);scene.add(g);
+ cylinder(g,.095,.83,mats.wood,0,.42,0);
+ const leaves=[];
+ for(let i=0;i<5;i++){
+  const a=i*2.4;
+  const leaf=new THREE.Mesh(new THREE.IcosahedronGeometry(i===0?.46:.34,2),leafMats[i%3]);
+  leaf.position.set(i===0?0:Math.cos(a)*.24,i===0?1.21:.93+(.08*(i%2)),i===0?0:Math.sin(a)*.24);
+  leaf.scale.y=1.18;leaf.castShadow=true;g.add(leaf);leaves.push(leaf);
+ }
+ ambientTrees.push({g,leaves,phase:Math.random()*Math.PI*2});
+ return g
+}
+const ambientSkinMat=new THREE.MeshStandardMaterial({color:0xf6c89a,roughness:.8});
+const ambientHairMat=new THREE.MeshStandardMaterial({color:0x3e352d,roughness:.9});
+function ambientBall(parent,r,mat,x,y,z,sx=1,sy=1,sz=1){const m=new THREE.Mesh(new THREE.SphereGeometry(r,12,8),mat);m.scale.set(sx,sy,sz);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
+function makeAmbientPerson(color=0x4fa0d8){
+ const g=new THREE.Group();
+ const cloth=new THREE.MeshStandardMaterial({color,roughness:.72});
+ cylinder(g,.075,.17,cloth,0,.20,0);
+ ambientBall(g,.08,ambientSkinMat,0,.345,0);
+ ambientBall(g,.085,ambientHairMat,0,.405,-.005,1,.34,1);
+ const arms=[],legs=[];
+ for(const side of [-1,1]){
+  const arm=new THREE.Group();arm.position.set(side*.078,.25,0);g.add(arm);cube(arm,.045,.10,.05,cloth,0,-.045,0);ambientBall(arm,.024,ambientSkinMat,0,-.095,0);arms.push(arm);
+  const leg=new THREE.Group();leg.position.set(side*.035,.10,0);g.add(leg);cube(leg,.046,.10,.055,ambientHairMat,0,-.05,0);legs.push(leg);
+ }
+ return {g,arms,legs};
+}
+function addAmbientHouse(x,z){
+ const g=new THREE.Group();g.position.set(x*1.25,-.52,z*1.25);scene.add(g);
+ cube(g,1.2,.9,1.1,houseWall,0,.45,0);
+ const roof=new THREE.Mesh(new THREE.ConeGeometry(.88,.52,4),houseRoof);roof.rotation.y=Math.PI/4;roof.position.y=1.15;roof.castShadow=true;g.add(roof);
+ const windowMats=[];
+ for(const xx of [-.32,.32]){
+  const wMat=mats.window.clone();wMat.emissive=new THREE.Color(0xffc476);wMat.emissiveIntensity=0;
+  windowMats.push(wMat);
+  cube(g,.24,.28,.035,wMat,xx,.57,.566);
+ }
+ cube(g,.26,.43,.04,mats.wood,0,.25,.57);
+ cube(g,1.6,.04,.7,roadShoulder,0,.02,.95);
+ const villager=makeAmbientPerson([0x4b96d2,0xe0a24d,0x6eb658][ambientHouses.length%3]);
+ villager.g.visible=false;villager.g.position.set(0,.02,.72);g.add(villager.g);
+ ambientHouses.push({g,walker:villager,lit:true,nextLight:Math.random()*6000+2000,nextWalk:Math.random()*8000+5000,walkActive:false,walkStart:0,walkDur:0,windowMats});
+}
+function addRiversideScene(x,z){
+ const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);
+ cube(g,1.95,.08,1.55,riverBank,0,.08,0);
+ cube(g,1.18,.045,1.32,water,0,.105,0);
+ for(const sx of [-1,1])cube(g,.11,.05,1.22,riverBank,sx*.53,.10,0);
+ for(const zz of [-1,1])cube(g,1.10,.05,.12,riverBank,0,.10,zz*.60);
+ cube(g,.46,.07,.18,mats.wood,-.62,.18,.42);cube(g,.05,.20,.05,mats.wood,-.80,.10,.42);cube(g,.05,.20,.05,mats.wood,-.44,.10,.42);
+ const sitter=makeAmbientPerson(0x79b65c);sitter.g.position.set(-.62,.18,.28);sitter.g.rotation.y=.7;g.add(sitter.g);
+ sitter.g.children[0].position.y=.16;
+ sitter.legs[0].rotation.x=-1.1;sitter.legs[1].rotation.x=-1.1;sitter.arms[0].rotation.x=.45;sitter.arms[1].rotation.x=.25;
+ ambientSitters.push({g:sitter.g,arms:sitter.arms,phase:Math.random()*Math.PI*2});
+}
 
 // Perimeter scenery stays outside all editable cells and the train route.
 for(const [x,z,k] of [[-7.8,-5.9,1.1],[-8.2,2.8,.85],[7.8,-3.8,1.2],[7.9,4.8,.9],[-3,-7.8,.85],[4.4,-8.1,1.1]])scenicTree(x*1.25,z*1.25,k);
 const houseWall=new THREE.MeshStandardMaterial({color:0xf1e1c5,roughness:.85});
 const houseRoof=new THREE.MeshStandardMaterial({color:0xd66b4c,roughness:.7});
 const roadShoulder=new THREE.MeshStandardMaterial({color:0x87908c,roughness:1});
-for(const [x,z] of [[-8,-1],[8,0],[1,-8]]){const g=new THREE.Group();g.position.set(x*1.25,-.52,z*1.25);scene.add(g);cube(g,1.2,.9,1.1,houseWall,0,.45,0);const roof=new THREE.Mesh(new THREE.ConeGeometry(.88,.52,4),houseRoof);roof.rotation.y=Math.PI/4;roof.position.y=1.15;roof.castShadow=true;g.add(roof);for(const xx of [-.32,.32])cube(g,.24,.28,.035,mats.window,xx,.57,.566);cube(g,.26,.43,.04,mats.wood,0,.25,.57);cube(g,1.6,.04,.7,roadShoulder,0,.02,.95);}
+for(const [x,z] of [[-8,-1],[8,0],[1,-8]])addAmbientHouse(x,z);
+addRiversideScene(9.2,9.1);
 
 
 // Ver.0.3: bridges, tunnel, crossing. Decorative meshes never enter clickable list.
@@ -1577,7 +1638,7 @@ function daylightAt(hour){
 }
 function updateDaylight(date=new Date()){
  const hour=date.getHours()+date.getMinutes()/60+date.getSeconds()/3600;
- const {colors,values}=daylightAt(hour);const [ambient,direct,night]=values;
+ const {colors,values}=daylightAt(hour);const [ambient,direct,night]=values;ambientNightLevel=night;
  scene.background.copy(colors[0]);scene.fog.color.copy(colors[0]);
  skyLight.color.copy(colors[1]);skyLight.groundColor.copy(colors[2]);skyLight.intensity=ambient;
  sun.color.copy(colors[3]);sun.intensity=direct;
@@ -1593,6 +1654,35 @@ function updateDaylight(date=new Date()){
 updateDaylight();let lastDaylightCheck=0;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDaylight()});
 window.addEventListener('pageshow',()=>updateDaylight());
+function tickScenery(dt,now){
+ for(const t of ambientTrees){
+  const sway=Math.sin(now*.00055+t.phase)*.08;
+  t.g.rotation.z=sway*.14;
+  t.leaves.forEach((leaf,i)=>{leaf.rotation.x=Math.sin(now*.0009+t.phase+i)*.05;leaf.rotation.z=Math.cos(now*.0007+t.phase+i*.8)*.05;});
+ }
+ for(const h of ambientHouses){
+  if(now>=h.nextLight){h.lit=!h.lit;h.nextLight=now+(h.lit?(7000+Math.random()*7000):(1600+Math.random()*3200));}
+  const glow=(ambientNightLevel>0.12?(h.lit?1:.08):0)*ambientNightLevel;
+  for(const m of h.windowMats)m.emissiveIntensity=.95*glow;
+  if(!h.walkActive&&now>=h.nextWalk){h.walkActive=true;h.walkStart=now;h.walkDur=5200+Math.random()*1800;h.walker.g.visible=true;h.nextWalk=now+14000+Math.random()*18000;}
+  if(h.walkActive){
+   const t=Math.min(1,(now-h.walkStart)/h.walkDur),out=t<.5?t/.5:(1-t)/.5;
+   h.walker.g.position.set(0,.02,.72+out*.72);
+   h.walker.g.rotation.y=t<.5?0:Math.PI;
+   h.walker.g.visible=true;
+   h.walker.g.position.y=.02+Math.sin(t*Math.PI*4)*.015;
+   h.walker.legs.forEach((leg,i)=>leg.rotation.x=Math.sin(t*18+i*Math.PI)*.45);
+   h.walker.arms.forEach((arm,i)=>arm.rotation.x=-Math.sin(t*18+i*Math.PI)*.35);
+   if(t>.36&&t<.62)h.walker.arms[1].rotation.z=.8+Math.sin(t*28)*.28; else h.walker.arms[1].rotation.z=0;
+   if(t>=1){h.walkActive=false;h.walker.g.visible=false;h.walker.arms[1].rotation.z=0;}
+  }else h.walker.g.visible=false;
+ }
+ for(const s of ambientSitters){
+  s.g.position.y=.18+Math.sin(now*.0012+s.phase)*.01;
+  s.arms[0].rotation.z=.18+Math.sin(now*.0016+s.phase)*.12;
+  s.arms[1].rotation.z=.06+Math.cos(now*.0013+s.phase)*.08;
+ }
+}
 // Traffic is rebuilt only when the road layout or orientation changes.
 const trafficRoot=new THREE.Group();scene.add(trafficRoot);
 const trafficPaint=[0xe99b45,0x58a8ca,0x78aa58,0xe16b62].map(color=>new THREE.MeshStandardMaterial({color,roughness:.8}));
@@ -1710,6 +1800,7 @@ let prev=performance.now();function animate(now){
   refreshSpeedDisplay();
  }
  tickFollowing(dt);updateCrossings(now,dt);updateTraffic(dt);
+ tickScenery(dt,now);
  updateCabCamera();
  renderer.render(scene,camera)
 }requestAnimationFrame(animate);window.__aoLoaded=true;
