@@ -227,10 +227,14 @@ body.branch-wait #branchExit{display:block!important;width:190px;min-height:48px
 #railSignalPanel[hidden],body.transferring #railSignalPanel,body.branch-wait #railSignalPanel{display:none!important}
 #railSignalPanel button{width:116px;height:58px;min-height:58px;padding:4px!important}#railSignalPanel button::before{display:none!important}#railSignalPanel svg{width:104px;height:48px;display:block;margin:auto}
 @media(max-height:450px){#railSignalPanel{left:16px;transform:none;bottom:calc(env(safe-area-inset-bottom) + 12px)}}
+/* Ver.3.6: contextual, single-action passing panel. */
+#passingPanel{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);z-index:13;background:#fff3ddf5;border:1px solid #c89d65;border-radius:17px;padding:10px;box-shadow:0 4px 0 #b98b52;width:min(290px,calc(100vw - 24px));text-align:center;color:#694422;font-weight:900}
+#passingPanel[hidden],#passingPanel button[hidden]{display:none!important}#passingPanel button{width:100%;min-height:58px;font-size:19px!important;color:#694422!important;margin-top:6px;background:linear-gradient(145deg,#e9f8ff,#c6e7f6);border:2px solid #3889b6}#passingPanel button::before,#passingDemo::before{display:none!important}
+body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wait #branchPanel,body.passing-wait #settingsDrawer > :not(#branchExit){display:none!important}body.passing-wait #branchExit{display:block!important;width:190px;min-height:48px;color:#694422!important;font-size:15px!important;font-weight:800;padding:9px!important}#passingDemo{width:100%;min-height:48px;font-size:14px!important;color:#694422!important;font-weight:900;grid-column:1/-1}body.driving #passingDemo{display:none!important}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.5.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -920,6 +924,7 @@ for(const [i,source] of trainCars.entries()){
  for(const w of wheelSpinners)if(map.has(w))followingWheels.push(map.get(w));
 }
 let followingHead=null,followingSpeed=0;
+let passingPlan=null;
 const FOLLOW_GAP=5.6, FOLLOW_CLEAR=1.48;
 function resetFollowing(){followingHead=null;followingSpeed=0;followingTrain.visible=false;for(const w of followingWheels)w.rotation.x=0;}
 // One non-shadow-casting headlight for the whole formation.
@@ -1087,6 +1092,7 @@ function positionFollowing(){
 }
 function tickFollowing(dt){
  if(!playing)return;
+ if(passingPlan)return;
  const lead=startDistance+distanceTravelled;
  if(followingHead===null){
   if(!followerClear(startDistance,lead))return;
@@ -1102,7 +1108,7 @@ function tickFollowing(dt){
  if(advance>0&&followerClear(next,lead)){followingHead=next;for(const w of followingWheels)w.rotation.x-=advance/.135;positionFollowing();}else followingSpeed=0;
 }
 function resetPuzzleRoute(){
- clearRailSignals();
+ clearPassing();clearRailSignals();
  const c=pos(0,2);routePoints=[c.clone().addScaledVector(vecDir(2),3.8),...tileRailPoints([2,1]).map(p=>p.clone().add(c)),c.clone().addScaledVector(vecDir(1),1.65)];rebuildDistances();startDistance=3.8;finishDistance=routeLengths.at(-1);
 }
 function rebuildDistances(){routeLengths=[0];for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths.at(-1)+routePoints[i].distanceTo(routePoints[i-1]));}
@@ -1161,7 +1167,7 @@ const branchPanel=document.createElement('div');branchPanel.id='branchPanel';bra
 let branchEditKey=null,branchWait=null,branchStops=[],branchPlan=[],branchPassed=new Set();
 let branchView=null,branchPreview=null;
 const branchExit=document.createElement('button');branchExit.id='branchExit';branchExit.type='button';branchExit.textContent='うんてんを やめる';document.getElementById('settingsDrawer').append(branchExit);
-branchExit.onclick=()=>{if(!branchWait||!confirm('うんてんを やめて、はじめの えきに もどる？'))return;const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();document.getElementById('exitDrive').click();};
+branchExit.onclick=()=>{if((!branchWait&&passingPlan?.phase!=='waiting'&&passingPlan?.phase!=='moving')||!confirm('うんてんを やめて、はじめの えきに もどる？'))return;const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();document.getElementById('exitDrive').click();};
 const branchColors=[0x1989d0,0xe9a326];
 function branchViewAngle(step){const [x,z]=dir[step];return Math.atan2(x,z);}
 function focusBranchView(){
@@ -1175,7 +1181,7 @@ function focusBranchView(){
  applyOrbit();
 }
 function showBranchPreview(t){
- const g=new THREE.Group();g.position.copy(t.rail.position);g.rotation.y=t.rail.rotation.y;scene.add(g);
+ const g=new THREE.Group();g.position.copy(t.rail.position);g.rotation.y=t.rail.rotation.y;g.scale.x=t.mirror?-1:1;scene.add(g);
  if(t.highlight)t.highlight.visible=false;
  const mats=branchColors.map(color=>new THREE.MeshBasicMaterial({color,depthTest:false,depthWrite:false}));
  for(const c of [0,1]){
@@ -1194,25 +1200,27 @@ function endBranchView(resumeCab=false){
  if(branchView){const old=branchView;branchView=null;Object.assign(orbit,old.orbit);cameraTarget.copy(old.target);if(resumeCab&&old.cab)setCabView(true);else applyOrbit();}
 }
 function branchDrivingButton(choice){
- const b=document.createElement('button');b.type='button';b.className='branch-choice';b.dataset.choice=String(choice);const label=choice?'ひだりに まがる':'まっすぐ';b.setAttribute('aria-label',label);
+ const mirror=!!freeTracks.get(branchWait?.k)?.mirror;
+ const b=document.createElement('button');b.type='button';b.className='branch-choice';b.dataset.choice=String(choice);const label=choice?(mirror?'みぎに まがる':'ひだりに まがる'):'まっすぐ';b.setAttribute('aria-label',label);
  const path=choice?'M42 56 V40 Q42 20 23 20 H9':'M42 56 V8';
  const arrow=choice?'M17 12 L9 20 L17 28':'M34 16 L42 8 L50 16';
  const color=choice?'#b8791b':'#247fae';
- b.innerHTML=`<svg viewBox="0 0 84 64" aria-hidden="true"><path d="M42 60 V4 M42 42 Q42 20 23 20 H4" fill="none" stroke="#ae9d81" stroke-width="13" stroke-linecap="round"/><path d="M42 60 V4 M42 42 Q42 20 23 20 H4" fill="none" stroke="#fff4db" stroke-width="7" stroke-linecap="round"/><path d="${path}" fill="none" stroke="${color}" stroke-width="7" stroke-linecap="round"/><path d="${arrow}" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${label}</span>`;
+ b.innerHTML=`<svg viewBox="0 0 84 64" aria-hidden="true"><g transform="${mirror?'translate(84 0) scale(-1 1)':''}"><path d="M42 60 V4 M42 42 Q42 20 23 20 H4" fill="none" stroke="#ae9d81" stroke-width="13" stroke-linecap="round"/><path d="M42 60 V4 M42 42 Q42 20 23 20 H4" fill="none" stroke="#fff4db" stroke-width="7" stroke-linecap="round"/><path d="${path}" fill="none" stroke="${color}" stroke-width="7" stroke-linecap="round"/><path d="${arrow}" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g></svg><span>${label}</span>`;
  b.onclick=()=>{unlockSound();chooseBranch(choice);};return b;
 }
 function renderBranchWait(){
  branchPanel.replaceChildren();const prompt=document.createElement('div');prompt.className='branch-prompt';prompt.textContent='どっちに すすむ？';
- const options=document.createElement('div');options.className='branch-options';options.append(branchDrivingButton(1),branchDrivingButton(0));
+ const options=document.createElement('div');options.className='branch-options';if(freeTracks.get(branchWait?.k)?.mirror)options.append(branchDrivingButton(0),branchDrivingButton(1));else options.append(branchDrivingButton(1),branchDrivingButton(0));
  const feedback=document.createElement('div');feedback.className='branch-feedback';feedback.setAttribute('aria-live','polite');feedback.textContent='せんろと おなじ いろを えらぼう';
  branchPanel.append(prompt,options,feedback);branchPanel.hidden=false;
 }
 const branchLineMat=new THREE.MeshStandardMaterial({color:0xffd344,emissive:0xffb51c,emissiveIntensity:.65,roughness:.7});
-function branchEnds(t){return [(t.step)%4,((t.switchChoice===1?1:2)+t.step)%4];}
+function branchArm(t,choice){return (t.step+(choice===1?(t.mirror?3:1):2))%4;}
+function branchEnds(t){return [t.step,branchArm(t,t.switchChoice)];}
 function refreshBranch(t){if(t.shape!=='branch')return;if(t.highlight){t.rail.remove(t.highlight);t.highlight.geometry.dispose();}const points=tileRailPoints([0,t.switchChoice===1?1:2]).map(p=>p.clone().add(new THREE.Vector3(0,.255,0)));t.highlight=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),32,.037,8,false),branchLineMat);t.rail.add(t.highlight);}
 function clearBranchUI(){endBranchView(false);branchEditKey=null;branchWait=null;branchStops=[];branchPlan=[];branchPassed.clear();branchPanel.hidden=true;branchPanel.replaceChildren();document.body.classList.remove('branch-wait');}
 function branchButton(label,kind,action,active=false){const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',label);b.classList.toggle('active',active);const paths={straight:'M32 53 V11 M22 21 L32 11 L42 21',curve:'M19 53 V35 Q19 14 44 14 H53 M43 4 L53 14 L43 24',rotate:'M49 19 A20 20 0 1 0 51 40 M49 7 V20 H36',back:'M48 32 H15 M27 20 L15 32 L27 44'};b.innerHTML=`<svg viewBox="0 0 64 64" aria-hidden="true"><path d="${paths[kind]}" fill="none" stroke="${kind==='rotate'||kind==='back'?'#328ab9':'#805222'}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;b.onclick=action;return b;}
-function drawBranchEdit(k){const t=freeTracks.get(k);if(!t||t.shape!=='branch'||playing)return;branchEditKey=k;branchPanel.replaceChildren();for(const c of [0,1])branchPanel.append(branchButton(c?'まがる':'まっすぐ',c?'curve':'straight',()=>{t.switchChoice=c;refreshBranch(t);updateRouteReady();drawBranchEdit(k);},t.switchChoice===c));branchPanel.append(branchButton('ぶんきの むきを かえる','rotate',()=>{t.step=(t.step+1)%4;t.rail.rotation.y=-t.step*Math.PI/2;updateRouteReady();drawBranchEdit(k);}));branchPanel.hidden=false;}
+function drawBranchEdit(k){const t=freeTracks.get(k);if(!t||t.shape!=='branch'||playing)return;branchEditKey=k;branchPanel.replaceChildren();for(const c of [0,1])branchPanel.append(branchButton(c?'まがる':'まっすぐ',c?'curve':'straight',()=>{t.switchChoice=c;refreshBranch(t);updateRouteReady();drawBranchEdit(k);},t.switchChoice===c));branchPanel.append(branchButton('ぶんきの むきを かえる','rotate',()=>{t.step=(t.step+1)%4;t.rail.rotation.y=-t.step*Math.PI/2;updateRouteReady();drawBranchEdit(k);}));const mirror=branchButton('ぶんきの さゆうを かえる','curve',()=>{t.mirror=!t.mirror;t.rail.scale.x=t.mirror?-1:1;updateRouteReady();drawBranchEdit(k);},!!t.mirror);mirror.innerHTML='<svg viewBox="0 0 64 64"><path d="M32 7 V57 M25 21 L10 32 L25 43 M10 32 H25 M39 21 L54 32 L39 43 M54 32 H39" fill="none" stroke="#328ab9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';branchPanel.append(mirror);branchPanel.hidden=false;}
 function hideBranchEdit(){branchEditKey=null;if(!branchWait){branchPanel.hidden=true;branchPanel.replaceChildren();}}
 
 const startKey=key(0,2);let goalKey=key(BOARD_LAST,2);
@@ -1393,7 +1401,7 @@ function findFreeRoute(prefix=[]){
  }return null;
 }
 function installFreeRoute(steps,freshSignals=false){
- const points=[],stationPos=pos(0,2),switchEntries=[];branchPlan=steps;
+ const points=[],stationPos=pos(0,2),switchEntries=[],stepBounds=[];branchPlan=steps;
  // The approach rail extends south from the start tile.
  points.push(stationPos.clone().addScaledVector(vecDir(2),3.8));
  for(const [index,st] of steps.entries()){
@@ -1401,11 +1409,13 @@ function installFreeRoute(steps,freshSignals=false){
   let local;
   if(st.k===goalKey){local=[edge(st.entry),new THREE.Vector3(0,0,0)];}
   else{local=tileRailPoints([st.entry,st.exit]);}
-  for(const [j,lp] of local.entries()){
+  let firstIndex;for(const [j,lp] of local.entries()){
    const point=center.clone().add(lp);point.y=0;
    if(!points.length||points.at(-1).distanceTo(point)>.002)points.push(point);
+   if(j===0)firstIndex=points.length-1;
    if(j===0&&t.shape==='branch'&&st.entry===t.step) switchEntries.push({index,k:st.k,pointIndex:points.length-1});
   }
+  stepBounds.push({first:firstIndex,last:points.length-1});
  }
  const finish=points.at(-1).clone();
  // A small terminus extension accommodates the head of the train.
@@ -1414,13 +1424,83 @@ function installFreeRoute(steps,freshSignals=false){
  startDistance=3.8;finishDistance=routeLengths[routeLengths.length-2];
  branchStops=switchEntries.map(b=>({...b,s:Math.max(startDistance,routeLengths[b.pointIndex]-.72)}));
  buildRailSignals(steps,freshSignals);
+ if((!passingPlan||passingPlan.phase==='ready')&&followingHead===null)passingPlan=findPassingPlan(steps,stepBounds);
 }
 function beginBranchWait(stop){branchWait=stop;currentSpeed=0;setDriveGear(0);document.body.classList.add('branch-wait');const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();focusBranchView();showBranchPreview(freeTracks.get(stop.k));renderBranchWait();challengeHint('↔','どっちに すすむ？');}
-function chooseBranch(choice){if(!branchWait||!playing)return;const stop=branchWait,t=freeTracks.get(stop.k),old=t.switchChoice,previous=branchPlan,previousStops=missionStops;const st=previous[stop.index];if(!st)return;t.switchChoice=choice;const nextExit=branchEnds(t)[1];const prefix=[...previous.slice(0,stop.index),{...st,exit:nextExit}];const next=findFreeRoute(prefix);let ok=!!next;
+function chooseBranch(choice){if(!branchWait||!playing)return;const stop=branchWait,t=freeTracks.get(stop.k),old=t.switchChoice,previous=branchPlan,previousStops=missionStops;const st=previous[stop.index];if(!st)return;if(passingPlan?.phase==='done'&&choice!==old){branchPanel.querySelectorAll('.branch-choice').forEach(b=>b.classList.toggle('wrong',b.dataset.choice===String(choice)));branchPanel.querySelector('.branch-feedback').textContent='いまは この みちを すすもう';challengeHint('↔','いまは この みちを すすもう');return;}t.switchChoice=choice;const nextExit=branchEnds(t)[1];const prefix=[...previous.slice(0,stop.index),{...st,exit:nextExit}];const next=findFreeRoute(prefix);let ok=!!next;
  if(ok){installFreeRoute(next);const stops=findMissionStops();ok=gameMode!=='puzzle'||(stops.length===requiredStations.size&&previousStops.slice(0,missionNext).every((s,i)=>stops[i]?.x===s.x&&stops[i]?.y===s.y));if(ok)missionStops=stops;else{t.switchChoice=old;installFreeRoute(previous);}}
  if(!ok){t.switchChoice=old;refreshBranch(t);if(t.highlight)t.highlight.visible=false;branchPanel.querySelectorAll('.branch-choice').forEach(b=>b.classList.toggle('wrong',b.dataset.choice===String(choice)));branchPanel.querySelector('.branch-feedback').textContent='べつの みちを えらんでみよう';challengeHint('↔','べつの みちを えらんでみよう');return;}
  refreshBranch(t);endBranchView(true);branchPassed.add(stop.index);branchWait=null;branchPanel.hidden=true;branchPanel.replaceChildren();document.body.classList.remove('branch-wait');departureBell();setDriveGear(1);
 }
+// Ver.3.6: one reserved, physically separate passing loop per run.
+// The opposing train uses the reverse of a real connected path, never a teleport through a turnout.
+function passingAlternate(steps,i,j){
+ const near=freeTracks.get(steps[i].k),far=freeTracks.get(steps[j].k);
+ if(!near||!far||near.shape!=='branch'||far.shape!=='branch'||steps[i].entry!==near.step||steps[j].exit!==far.step)return null;
+ const nc=near.switchChoice===1?0:1,fc=far.switchChoice===1?0:1;
+ const first=branchArm(near,nc),last=branchArm(far,fc),blocked=new Set(steps.map(s=>s.k));
+ const neighbor=(tile,d)=>key(tile.x+dir[d][0],tile.y+dir[d][1]);
+ let k=neighbor(near,first),entry=opposite(first),middle=[],visited=new Set();
+ while(k!==steps[j].k){
+  const t=freeTracks.get(k);if(!t||blocked.has(k)||visited.has(k)||t.shape==='branch')return null;
+  const ends=freeCon(t);if(ends.length!==2||!ends.includes(entry))return null;
+  visited.add(k);const exit=ends.find(d=>d!==entry);middle.push({k,entry,exit});k=neighbor(t,exit);entry=opposite(exit);
+ }
+ if(entry!==last||middle.length<2)return null;
+ return {steps:[{...steps[i],exit:first},...middle,{...steps[j],entry:last}],nc,fc,near,far};
+}
+function passingLine(points){const lengths=[0];for(let i=1;i<points.length;i++)lengths.push(lengths.at(-1)+points[i].distanceTo(points[i-1]));return {points,lengths,total:lengths.at(-1)};}
+function passingRaw(line,d){const s=Math.max(0,Math.min(line.total,d));let lo=0,hi=line.lengths.length-1;while(lo+1<hi){const m=(lo+hi)>>1;if(line.lengths[m]<=s)lo=m;else hi=m;}return line.points[lo].clone().lerp(line.points[hi],(s-line.lengths[lo])/(line.lengths[hi]-line.lengths[lo]));}
+function passingSample(line,d){const p=passingRaw(line,d),v=passingRaw(line,d+.12).sub(passingRaw(line,d-.12));return {position:p,heading:Math.atan2(v.x,v.z)};}
+function clearBetween(a,b,limit=1.58){return a.every(p=>b.every(q=>Math.hypot(p.x-q.x,p.z-q.z)>=limit));}
+function findPassingPlan(steps,bounds){
+ if(new Set(steps.map(s=>s.k)).size!==steps.length)return null;
+ const span=2*carSpacing,leadNow=startDistance+distanceTravelled;
+ for(let i=1;i<steps.length-2;i++)for(let j=i+3;j<steps.length-1;j++){
+  const alt=passingAlternate(steps,i,j);if(!alt)continue;
+  const a=bounds[i].first,b=bounds[j].last;
+  if(routeLengths[b]-routeLengths[a]<span+3.2||routeLengths[a]<span+1.2||finishDistance-routeLengths[b]<span+1.1)continue;
+  const forward=routePoints.slice(0,a+1).map(p=>p.clone());
+  const append=p=>{if(forward.at(-1).distanceTo(p)>.002)forward.push(p);};
+  for(const st of alt.steps){const t=freeTracks.get(st.k);for(const q of tileRailPoints([st.entry,st.exit]))append(pos(t.x,t.y).add(q));}
+  for(const p of routePoints.slice(b+1,-1))append(p.clone());
+  const line=passingLine(forward.reverse());
+  const start=span+.12,end=line.total-.20;
+  if(end<start+span)return null;
+  const swept=[];for(let d=0;d<=line.total;d+=.10)swept.push(passingRaw(line,d));swept.push(passingRaw(line,line.total));
+  const parked=[0,1,2].map(n=>passingRaw(line,end-n*carSpacing));
+  for(let hold=Math.max(routeLengths[a]+span+1.1,leadNow+.30);hold<=routeLengths[b]-1.1;hold+=.12){
+   const body=[0,1,2].map(n=>sampleRoute(hold-n*carSpacing).position);
+   if(!clearBetween(body,swept,1.60))continue;
+   let safe=true;for(let d=hold-span;d<=finishDistance;d+=.12){if(!clearBetween([sampleRoute(d).position],parked,1.60)){safe=false;break;}}
+   if(!safe)continue;
+   return {alt,line,start,end,hold,phase:'ready',head:start,speed:0,nearOriginal:alt.near.switchChoice,farOriginal:alt.far.switchChoice,view:null};
+  }
+ }
+ return null;
+}
+const passingPanel=document.createElement('div');passingPanel.id='passingPanel';passingPanel.hidden=true;document.body.append(passingPanel);
+const passingPrompt=document.createElement('div');passingPrompt.className='passing-prompt';
+const passingGo=document.createElement('button');passingGo.type='button';passingGo.textContent='🚃 さきに どうぞ！';passingPanel.append(passingPrompt,passingGo);
+function setPassingSwitches(p,alternate){p.alt.near.switchChoice=alternate?p.alt.nc:p.nearOriginal;p.alt.far.switchChoice=alternate?p.alt.fc:p.farOriginal;refreshBranch(p.alt.near);refreshBranch(p.alt.far);}
+function clearPassing(){
+ const p=passingPlan;if(p&&(p.phase==='waiting'||p.phase==='moving')){if(freeTracks.get(key(p.alt.near.x,p.alt.near.y))===p.alt.near&&freeTracks.get(key(p.alt.far.x,p.alt.far.y))===p.alt.far)setPassingSwitches(p,false);}
+ if(p?.view){Object.assign(orbit,p.view.orbit);cameraTarget.copy(p.view.target);applyOrbit();}
+ passingPlan=null;passingPanel.hidden=true;document.body.classList.remove('passing-wait');
+}
+function positionOpposing(p){for(let i=0;i<3;i++){const d=p.head-i*carSpacing,a=passingSample(p.line,d),car=followingCars[i];car.position.copy(a.position);car.position.y=.20;car.rotation.y=a.heading;for(const b of followingBogies[i]){const h=passingSample(p.line,d+b.offset).heading-a.heading;b.group.rotation.y=THREE.MathUtils.clamp(Math.atan2(Math.sin(h),Math.cos(h)),-.65,.65);}}}
+function beginPassing(){const p=passingPlan;if(!p||p.phase!=='ready')return;currentSpeed=0;p.phase='waiting';const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();p.view={orbit:{...orbit},target:cameraTarget.clone(),cab:cabView};if(cabView)setCabView(false);cameraTarget.copy(pos((p.alt.near.x+p.alt.far.x)/2,(p.alt.near.y+p.alt.far.y)/2));orbit.theta=Math.atan2(p.alt.far.x-p.alt.near.x,p.alt.far.y-p.alt.near.y)+.40;orbit.phi=.55;orbit.distance=innerWidth<innerHeight?19:15;applyOrbit();
+ const id=document.body.dataset.fleet==='blue'?'yellow':'blue';followingPaint.color.setHex(fleetColors[id][0]);followingPaintLight.color.setHex(fleetColors[id][1]);followingHead=null;followingTrain.visible=true;positionOpposing(p);passingPrompt.textContent='でんしゃが くるよ！';passingGo.hidden=false;passingPanel.hidden=false;document.body.classList.add('passing-wait');challengeHint('🚃','さきに でんしゃを とおそう');}
+passingGo.onclick=()=>{const p=passingPlan;if(!p||p.phase!=='waiting')return;unlockSound();setPassingSwitches(p,true);p.phase='moving';passingGo.hidden=true;passingPrompt.textContent='🚃 すれちがい ちゅう…';departureBell();};
+function tickPassing(dt){const p=passingPlan;if(!playing||!p||p.phase!=='moving')return;const remaining=p.end-p.head;p.speed=approachSpeed(p.speed,Math.min(2.25,Math.sqrt(2*stationBraking*remaining)),dt);const advance=Math.min(remaining,Math.max(.02,p.speed)*dt);p.head+=advance;positionOpposing(p);for(const w of followingWheels)w.rotation.x-=advance/.135;
+ if(p.end-p.head<.001){p.phase='done';setPassingSwitches(p,false);passingPanel.hidden=true;document.body.classList.remove('passing-wait');if(p.view){Object.assign(orbit,p.view.orbit);cameraTarget.copy(p.view.target);if(p.view.cab)setCabView(true);else applyOrbit();p.view=null;}departureBell();setDriveGear(1);}
+}
+// A ready-made free-build example: two turnouts with the northern one mirrored.
+function makePassingDemo(){if(playing)return;setMode('free');for(let x=1;x<BOARD_LAST;x++)addFreeTile(x,2,'straight',1);addFreeTile(1,2,'branch',3);addFreeTile(5,2,'branch',1);const far=freeTracks.get(key(5,2));far.mirror=true;far.rail.scale.x=-1;
+ addFreeTile(1,1,'curve',1);for(let x=2;x<5;x++)addFreeTile(x,1,'straight',1);addFreeTile(5,1,'curve',2);
+ updateRouteReady();cameraHome();const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();challengeHint('🚃','すれちがい コース！ はっしゃ しよう');}
+const passingDemo=document.createElement('button');passingDemo.id='passingDemo';passingDemo.type='button';passingDemo.textContent='🚃 すれちがい コース';document.getElementById('settingsDrawer').append(passingDemo);passingDemo.onclick=makePassingDemo;
+
 // Intermediate-stop missions. A station placed on the chosen free route
 // becomes an active pickup point; station decorations off-route are ignored.
 let missionType='passenger',missionStops=[],missionNext=0,missionWait=0,boardingClock=0;
@@ -1630,7 +1710,7 @@ function waitAtRailSignal(sig){
 }
 function updateRailSignals(){
  const lead=startDistance+distanceTravelled;
- for(const s of railSignals){const red=railSignalRed(s,lead,followingHead);s.red.material=red?railRedOn:railRedOff;s.green.material=red?railGreenOff:railGreenOn;}
+ for(const s of railSignals){const red=railSignalRed(s,lead,followingHead)||(passingPlan?.phase==='waiting'||passingPlan?.phase==='moving')&&s.stopAt>=lead-.02;s.red.material=red?railRedOn:railRedOff;s.green.material=red?railGreenOff:railGreenOn;}
  if(waitingRailSignal&&(!playing||!waitingRailSignal.manualHold)){
   const resume=playing&&!waitingRailSignal.manualHold;waitingRailSignal=null;railSignalPanel.hidden=true;
   if(resume&&driveGear!==0)departureBell();
@@ -1643,7 +1723,7 @@ function tapRailSignal(ray){
  const sig=g?.userData.railSignal;if(!sig)return false;
  const lead=startDistance+distanceTravelled;
  // Occupancy is a hard safety interlock for either train, never overridden by tapping.
- if(occupiesRailBlock(sig,lead)||occupiesRailBlock(sig,followingHead))return true;
+ if(passingPlan?.phase==='waiting'||passingPlan?.phase==='moving'||occupiesRailBlock(sig,lead)||occupiesRailBlock(sig,followingHead))return true;
  unlockSound();sig.manualHold=!sig.manualHold;updateRailSignals();return true;
 }
 function findMissionStops(){
@@ -1843,7 +1923,7 @@ document.getElementById('run').onclick=()=>{
  if(playing)return;
  if(gameMode==='puzzle'&&courseCleared){newPuzzle();return;}
  hideBranchEdit();const selected=findFreeRoute();if(!selected){challengeHint('🛤️','すべての えきと ゴールを せんろで つなごう');return;}
- branchPassed.clear();branchWait=null;installFreeRoute(selected,true);
+ clearPassing();resetFollowing();branchPassed.clear();branchWait=null;distanceTravelled=0;installFreeRoute(selected,true);
  if(gameMode==='puzzle'&&findMissionStops().length!==requiredStations.size){challengeHint('🚉','とちゅうの えきに とまれるように つなごう');return;}
  placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();if(gameMode==='puzzle')beginTransfer('load',{x:0,y:2});refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
@@ -1956,6 +2036,7 @@ function updateCrossings(now,dt){
     if((d-head<=5.6&&head-d<=2*carSpacing+1.15)||(followingHead!==null&&d-followingHead<=5.6&&followingHead-d<=2*carSpacing+1.15)){danger=true;break;}
    }
   }
+  if(playing&&passingPlan?.phase==='moving'){const p36=passingPlan;for(let d=Math.max(0,p36.head-2*carSpacing-1.15);d<=Math.min(p36.line.total,p36.head+5.6);d+=.20){const q=passingRaw(p36.line,d);if(Math.hypot(p.x-q.x,p.z-q.z)<.45){danger=true;break;}}}
   // Keep the gate down even if the train stops on the crossing.
   if([...trainCars,...(followingTrain.visible?followingCars:[])].some(car=>Math.hypot(car.position.x-p.x,car.position.z-p.z)<1.02))danger=true;
   c.blocked=danger;c.closed=approachSpeed(c.closed,danger?1:0,dt*2.2);c.closed=Math.max(0,Math.min(1,c.closed));
@@ -2011,6 +2092,7 @@ let prev=performance.now();function animate(now){
   elapsed+=dt;
   if(transfer){currentSpeed=0;tickTransfer(dt);}
   else if(branchWait){currentSpeed=0;}
+  else if(passingPlan?.phase==='waiting'||passingPlan?.phase==='moving'){currentSpeed=0;}
   else if(missionWait>0){
    // Station dwell must continue even when the driver leaves the lever at STOP.
    currentSpeed=0;
@@ -2024,7 +2106,9 @@ let prev=performance.now();function animate(now){
    const ordinaryStop=atBranch?nextBranch.s:stationStop;
    const signal=nextRailSignal(startDistance+distanceTravelled,false);
    const atSignal=!!signal&&(ordinaryStop===null||signal.stopAt<ordinaryStop-.015);
-   const nextStop=atSignal?signal.stopAt:ordinaryStop;
+   const regularStop=atSignal?signal.stopAt:ordinaryStop;
+   const atPassing=passingPlan?.phase==='ready'&&(regularStop===null||passingPlan.hold<regularStop-.015);
+   const nextStop=atPassing?passingPlan.hold:regularStop;
    if(nextStop!==null){
     const remaining=Math.max(0,nextStop-(startDistance+distanceTravelled));
     // Slow down automatically before the intermediate platform.
@@ -2036,7 +2120,7 @@ let prev=performance.now();function animate(now){
    if(nextStop!==null){
     const remaining=Math.max(0,nextStop-(startDistance+distanceTravelled));
     if(remaining<=Math.max(.012,advance)){
-     advance=remaining;distanceTravelled+=advance;currentSpeed=0;positionAllCars();if(atSignal)waitAtRailSignal(signal);else if(atBranch)beginBranchWait(nextBranch);else onStationStop();
+     advance=remaining;distanceTravelled+=advance;currentSpeed=0;positionAllCars();if(atPassing)beginPassing();else if(atSignal)waitAtRailSignal(signal);else if(atBranch)beginBranchWait(nextBranch);else onStationStop();
     }else distanceTravelled+=advance;
    }else distanceTravelled+=advance;
    if(advance>0){for(const wheel of wheelSpinners)wheel.rotation.x-=advance/.135;positionAllCars();}
@@ -2047,7 +2131,7 @@ let prev=performance.now();function animate(now){
   }
   refreshSpeedDisplay();
  }
- tickFollowing(dt);updateRailSignals();updateCrossings(now,dt);updateTraffic(dt);
+ tickPassing(dt);tickFollowing(dt);updateRailSignals();updateCrossings(now,dt);updateTraffic(dt);
  tickScenery(dt,now);
  updateCabCamera();
  renderer.render(scene,camera)
