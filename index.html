@@ -209,7 +209,7 @@ body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}bod
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.3</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -753,6 +753,20 @@ function railTrainCar(number){
 }
 for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
 updateCabCrewVisibility();
+// Second formation: independent transforms, shared geometry for low memory use.
+const followingTrain=new THREE.Group();scene.add(followingTrain);followingTrain.visible=false;
+const followingPaint=paint.clone(),followingPaintLight=paintLight.clone();
+const followingCars=[],followingBogies=[],followingWheels=[];
+for(const [i,source] of trainCars.entries()){
+ const car=source.clone(true);followingTrain.add(car);followingCars.push(car);
+ const map=new Map();function pair(a,b){map.set(a,b);for(let j=0;j<a.children.length;j++)pair(a.children[j],b.children[j]);}pair(source,car);
+ car.traverse(o=>{if(o.material===paint)o.material=followingPaint;else if(o.material===paintLight)o.material=followingPaintLight;});
+ followingBogies.push(bogiesByCar[i].map(b=>({group:map.get(b.group),offset:b.offset})));
+ for(const w of wheelSpinners)if(map.has(w))followingWheels.push(map.get(w));
+}
+let followingHead=null,followingSpeed=0;
+const FOLLOW_GAP=5.6, FOLLOW_CLEAR=1.48;
+function resetFollowing(){followingHead=null;followingSpeed=0;followingTrain.visible=false;for(const w of followingWheels)w.rotation.x=0;}
 // One non-shadow-casting headlight for the whole formation.
 const nightBeam=new THREE.SpotLight(0xffe7b6,0,5.5,.48,.65,2);
 nightBeam.position.set(0,.56,.70);nightBeam.target.position.set(0,.12,4);
@@ -896,7 +910,41 @@ function positionAllCars(){
  }
  positionCouplers();
 }
-function placeTrain(){distanceTravelled=0;wheelSpinners.forEach(w=>w.rotation.x=0);train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
+function placeTrain(){resetFollowing();distanceTravelled=0;wheelSpinners.forEach(w=>w.rotation.x=0);train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
+// Reserve enough room for all three cars, including bends and nearby later track.
+function followerPositions(head){return [0,1,2].map(i=>sampleRoute(head-i*carSpacing).position);}
+function followerClear(head,lead){
+ if(head>lead-FOLLOW_GAP+1e-7||head<startDistance-1e-7)return false;
+ const bodies=followerPositions(head);
+ // Check the rest of the leader's route too: avoid blocking a return curve.
+ for(let d=Math.max(0,lead-2*carSpacing);d<=finishDistance+.001;d+=.30){
+  const p=sampleRoute(Math.min(d,finishDistance)).position;
+  if(bodies.some(q=>Math.hypot(q.x-p.x,q.z-p.z)<FOLLOW_CLEAR))return false;
+ }
+ const end=sampleRoute(finishDistance).position;
+ return !bodies.some(q=>Math.hypot(q.x-end.x,q.z-end.z)<FOLLOW_CLEAR);
+}
+function positionFollowing(){
+ for(let i=0;i<3;i++){
+  const d=followingHead-i*carSpacing,a=sampleRoute(d),car=followingCars[i];car.position.copy(a.position);car.position.y=.20;car.rotation.y=a.heading;
+  for(const b of followingBogies[i]){const h=sampleRoute(d+b.offset).heading-a.heading;b.group.rotation.y=THREE.MathUtils.clamp(Math.atan2(Math.sin(h),Math.cos(h)),-.65,.65);}
+ }
+}
+function tickFollowing(dt){
+ if(!playing)return;
+ const lead=startDistance+distanceTravelled;
+ if(followingHead===null){
+  if(!followerClear(startDistance,lead))return;
+  const id=document.body.dataset.fleet==='blue'?'yellow':'blue';followingPaint.color.setHex(fleetColors[id][0]);followingPaintLight.color.setHex(fleetColors[id][1]);
+  followingHead=startDistance;followingTrain.visible=true;positionFollowing();
+ }
+ // Branch rerouting can invalidate an earlier reservation; withdraw the background train rather than intersect it.
+ if(!followerClear(followingHead,lead)){resetFollowing();return;}
+ const limit=lead-FOLLOW_GAP,remaining=Math.max(0,limit-followingHead);
+ followingSpeed=approachSpeed(followingSpeed,Math.min(1.7,Math.sqrt(2*stationBraking*remaining)),dt);
+ const advance=Math.min(remaining,followingSpeed*dt),next=followingHead+advance;
+ if(advance>0&&followerClear(next,lead)){followingHead=next;for(const w of followingWheels)w.rotation.x-=advance/.135;positionFollowing();}else followingSpeed=0;
+}
 function resetPuzzleRoute(){
  const c=pos(0,2);routePoints=[c.clone().addScaledVector(vecDir(2),3.8),...tileRailPoints([2,1]).map(p=>p.clone().add(c)),c.clone().addScaledVector(vecDir(1),1.65)];rebuildDistances();startDistance=3.8;finishDistance=routeLengths.at(-1);
 }
@@ -1570,11 +1618,11 @@ function updateCrossings(now,dt){
     const t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.z-a.z)*dz)/len2));
     if(Math.hypot(p.x-a.x-dx*t,p.z-a.z-dz*t)>.20)continue;
     const d=routeLengths[i]+t*(routeLengths[i+1]-routeLengths[i]);
-    if(d-head<=5.6&&head-d<=2*carSpacing+1.15){danger=true;break;}
+    if((d-head<=5.6&&head-d<=2*carSpacing+1.15)||(followingHead!==null&&d-followingHead<=5.6&&followingHead-d<=2*carSpacing+1.15)){danger=true;break;}
    }
   }
   // Keep the gate down even if the train stops on the crossing.
-  if(trainCars.some(car=>Math.hypot(car.position.x-p.x,car.position.z-p.z)<1.02))danger=true;
+  if([...trainCars,...(followingTrain.visible?followingCars:[])].some(car=>Math.hypot(car.position.x-p.x,car.position.z-p.z)<1.02))danger=true;
   c.blocked=danger;c.closed=approachSpeed(c.closed,danger?1:0,dt*2.2);c.closed=Math.max(0,Math.min(1,c.closed));
   for(const {arm,side} of c.arms)arm.rotation.x=side*(1-c.closed)*Math.PI/2;
   c.lamps.forEach((lamp,i)=>lamp.material=(danger||c.closed>.02)&&((Math.floor(now/320)+i)%2===0)?signalRed:signalOff);
@@ -1661,7 +1709,7 @@ let prev=performance.now();function animate(now){
   }
   refreshSpeedDisplay();
  }
- updateCrossings(now,dt);updateTraffic(dt);
+ tickFollowing(dt);updateCrossings(now,dt);updateTraffic(dt);
  updateCabCamera();
  renderer.render(scene,camera)
 }requestAnimationFrame(animate);window.__aoLoaded=true;
