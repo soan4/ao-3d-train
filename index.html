@@ -58,7 +58,7 @@ body.cab-view #ui{padding:4px}
 #error{z-index:100;overflow:auto;overflow-wrap:anywhere}</style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.2.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="cars" aria-label="編成の両数を切り替える">🚃🚃🚃</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.2.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="cars" aria-label="編成の両数を切り替える">🚃🚃🚃</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -198,7 +198,7 @@ function addRiverTile(x,y){
 const leafMats=[0x397c43,0x548f4a,0x6ca451].map(color=>new THREE.MeshStandardMaterial({color,roughness:1}));
 for(const [x,y] of [[1,3],[2,3],[1,4],[2,4]])addRiverTile(x,y);
 function scenicTree(x,z,scale=1){const g=new THREE.Group();g.position.set(x,.10,z);g.scale.setScalar(scale);scene.add(g);cylinder(g,.095,.83,mats.wood,0,.42,0);for(let i=0;i<5;i++){const a=i*2.4;const leaf=new THREE.Mesh(new THREE.IcosahedronGeometry(i===0?.46:.34,1),leafMats[i%3]);leaf.position.set(i===0?0:Math.cos(a)*.24,i===0?1.21:.93+(.08*(i%2)),i===0?0:Math.sin(a)*.24);leaf.scale.y=1.18;leaf.castShadow=true;g.add(leaf)}return g}
-for(const [x,y] of [[4,0],[3,0],[1,0]]){const p=pos(x,y);scenicTree(p.x,p.z,.85)}
+for(const [x,y,s] of [[4,0,.62],[3,0,.58],[1,0,.62]]){const p=pos(x,y);scenicTree(p.x+(x===4?.55:0),p.z-.58,s)}
 // Perimeter scenery stays outside all editable cells and the train route.
 for(const [x,z,k] of [[-7.8,-5.9,1.1],[-8.2,2.8,.85],[7.8,-3.8,1.2],[7.9,4.8,.9],[-3,-7.8,.85],[4.4,-8.1,1.1]])scenicTree(x,z,k);
 const houseWall=new THREE.MeshStandardMaterial({color:0xf1e1c5,roughness:.85});
@@ -221,7 +221,7 @@ const steel=new THREE.MeshStandardMaterial({color:0x858f9c,metalness:.72,roughne
 const chassisMat=new THREE.MeshStandardMaterial({color:0x303944,metalness:.4,roughness:.55});
 const deco=new THREE.Group();scene.add(deco);
 function addBridge(x,y,parent=deco){
- const p=pos(x,y),g=new THREE.Group();g.position.copy(p);parent.add(g);
+ const p=pos(x,y),g=new THREE.Group();g.position.copy(p);g.scale.set(.94,1,.94);parent.add(g);
  // Water below rail and stone foundation along both sides of the track.
  cube(g,1.49,.07,1.48,riverBank,0,.08,0);
  cube(g,1.36,.04,1.36,water,0,.11,0);
@@ -243,7 +243,7 @@ function addBridge(x,y,parent=deco){
 }
 addBridge(2,2);
 function addTunnel(x,y,parent=deco){
- const p=pos(x,y),g=new THREE.Group();g.position.copy(p);parent.add(g);
+ const p=pos(x,y),g=new THREE.Group();g.position.copy(p);g.position.x-=.08;g.position.z+=.03;g.scale.set(.80,.78,.80);parent.add(g);
  // Open portal arch with rocky shoulders.
  for(const x of [-.67,.67]){
    cube(g,.30,1.12,1.24,mountain,x,.71,0);
@@ -288,29 +288,26 @@ function addCrossing(x,y){
 addCrossing(3,2);
 
 function station(x,y,color,parent=scene){const p=parent===scene?pos(x,y):new THREE.Vector3();const g=new THREE.Group();g.position.copy(p);parent.add(g);
- cube(g,.83,.63,.60,color,0,.48,.58);cube(g,1.10,.16,.85,mats.roof,0,.87,.58);cube(g,.23,.33,.06,mats.window,-.22,.52,.267);cube(g,.23,.33,.06,mats.window,.22,.52,.267);
- cube(g,1.18,.07,.28,stone,0,.19,-.40);
- cube(g,.22,.35,.035,mats.wood,0,.39,.265);
- for(const x of [-.22,.22]){cube(g,.25,.025,.075,mats.white,x,.36,.245);cube(g,.018,.30,.075,mats.white,x,.52,.245)}
- // Raised canopy fascia and platform safety strip.
- cube(g,.075,.035,.87,mats.yellow,.37,.245,-.44);
- cube(g,.075,.10,.86,mats.blue,.60,1.09,-.44);
-
- // Ver.1.3: light platform canopy, small posts and a bench, offset to
- // the building side so the train and camera can still pass freely.
+ // Compact station layout so trains and rails stay easy to see.
+ cube(g,.68,.52,.50,color,.08,.42,.62);cube(g,.88,.13,.68,mats.roof,.08,.76,.62);cube(g,.18,.25,.05,mats.window,-.08,.46,.39);cube(g,.18,.25,.05,mats.window,.24,.46,.39);
+ cube(g,.98,.06,.24,stone,0,.19,-.34);
+ cube(g,.18,.28,.03,mats.wood,.08,.33,.40);
+ for(const xx of [-.08,.24]){cube(g,.20,.022,.06,mats.white,xx,.31,.37);cube(g,.015,.23,.06,mats.white,xx,.45,.37)}
+ // Low platform and shorter canopy pushed to the building side.
+ cube(g,.06,.032,.78,mats.yellow,.28,.22,-.36);
+ cube(g,.06,.08,.70,mats.blue,.56,.88,-.34);
  const canopy=new THREE.MeshStandardMaterial({color:0xf5eed8,roughness:.75});
  const benchWood=new THREE.MeshStandardMaterial({color:0x9b6540,roughness:.9});
  const supports=new THREE.MeshStandardMaterial({color:0x667d86,metalness:.3,roughness:.55});
- cube(g,.54,.065,.88,canopy,.60,1.05,-.44);
- for(const z of [-.77,-.11])cube(g,.046,.79,.046,supports,.80,.63,z);
- cube(g,.31,.052,.28,benchWood,.57,.38,-.46);
- cube(g,.055,.27,.28,benchWood,.71,.51,-.46);
- for(const z of [-.56,-.36])cube(g,.038,.17,.038,supports,.54,.28,z);
- // Small station sign and clock for extra detail.
- cube(g,.22,.12,.03,mats.white,.69,.76,-.12);
- cube(g,.20,.10,.02,mats.blue,.69,.76,-.105);
- const clock=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,.03,18),mats.white);clock.rotation.x=Math.PI/2;clock.position.set(.28,.92,-.44);clock.castShadow=true;g.add(clock);
- cube(g,.012,.045,.01,mats.black,.28,.93,-.44).rotation.z=.55;
+ cube(g,.40,.05,.72,canopy,.56,.84,-.34);
+ for(const z of [-.58,-.10])cube(g,.038,.60,.038,supports,.70,.48,z);
+ cube(g,.24,.045,.20,benchWood,.50,.33,-.36);
+ cube(g,.042,.20,.20,benchWood,.60,.43,-.36);
+ for(const z of [-.47,-.25])cube(g,.030,.14,.030,supports,.47,.25,z);
+ cube(g,.16,.09,.025,mats.white,.58,.63,-.08);
+ cube(g,.14,.07,.02,mats.blue,.58,.63,-.07);
+ const clock=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.025,16),mats.white);clock.rotation.x=Math.PI/2;clock.position.set(.24,.76,-.34);clock.castShadow=true;g.add(clock);
+ cube(g,.01,.035,.01,mats.black,.24,.77,-.34).rotation.z=.55;
  return g}
 const puzzleMidStation=station(2,2,mats.yellow);
 const puzzleGoalStation=station(4,2,mats.blue);
@@ -995,7 +992,7 @@ selectTool('straight');
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();
 const cameraTarget=new THREE.Vector3(0,.22,0);
 const cameraHomeTarget=new THREE.Vector3(0,.22,0);
-const orbit={theta:.53,phi:.77,distance:27};
+const orbit={theta:.50,phi:.92,distance:30};
 const orbitLimits={minDist:9,maxDist:42,minPhi:.23,maxPhi:1.33};
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 // A view just beyond the front windshield keeps the roof and driver model
@@ -1031,7 +1028,7 @@ function applyOrbit(){
  camera.position.set(cameraTarget.x+orbit.distance*s*Math.sin(orbit.theta),cameraTarget.y+orbit.distance*Math.cos(orbit.phi),cameraTarget.z+orbit.distance*s*Math.cos(orbit.theta));
  camera.lookAt(cameraTarget);
 }
-function cameraHome(){if(cabView)setCabView(false);orbit.theta=.53;orbit.phi=.77;orbit.distance=27;cameraTarget.copy(cameraHomeTarget);applyOrbit()}
+function cameraHome(){if(cabView)setCabView(false);orbit.theta=.50;orbit.phi=.92;orbit.distance=30;cameraTarget.copy(cameraHomeTarget);applyOrbit()}
 function cameraZoom(factor){if(cabView)return;orbit.distance=clamp(orbit.distance*factor,orbitLimits.minDist,orbitLimits.maxDist);applyOrbit()}
 const activePointers=new Map();let gestureMoved=false,pinchDist=0,pinchDistanceBefore=orbit.distance;
 let longPressTimer=null,longPressPointer=null,longPressConsumed=false;
