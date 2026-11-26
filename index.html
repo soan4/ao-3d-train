@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.2.4</title>
+<meta name="theme-color" content="#d9f3ff"><title>あおの3Dおとどけでんしゃ Ver.2.9</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;background:#c6ebff;touch-action:none}#world{position:fixed;inset:0}#ui{position:fixed;top:env(safe-area-inset-top);left:0;right:0;display:flex;align-items:center;justify-content:center;padding:9px 12px;pointer-events:none}#title{background:#fffef5eb;border-radius:18px;padding:9px 14px;font-weight:900;color:#194461;box-shadow:0 4px 12px #29536522;text-align:center;font-size:clamp(14px,4vw,20px)}#msg{position:fixed;top:calc(env(safe-area-inset-top) + 62px);left:12px;right:12px;text-align:center;font-weight:800;color:#22526b;text-shadow:0 1px 2px white;pointer-events:none;font-size:clamp(13px,3.7vw,17px)}#bottom{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 14px);left:10px;right:10px;display:flex;gap:9px;justify-content:center}button{border:0;border-radius:18px;font-size:17px;font-weight:900;padding:15px 16px;background:#fff;box-shadow:0 5px 0 #b5c5ca;color:#204a60;touch-action:manipulation}#run{background:#ffcc45;box-shadow:0 5px 0 #d49a19;flex:1;max-width:230px;font-size:28px}#reset{flex:0 0 auto;font-size:24px}#cameraControls{position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 98px);display:flex;flex-direction:column;gap:8px;z-index:2}#cameraControls button{font-size:21px;padding:10px 12px;min-width:46px;min-height:46px;background:#fffffff0;border:1px solid #c8e1e5;box-shadow:0 3px 0 #b5c5ca}#hint{display:none!important}button:active{transform:translateY(3px);box-shadow:0 2px 0 #b5c5ca}#features{position:fixed;top:calc(env(safe-area-inset-top) + 94px);left:10px;background:#ffffffd9;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:800;color:#205165;box-shadow:0 3px 12px #33556622;pointer-events:none}#mode{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 98px);z-index:5;display:flex;gap:5px}#mode button{font-size:27px;padding:10px 12px;border-radius:14px;box-shadow:0 3px 0 #b5c5ca;min-width:56px;min-height:56px;line-height:1}#mode button.active{background:#ffcf54;color:#503700}#tools{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 88px);display:none;gap:7px;z-index:5;justify-content:center;flex-wrap:wrap}#tools button{font-size:25px;min-width:54px;min-height:54px;padding:10px;border-radius:14px;box-shadow:0 3px 0 #b5c5ca;line-height:1}#tools button.active{background:#ffce4c;color:#583800}#hint{bottom:calc(env(safe-area-inset-bottom) + 84px)}body.free #hint{bottom:calc(env(safe-area-inset-bottom) + 184px);max-width:min(68vw,260px);font-size:11px}body.free #tools{display:flex}body.free #features{display:none}body.free #mode{top:calc(env(safe-area-inset-top) + 93px)}#error{display:none;position:fixed;inset:20%;background:white;color:#ad2020;padding:20px;border-radius:15px;z-index:3}
 #missionPanel{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 142px);z-index:4;display:flex;flex-direction:column;gap:6px;max-width:185px}#missionPicker{display:flex;gap:5px}#missionPicker button{font-size:26px;padding:9px;border-radius:13px;box-shadow:0 2px 0 #b5c5ca;min-width:52px;min-height:52px;line-height:1}#missionPicker button.active{background:#ffe07c;color:#593b00}#missionProgress{background:#fffffff0;padding:8px 10px;border-radius:11px;color:#22516b;font-size:12px;font-weight:900;line-height:1.45;box-shadow:0 2px 10px #33556622}body.free #missionPanel{top:calc(env(safe-area-inset-top) + 145px)}#missionBanner{display:none;position:fixed;top:38%;left:10%;right:10%;z-index:8;text-align:center;border-radius:20px;background:#fff8d8ef;padding:18px 12px;color:#184b61;font-size:22px;font-weight:900;box-shadow:0 8px 25px #31526344;pointer-events:none}#missionBanner.show{display:block}#missionBanner small{display:block;font-size:14px;margin-top:6px}#features{display:none}@media(max-height:670px){#missionPanel{top:calc(env(safe-area-inset-top) + 132px)}#missionPicker button{padding:6px}#missionProgress{padding:5px 8px}}
@@ -145,10 +145,20 @@ body[data-fleet="yellow"] #run{--art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%2
 
 
 body[data-fleet="blue"] #run{--art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%228%22%20y%3D%2213%22%20width%3D%2248%22%20height%3D%2237%22%20rx%3D%227%22%20fill%3D%22%23287fc7%22%20stroke%3D%22%2375513b%22%20stroke-width%3D%221.4%22%2F%3E%3Crect%20x%3D%2210%22%20y%3D%2215%22%20width%3D%2244%22%20height%3D%225%22%20rx%3D%222%22%20fill%3D%22%234b9de3%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%2222%22%20width%3D%2242%22%20height%3D%2213%22%20rx%3D%223%22%20fill%3D%22%2327475b%22%2F%3E%3Cpath%20d%3D%22M13%2024%20h36%22%20stroke%3D%22%23b3e6f3%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%2237%22%20width%3D%2246%22%20height%3D%226%22%20fill%3D%22%23fff9eb%22%2F%3E%3Ccircle%20cx%3D%2219.52%22%20cy%3D%2249%22%20r%3D%224%22%20fill%3D%22%2339434b%22%2F%3E%3Ccircle%20cx%3D%2244.480000000000004%22%20cy%3D%2249%22%20r%3D%224%22%20fill%3D%22%2339434b%22%2F%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%2249%22%20r%3D%2212%22%20fill%3D%22%23fff3cf%22%20stroke%3D%22%23a56b28%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M48%2042%20L57%2049%20L48%2056%20Z%22%20fill%3D%22%23438b44%22%2F%3E%3C%2Fsvg%3E")}
+
+body:not(.free):not(.driving) #tools{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));max-width:310px;margin:auto;gap:5px;max-height:none;overflow:visible;}
+body:not(.free) #tools button{width:100%;min-width:0;min-height:44px;height:48px;}
+body:not(.free) #tools button::before{width:36px;height:36px;}
+body:not(.free) #tools button[data-tool="station"],body:not(.free) #tools button[data-tool="branch"],body:not(.free) #tools button[data-tool="river"],body:not(.free) #tools button[data-tool="road"],body:not(.free) #tools button[data-tool="meadow"],body:not(.free) #tools button[data-tool="house"]{display:none!important}
+body.driving #tools{display:none!important}
+#run.route-ready{outline:3px solid #70bd52;outline-offset:2px}#run.course-clear{outline:3px solid #f7b93b;outline-offset:2px}body #run.course-clear::before{background-image:none;content:"▶";font-size:31px;color:#6a441b;font-weight:900;display:grid;place-items:center}
+#missionBanner.show{font-size:clamp(14px,4vw,18px);max-width:72vw;white-space:normal;pointer-events:none;}
+#deliveryDots{display:none;position:fixed;top:calc(env(safe-area-inset-top) + 50px);left:50%;transform:translateX(-50%);z-index:5;padding:3px 8px;background:#fff2d9e8;border:1px solid #d4ac76;border-radius:12px;gap:5px;pointer-events:none;font-size:18px;line-height:1.1;}
+body.driving:not(.free) #deliveryDots{display:flex;top:calc(env(safe-area-inset-top) + 83px)}#deliveryDots span.done{opacity:.32;filter:grayscale(1)}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.8</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.9</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -321,7 +331,7 @@ const crossings=[];
 function moduleRoot(x,y,parent){const g=new THREE.Group();g.position.copy(parent===scene||parent===deco?pos(x,y):new THREE.Vector3());parent.add(g);return g;}
 function addBridge(x,y,parent=deco){
  const g=moduleRoot(x,y,parent);
- cube(g,1.56,.025,1.60,water,0,.11,0);
+ cube(g,1.65,.025,.86,water,0,.11,0);
  cube(g,1.12,.075,1.60,stone,0,.14,0);
  for(const side of [-1,1]){
   const xx=side*.69;
@@ -345,7 +355,7 @@ function addTunnel(x,y,parent=deco){
 }
 function addCrossing(x,y,parent=deco){
  const g=moduleRoot(x,y,parent),c={x,y,g,arms:[],lamps:[],closed:0,blocked:false};crossings.push(c);
- cube(g,1.65,.035,.64,roadMat,0,.14,0);
+ cube(g,1.65,.035,.88,roadMat,0,.14,0);
  for(const side of [-1,1]){
   const xx=side*.70,zz=side*.37;
   cube(g,.055,.65,.055,mats.black,xx,.48,zz);
@@ -727,7 +737,7 @@ function hideBoarding(){boardingGroup.visible=false;platformGroup.visible=false;
 function setupBoarding(){
  // The temporary platform is parallel to the stopped leading car.
  const car=trainCars[0];car.updateMatrixWorld(true);
- const stop=missionStops[missionNext];const model=gameMode==='free'?freeDecor.get(key(stop.x,stop.y))?.model:puzzleMidStation;const side=model&&Math.cos(model.rotation.y-car.rotation.y)<0?-1:1;boardingGroup.userData.side=side;const at=car.localToWorld(new THREE.Vector3(side*.69,0,0));
+ const stop=missionStops[missionNext];const model=freeDecor.get(key(stop.x,stop.y))?.model;const side=model&&Math.cos(model.rotation.y-car.rotation.y)<0?-1:1;boardingGroup.userData.side=side;const at=car.localToWorld(new THREE.Vector3(side*.69,0,0));
  boardingGroup.position.copy(at);boardingGroup.rotation.y=car.rotation.y;
  platformGroup.position.copy(car.localToWorld(new THREE.Vector3(.90,.01,0)));
  platformGroup.rotation.y=car.rotation.y;
@@ -747,6 +757,7 @@ function updateBoarding(t){
  for(let i=0;i<boardingPeople.length;i++){
   const p=boardingPeople[i];const begin=1+i*1.12;
   const q=THREE.MathUtils.clamp((t-begin)/1.05,0,1);
+  if(gameMode==='puzzle'){p.position.x=-(boardingGroup.userData.side||1)*.67*(1-q);p.position.z=-.20;p.position.y=.03*Math.abs(Math.sin(t*17));p.visible=i===0&&t>=1;continue;}
   p.position.x=-(boardingGroup.userData.side||1)*.67*q;
   p.position.z=(i===0?-.28:.28)*(1-q);
   p.position.y=q>0&&q<1?.026*Math.abs(Math.sin(t*17)):0;
@@ -818,11 +829,21 @@ function positionAllCars(){
 }
 function placeTrain(){distanceTravelled=0;wheelSpinners.forEach(w=>w.rotation.x=0);train.position.set(0,0,0);train.rotation.y=0;train.visible=true;positionAllCars()}
 function resetPuzzleRoute(){
- routePoints=[waypoints[0].clone().addScaledVector(backDir,-3.8),...travel,waypoints.at(-1).clone().addScaledVector(forwardDir,1.8)];
- rebuildDistances();startDistance=routeLengths[1];finishDistance=routeLengths[routePoints.length-2];
+ const c=pos(0,2);routePoints=[c.clone().addScaledVector(vecDir(2),3.8),...tileRailPoints([2,1]).map(p=>p.clone().add(c)),c.clone().addScaledVector(vecDir(1),1.65)];rebuildDistances();startDistance=3.8;finishDistance=routeLengths.at(-1);
 }
 function rebuildDistances(){routeLengths=[0];for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths.at(-1)+routePoints[i].distanceTo(routePoints[i-1]));}
-function newPuzzle(){setCabView(false);playing=false;hideBoarding();ready=false;resetPuzzleRoute();placeTrain();resetMissionState();for(const t of tiles.values()){t.step=(t.idx===0||t.idx===path.length-1)?0:Math.floor(Math.random()*4);t.rail.rotation.y=-t.step*Math.PI/2;syncPuzzleModule(t)}msg.textContent='🚃 あたらしい でんしゃで しゅっぱつしよう！'}
+function newPuzzle(){
+ setCabView(false);playing=false;currentSpeed=0;hideBoarding();clearFreeVisual();clearChallenge();courseCleared=false;deliveredCount=0;
+ for(const t of tiles.values())t.rail.visible=false;deco.visible=false;puzzleMidStation.visible=false;puzzleGoalStation.visible=false;freeGoalStation.visible=false;startStation.visible=false;scene.getObjectByName('puzzleStartApproach').visible=false;
+ for(const b of clickable)b.material=mats.tile;
+ let spec,signature;do{spec=courseSpec();signature=JSON.stringify([spec.r,spec.g,spec.order,spec.stations]);}while(signature===previousCourse);previousCourse=signature;challengeSpec=spec;goalKey=key(6,spec.g);
+ for(let x=2;x<=4;x++)for(let y=0;y<7;y++)makeChallengeTerrain(x,y,spec.order[x-2]);
+ addFreeTile(0,2,'curve',1);placeFreeDecor(0,2,'station');
+ addFreeTile(6,spec.g,'straight',1);placeFreeDecor(6,spec.g,'station');const goalModel=freeDecor.get(goalKey).model;for(const o of goalModel.children)if(o.material===mats.yellow)o.material=mats.blue;
+ stationLabel(0,2,'スタート','#4c9852');stationLabel(6,spec.g,'ゴール','#3977ae');
+ for(const [x,y] of spec.stations){const k=key(x,y);requiredStations.add(k);addFreeTile(x,y,'straight',0);placeFreeDecor(x,y,'station');stationLabel(x,y,'えき','#bb842c');}
+ selectTool('straight');resetPuzzleRoute();placeTrain();resetMissionState();updateRunButton();updateRouteReady();
+}
 function conNow(t){return t.con.map(d=>(d+t.step)%4)}
 function valid(){for(let i=0;i<path.length-1;i++){const [x,y]=path[i],[a,b]=path[i+1],d=dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y);if(!conNow(tiles.get(key(x,y))).includes(d)||!conNow(tiles.get(key(a,b))).includes((d+2)%4))return false}return true}
 
@@ -864,7 +885,39 @@ function makeTerrain(x,y,type){
 }
 
 const freeShapes={straight:[0,2],curve:[0,1],branch:[0,1,3]};
-const startKey=key(0,2),goalKey=key(6,2);
+const startKey=key(0,2);let goalKey=key(6,2);
+const challengeTerrain=new Map(),requiredStations=new Set(),stationLabels=[];
+let challengeSpec=null,courseCleared=false,deliveredCount=0,previousCourse='',lastHint='',lastHintAt=0;
+const approachKeys=new Set([key(0,3),key(0,4),key(0,5)]);
+function isProtected(k){return k===startKey||k===goalKey||approachKeys.has(k)||(gameMode==='puzzle'&&requiredStations.has(k));}
+// Construct a witness route first; this guarantees the random course is solvable.
+function courseSpec(random=Math.random){
+ const r=[0,4,5,6][Math.floor(random()*4)];
+ const goals=[0,1,2,3,4,5,6].filter(y=>Math.abs(y-r)>=2);
+ const g=goals[Math.floor(random()*goals.length)];
+ const order=['river','mountain','road'];for(let i=order.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+ const mid1=2+Math.sign(r-2)*(1+Math.floor(random()*(Math.abs(r-2)-1)));
+ const mid2=r+Math.sign(g-r)*(1+Math.floor(random()*(Math.abs(g-r)-1)));
+ const stations=[[1,mid1],[5,mid2]];if(random()<.5)stations.splice(Math.floor(random()*2),1);
+ const witness=[[0,2],[1,2]];for(let y=2;y!==r;){y+=Math.sign(r-y);witness.push([1,y]);}
+ for(let x=2;x<=5;x++)witness.push([x,r]);for(let y=r;y!==g;){y+=Math.sign(g-y);witness.push([5,y]);}witness.push([6,g]);
+ return {r,g,order,stations,witness};
+}
+function stationLabel(x,y,label,color){
+ const c=document.createElement('canvas');c.width=256;c.height=96;const ctx=c.getContext('2d');ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(5,5,246,86,22);ctx.fill();ctx.strokeStyle='#fff4d9';ctx.lineWidth=5;ctx.stroke();ctx.font='bold 39px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#fff';ctx.fillText(label,128,49);
+ const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,depthTest:false,transparent:true}));sprite.scale.set(1.05,.39,1);sprite.position.copy(pos(x,y));sprite.position.y=1.40;sprite.renderOrder=5;scene.add(sprite);stationLabels.push(sprite);
+}
+function clearChallenge(){for(const item of challengeTerrain.values()){scene.remove(item.group);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose()});}challengeTerrain.clear();requiredStations.clear();for(const label of stationLabels){scene.remove(label);label.material.map.dispose();label.material.dispose();}stationLabels.length=0;}
+function makeChallengeTerrain(x,y,type){
+ if(type!=='mountain'){makeTerrain(x,y,type);const k=key(x,y),item=freeDecor.get(k);freeDecor.delete(k);challengeTerrain.set(k,item);return;}
+ const group=new THREE.Group();group.position.copy(pos(x,y));scene.add(group);const model=new THREE.Group();group.add(model);
+ cube(model,1.52,.09,1.52,mountain,0,.14,0);for(const [xx,zz,r] of [[-.34,-.28,.35],[.24,.22,.45],[.24,-.34,.30]]){const m=new THREE.Mesh(new THREE.DodecahedronGeometry(r,0),mountain);m.position.set(xx,.26,zz);m.scale.y=.76;m.castShadow=true;model.add(m);}challengeTerrain.set(key(x,y),{group,model,type});
+}
+function refreshTerrain(k){const item=challengeTerrain.get(k);if(item&&item.type==='mountain')item.group.visible=freeDecor.get(k)?.type!=='tunnel';}
+function challengeHint(icon,words){showMissionBanner(icon,words,2);const now=performance.now();if(soundEnabled&&window.speechSynthesis&&(lastHint!==words||now-lastHintAt>4500)){try{const u=new SpeechSynthesisUtterance(words);u.lang='ja-JP';u.rate=.88;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}catch(e){}lastHint=words;lastHintAt=now;}}
+function updateRouteReady(){const run=document.getElementById('run');const ok=!!findFreeRoute();run.classList.toggle('route-ready',ok&&!courseCleared);run.classList.toggle('course-clear',courseCleared);run.setAttribute('aria-label',courseCleared?'あたらしい コース':'はっしゃ');return ok;}
+function deliveryDots(){const d=document.getElementById('deliveryDots');d.replaceChildren();for(let i=0;i<3;i++){const span=document.createElement('span');span.textContent=missionType==='cargo'?'📦':'🧒';span.className=i<deliveredCount?'done':'';d.append(span);}d.setAttribute('aria-label','のこり '+(3-deliveredCount));}
+
 const opposite=d=>(d+2)%4;
 function freeCon(t){return t.con.map(d=>(d+t.step)%4)}
 function clearFreeVisual(){for(const k of [...freeDecor.keys()])removeFreeDecor(k);for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
@@ -946,22 +999,17 @@ masterLever.addEventListener('keydown',e=>{
 });
 document.querySelectorAll('#leverStops button').forEach(btn=>btn.addEventListener('click',()=>setDriveGear(Number(btn.dataset.gear))));
 document.getElementById('exitDrive').onclick=()=>{
- setCabView(false);playing=false;currentSpeed=0;hideBoarding();resetPuzzleRoute();placeTrain();resetMissionState();setDriveGear(1);updateRunButton();refreshSpeedDisplay();msg.textContent='🛤️ せんろを つくろう！';
+ setCabView(false);playing=false;currentSpeed=0;courseCleared=false;hideBoarding();resetPuzzleRoute();placeTrain();resetMissionState();setDriveGear(1);updateRunButton();updateRouteReady();refreshSpeedDisplay();msg.textContent='🛤️ せんろを つくろう！';
 };
 function selectTool(tool){selectedTool=tool;document.querySelectorAll('#tools button').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool))}
 function setMode(mode){
  setCabView(false);playing=false;hideBoarding();gameMode=mode;document.body.classList.toggle('free',mode==='free');
- document.getElementById('puzzleMode').classList.toggle('active',mode==='puzzle');
- document.getElementById('freeMode').classList.toggle('active',mode==='free');
- document.getElementById('reset').textContent=mode==='free'?'🧹':'🔀';
- for(const t of tiles.values())t.rail.visible=mode==='puzzle';
- for(const t of freeTracks.values())t.rail.visible=mode==='free';for(const item of freeDecor.values())item.group.visible=mode==='free';
- scene.getObjectByName('puzzleStartApproach').visible=mode==='puzzle';deco.visible=mode==='puzzle';puzzleMidStation.visible=mode==='puzzle';puzzleGoalStation.visible=mode==='puzzle';freeGoalStation.visible=mode==='free';
- updateRunButton();
- if(mode==='free'){resetFree();}else{newPuzzle();document.getElementById('hint').innerHTML=''}
+ document.getElementById('puzzleMode').classList.toggle('active',mode==='puzzle');document.getElementById('freeMode').classList.toggle('active',mode==='free');
+ for(const t of tiles.values())t.rail.visible=false;deco.visible=false;puzzleMidStation.visible=false;puzzleGoalStation.visible=false;scene.getObjectByName('puzzleStartApproach').visible=false;
+ if(mode==='free'){clearChallenge();goalKey=key(6,2);startStation.visible=true;freeGoalStation.visible=true;resetFree();}else newPuzzle();
 }
 function resetFree(){
- setCabView(false);playing=false;hideBoarding();clearFreeVisual();
+ setCabView(false);playing=false;hideBoarding();clearFreeVisual();courseCleared=false;goalKey=key(6,2);
  // Start connects south (the approach line) and east; goal faces west.
  addFreeTile(0,2,'curve',1); // base [N,E] -> [E,S]
  addFreeTile(6,2,'straight',1); // [E,W], goal station face west
@@ -970,45 +1018,42 @@ function resetFree(){
  for(const t of freeTracks.values())t.rail.visible=true;
  resetPuzzleRoute();placeTrain();resetMissionState();updateRunButton();
  document.getElementById('hint').innerHTML='';
- msg.textContent='🛠️ とちゅうに 🚉えきも おいてみよう！';
+ selectTool('straight');updateRouteReady();msg.textContent='🛠️ とちゅうに 🚉えきも おいてみよう！';
 }
 function editFreeTile(k){
- if(playing)return;
- if(k===startKey||k===goalKey||[key(0,3),key(0,4),key(0,5)].includes(k)){msg.textContent='🚉 えきの せんろは そのままに しよう！';return}
- const [x,y]=k.split(',').map(Number),old=freeTracks.get(k),terrain=freeDecor.get(k);
- if(terrain&&terrainTypes.has(terrain.type)){
-  terrain.step=(terrain.step+1)%4;terrain.model.rotation.y=-terrain.step*Math.PI/2;
- }else if(old){
-  old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;syncFreeDecor(k);msg.textContent='↻ せんろを まわしたよ';
- }else if(terrainTypes.has(selectedTool)){
-  makeTerrain(x,y,selectedTool);
- }else if(['station','bridge','tunnel','crossing'].includes(selectedTool)){
-  addFreeTile(x,y,'straight');placeFreeDecor(x,y,selectedTool);msg.textContent='✨';
- }else{
-  addFreeTile(x,y,selectedTool);msg.textContent='🛤️ せんろを おいたよ！';
- }
- // Update the train preview after every edit to keep it at the starting station.
- resetPuzzleRoute();placeTrain();resetMissionState();
- const route=findFreeRoute();if(route)msg.textContent='✨ えきまで つながった！ はっしゃ できるよ！';
+ if(playing||k===startKey||k===goalKey||approachKeys.has(k))return;
+ const [x,y]=k.split(',').map(Number),old=freeTracks.get(k),terrain=freeDecor.get(k),obstacle=challengeTerrain.get(k);
+ if(gameMode==='puzzle'){
+  if(requiredStations.has(k)){old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;syncFreeDecor(k);}
+  else if(old){if(!obstacle||obstacle.type==='mountain'){old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;syncFreeDecor(k);}}
+  else{
+   const needed=obstacle?{river:'bridge',road:'crossing',mountain:'tunnel'}[obstacle.type]:null;
+   if(needed&&selectedTool!==needed){challengeHint({bridge:'🌉',crossing:'🚧',tunnel:'⛰️'}[needed],{bridge:'かわには はしを おこう',crossing:'どうろには ふみきりを おこう',tunnel:'やまには トンネルを おこう'}[needed]);return;}
+   if(!needed&&!['straight','curve'].includes(selectedTool)){challengeHint('🛤️','ここには せんろを おこう');return;}
+   if(needed){addFreeTile(x,y,'straight',1);placeFreeDecor(x,y,needed);refreshTerrain(k);}
+   else addFreeTile(x,y,selectedTool,1);
+  }
+ }else if(terrain&&terrainTypes.has(terrain.type)){terrain.step=(terrain.step+1)%4;terrain.model.rotation.y=-terrain.step*Math.PI/2;}
+ else if(old){old.step=(old.step+1)%4;old.rail.rotation.y=-old.step*Math.PI/2;syncFreeDecor(k);}
+ else if(terrainTypes.has(selectedTool))makeTerrain(x,y,selectedTool);
+ else if(['station','bridge','tunnel','crossing'].includes(selectedTool)){addFreeTile(x,y,'straight');placeFreeDecor(x,y,selectedTool);}
+ else addFreeTile(x,y,selectedTool);
+ courseCleared=false;resetPuzzleRoute();placeTrain();resetMissionState();updateRouteReady();
 }
 function findFreeRoute(){
- const start=freeTracks.get(startKey),goal=freeTracks.get(goalKey);
- if(!start||!goal||!freeCon(start).includes(2))return null;
- const queue=[{k:startKey,entry:2,steps:[]}],visited=new Set([startKey+':2']);
+ const start=freeTracks.get(startKey),goal=freeTracks.get(goalKey);if(!start||!goal||!freeCon(start).includes(2))return null;
+ const required=gameMode==='puzzle'?[...requiredStations]:[];const all=(1<<required.length)-1;
+ const queue=[{k:startKey,entry:2,steps:[],mask:0}],visited=new Set([startKey+':2:0']);
  for(let qi=0;qi<queue.length;qi++){
-  const state=queue[qi],t=freeTracks.get(state.k);if(!t)continue;
-  const exits=freeCon(t).filter(d=>d!==state.entry);
-  if(state.k===goalKey){if(state.entry===3)return [...state.steps,{k:state.k,entry:state.entry,exit:1}];continue}
-  for(const out of exits){
+  const state=queue[qi],t=freeTracks.get(state.k);if(!t)continue;const i=required.indexOf(state.k),mask=i<0?state.mask:state.mask|(1<<i);
+  if(state.k===goalKey){if(state.entry===3&&mask===all)return [...state.steps,{k:state.k,entry:state.entry,exit:1}];continue;}
+  for(const out of freeCon(t).filter(d=>d!==state.entry)){
    const [dx,dy]=dir[out],nk=key(t.x+dx,t.y+dy),nt=freeTracks.get(nk),incoming=opposite(out);
-   if(!nt||!freeCon(nt).includes(incoming))continue;
-   if(nk===startKey)continue;
-   const stateKey=nk+':'+incoming;if(visited.has(stateKey))continue;
-   visited.add(stateKey);
-   queue.push({k:nk,entry:incoming,steps:[...state.steps,{k:state.k,entry:state.entry,exit:out}]});
+   if(!nt||!freeCon(nt).includes(incoming)||nk===startKey)continue;
+   const stateKey=nk+':'+incoming+':'+mask;if(visited.has(stateKey))continue;visited.add(stateKey);
+   queue.push({k:nk,entry:incoming,mask,steps:[...state.steps,{k:state.k,entry:state.entry,exit:out}]});
   }
- }
- return null;
+ }return null;
 }
 function installFreeRoute(steps){
  const points=[],stationPos=pos(0,2);
@@ -1051,24 +1096,25 @@ function updateMissionVisual(){
  // accidental 'riding on the roof' look on iPhone.
  tokenBox.visible=missionType==='cargo'&&missionLoaded;
  tokenPerson.visible=false;
- carriedToken.visible=missionType==='cargo'&&missionLoaded;
+ carriedToken.visible=gameMode==='free'&&missionType==='cargo'&&missionLoaded;
  updateWindowRiders();
 }
 function showMissionBanner(title,detail,duration=1.7){bannerEl.textContent=title;bannerEl.setAttribute('aria-label',title+' '+detail);bannerEl.classList.add('show');bannerTime=duration}
 function setMissionType(type){if(playing)return;missionType=type;document.getElementById('passengerMission').classList.toggle('active',type==='passenger');document.getElementById('cargoMission').classList.toggle('active',type==='cargo');resetMissionState();msg.textContent=type==='cargo'?'📦 にもつを とどけよう！':'🧒 おきゃくさんを のせよう！'}
-function resetMissionState(){hideBoarding();missionStops=[];missionNext=0;missionWait=0;missionLoaded=false;missionCompleted=false;bannerTime=0;bannerEl.classList.remove('show');progressEl.textContent='🚉 せんろを つなごう！';missionProps.visible=gameMode==='puzzle';moveMissionModel(2,2);updateMissionVisual()}
+function resetMissionState(){hideBoarding();missionStops=[];missionNext=0;missionWait=0;missionLoaded=false;missionCompleted=false;bannerTime=0;bannerEl.classList.remove('show');progressEl.textContent='🚉 せんろを つなごう！';missionProps.visible=false;if(gameMode==='free')moveMissionModel(2,2);deliveredCount=0;deliveryDots();updateMissionVisual()}
 function stationDistance(x,y){
  const center=pos(x,y);let best=Infinity,dist=null;
- for(let i=0;i<routePoints.length;i++){
-  const score=routePoints[i].distanceToSquared(center);
-  if(score<best){best=score;dist=routeLengths[i]}
+ for(let i=0;i<routePoints.length-1;i++){
+  const a=routePoints[i],b=routePoints[i+1],dx=b.x-a.x,dz=b.z-a.z,len2=dx*dx+dz*dz;if(len2<1e-9)continue;
+  const t=Math.max(0,Math.min(1,((center.x-a.x)*dx+(center.z-a.z)*dz)/len2));
+  const score=(center.x-a.x-dx*t)**2+(center.z-a.z-dz*t)**2;
+  if(score<best){best=score;dist=routeLengths[i]+t*(routeLengths[i+1]-routeLengths[i]);}
  }
- // The route may round the corner before it reaches the tile center.
- return best<.85*.85?dist:null;
+ return best<.45*.45?dist:null;
 }
 function findMissionStops(){
  const candidates=[];
- if(gameMode==='puzzle')candidates.push({x:2,y:2});
+ if(gameMode==='puzzle'){for(const k of requiredStations){const [x,y]=k.split(',').map(Number);candidates.push({x,y});}}
  else for(const [k,item] of freeDecor){
   if(item.type!=='station')continue;
   const [x,y]=k.split(',').map(Number);candidates.push({x,y});
@@ -1076,16 +1122,18 @@ function findMissionStops(){
  const found=[];
  for(const loc of candidates){const s=stationDistance(loc.x,loc.y);if(s!==null&&s>startDistance+1.5&&s<finishDistance-1.1)found.push({...loc,s});}
  found.sort((a,b)=>a.s-b.s);
- return found.slice(0,1); // One clear pickup mission per trip.
+ return gameMode==='puzzle'?found:found.slice(0,1);
 }
 function prepareMission(){
  hideBoarding();missionStops=findMissionStops();missionNext=0;missionWait=0;missionLoaded=false;missionCompleted=false;
+ if(gameMode==='puzzle'){missionLoaded=true;deliveredCount=0;missionProps.visible=false;deliveryDots();updateMissionVisual();return;}
  updateMissionVisual();
  if(missionStops.length){moveMissionModel(missionStops[0].x,missionStops[0].y);missionProps.visible=true;progressEl.textContent='① とちゅうの えきで '+(missionType==='cargo'?'📦 にもつ':'🧒 おきゃく')+'を のせよう';}
  else{missionProps.visible=false;progressEl.textContent='🚃 ちょっこう びん！ ゴールを めざそう';}
 }
 function onStationStop(){
  const stop=missionStops[missionNext];if(!stop)return;
+ if(gameMode==='puzzle'){boardingClock=0;missionWait=missionType==='passenger'?4.5:2.5;missionProps.visible=false;setDriveGear(0);if(missionType==='passenger')setupBoarding();missionNext++;showMissionBanner(missionType==='cargo'?'🚉 📦':'🚉 🧒','おとどけ',1.7);return;}
  boardingClock=0;missionWait=missionType==='passenger'?4.5:2.5;missionLoaded=false;missionProps.visible=false;updateMissionVisual();if(missionType==='passenger')setupBoarding();
  const label=missionType==='cargo'?'📦 にもつを つみこみ！':'🧒 ドアが あいて のりこむよ！';
  showMissionBanner(missionType==='cargo'?'🚉 📦':'🚉 🧒',label,2);
@@ -1095,6 +1143,7 @@ function onStationStop(){
 }
 function onMissionFinish(){
  missionCompleted=true;
+ if(gameMode==='puzzle'){deliveredCount=3;deliveryDots();missionLoaded=false;updateMissionVisual();courseCleared=true;updateRouteReady();showMissionBanner('🎉 ✨','ぜんぶ とどけたよ！',2.4);return;}
  if(missionLoaded){
   progressEl.textContent='🎉 '+(missionType==='cargo'?'📦 おとどけ せいこう！':'🧒 おきゃくさん とうちゃく！');
   showMissionBanner('🎉 ✨',missionType==='cargo'?'にもつを とどけたよ！':'おきゃくさんを おくったよ！',3);
@@ -1164,13 +1213,8 @@ function tileAtScreen(x,y){
  return hit?hit.object.userData.tileKey:null;
 }
 function deleteTileByHold(k){
- if(!k||playing||gameMode!=='free'||k===startKey||k===goalKey)return;
- if(!freeTracks.has(k)&&!freeDecor.has(k))return;
- removeFreeTile(k);
- resetPuzzleRoute();placeTrain();resetMissionState();
- const route=findFreeRoute();
- msg.textContent=route?'✨ えきまで つながった！':'🧽 せんろを けしたよ';
- if(navigator.vibrate)navigator.vibrate(35);
+ if(!k||playing||isProtected(k))return;if(!freeTracks.has(k)&&!freeDecor.has(k))return;
+ removeFreeTile(k);refreshTerrain(k);courseCleared=false;resetPuzzleRoute();placeTrain();resetMissionState();updateRouteReady();if(navigator.vibrate)navigator.vibrate(35);
 }
 
 let singleStart=null,pinchMid={x:0,y:0};
@@ -1196,9 +1240,9 @@ canvas.addEventListener('pointerdown',e=>{
  if(activePointers.size===1){
   singleStart={id:e.pointerId,x:e.clientX,y:e.clientY};gestureMoved=false;longPressConsumed=false;
   cancelLongPress();
-  if(gameMode==='free'&&!playing){
+  if(!playing){
    const heldCell=tileAtScreen(e.clientX,e.clientY);
-   if(heldCell&&heldCell!==startKey&&heldCell!==goalKey&&(freeTracks.has(heldCell)||freeDecor.has(heldCell))){
+   if(heldCell&&!isProtected(heldCell)&&(freeTracks.has(heldCell)||freeDecor.has(heldCell))){
     longPressPointer=e.pointerId;
     longPressTimer=setTimeout(()=>{
      longPressTimer=null;
@@ -1238,10 +1282,7 @@ function handlePointerEnd(e,cancelled){
  pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);
  ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(clickable)[0];if(!hit)return;
  const cell=hit.object.userData.tileKey;
- if(gameMode==='free'){editFreeTile(cell);return;}
- const t=tiles.get(cell);if(!t||t.idx===0||t.idx===path.length-1)return;
- t.step=(t.step+1)%4;t.rail.rotation.y=-t.step*Math.PI/2;syncPuzzleModule(t);
- msg.textContent=valid()?'✨ つながった！ はっしゃボタンを おそう！':'せんろを タッチして まわそう！';
+ editFreeTile(cell);
 }
 canvas.addEventListener('pointerup',e=>handlePointerEnd(e,false));
 canvas.addEventListener('pointercancel',e=>handlePointerEnd(e,true));
@@ -1253,10 +1294,10 @@ document.getElementById('reset').onclick=()=>gameMode==='free'?resetFree():newPu
 document.getElementById('run').onclick=()=>{
  unlockSound();
  if(playing)return;
- if(gameMode==='free'){
-  const selected=findFreeRoute();if(!selected){msg.textContent='⚠️ ふたつの えきを せんろで つなごう！';return}
-  installFreeRoute(selected);
- }else if(!valid()){msg.textContent='⚠️ せんろが まだ つながっていないよ！';return}
+ if(gameMode==='puzzle'&&courseCleared){newPuzzle();return;}
+ const selected=findFreeRoute();if(!selected){challengeHint('🛤️','すべての えきと ゴールを せんろで つなごう');return;}
+ installFreeRoute(selected);
+ if(gameMode==='puzzle'&&findMissionStops().length!==requiredStations.size){challengeHint('🚉','とちゅうの えきに とまれるように つなごう');return;}
  placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
 function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
@@ -1307,7 +1348,7 @@ function makeRoadCar(paint){
  for(const x of [-.075,.075])cube(g,.045,.04,.012,mats.white,x,.23,.22);
  return g;
 }
-function crossingActive(c){return gameMode==='puzzle'?c.g.parent===deco:c.g.parent!==deco;}
+function crossingActive(c){return c.g.parent!==deco&&freeDecor.get(key(c.x,c.y))?.model===c.g;}
 function updateCrossings(now,dt){
  const head=startDistance+distanceTravelled;
  for(const c of crossings){
@@ -1333,7 +1374,7 @@ function updateCrossings(now,dt){
 function rebuildTraffic(){
  const nodes=new Map();
  const axis=(angle,base)=>Math.abs(Math.cos(angle+base))>.5?'x':'z';
- if(gameMode==='puzzle'){for(const y of [0,2])nodes.set(key(1,y),{x:1,y,axis:'z'});}
+ if(gameMode==='puzzle'){for(const [k,item] of challengeTerrain)if(item.type==='road'){const [x,y]=k.split(',').map(Number);nodes.set(k,{x,y,axis:'z'});}}
  else for(const [k,item] of freeDecor)if(item.type==='road'){const [x,y]=k.split(',').map(Number);nodes.set(k,{x,y,axis:axis(item.model.rotation.y,Math.PI/2)});}
  for(const c of crossings)if(crossingActive(c))nodes.set(key(c.x,c.y),{x:c.x,y:c.y,axis:axis(c.g.rotation.y,0),cross:c});
  const sig=gameMode+'|'+[...nodes].map(([k,n])=>k+':'+n.axis+':'+!!n.cross).sort().join('|');
@@ -1380,7 +1421,8 @@ let prev=performance.now();function animate(now){
    // Station dwell must continue even when the driver leaves the lever at STOP.
    currentSpeed=0;
    missionWait=Math.max(0,missionWait-dt);boardingClock+=dt;updateBoarding(boardingClock);
-   if(missionWait===0){missionLoaded=true;updateMissionVisual();hideBoarding();departureBell();progressEl.textContent='③ '+(missionType==='passenger'?'🧒 おきゃくさんを のせた！':'📦 にもつを つんだ！')+' ゴールへ！';msg.textContent='🚃 ドアが しまった！ しゅっぱつ！';}
+   if(missionWait===0&&gameMode==='puzzle'){deliveredCount=Math.min(2,deliveredCount+1);deliveryDots();hideBoarding();updateMissionVisual();showMissionBanner('▶','はっしゃしよう',1.3);}
+   else if(missionWait===0){missionLoaded=true;updateMissionVisual();hideBoarding();departureBell();progressEl.textContent='③ '+(missionType==='passenger'?'🧒 おきゃくさんを のせた！':'📦 にもつを つんだ！')+' ゴールへ！';msg.textContent='🚃 ドアが しまった！ しゅっぱつ！';}
   }else{
    let target=targetSpeeds[driveGear];
    const nextStop=missionNext<missionStops.length?missionStops[missionNext].s:null;
