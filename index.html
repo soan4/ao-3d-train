@@ -148,7 +148,7 @@ body[data-fleet="blue"] #run{--art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22h
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.7.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.8</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">7×7 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -317,6 +317,7 @@ const chassisMat=new THREE.MeshStandardMaterial({color:0x594b3c,metalness:.4,rou
 const deco=new THREE.Group();scene.add(deco);
 // Every scenery module has a local footprint inside +/- .825.
 const crossingLights=[];
+const crossings=[];
 function moduleRoot(x,y,parent){const g=new THREE.Group();g.position.copy(parent===scene||parent===deco?pos(x,y):new THREE.Vector3());parent.add(g);return g;}
 function addBridge(x,y,parent=deco){
  const g=moduleRoot(x,y,parent);
@@ -343,13 +344,16 @@ function addTunnel(x,y,parent=deco){
  return g;
 }
 function addCrossing(x,y,parent=deco){
- const g=moduleRoot(x,y,parent);
- cube(g,1.60,.035,.64,roadMat,0,.14,0);
- for(const x of [-.69,.69]){
-  cube(g,.055,.65,.055,mats.black,x,.48,.45);
-  const lamp=cube(g,.13,.13,.09,signalOff,x,.79,.45);crossingLights.push({x,y,mesh:lamp});
-  cube(g,.08,.06,.46,warningMat,x,.32,-.08);
-  for(const z of [-.22,.02])cube(g,.085,.065,.075,mats.black,x,.325,z);
+ const g=moduleRoot(x,y,parent),c={x,y,g,arms:[],lamps:[],closed:0,blocked:false};crossings.push(c);
+ cube(g,1.65,.035,.64,roadMat,0,.14,0);
+ for(const side of [-1,1]){
+  const xx=side*.70,zz=side*.37;
+  cube(g,.055,.65,.055,mats.black,xx,.48,zz);
+  for(const j of [-1,1]){const lamp=cube(g,.105,.105,.075,signalOff,xx+j*.058,.78,zz);c.lamps.push(lamp);}
+  const arm=new THREE.Group();arm.position.set(xx,.36,zz);g.add(arm);c.arms.push({arm,side});
+  cube(arm,.055,.055,.68,warningMat,0,0,-side*.34);
+  for(let j=0;j<4;j++)cube(arm,.059,.059,.065,mats.black,0,0,-side*(.09+j*.15));
+  arm.rotation.x=side*Math.PI/2;
  }
  return g;
 }
@@ -380,6 +384,9 @@ attachPuzzleModule(4,2,puzzleGoalStation);
 attachPuzzleModule(2,3,addBridge(2,3));
 attachPuzzleModule(4,3,addTunnel(4,3));
 attachPuzzleModule(1,1,addCrossing(1,1),Math.PI/2);
+// Road approaches occupy only empty puzzle cells.
+for(const yy of [0,2]){const g=moduleRoot(1,yy,deco);cube(g,.70,.025,1.65,roadShoulder,0,.109,0);cube(g,.64,.028,1.65,roadMat,0,.136,0);for(const z of [-.60,0,.60])cube(g,.025,.007,.30,lineMat,0,.154,z);}
+
 function syncPuzzleModule(t){const m=puzzleModules.get(key(t.x,t.y));if(m)m.model.rotation.y=m.offset-t.step*Math.PI/2;}
 // Ver.1.2.1: a visible passenger or parcel waits at the intermediate station.
 const missionProps=new THREE.Group();scene.add(missionProps);
@@ -861,7 +868,7 @@ const startKey=key(0,2),goalKey=key(6,2);
 const opposite=d=>(d+2)%4;
 function freeCon(t){return t.con.map(d=>(d+t.step)%4)}
 function clearFreeVisual(){for(const k of [...freeDecor.keys()])removeFreeDecor(k);for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
-function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;scene.remove(item.group);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose();const i=crossingLights.findIndex(l=>l.mesh===o);if(i>=0)crossingLights.splice(i,1)});freeDecor.delete(k)}
+function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;scene.remove(item.group);for(let i=crossings.length-1;i>=0;i--)if(crossings[i].g===item.model)crossings.splice(i,1);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose();const i=crossingLights.findIndex(l=>l.mesh===o);if(i>=0)crossingLights.splice(i,1)});freeDecor.delete(k)}
 function placeFreeDecor(x,y,type){
  const k=key(x,y);removeFreeDecor(k);
  const group=new THREE.Group();group.position.copy(pos(x,y));scene.add(group);
@@ -1288,11 +1295,85 @@ function updateDaylight(date=new Date()){
 updateDaylight();let lastDaylightCheck=0;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDaylight()});
 window.addEventListener('pageshow',()=>updateDaylight());
+// Traffic is rebuilt only when the road layout or orientation changes.
+const trafficRoot=new THREE.Group();scene.add(trafficRoot);
+const trafficPaint=[0xe99b45,0x58a8ca,0x78aa58,0xe16b62].map(color=>new THREE.MeshStandardMaterial({color,roughness:.8}));
+let trafficSignature='',trafficCars=[];
+function makeRoadCar(paint){
+ const g=new THREE.Group();trafficRoot.add(g);
+ cube(g,.24,.13,.43,paint,0,.22,0);cube(g,.21,.13,.24,paint,0,.33,-.015);
+ cube(g,.17,.075,.016,glassTrim,0,.34,.111);cube(g,.17,.075,.016,glassTrim,0,.34,-.14);
+ for(const x of [-.12,.12])for(const z of [-.13,.13]){const w=cylinder(g,.054,.036,mats.black,x,.18,z);w.rotation.z=Math.PI/2;}
+ for(const x of [-.075,.075])cube(g,.045,.04,.012,mats.white,x,.23,.22);
+ return g;
+}
+function crossingActive(c){return gameMode==='puzzle'?c.g.parent===deco:c.g.parent!==deco;}
+function updateCrossings(now,dt){
+ const head=startDistance+distanceTravelled;
+ for(const c of crossings){
+  if(!crossingActive(c)){c.blocked=false;c.closed=0;continue;}
+  const p=pos(c.x,c.y);let danger=false;
+  if(playing){
+   // Project onto every segment; distance follows the actual route, not a timer.
+   for(let i=0;i<routePoints.length-1;i++){
+    const a=routePoints[i],b=routePoints[i+1],dx=b.x-a.x,dz=b.z-a.z,len2=dx*dx+dz*dz;if(len2<1e-9)continue;
+    const t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.z-a.z)*dz)/len2));
+    if(Math.hypot(p.x-a.x-dx*t,p.z-a.z-dz*t)>.20)continue;
+    const d=routeLengths[i]+t*(routeLengths[i+1]-routeLengths[i]);
+    if(d-head<=5.6&&head-d<=2*carSpacing+1.15){danger=true;break;}
+   }
+  }
+  // Keep the gate down even if the train stops on the crossing.
+  if(trainCars.some(car=>Math.hypot(car.position.x-p.x,car.position.z-p.z)<1.02))danger=true;
+  c.blocked=danger;c.closed=approachSpeed(c.closed,danger?1:0,dt*2.2);c.closed=Math.max(0,Math.min(1,c.closed));
+  for(const {arm,side} of c.arms)arm.rotation.x=side*(1-c.closed)*Math.PI/2;
+  c.lamps.forEach((lamp,i)=>lamp.material=(danger||c.closed>.02)&&((Math.floor(now/320)+i)%2===0)?signalRed:signalOff);
+ }
+}
+function rebuildTraffic(){
+ const nodes=new Map();
+ const axis=(angle,base)=>Math.abs(Math.cos(angle+base))>.5?'x':'z';
+ if(gameMode==='puzzle'){for(const y of [0,2])nodes.set(key(1,y),{x:1,y,axis:'z'});}
+ else for(const [k,item] of freeDecor)if(item.type==='road'){const [x,y]=k.split(',').map(Number);nodes.set(k,{x,y,axis:axis(item.model.rotation.y,Math.PI/2)});}
+ for(const c of crossings)if(crossingActive(c))nodes.set(key(c.x,c.y),{x:c.x,y:c.y,axis:axis(c.g.rotation.y,0),cross:c});
+ const sig=gameMode+'|'+[...nodes].map(([k,n])=>k+':'+n.axis+':'+!!n.cross).sort().join('|');
+ if(sig===trafficSignature)return;trafficSignature=sig;
+ for(const car of trafficCars){trafficRoot.remove(car.g);car.g.traverse(o=>{if(o.geometry)o.geometry.dispose();});}trafficCars=[];
+ const seen=new Set();
+ for(const [k,n] of nodes){if(seen.has(k))continue;const dx=n.axis==='x'?1:0,dy=1-dx;
+  let x=n.x,y=n.y;const matches=(a,b)=>nodes.get(key(a,b))?.axis===n.axis;
+  while(matches(x-dx,y-dy)){x-=dx;y-=dy;}
+  const cells=[];while(matches(x,y)){const cell=nodes.get(key(x,y));cells.push(cell);seen.add(key(x,y));x+=dx;y+=dy;}
+  // A crossing needs road on both sides before vehicles can traverse it.
+  let segment=[];const addSegment=()=>{
+   if(!segment.length)return;
+   const first=segment[0],last=segment.at(-1);if(first.cross||last.cross){segment=[];return;}
+   const origin=pos(first.x,first.y),length=segment.length*1.65;
+   const stops=segment.map((v,i)=>v.cross?{c:v.cross,s:i*1.65+.825}:null).filter(Boolean);
+   for(const sign of [-1,1]){const g=makeRoadCar(trafficPaint[trafficCars.length%4]);g.rotation.y=dx?sign*Math.PI/2:(sign===1?0:Math.PI);trafficCars.push({g,origin,dx,dy,length,stops,sign,s:sign===1?.24:length-.24,lane:sign*.16});}
+   segment=[];
+  };
+  for(let i=0;i<cells.length;i++){const cell=cells[i];if(cell.cross&&(i===0||i===cells.length-1)){addSegment();continue;}segment.push(cell);}addSegment();
+ }
+}
+function updateTraffic(dt){
+ rebuildTraffic();
+ for(const car of trafficCars){
+  const {g,origin,dx,dy,length,stops,sign,lane}=car;
+  let next=car.s+sign*dt*1.05;
+  for(const {c,s} of stops){if(!c.blocked&&c.closed<.02)continue;const line=s-sign*.98;
+   if(sign*(car.s-line)<=.001&&sign*(next-line)>=0)next=line;
+  }
+  if(next>length-.23)next=.23;else if(next<.23)next=length-.23;
+  // Avoid spawning a car on a closed crossing after wrapping.
+  car.s=next;g.position.set(origin.x+dx*(next-.825)+dy*lane,0,origin.z+dy*(next-.825)-dx*lane);
+ }
+}
 let prev=performance.now();function animate(now){
  requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;
  if(now-lastDaylightCheck>10000){lastDaylightCheck=now;updateDaylight();}
  if(bannerTime>0){bannerTime-=dt;if(bannerTime<=0)bannerEl.classList.remove('show')}
- for(const l of crossingLights){l.mesh.material=(playing&&Math.abs(elapsed-5)<1.4&&Math.floor(now/320)%2===0)?signalRed:signalOff}
+
  if(playing){
   elapsed+=dt;
   if(missionWait>0){
@@ -1325,6 +1406,7 @@ let prev=performance.now();function animate(now){
   }
   refreshSpeedDisplay();
  }
+ updateCrossings(now,dt);updateTraffic(dt);
  updateCabCamera();
  renderer.render(scene,camera)
 }requestAnimationFrame(animate);window.__aoLoaded=true;
