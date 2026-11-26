@@ -58,7 +58,7 @@ body.cab-view #ui{padding:4px}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v1.9.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="cars" aria-label="編成の両数を切り替える">🚃🚃🚃</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">🚃 あおの 3D おとどけでんしゃ <small style="font-size:.65em">v2.0</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button></div><div id="features">7×7 ひろびろフィールド　🛤️ じゆうに せんろを つくろう　🪵 まくらぎ　🛞 まがる だいしゃ　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="まぜる">🔀</button><button id="cars" aria-label="編成の両数を切り替える">🚃🚃🚃</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -70,12 +70,26 @@ import * as THREE from 'three';
 const root=document.getElementById('world'),msg=document.getElementById('msg');
 const scene=new THREE.Scene();scene.background=new THREE.Color(0xc5eaff);
 const camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,.1,100);
-const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;root.appendChild(renderer.domElement);
-scene.add(new THREE.HemisphereLight(0xffffff,0x83b16f,2.4));const sun=new THREE.DirectionalLight(0xffffff,2.1);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;root.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0xeaf5ff,0x8b9272,2.0));const sun=new THREE.DirectionalLight(0xffeed7,2.6);sun.position.set(-4,12,9);sun.castShadow=true;sun.shadow.mapSize.set(1536,1536);sun.shadow.normalBias=.025;sun.shadow.bias=-.00015;sun.shadow.camera.left=-12;sun.shadow.camera.right=12;sun.shadow.camera.top=12;sun.shadow.camera.bottom=-12;scene.add(sun);
 const mats={grass:new THREE.MeshStandardMaterial({color:0x8cce80}),tile:new THREE.MeshStandardMaterial({color:0xb3dba0}),wood:new THREE.MeshStandardMaterial({color:0x8c6243}),metal:new THREE.MeshStandardMaterial({color:0xd8e1eb,metalness:.55,roughness:.36}),red:new THREE.MeshStandardMaterial({color:0xe94242}),white:new THREE.MeshStandardMaterial({color:0xfaf9e6}),black:new THREE.MeshStandardMaterial({color:0x303a41}),yellow:new THREE.MeshStandardMaterial({color:0xffd344}),blue:new THREE.MeshStandardMaterial({color:0x338cc9}),roof:new THREE.MeshStandardMaterial({color:0xe75b43}),window:new THREE.MeshStandardMaterial({color:0x97e5fa,metalness:.1,roughness:.2})};
 function cube(parent,w,h,d,mat,x=0,y=0,z=0){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
 function cylinder(parent,r,h,mat,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,16),mat);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
+// Lightweight procedural surface textures: no extra network assets.
+function surfaceTexture(base, flecks, wood=false){
+ const c=document.createElement('canvas');c.width=c.height=128;const ctx=c.getContext('2d');ctx.fillStyle=base;ctx.fillRect(0,0,128,128);
+ let seed=719;const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
+ for(let i=0;i<1800;i++){ctx.fillStyle=flecks[i%flecks.length];ctx.fillRect(rand()*128,rand()*128,wood?6+rand()*22:1+rand()*3,wood?1:1+rand()*3);}
+ const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;return t;
+}
+const turfTexture=surfaceTexture('#a8bc83',['#9cb47b','#b2c58c','#a3ba80','#b6c78d']);
+mats.grass.map=turfTexture;mats.grass.color.set(0xffffff);mats.grass.roughness=1;
+const tileTexture=surfaceTexture('#b8cf9b',['#b2c798','#bfd3a3','#adc590']);mats.tile.map=tileTexture;mats.tile.color.set(0xffffff);mats.tile.roughness=1;
 const ground=cube(scene,13.7,.4,13.7,mats.grass,0,-.27,0);
+const borderMat=new THREE.MeshStandardMaterial({color:0x9c7954,roughness:.84});
+cube(scene,13.78,.24,13.78,borderMat,0,-.49,0);
+const surrounding=new THREE.MeshStandardMaterial({color:0xc0cdb0,roughness:1});cube(scene,70,.12,70,surrounding,0,-.68,0);
+scene.fog=new THREE.Fog(0xc5eaff,32,85);
 // Board coordinates: columns left-to-right, rows top-to-bottom.
 const path=[[0,2],[0,1],[1,1],[2,1],[2,2],[3,2],[3,3],[4,3],[4,2]];
 const dir=[[0,-1],[1,0],[0,1],[-1,0]]; // N E S W
@@ -86,9 +100,9 @@ function pos(x,y){return new THREE.Vector3((x-3)*1.65,0,(y-3)*1.65)}
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
 // Ver.1.2.1: Each tile has genuine continuous 3D rails. Curves use precisely
 // the same rounded corner geometry as the vehicle's path below.
-const railSteel=new THREE.MeshStandardMaterial({color:0xb8c9d5,metalness:.72,roughness:.27});
-const sleeperMat=new THREE.MeshStandardMaterial({color:0x75513a,roughness:.92});
-const ballastMat=new THREE.MeshStandardMaterial({color:0xabb3a9,roughness:1});
+const railSteel=new THREE.MeshStandardMaterial({color:0xd3dce1,metalness:.37,roughness:.28});
+const sleeperMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#896448",["#765339","#9b7654","#805b40"],true),roughness:.92});
+const ballastMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#a1a49a",["#747c76","#b9b9ae","#8b928a","#c2c4ba"]),roughness:1});
 const railGauge=.81,halfTile=.825,curveRadius=.52;
 function edge(d){return new THREE.Vector3(dir[d][0]*halfTile,0,dir[d][1]*halfTile)}
 function vecDir(d){return new THREE.Vector3(dir[d][0],0,dir[d][1])}
@@ -131,6 +145,10 @@ function makeTrack(parent,positions){
   mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);
  }
  // Ballast is small, discrete plates to avoid covering the movable tile.
+ const bedVertices=[],bedUV=[],bedIndices=[];
+ for(let i=0;i<fine.length;i++){const p=fine[i],side=orientAt(arc[i]).side;for(const sign of [-1,1]){bedVertices.push(p.x+side.x*sign*.57,.105,p.z+side.z*sign*.57);bedUV.push(sign===-1?0:1,arc[i]*1.8)}if(i>0){const a=2*i-2;bedIndices.push(a,a+2,a+1,a+1,a+2,a+3)}}
+ const bedGeo=new THREE.BufferGeometry();bedGeo.setAttribute('position',new THREE.Float32BufferAttribute(bedVertices,3));bedGeo.setAttribute('uv',new THREE.Float32BufferAttribute(bedUV,2));bedGeo.setIndex(bedIndices);bedGeo.computeVertexNormals();
+ const bed=new THREE.Mesh(bedGeo,ballastMat);bed.material.side=THREE.DoubleSide;bed.receiveShadow=true;parent.add(bed);
  const sleeperCount=Math.max(2,Math.floor(total/.23));
  for(let i=0;i<=sleeperCount;i++){
   const s=(i+.5)/(sleeperCount+1)*total,p=at(s),{forward}=orientAt(s);
@@ -166,7 +184,15 @@ for(const y of [3,4]){
 // Decorative river and bridge-like water patches, trees and small houses, away from path.
 const water=new THREE.MeshStandardMaterial({color:0x53bee3,roughness:.28,transparent:true,opacity:.82});
 for(const [x,y] of [[1,3],[2,3],[1,4],[2,4]]){const p=pos(x,y);cube(scene,1.40,.025,1.35,water,p.x,.115,p.z)}
-for(const [x,y] of [[4,0],[3,0],[1,0]]){const p=pos(x,y);cylinder(scene,.13,.7,mats.wood,p.x,.55,p.z);const leaves=new THREE.Mesh(new THREE.ConeGeometry(.47,1.15,7),new THREE.MeshStandardMaterial({color:0x268d54}));leaves.position.set(p.x,1.4,p.z);leaves.castShadow=true;scene.add(leaves)}
+const leafMats=[0x397c43,0x548f4a,0x6ca451].map(color=>new THREE.MeshStandardMaterial({color,roughness:1}));
+function scenicTree(x,z,scale=1){const g=new THREE.Group();g.position.set(x,.10,z);g.scale.setScalar(scale);scene.add(g);cylinder(g,.095,.83,mats.wood,0,.42,0);for(let i=0;i<5;i++){const a=i*2.4;const leaf=new THREE.Mesh(new THREE.IcosahedronGeometry(i===0?.46:.34,1),leafMats[i%3]);leaf.position.set(i===0?0:Math.cos(a)*.24,i===0?1.21:.93+(.08*(i%2)),i===0?0:Math.sin(a)*.24);leaf.scale.y=1.18;leaf.castShadow=true;g.add(leaf)}return g}
+for(const [x,y] of [[4,0],[3,0],[1,0]]){const p=pos(x,y);scenicTree(p.x,p.z,.85)}
+// Perimeter scenery stays outside all editable cells and the train route.
+for(const [x,z,k] of [[-7.8,-5.9,1.1],[-8.2,2.8,.85],[7.8,-3.8,1.2],[7.9,4.8,.9],[-3,-7.8,.85],[4.4,-8.1,1.1]])scenicTree(x,z,k);
+const houseWall=new THREE.MeshStandardMaterial({color:0xf1e1c5,roughness:.85});
+const houseRoof=new THREE.MeshStandardMaterial({color:0x657b88,roughness:.7});
+for(const [x,z] of [[-8,-1],[8,0],[1,-8]]){const g=new THREE.Group();g.position.set(x,-.52,z);scene.add(g);cube(g,1.2,.9,1.1,houseWall,0,.45,0);const roof=new THREE.Mesh(new THREE.ConeGeometry(.88,.52,4),houseRoof);roof.rotation.y=Math.PI/4;roof.position.y=1.15;roof.castShadow=true;g.add(roof);for(const xx of [-.32,.32])cube(g,.24,.28,.035,mats.window,xx,.57,.566);cube(g,.26,.43,.04,mats.wood,0,.25,.57);}
+
 
 // Ver.0.3: bridges, tunnel, crossing. Decorative meshes never enter clickable list.
 const stone=new THREE.MeshStandardMaterial({color:0x929a9d,roughness:.84});
@@ -232,6 +258,12 @@ addCrossing(3,2);
 function station(x,y,color,parent=scene){const p=parent===scene?pos(x,y):new THREE.Vector3();const g=new THREE.Group();g.position.copy(p);parent.add(g);
  cube(g,.83,.63,.60,color,0,.48,.58);cube(g,1.10,.16,.85,mats.roof,0,.87,.58);cube(g,.23,.33,.06,mats.window,-.22,.52,.267);cube(g,.23,.33,.06,mats.window,.22,.52,.267);
  cube(g,1.18,.07,.28,stone,0,.19,-.40);
+ cube(g,.22,.35,.035,mats.wood,0,.39,.265);
+ for(const x of [-.22,.22]){cube(g,.25,.025,.075,mats.white,x,.36,.245);cube(g,.018,.30,.075,mats.white,x,.52,.245)}
+ // Raised canopy fascia and platform safety strip.
+ cube(g,.075,.035,.87,mats.yellow,.37,.245,-.44);
+ cube(g,.075,.10,.86,mats.blue,.60,1.09,-.44);
+
  // Ver.1.3: light platform canopy, small posts and a bench, offset to
  // the building side so the train and camera can still pass freely.
  const canopy=new THREE.MeshStandardMaterial({color:0xf5eed8,roughness:.75});
@@ -318,23 +350,27 @@ function addCabCrew(car,number){
  const driver=new THREE.Group();
  car.add(driver);
  // Driver in the leading cab, visible through the front windshield.
- driver.position.set(0,0,.42);
+ driver.position.set(-.125,0,.40);
  sphere(driver,.082,crewSkin,0,.80,.03,.90,1,1);
  sphere(driver,.084,mats.black,0,.848,.00,.90,.34,1);
  cube(driver,.14,.18,.11,new THREE.MeshStandardMaterial({color:0x2f77b8,roughness:.75}),0,.65,0);
  cube(driver,.17,.05,.15,steel,0,.54,.12);
- cube(driver,.19,.10,.06,chassisMat,0,.60,.20);
+ cube(driver,.19,.10,.06,chassisMat,0,.60,.14);
+ for(const x of [-.028,.028])sphere(driver,.010,mats.black,x,.813,.106,1,1,.45);
+ cube(driver,.11,.012,.046,mats.black,0,.85,.078);
  driverCabCrew[number]=driver;
  
  const conductor=new THREE.Group();
  car.add(conductor);
  // Conductor in the rear cab, visible through the rear window.
- conductor.position.set(0,0,-.43);
+ conductor.position.set(.075,0,-.40);
  sphere(conductor,.078,crewSkin,0,.80,-.01,.90,1,1);
  sphere(conductor,.080,mats.black,0,.847,.02,.90,.32,1);
  cube(conductor,.135,.175,.11,new THREE.MeshStandardMaterial({color:0x5a86c8,roughness:.76}),0,.65,.00);
  cube(conductor,.16,.05,.15,steel,0,.54,-.08);
  cube(conductor,.18,.10,.06,chassisMat,0,.60,-.15);
+ for(const x of [-.026,.026])sphere(conductor,.010,mats.black,x,.813,-.083,1,1,.45);
+ cube(conductor,.105,.012,.042,mats.black,0,.85,-.068);
  conductorCabCrew[number]=conductor;
 }
 function updateCabCrewVisibility(){
@@ -387,12 +423,16 @@ function railTrainCar(number){
   // Pillars between the side windows, the door opening and the car ends.
   for(const z of [-.59,-.24,.24,.59])cube(car,.026,.26,.055,paint,x,.767,z);
  }
- cube(car,.79,.12,1.21,cream,0,1.025,0);
- cube(car,.80,.075,1.19,paintLight,0,.96,0);
+ const roofShape=new THREE.Shape();roofShape.moveTo(-.395,.985);roofShape.lineTo(.395,.985);roofShape.quadraticCurveTo(.395,1.065,.30,1.085);roofShape.lineTo(-.30,1.085);roofShape.quadraticCurveTo(-.395,1.065,-.395,.985);
+ const roofGeo=new THREE.ExtrudeGeometry(roofShape,{depth:1.21,bevelEnabled:false,curveSegments:8});roofGeo.translate(0,0,-.605);
+ const roofShell=new THREE.Mesh(roofGeo,cream);roofShell.castShadow=true;roofShell.receiveShadow=true;car.add(roofShell);
+ cube(car,.796,.035,1.19,paintLight,0,.947,0);
  // Shoulder/roof: a slightly rounded cross-section at the top.
  // Low equipment housing instead of tall pantograph, so train fits tunnel.
  cube(car,.27,.055,.42,steel,0,1.112,-.15);
  for(const z of [-.37,.27])cube(car,.18,.025,.12,chassisMat,0,1.15,z);
+ for(let i=0;i<7;i++)cube(car,.23,.009,.018,chassisMat,0,1.145,-.31+i*.047);
+ for(const x of [-.32,.32])cube(car,.025,.025,1.12,steel,x,1.065,0);
  // Ivory band along bottom and top of side panels.
  for(const x of [-.402,.402]){
   cube(car,.013,.065,1.17,cream,x,.48,0);
@@ -416,6 +456,9 @@ function railTrainCar(number){
    slidingDoors.push({panel,sign,car:number,baseZ:sign*.102});
   }
   cube(car,.026,.026,.42,steel,x*1.065,.46,0);
+  // Thin door handles and sill, outside the glass apertures.
+  for(const panelInfo of slidingDoors.filter(d=>d.car===number&&Math.sign(d.panel.position.x)===Math.sign(x)))cube(panelInfo.panel,.026,.065,.018,steel,Math.sign(x)*.026,.665,-panelInfo.sign*.065);
+  cube(car,.018,.035,.32,chassisMat,x*1.02,.425,.02);
  }
  // Open front windshield: four separate frame edges, never an opaque backing plate.
  for(const x of [-.312,.312])cube(car,.028,.34,.03,glassTrim,x,.81,.634);
