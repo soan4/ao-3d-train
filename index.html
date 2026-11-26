@@ -209,7 +209,7 @@ body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}bod
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.4.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.4.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -376,6 +376,7 @@ const leafMats=[0x579d40,0x78b64d,0x91c65d].map(color=>new THREE.MeshStandardMat
 const ambientTrees=[];
 const ambientHouses=[];
 const ambientRiverLife=[];
+let riverLifeDirty=true;
 let ambientNightLevel=0;
 function scenicTree(x,z,scale=1){
  const g=new THREE.Group();
@@ -433,38 +434,67 @@ function buildLivingHouse(model,scale=1,baseY=.15){
 function addAmbientHouse(x,z){const g=new THREE.Group();g.position.set(x*1.25,-.62,z*1.25);scene.add(g);buildLivingHouse(g,1.35,0);}
 function attachBoardHouseLife(model){return buildLivingHouse(model,.88,.15);}
 
-function riverLifeSeed(k){
- let h=0;for(let i=0;i<k.length;i++)h=(h*131+k.charCodeAt(i))>>>0;return h;
+// Allocate a fixed small population across the entire board, not by tile hash.
+function planRiverLife(keys){
+ const sorted=[...new Set(keys)].sort((a,b)=>{const [ax,ay]=a.split(',').map(Number),[bx,by]=b.split(',').map(Number);return ax-bx||ay-by;});
+ const n=sorted.length,plan=new Map(sorted.map(k=>[k,'none']));
+ if(!n)return plan;
+ if(n===1){plan.set(sorted[0],'both');return plan;}
+ const put=(fraction,mode)=>{const k=sorted[Math.floor(n*fraction)];plan.set(k,mode);};
+ if(n>=6){put(.16,'fish');put(.50,'duck');put(.83,'fish');}
+ else{put(.25,'duck');put(.75,'fish');}
+ // A few separate wave rings; never add an animal to these tiles.
+ const unused=sorted.filter(k=>plan.get(k)==='none');
+ const count=Math.min(unused.length,n>=7?2:n>=4?1:0);
+ for(let i=0;i<count;i++)plan.set(unused[Math.floor(unused.length*(i+.5)/count)],'ripples');
+ return plan;
 }
 function attachRiverLife(model,k){
- const root=new THREE.Group();model.add(root);const ownMats=[];const ripples=[];
- const seed=riverLifeSeed(k),roll=seed%100;
- const mode=roll<25?'none':roll<58?'ripples':roll<82?'fish':'duck';
- const ripplePreset=mode==='none'?[]:mode==='ripples'?[[-.04,.10,.11,0]]:mode==='fish'?[[-.14,-.12,.09,.4],[.08,.28,.07,1.8]]:[[.12,.12,.10,.7]];
+ const root=new THREE.Group();model.add(root);
+ const [x,y]=k.split(',').map(Number);
+ const ref={root,model,k,mode:'none',ripples:[],fish:null,fishTail:null,duck:null,wake:null,phase:(x*2.39996+y*1.618)%6.283,ownMats:[]};
+ ambientRiverLife.push(ref);riverLifeDirty=true;return ref;
+}
+function setRiverLifeMode(ref,mode){
+ if(ref.mode===mode)return;
+ const {root}=ref;
+ for(const child of [...root.children]){child.traverse(o=>{if(o.geometry)o.geometry.dispose();});root.remove(child);}
+ for(const mat of ref.ownMats)mat.dispose();
+ const ownMats=[],ripples=[];
+ const ripplePreset=mode==='none'?[]:mode==='ripples'?[[-.04,.10,.11,0]]:mode==='fish'||mode==='both'?[[-.14,-.12,.09,.4]]:[[.12,.12,.10,.7]];
  for(const [xx,zz,r,p] of ripplePreset){
   const mat=new THREE.MeshBasicMaterial({color:0xd7f9ff,transparent:true,opacity:.35,side:THREE.DoubleSide,depthWrite:false});ownMats.push(mat);
   const ring=new THREE.Mesh(new THREE.RingGeometry(r*.87,r,24),mat);ring.rotation.x=-Math.PI/2;ring.position.set(xx,.158,zz);root.add(ring);ripples.push({mesh:ring,phase:p});
  }
  let fish=null,fishTail=null,duck=null,wake=null;
- if(mode==='fish'){
+ if(mode==='fish'||mode==='both'){
   fish=new THREE.Group();root.add(fish);const fishMat=new THREE.MeshStandardMaterial({color:0xe99456,roughness:.53});const fishFin=new THREE.MeshStandardMaterial({color:0xffce85,roughness:.65});ownMats.push(fishMat,fishFin);
   ambientBall(fish,.08,fishMat,0,0,0,.72,.48,1.55);fishTail=new THREE.Group();fishTail.position.z=-.095;fish.add(fishTail);
   const fin=new THREE.Mesh(new THREE.ConeGeometry(.047,.085,3),fishFin);fin.rotation.x=-Math.PI/2;fin.position.z=-.03;fishTail.add(fin);
   for(const x of [-.045,.045])ambientBall(fish,.009,mats.black,x,.012,.075);
- }else if(mode==='duck'){
+ }
+ if(mode==='duck'||mode==='both'){
   duck=new THREE.Group();root.add(duck);const duckYellow=new THREE.MeshStandardMaterial({color:0xffdd71,roughness:.65});const beakMat=new THREE.MeshStandardMaterial({color:0xe49a43,roughness:.75});ownMats.push(duckYellow,beakMat);
   ambientBall(duck,.10,duckYellow,0,.035,0,.90,.7,1.24);ambientBall(duck,.065,duckYellow,0,.115,.072);ambientBall(duck,.036,beakMat,0,.099,.13,1,.38,1.2);
   for(const x of [-.053,.053]){ambientBall(duck,.009,mats.black,x,.135,.095);ambientBall(duck,.051,duckYellow,x*1.35,.045,-.015,.38,.63,1.28);} 
   const wakeMat=new THREE.MeshBasicMaterial({color:0xf1ffff,transparent:true,opacity:.48,side:THREE.DoubleSide,depthWrite:false});ownMats.push(wakeMat);
   wake=new THREE.Mesh(new THREE.RingGeometry(.12,.132,24),wakeMat);wake.rotation.x=-Math.PI/2;wake.position.set(0,.158,0);root.add(wake);
  }
- const ref={root,model,k,mode,ripples,fish,fishTail,duck,wake,phase:(seed%628)/100,ownMats};ambientRiverLife.push(ref);return ref;
+ Object.assign(ref,{mode,ripples,fish,fishTail,duck,wake,ownMats});
+}
+function syncRiverLife(){
+ if(!riverLifeDirty)return;
+ const eligible=ambientRiverLife.filter(r=>freeDecor.get(r.k)?.type!=='bridge');
+ const plan=planRiverLife(eligible.map(r=>r.k));
+ for(const r of ambientRiverLife){setRiverLifeMode(r,plan.get(r.k)||'none');r.root.visible=plan.has(r.k);}
+ riverLifeDirty=false;
 }
 function detachAmbientRef(item){
  if(!item||!item.ambientType||!item.ambientRef)return;
  const list=item.ambientType==='house'?ambientHouses:ambientRiverLife;
  const idx=list.indexOf(item.ambientRef);
  if(idx>=0)list.splice(idx,1);
+ if(item.ambientType==='river')riverLifeDirty=true;
  for(const mat of item.ambientRef.ownMats||[])mat.dispose();
  item.ambientRef=null;
 }
@@ -1083,7 +1113,7 @@ function makeTerrain(x,y,type){
   cube(model,1.65,.025,1.65,riverBank,0,.105,0);
   cube(model,.86,.035,1.65,terrainWater,0,.133,0);
   for(const side of [-1,1])cube(model,.10,.065,1.65,riverRock,side*.49,.14,0);
-  for(const [xx,zz] of [[-.21,-.42],[.18,.25],[-.08,.57]])cube(model,.025,.006,.22,terrainRipple,xx,.155,zz);
+  // Water detail is supplied by sparse, animated ripples instead of repeated white dashes.
  }else if(type==='road'){
   cube(model,1.04,.025,1.65,roadShoulder,0,.109,0);
   cube(model,.88,.028,1.65,roadMat,0,.136,0);
@@ -1153,12 +1183,12 @@ function deliveryDots(){const d=document.getElementById('deliveryDots');d.replac
 const opposite=d=>(d+2)%4;
 function freeCon(t){return t.shape==='branch'?branchEnds(t):t.con.map(d=>(d+t.step)%4)}
 function clearFreeVisual(){for(const k of [...freeDecor.keys()])removeFreeDecor(k);for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
-function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;detachAmbientRef(item);scene.remove(item.group);for(let i=crossings.length-1;i>=0;i--)if(crossings[i].g===item.model)crossings.splice(i,1);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose();const i=crossingLights.findIndex(l=>l.mesh===o);if(i>=0)crossingLights.splice(i,1)});freeDecor.delete(k)}
+function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;if(item.type==='bridge')riverLifeDirty=true;detachAmbientRef(item);scene.remove(item.group);for(let i=crossings.length-1;i>=0;i--)if(crossings[i].g===item.model)crossings.splice(i,1);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose();const i=crossingLights.findIndex(l=>l.mesh===o);if(i>=0)crossingLights.splice(i,1)});freeDecor.delete(k)}
 function placeFreeDecor(x,y,type){
  const k=key(x,y);removeFreeDecor(k);
  const group=new THREE.Group();group.position.copy(pos(x,y));scene.add(group);
  const model=(type==='bridge')?addBridge(x,y,group):(type==='tunnel')?addTunnel(x,y,group):(type==='crossing')?addCrossing(x,y,group):station(x,y,mats.yellow,group);
- const item={group,model,type};freeDecor.set(k,item);syncFreeDecor(k);
+ const item={group,model,type};freeDecor.set(k,item);if(type==='bridge')riverLifeDirty=true;syncFreeDecor(k);
 }
 function syncFreeDecor(k){const decoItem=freeDecor.get(k),t=freeTracks.get(k);if(!decoItem||!t)return;
  decoItem.model.rotation.y=-t.step*Math.PI/2;
@@ -1722,8 +1752,9 @@ function tickScenery(dt,now){
    if(t>=1){h.walkActive=false;h.walker.g.visible=false;h.walker.arms[1].rotation.z=0;}
   }else{h.walker.g.visible=false;if(h.door)h.door.rotation.y=0;}
  }
+ syncRiverLife();
  for(const r of ambientRiverLife){
-  r.root.visible=freeDecor.get(r.k)?.type!=='bridge';if(!r.root.visible)continue;
+  if(!r.root.visible||r.mode==='none')continue;
   const a=now*.001+r.phase;
   if(r.fish){
    const fx=-.13+Math.sin(a*.80)*.11,fz=Math.cos(a*.62)*.48;
