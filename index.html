@@ -204,7 +204,23 @@ body.transferring #settingsToggle,body.transferring #settingsDrawer{display:none
 /* v3.2: only show contextual turnout controls when needed. */
 #branchPanel{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 132px);z-index:11;display:flex;gap:8px;align-items:center;justify-content:center;padding:4px;border-radius:14px;background:#fff0d9e8;box-shadow:0 2px 5px #65432144}
 #branchPanel[hidden]{display:none!important}#branchPanel button{width:48px;height:48px;min-width:48px;min-height:48px}#branchPanel button::before{display:none!important}#branchPanel button svg{width:36px;height:36px;display:block}#branchPanel button.active{background:linear-gradient(145deg,#fff3a5,#f5c649);border:2px solid #ae772a}#branchPanel button.wrong{outline:3px solid #d85847;outline-offset:1px}
-body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}body.branch-wait #drivePanel{display:none!important}body.transferring #branchPanel{display:none!important}
+body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}body.branch-wait #drivePanel,body.branch-wait #missionBanner{display:none!important}body.transferring #branchPanel{display:none!important}
+/* v3.5.1: driving choices only, with matching world-space route colors. */
+body.branch-wait #branchPanel{width:min(340px,calc(100vw - 20px));box-sizing:border-box;display:flex;flex-direction:column;gap:6px;padding:10px 9px 9px;background:#fff3ddf5;border:1px solid #c89d65;box-shadow:0 4px 0 #b98b52,0 5px 12px #65432135;bottom:calc(env(safe-area-inset-bottom) + 10px);}
+#branchPanel .branch-prompt{font-size:clamp(15px,4.7vw,19px);font-weight:900;color:#694422;line-height:1.3;text-align:center;min-height:1.3em}
+#branchPanel .branch-options{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%}
+#branchPanel .branch-choice{width:100%;height:auto;min-height:84px;display:flex;flex-direction:column;gap:2px;padding:5px!important;color:#654321!important;font-size:16px!important;line-height:1.2!important;font-weight:900;box-sizing:border-box}
+#branchPanel .branch-choice svg{width:76px;height:57px;margin:auto}
+#branchPanel .branch-choice[data-choice="0"]{background:linear-gradient(145deg,#e9f8ff,#c6e7f6);border:2px solid #3889b6;box-shadow:0 3px 0 #3889b6}
+#branchPanel .branch-choice[data-choice="1"]{background:linear-gradient(145deg,#fff5d5,#ffe0a0);border:2px solid #c58b31;box-shadow:0 3px 0 #c58b31}
+#branchPanel .branch-choice.wrong{outline:3px solid #ce6251;outline-offset:-1px}
+#branchPanel .branch-feedback{font-size:13px;font-weight:800;color:#89513a;text-align:center;min-height:1.2em;line-height:1.2}
+#branchExit{display:none!important}
+body.branch-wait #settingsDrawer > :not(#branchExit){display:none!important}
+body.branch-wait #branchExit{display:block!important;width:190px;min-height:48px;color:#694422!important;font-size:15px!important;line-height:1.25!important;font-weight:800;padding:9px!important}
+#branchExit::before{display:none!important}
+@media(max-height:450px){body.branch-wait #branchPanel{width:250px;left:auto;right:10px;transform:none;padding:6px;gap:3px}#branchPanel .branch-choice{min-height:64px;font-size:14px!important}#branchPanel .branch-choice svg{width:61px;height:40px}#branchPanel .branch-prompt{font-size:15px}#branchPanel .branch-feedback{font-size:12px}}
+
 @media(max-width:350px){body:not(.free) #tools{gap:3px!important;left:5px;right:5px}body:not(.free) #tools button::before{width:29px;height:29px}}
 /* Railway signals are separate from road crossing lamps. */
 #railSignalPanel{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 136px);z-index:12;display:flex;align-items:center;gap:6px;padding:5px;background:#fff0d9ef;border-radius:17px;box-shadow:0 3px 7px #65432155}
@@ -214,7 +230,7 @@ body.branch-wait #branchPanel{bottom:calc(env(safe-area-inset-bottom) + 9px)}bod
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.5.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -1143,10 +1159,58 @@ function makeTerrain(x,y,type){
 const freeShapes={straight:[0,2],curve:[0,1],branch:[0,2,1]};
 const branchPanel=document.createElement('div');branchPanel.id='branchPanel';branchPanel.hidden=true;document.body.append(branchPanel);
 let branchEditKey=null,branchWait=null,branchStops=[],branchPlan=[],branchPassed=new Set();
+let branchView=null,branchPreview=null;
+const branchExit=document.createElement('button');branchExit.id='branchExit';branchExit.type='button';branchExit.textContent='うんてんを やめる';document.getElementById('settingsDrawer').append(branchExit);
+branchExit.onclick=()=>{if(!branchWait||!confirm('うんてんを やめて、はじめの えきに もどる？'))return;const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();document.getElementById('exitDrive').click();};
+const branchColors=[0x1989d0,0xe9a326];
+function branchViewAngle(step){const [x,z]=dir[step];return Math.atan2(x,z);}
+function focusBranchView(){
+ if(!branchWait)return;const t=freeTracks.get(branchWait.k);if(!t)return;
+ if(!branchView)branchView={orbit:{...orbit},target:cameraTarget.clone(),cab:cabView};
+ if(cabView)setCabView(false);
+ orbit.theta=branchViewAngle(t.step);orbit.phi=.48;
+ orbit.distance=innerWidth<innerHeight?Math.max(7,3.6/(2*Math.tan(49*Math.PI/360)*innerWidth/innerHeight)):6.4;
+ cameraTarget.copy(pos(t.x,t.y));cameraTarget.y=.25;cameraTarget.addScaledVector(vecDir(t.step),.55);
+ if(innerWidth>innerHeight){const angle=orbit.theta;cameraTarget.x+=Math.cos(angle)*.55;cameraTarget.z-=Math.sin(angle)*.55;}
+ applyOrbit();
+}
+function showBranchPreview(t){
+ const g=new THREE.Group();g.position.copy(t.rail.position);g.rotation.y=t.rail.rotation.y;scene.add(g);
+ if(t.highlight)t.highlight.visible=false;
+ const mats=branchColors.map(color=>new THREE.MeshBasicMaterial({color,depthTest:false,depthWrite:false}));
+ for(const c of [0,1]){
+  const path=tileRailPoints([0,c===0?2:1]);
+  // Color only the separate outgoing arms. The common entry is not double-painted.
+  const points=c===0?[new THREE.Vector3(0,0,.04),path.at(-1).clone()]:path.slice(Math.floor(path.length*.55)).map(p=>p.clone());
+  points.forEach(p=>p.y=.31);
+  const line=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),24,.043,8,false),mats[c]);line.renderOrder=20;g.add(line);
+  const end=points.at(-1),direction=vecDir(c===0?2:1),tip=end.clone().addScaledVector(direction,-.08);
+  const arrow=new THREE.Mesh(new THREE.ConeGeometry(.105,.23,12),mats[c]);arrow.position.copy(tip);arrow.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),direction);arrow.renderOrder=21;g.add(arrow);
+ }
+ branchPreview={g,t,mats};
+}
+function endBranchView(resumeCab=false){
+ if(branchPreview){const {g,t,mats}=branchPreview;scene.remove(g);g.traverse(o=>{if(o.geometry)o.geometry.dispose();});mats.forEach(m=>m.dispose());if(t.highlight)t.highlight.visible=true;branchPreview=null;}
+ if(branchView){const old=branchView;branchView=null;Object.assign(orbit,old.orbit);cameraTarget.copy(old.target);if(resumeCab&&old.cab)setCabView(true);else applyOrbit();}
+}
+function branchDrivingButton(choice){
+ const b=document.createElement('button');b.type='button';b.className='branch-choice';b.dataset.choice=String(choice);const label=choice?'ひだりに まがる':'まっすぐ';b.setAttribute('aria-label',label);
+ const path=choice?'M42 56 V40 Q42 20 23 20 H9':'M42 56 V8';
+ const arrow=choice?'M17 12 L9 20 L17 28':'M34 16 L42 8 L50 16';
+ const color=choice?'#b8791b':'#247fae';
+ b.innerHTML=`<svg viewBox="0 0 84 64" aria-hidden="true"><path d="M42 60 V4 M42 42 Q42 20 23 20 H4" fill="none" stroke="#ae9d81" stroke-width="13" stroke-linecap="round"/><path d="M42 60 V4 M42 42 Q42 20 23 20 H4" fill="none" stroke="#fff4db" stroke-width="7" stroke-linecap="round"/><path d="${path}" fill="none" stroke="${color}" stroke-width="7" stroke-linecap="round"/><path d="${arrow}" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${label}</span>`;
+ b.onclick=()=>{unlockSound();chooseBranch(choice);};return b;
+}
+function renderBranchWait(){
+ branchPanel.replaceChildren();const prompt=document.createElement('div');prompt.className='branch-prompt';prompt.textContent='どっちに すすむ？';
+ const options=document.createElement('div');options.className='branch-options';options.append(branchDrivingButton(1),branchDrivingButton(0));
+ const feedback=document.createElement('div');feedback.className='branch-feedback';feedback.setAttribute('aria-live','polite');feedback.textContent='せんろと おなじ いろを えらぼう';
+ branchPanel.append(prompt,options,feedback);branchPanel.hidden=false;
+}
 const branchLineMat=new THREE.MeshStandardMaterial({color:0xffd344,emissive:0xffb51c,emissiveIntensity:.65,roughness:.7});
 function branchEnds(t){return [(t.step)%4,((t.switchChoice===1?1:2)+t.step)%4];}
 function refreshBranch(t){if(t.shape!=='branch')return;if(t.highlight){t.rail.remove(t.highlight);t.highlight.geometry.dispose();}const points=tileRailPoints([0,t.switchChoice===1?1:2]).map(p=>p.clone().add(new THREE.Vector3(0,.255,0)));t.highlight=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),32,.037,8,false),branchLineMat);t.rail.add(t.highlight);}
-function clearBranchUI(){branchEditKey=null;branchWait=null;branchStops=[];branchPlan=[];branchPassed.clear();branchPanel.hidden=true;branchPanel.replaceChildren();document.body.classList.remove('branch-wait');}
+function clearBranchUI(){endBranchView(false);branchEditKey=null;branchWait=null;branchStops=[];branchPlan=[];branchPassed.clear();branchPanel.hidden=true;branchPanel.replaceChildren();document.body.classList.remove('branch-wait');}
 function branchButton(label,kind,action,active=false){const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',label);b.classList.toggle('active',active);const paths={straight:'M32 53 V11 M22 21 L32 11 L42 21',curve:'M19 53 V35 Q19 14 44 14 H53 M43 4 L53 14 L43 24',rotate:'M49 19 A20 20 0 1 0 51 40 M49 7 V20 H36',back:'M48 32 H15 M27 20 L15 32 L27 44'};b.innerHTML=`<svg viewBox="0 0 64 64" aria-hidden="true"><path d="${paths[kind]}" fill="none" stroke="${kind==='rotate'||kind==='back'?'#328ab9':'#805222'}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;b.onclick=action;return b;}
 function drawBranchEdit(k){const t=freeTracks.get(k);if(!t||t.shape!=='branch'||playing)return;branchEditKey=k;branchPanel.replaceChildren();for(const c of [0,1])branchPanel.append(branchButton(c?'まがる':'まっすぐ',c?'curve':'straight',()=>{t.switchChoice=c;refreshBranch(t);updateRouteReady();drawBranchEdit(k);},t.switchChoice===c));branchPanel.append(branchButton('ぶんきの むきを かえる','rotate',()=>{t.step=(t.step+1)%4;t.rail.rotation.y=-t.step*Math.PI/2;updateRouteReady();drawBranchEdit(k);}));branchPanel.hidden=false;}
 function hideBranchEdit(){branchEditKey=null;if(!branchWait){branchPanel.hidden=true;branchPanel.replaceChildren();}}
@@ -1351,11 +1415,11 @@ function installFreeRoute(steps,freshSignals=false){
  branchStops=switchEntries.map(b=>({...b,s:Math.max(startDistance,routeLengths[b.pointIndex]-.72)}));
  buildRailSignals(steps,freshSignals);
 }
-function beginBranchWait(stop){branchWait=stop;currentSpeed=0;setDriveGear(0);document.body.classList.add('branch-wait');branchPanel.replaceChildren();for(const c of [0,1])branchPanel.append(branchButton(c?'まがる':'まっすぐ',c?'curve':'straight',()=>chooseBranch(c),false));branchPanel.append(branchButton('もどる','back',()=>document.getElementById('exitDrive').click()));branchPanel.hidden=false;}
+function beginBranchWait(stop){branchWait=stop;currentSpeed=0;setDriveGear(0);document.body.classList.add('branch-wait');const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();focusBranchView();showBranchPreview(freeTracks.get(stop.k));renderBranchWait();challengeHint('↔','どっちに すすむ？');}
 function chooseBranch(choice){if(!branchWait||!playing)return;const stop=branchWait,t=freeTracks.get(stop.k),old=t.switchChoice,previous=branchPlan,previousStops=missionStops;const st=previous[stop.index];if(!st)return;t.switchChoice=choice;const nextExit=branchEnds(t)[1];const prefix=[...previous.slice(0,stop.index),{...st,exit:nextExit}];const next=findFreeRoute(prefix);let ok=!!next;
  if(ok){installFreeRoute(next);const stops=findMissionStops();ok=gameMode!=='puzzle'||(stops.length===requiredStations.size&&previousStops.slice(0,missionNext).every((s,i)=>stops[i]?.x===s.x&&stops[i]?.y===s.y));if(ok)missionStops=stops;else{t.switchChoice=old;installFreeRoute(previous);}}
- if(!ok){t.switchChoice=old;refreshBranch(t);branchPanel.children[choice]?.classList.add('wrong');challengeHint('↔','べつの みちを えらんでみよう');return;}
- refreshBranch(t);branchPassed.add(stop.index);branchWait=null;branchPanel.hidden=true;branchPanel.replaceChildren();document.body.classList.remove('branch-wait');departureBell();setDriveGear(1);
+ if(!ok){t.switchChoice=old;refreshBranch(t);if(t.highlight)t.highlight.visible=false;branchPanel.querySelectorAll('.branch-choice').forEach(b=>b.classList.toggle('wrong',b.dataset.choice===String(choice)));branchPanel.querySelector('.branch-feedback').textContent='べつの みちを えらんでみよう';challengeHint('↔','べつの みちを えらんでみよう');return;}
+ refreshBranch(t);endBranchView(true);branchPassed.add(stop.index);branchWait=null;branchPanel.hidden=true;branchPanel.replaceChildren();document.body.classList.remove('branch-wait');departureBell();setDriveGear(1);
 }
 // Intermediate-stop missions. A station placed on the chosen free route
 // becomes an active pickup point; station decorations off-route are ignored.
@@ -1680,7 +1744,7 @@ function homeDistance(aspect,theta,phi){
  return clamp(d,orbitLimits.minDist,orbitLimits.maxDist);
 }
 function cameraHome(){if(cabView)setCabView(false);orbit.theta=innerWidth<innerHeight?.24:.50;orbit.phi=.58;orbit.distance=homeDistance(innerWidth/innerHeight,orbit.theta,orbit.phi);cameraTarget.copy(cameraHomeTarget);applyOrbit()}
-function cameraZoom(factor){if(cabView)return;orbit.distance=clamp(orbit.distance*factor,orbitLimits.minDist,orbitLimits.maxDist);applyOrbit()}
+function cameraZoom(factor){if(cabView||branchWait)return;orbit.distance=clamp(orbit.distance*factor,orbitLimits.minDist,orbitLimits.maxDist);applyOrbit()}
 const activePointers=new Map();let gestureMoved=false,pinchDist=0,pinchDistanceBefore=orbit.distance;
 let longPressTimer=null,longPressPointer=null,longPressConsumed=false;
 function cancelLongPress(){
@@ -1716,7 +1780,7 @@ const canvas=renderer.domElement;
 canvas.style.touchAction='none';
 canvas.addEventListener('pointerdown',e=>{
  if(e.button!==0&&e.pointerType==='mouse')return;
- if(cabView||transfer)return;
+ if(cabView||transfer||branchWait)return;
  canvas.setPointerCapture(e.pointerId);
  activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(activePointers.size===1){
@@ -1783,7 +1847,7 @@ document.getElementById('run').onclick=()=>{
  if(gameMode==='puzzle'&&findMissionStops().length!==requiredStations.size){challengeHint('🚉','とちゅうの えきに とまれるように つなごう');return;}
  placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();if(gameMode==='puzzle')beginTransfer('load',{x:0,y:2});refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
-function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(transfer)focusTransfer();else if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
+function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(transfer)focusTransfer();else if(branchWait)focusBranchView();else if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
 // Local civil time: smoothly blend lighting throughout the day.
 const daylightProfiles=[
  [0,0x172b50,0x8caeea,0x637a91,0xffd6a2,.92,.12,1],
