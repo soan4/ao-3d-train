@@ -172,10 +172,25 @@ body.transferring #deliveryDots{top:calc(env(safe-area-inset-top) + 35px)}
 #transferPanel .transfer-back::before{width:28px;height:28px;}
 #deliveryDots span{width:23px;height:23px;background-size:contain;background-repeat:no-repeat;background-position:center;display:block;font-size:0;}
 #deliveryDots span.waiting{opacity:.28;filter:grayscale(1)}#deliveryDots span.done{opacity:.25;filter:grayscale(1)}
+
+/* v3.1.1: direct manipulation of the real 3D delivery toys. */
+body.transferring #cameraControls{display:none!important}
+#transferPanel{width:max-content;max-width:calc(100vw - 16px);left:auto;right:10px;margin:0;background:transparent;border:0;box-shadow:none;padding:0;gap:7px}
+#transferPanel .transfer-next{width:100px;flex:0 0 100px}
+#transferTargets{position:fixed;inset:0;z-index:8;pointer-events:none;overflow:hidden}
+#transferTargets[hidden]{display:none!important}
+#transferTargets .toy-touch{position:absolute;width:58px;height:58px;min-width:0;min-height:0;padding:0!important;border:2px solid #ffed9a;outline:2px solid #ab7139aa;background:transparent;box-shadow:0 0 13px #fff1a777;border-radius:50%;transform:translate(-50%,-50%);pointer-events:auto;touch-action:none;animation:toy-pulse 1.1s ease-in-out infinite;}
+#transferTargets .toy-touch::before{display:none!important}
+#transferTargets .toy-touch:active{background:#ffec8833;animation:none}
+#transferTargets .toy-destination{position:absolute;width:52px;height:52px;border:3px dashed #fff4ab;box-shadow:0 0 12px #ffe274;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:.92}
+#transferTargets .toy-star{position:absolute;pointer-events:none;color:#ffdf65;font-size:24px;text-shadow:0 1px 2px #7a4b24;transform:translate(-50%,-50%);animation:toy-burst .68s ease-out both}
+@keyframes toy-pulse{50%{border-color:#fff;box-shadow:0 0 16px #fff0a7b0}}
+@keyframes toy-burst{from{opacity:1;transform:translate(-50%,-50%) scale(.6)}to{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(35deg) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){#transferTargets .toy-touch{animation:none}}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.1.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -400,6 +415,7 @@ function station(x,y,color,parent=scene){
  cube(g,.04,.18,.28,mats.wood,.765,.43,0);
  for(const z of [-.10,.10])cube(g,.035,.13,.035,steel,.70,.29,z);
  cube(g,.05,.16,.24,color,.77,.68,.35);
+ g.userData.transferHide=g.children.slice(2); // temporarily reveal platform during direct handling
  return g;
 }
 // Fixed puzzle modules rotate together with their matching track, on separate cells.
@@ -585,7 +601,7 @@ function railTrainCar(number){
  for(const side of [-1,1]){
   const x=side*.39;
   // Lower and upper side wall strips around the window line.
-  cube(car,.025,.21,1.19,paint,x,.57,0);
+  for(const z of [-.40,.40])cube(car,.025,.21,.39,paint,x,.57,z);
   cube(car,.025,.085,1.19,paint,x,.925,0);
   // Pillars between the side windows, the door opening and the car ends.
   for(const z of [-.59,-.24,.24,.59])cube(car,.026,.26,.055,paint,x,.767,z);
@@ -617,7 +633,7 @@ function railTrainCar(number){
    cube(car,.030,.018,.17,steel,x*1.065,.77,z);
   }
   // A genuine visible opening behind two separate sliding door panels.
-  cube(car,.029,.49,.39,chassisMat,x*1.017,.695,0);
+  // Open doorway: the sliding panels are the only door surface.
   for(const sign of [-1,1]){
    const panel=new THREE.Group();panel.position.set(x*1.044,0,sign*.102);car.add(panel);
    cube(panel,.026,.46,.19,paintLight,0,.69,0);
@@ -1126,73 +1142,81 @@ function updateMissionVisual(){
 const aboardSlots=new Set(),deliveredSlots=new Set();
 let transfer=null;
 const transferPanel=document.getElementById('transferPanel');
-const transferMover=new THREE.Group();scene.add(transferMover);transferMover.visible=false;
-const transferPerson=new THREE.Group();transferMover.add(transferPerson);
-cylinder(transferPerson,.095,.24,shirtMaterial,0,.26,0);
-sphere(transferPerson,.115,skinMaterial,0,.46,0);
-sphere(transferPerson,.119,mats.black,0,.535,-.012,1,.32,1);
-for(const x of [-.055,.055])cube(transferPerson,.07,.14,.085,mats.black,x,.085,0);
-const transferCrate=new THREE.Group();transferMover.add(transferCrate);
-cube(transferCrate,.27,.27,.27,parcelMaterial,0,.145,0);
-for(const x of [-.11,.11])cube(transferCrate,.035,.28,.285,mats.wood,x,.145,0);
-cube(transferCrate,.28,.045,.28,mats.wood,0,.255,0);
+const transferTargets=document.createElement('div');transferTargets.id='transferTargets';transferTargets.hidden=true;document.body.append(transferTargets);
+const transferToys=new THREE.Group();scene.add(transferToys);transferToys.visible=false;
+const transferLight=new THREE.PointLight(0xffe8c4,0,5,2);scene.add(transferLight);
+const toyColors=[0x419bd3,0xf1a43e,0x78b65d];
+const transferFigures=toyColors.map((color,i)=>{
+ const g=new THREE.Group();transferToys.add(g);const person=new THREE.Group(),crate=new THREE.Group();g.add(person,crate);
+ const coat=new THREE.MeshStandardMaterial({color,roughness:.65});
+ cylinder(person,.105,.21,coat,0,.22,0);sphere(person,.113,skinMaterial,0,.41,0);sphere(person,.117,mats.black,0,.479,-.013,1,.33,1);
+ for(const x of [-.04,.04])sphere(person,.010,mats.black,x,.424,.102);
+ const legs=[],arms=[];
+ for(const side of [-1,1]){const leg=new THREE.Group();leg.position.set(side*.053,.15,0);person.add(leg);cube(leg,.065,.13,.08,mats.black,0,-.065,.012);legs.push(leg);const arm=new THREE.Group();arm.position.set(side*.105,.29,0);person.add(arm);cube(arm,.06,.13,.065,coat,0,-.05,0);sphere(arm,.035,skinMaterial,0,-.12,0);arms.push(arm);}
+ cube(crate,.29,.29,.29,parcelMaterial,0,.15,0);for(const x of [-.12,.12])cube(crate,.035,.30,.30,mats.wood,x,.15,0);cube(crate,.30,.046,.30,mats.wood,0,.27,0);cube(crate,.305,.075,.305,coat,0,.15,0);
+ g.visible=false;return {g,person,crate,legs,arms};
+});
+let transferCamera=null,transferDrag=null,transferHidden=[];const touchTargets=new Map();let destinationRing=null;
 const cargoInside=trainCars.map(car=>{const g=new THREE.Group();car.add(g);cube(g,.24,.24,.23,parcelMaterial,.24,.59,.40);cube(g,.25,.035,.24,mats.wood,.24,.69,.40);g.visible=false;return g;});
-function transferArt(){return getComputedStyle(document.getElementById(missionType==='cargo'?'cargoMission':'passengerMission')).getPropertyValue('--art').trim();}
-function clearTransfer(){transfer=null;aboardSlots.clear();deliveredSlots.clear();transferMover.visible=false;transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
 function transferButton(label,art,fn,cls=''){
  const b=document.createElement('button');b.type='button';b.className=cls;b.setAttribute('aria-label',label);b.style.setProperty('--art',art);b.onclick=fn;return b;
 }
+function clearToyStage(){
+ for(const [o,visible] of transferHidden)o.visible=visible;transferHidden=[];
+ transferDrag=null;touchTargets.clear();destinationRing=null;transferTargets.replaceChildren();transferTargets.hidden=true;transferToys.visible=false;transferFigures.forEach(o=>o.g.visible=false);transferLight.intensity=0;
+ if(transferCamera){Object.assign(orbit,transferCamera.orbit);cameraTarget.copy(transferCamera.target);transferCamera=null;applyOrbit();}
+}
+function clearTransfer(){transfer=null;aboardSlots.clear();deliveredSlots.clear();clearToyStage();transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
+function transferSide(loc){
+ const car=trainCars[0];car.updateWorldMatrix(true,false);
+ const model=loc?freeDecor.get(key(loc.x,loc.y))?.model:null;
+ if(model){const platform=model.localToWorld(new THREE.Vector3(.68,0,0));const local=car.worldToLocal(platform);if(Math.abs(local.x)>.12)return Math.sign(local.x);}
+ return 1;
+}
+function localPoint(x,y,z){const car=trainCars[0];car.updateWorldMatrix(true,false);return car.localToWorld(new THREE.Vector3(x,y,z));}
+function slotHome(i){const t=transfer;if(t.phase==='load')return new THREE.Vector3(t.side*1.03,-.05,(i-1)*.82);return new THREE.Vector3(t.side*.44,.535,0);}
+function slotDestination(i){const t=transfer;return t.phase==='load'?new THREE.Vector3(t.side*.22,.535,0):new THREE.Vector3(t.side*1.04,-.05,((i-1)*.40));}
+function figureAt(i,v){const f=transferFigures[i];f.g.position.copy(localPoint(v.x,v.y,v.z));f.g.rotation.y=trainCars[0].rotation.y+(transfer.side>0?-Math.PI/2:Math.PI/2)+(transfer.phase==='load'?0:Math.PI);}
+function projectToy(v){camera.updateMatrixWorld();const p=v.clone().project(camera);return {x:(p.x+1)*innerWidth*.5,y:(1-p.y)*innerHeight*.5,visible:p.z>=-1&&p.z<=1};}
+function markerPoint(i){const f=transferFigures[i];return f.g.position.clone().add(new THREE.Vector3(0,missionType==='cargo'?.16:.31,0));}
+function doorPoint(){const t=transfer;const d=t.phase==='load'?new THREE.Vector3(t.side*.45,.65,0):new THREE.Vector3(t.side*1.04,.20,0);return projectToy(localPoint(d.x,d.y,d.z));}
+function updateTransferTargets(){if(!transfer)return;for(const [i,b] of touchTargets){const p=projectToy(markerPoint(i));b.style.left=p.x+'px';b.style.top=p.y+'px';b.style.visibility=p.visible?'visible':'hidden';}if(destinationRing){const p=doorPoint();destinationRing.style.left=p.x+'px';destinationRing.style.top=p.y+'px';destinationRing.style.visibility=p.visible?'visible':'hidden';}}
+function toySound(complete=false){if(!soundEnabled||!audioCtx||audioCtx.state!=='running')return;const at=audioCtx.currentTime;const tones=complete?[523,659,784,1047]:[660,880];tones.forEach((hz,i)=>{const t=at+i*.085,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=hz;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.065,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+.22);o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+.23);});}
+function toyBurst(p,complete){for(let i=0;i<(complete?12:7);i++){const star=document.createElement('span');star.className='toy-star';star.textContent=i%3===0?'✦':'★';star.style.left=p.x+'px';star.style.top=p.y+'px';const angle=i*2.39996,r=complete?68+10*(i%3):35+8*(i%3);star.style.setProperty('--dx',Math.cos(angle)*r+'px');star.style.setProperty('--dy',Math.sin(angle)*r+'px');transferTargets.append(star);star.addEventListener('animationend',()=>star.remove(),{once:true});setTimeout(()=>star.remove(),900);}}
+function focusTransfer(){const t=transfer;if(!transferCamera)transferCamera={orbit:{...orbit},target:cameraTarget.clone()};orbit.theta=trainCars[0].rotation.y+t.side*Math.PI/2+.12;orbit.phi=1.05;orbit.distance=innerWidth<innerHeight?Math.max(6.4,1.65/(Math.tan(49*Math.PI/360)*innerWidth/innerHeight)):5.5;cameraTarget.copy(localPoint(t.side*.50,.46,0));applyOrbit();transferLight.position.copy(localPoint(t.side*2,2,0));transferLight.intensity=2.8;}
+function dragToy(i,e){const d=transferDrag;if(!d||d.id!==e.pointerId||d.i!==i||!transfer||transfer.anim)return;const dx=e.clientX-d.x,dy=e.clientY-d.y;if(Math.hypot(dx,dy)<9&&!d.moved)return;d.moved=true;const origin=localPoint(d.home.x,d.home.y,d.home.z);const plane=new THREE.Plane(new THREE.Vector3(0,1,0),-origin.y);const r=new THREE.Raycaster();r.setFromCamera(new THREE.Vector2(e.clientX/innerWidth*2-1,1-e.clientY/innerHeight*2),camera);const hit=r.ray.intersectPlane(plane,new THREE.Vector3());if(hit){const local=trainCars[0].worldToLocal(hit);local.x=transfer.side*THREE.MathUtils.clamp(transfer.side*local.x,.28,1.65);local.z=THREE.MathUtils.clamp(local.z,-1.25,1.25);local.y=d.home.y;d.current=local;figureAt(i,local);}e.preventDefault();}
+function makeToyTarget(i){const b=document.createElement('button');b.className='toy-touch';b.type='button';b.setAttribute('aria-label',(missionType==='cargo'?'にもつ':'おきゃくさん')+' '+(i+1)+(transfer.phase==='load'?'をのせる':'をおろす'));transferTargets.append(b);touchTargets.set(i,b);
+ b.onpointerdown=e=>{if(transferDrag||!transfer||transfer.anim)return;e.preventDefault();unlockSound();const home=slotHome(i);transferDrag={id:e.pointerId,i,x:e.clientX,y:e.clientY,home,current:home.clone(),moved:false};b.setPointerCapture(e.pointerId);};
+ b.onpointermove=e=>dragToy(i,e);
+ b.onpointerup=e=>{const d=transferDrag;if(!d||d.id!==e.pointerId||d.i!==i)return;transferDrag=null;const p=doorPoint();if(!d.moved||Math.hypot(e.clientX-p.x,e.clientY-p.y)<85){tapTransfer(i,d.current);}else{figureAt(i,d.home);}e.preventDefault();};
+ b.onpointercancel=()=>{if(transferDrag?.i===i){figureAt(i,transferDrag.home);transferDrag=null;}};
+ b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tapTransfer(i);}};
+}
 function renderTransfer(){
- if(!transfer)return;
- const t=transfer;transferPanel.replaceChildren();
- const loading=t.phase==='load';
- const direction=document.createElement('span');direction.className='transfer-direction';direction.setAttribute('aria-hidden','true');
- direction.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44"><rect x="9" y="4" width="26" height="23" rx="5" fill="#c94936" stroke="#895230" stroke-width="2"/><rect x="13" y="8" width="18" height="10" rx="2" fill="#acd8e6"/><circle cx="15" cy="23" r="2" fill="#fff2b7"/><circle cx="29" cy="23" r="2" fill="#fff2b7"/><path d="${loading?'M22 42V29M16 35L22 29L28 35':'M22 29V42M16 36L22 42L28 36'}" fill="none" stroke="#477d48" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
- transferPanel.append(direction);
- const art=transferArt();
- if(t.left>0||t.anim){
-  for(const i of t.slots){const done=loading?aboardSlots.has(i):deliveredSlots.has(i);const b=transferButton((missionType==='cargo'?'にもつ':'おきゃくさん')+' '+(i+1)+' '+(loading?'のせる':'おろす'),art,()=>tapTransfer(i),done?'transfer-done':'');b.disabled=done||!!t.anim||t.left===0;transferPanel.append(b);}
- }else{
-  const b=transferButton('はっしゃ',getComputedStyle(document.getElementById('run')).getPropertyValue('--art'),resumeTransfer,'transfer-next');transferPanel.append(b);
- }
- const back=transferButton('はじめの えきに もどる',getComputedStyle(document.getElementById('exitDrive')).getPropertyValue('--art'),()=>document.getElementById('exitDrive').click(),'transfer-back');transferPanel.append(back);
+ if(!transfer)return;const t=transfer;transferPanel.replaceChildren();for(const b of touchTargets.values())b.remove();touchTargets.clear();if(destinationRing)destinationRing.remove();destinationRing=null;
+ const pending=t.slots.filter(i=>t.phase==='load'?!aboardSlots.has(i):aboardSlots.has(i));
+ const visible=t.phase==='load'?pending:pending.slice(0,1);
+ transferFigures.forEach((f,i)=>{f.g.visible=visible.includes(i)||t.anim?.i===i;f.person.visible=missionType==='passenger';f.crate.visible=missionType==='cargo';if(f.g.visible&&t.anim?.i!==i){figureAt(i,slotHome(i));f.g.scale.setScalar(t.phase==='load'?1:.75);f.legs.forEach(l=>l.rotation.x=0);f.arms.forEach(a=>a.rotation.x=0);}});
+ if(t.left>0&&!t.anim){for(const i of visible)makeToyTarget(i);destinationRing=document.createElement('div');destinationRing.className='toy-destination';transferTargets.append(destinationRing);}
+ if(t.left===0&&!t.anim&&t.phase!=='goal'){const b=transferButton('はっしゃ',getComputedStyle(document.getElementById('run')).getPropertyValue('--art'),resumeTransfer,'transfer-next');transferPanel.append(b);}
+ const back=transferButton('はじめの えきに もどる',getComputedStyle(document.getElementById('exitDrive')).getPropertyValue('--art'),()=>document.getElementById('exitDrive').click(),'transfer-back');transferPanel.append(back);updateTransferTargets();
 }
 function beginTransfer(phase,loc){
- // At an intermediate platform unload just one; at the final platform unload the remainder.
- const slots=phase==='load'?[0,1,2]:[...aboardSlots].sort((a,b)=>a-b);
- const chosen=phase==='stop'?slots.slice(0,1):slots;
- transfer={phase,loc,slots:chosen,left:chosen.length,anim:null};
- currentSpeed=0;setDriveGear(0);setCabView(false);setDoorOpening(1);
- document.body.classList.add('transferring');transferPanel.hidden=false;renderTransfer();
- if(phase==='goal'&&chosen.length===0)finishTransfer();
+ const slots=phase==='load'?[0,1,2]:[...aboardSlots].sort((a,b)=>a-b);const chosen=phase==='stop'?slots.slice(0,1):slots;
+ transfer={phase,loc,slots:chosen,left:chosen.length,anim:null,side:transferSide(loc),age:0,goalDelay:0};currentSpeed=0;setDriveGear(0);setCabView(false);setDoorOpening(1);
+ document.body.classList.add('transferring');transferPanel.hidden=false;transferTargets.hidden=false;transferToys.visible=true;const model=loc?freeDecor.get(key(loc.x,loc.y))?.model:null;for(const o of model?.userData.transferHide||[]){transferHidden.push([o,o.visible]);o.visible=false;}focusTransfer();renderTransfer();if(phase==='goal'&&chosen.length===0)finishTransfer();
 }
-function tapTransfer(i){
- const t=transfer;if(!t||t.anim||t.left===0||!t.slots.includes(i))return;
- if(t.phase==='load'?aboardSlots.has(i):!aboardSlots.has(i))return;
- unlockSound();t.anim={i,time:0};
- transferPerson.visible=missionType==='passenger';transferCrate.visible=missionType==='cargo';
- transferMover.visible=true;positionTransferMover(0);renderTransfer();
- if(navigator.vibrate)navigator.vibrate(20);
-}
-function positionTransferMover(q){
- const t=transfer;if(!t||!t.anim)return;
- const car=trainCars[0];car.updateMatrixWorld(true);
- const model=t.loc?freeDecor.get(key(t.loc.x,t.loc.y))?.model:null;
- const side=model&&Math.cos(model.getWorldQuaternion(new THREE.Quaternion()).angleTo(car.getWorldQuaternion(new THREE.Quaternion())))<0?-1:1;
- const p=t.phase==='load'?q:1-q;
- const x=side*(1.0-.75*p),y=.02+.37*p+Math.sin(Math.PI*q)*.12;
- transferMover.position.copy(car.localToWorld(new THREE.Vector3(x,y,0)));transferMover.rotation.y=car.rotation.y;
-}
-function tickTransfer(dt){
- const t=transfer;if(!t||!t.anim)return;
- t.anim.time+=dt;const q=Math.min(1,t.anim.time/.65);positionTransferMover(q);
- if(q<1)return;
- const i=t.anim.i;t.anim=null;transferMover.visible=false;
- if(t.phase==='load')aboardSlots.add(i);else{aboardSlots.delete(i);deliveredSlots.add(i);}
- t.left--;deliveredCount=deliveredSlots.size;missionLoaded=aboardSlots.size>0;deliveryDots();updateMissionVisual();
- if(t.left===0&&t.phase==='goal'){finishTransfer();return;}renderTransfer();
-}
-function endTransferPanel(){transfer=null;transferMover.visible=false;transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
+function tapTransfer(i,from){const t=transfer;if(!t||t.anim||t.left===0||!t.slots.includes(i))return;if(t.phase==='load'?aboardSlots.has(i):!aboardSlots.has(i))return;
+ unlockSound();t.anim={i,time:0,from:(from||slotHome(i)).clone(),to:slotDestination(i)};renderTransfer();if(navigator.vibrate)navigator.vibrate(20);}
+function tickTransfer(dt){const t=transfer;if(!t)return;t.age+=dt;
+ if(t.goalDelay>0){t.goalDelay-=dt;if(t.goalDelay<=0)finishTransfer();return;}
+ if(!t.anim){for(const i of touchTargets.keys()){const f=transferFigures[i];if(transferDrag?.i===i)continue;const v=slotHome(i);v.y+=Math.max(0,Math.sin(t.age*4+i*1.8))*.045;figureAt(i,v);f.arms[1].rotation.x=Math.sin(t.age*4+i)*.35;}updateTransferTargets();return;}
+ const a=t.anim,f=transferFigures[a.i];a.time+=dt;const q=Math.min(1,a.time/.90);const ease=q*q*(3-2*q);const v=a.from.clone().lerp(a.to,ease);
+ // Follow the open door, with a visible little step/hop over the sill.
+ v.y+=Math.sin(Math.PI*q)*(missionType==='cargo'?.19:.13);if(t.phase==='load')v.z=a.from.z*(1-Math.min(1,q*1.55));figureAt(a.i,v);f.g.scale.setScalar(t.phase==='load'?1-.25*THREE.MathUtils.smoothstep(q,.35,.75):.75+.25*THREE.MathUtils.smoothstep(q,.15,.6));for(let j=0;j<2;j++){f.legs[j].rotation.x=Math.sin(q*22+j*Math.PI)*.60;f.arms[j].rotation.x=-f.legs[j].rotation.x*.7;}
+ if(q<1)return;const i=a.i;t.anim=null;f.g.visible=false;if(t.phase==='load')aboardSlots.add(i);else{aboardSlots.delete(i);deliveredSlots.add(i);}t.left--;deliveredCount=deliveredSlots.size;missionLoaded=aboardSlots.size>0;deliveryDots();updateMissionVisual();const p=projectToy(localPoint(t.side*.7,.78,0));toySound(t.left===0);toyBurst(p,t.left===0);
+ if(t.left===0&&t.phase==='goal'){t.goalDelay=.75;for(const b of touchTargets.values())b.remove();touchTargets.clear();return;}renderTransfer();}
+function endTransferPanel(){transfer=null;clearToyStage();transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
 function resumeTransfer(){if(!transfer||transfer.left!==0||transfer.anim||transfer.phase==='goal')return;endTransferPanel();setDriveGear(1);departureBell();}
 function finishTransfer(){if(!transfer||transfer.phase!=='goal'||transfer.left!==0||deliveredSlots.size!==3)return;endTransferPanel();playing=false;currentSpeed=0;setCabView(false);updateRunButton();onMissionFinish();}
 
@@ -1343,7 +1367,7 @@ const canvas=renderer.domElement;
 canvas.style.touchAction='none';
 canvas.addEventListener('pointerdown',e=>{
  if(e.button!==0&&e.pointerType==='mouse')return;
- if(cabView)return;
+ if(cabView||transfer)return;
  canvas.setPointerCapture(e.pointerId);
  activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(activePointers.size===1){
@@ -1409,7 +1433,7 @@ document.getElementById('run').onclick=()=>{
  if(gameMode==='puzzle'&&findMissionStops().length!==requiredStations.size){challengeHint('🚉','とちゅうの えきに とまれるように つなごう');return;}
  placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();if(gameMode==='puzzle')beginTransfer('load',{x:0,y:2});refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
-function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
+function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(transfer)focusTransfer();else if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
 // Local civil time: smoothly blend lighting throughout the day.
 const daylightProfiles=[
  [0,0x172b50,0x8caeea,0x637a91,0xffd6a2,.92,.12,1],
