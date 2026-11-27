@@ -231,10 +231,24 @@ body.branch-wait #branchExit{display:block!important;width:190px;min-height:48px
 #passingPanel{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom) + 12px);z-index:13;background:#fff3ddf5;border:1px solid #c89d65;border-radius:17px;padding:10px;box-shadow:0 4px 0 #b98b52;width:min(290px,calc(100vw - 24px));text-align:center;color:#694422;font-weight:900}
 #passingPanel[hidden],#passingPanel button[hidden]{display:none!important}#passingPanel button{width:100%;min-height:58px;font-size:19px!important;color:#694422!important;margin-top:6px;background:linear-gradient(145deg,#e9f8ff,#c6e7f6);border:2px solid #3889b6}#passingPanel button::before,#passingDemo::before{display:none!important}
 body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wait #branchPanel,body.passing-wait #settingsDrawer > :not(#branchExit){display:none!important}body.passing-wait #branchExit{display:block!important;width:190px;min-height:48px;color:#694422!important;font-size:15px!important;font-weight:800;padding:9px!important}#passingDemo{width:100%;min-height:48px;font-size:14px!important;color:#694422!important;font-weight:900;grid-column:1/-1}body.driving #passingDemo{display:none!important}
+
+/* v3.6.5: tactile controls, contextual feedback, protected destructive actions */
+#tools button,#bottom button,#settingsToggle{transition:transform .10s,box-shadow .10s,background-color .15s;touch-action:manipulation}
+#tools button:active,#bottom button:active,#settingsToggle:active{transform:translateY(2px) scale(.96);box-shadow:inset 0 2px 4px #80522233,0 1px 0 #b98b52!important}
+#tools button.active{outline:2px solid #a36c25;outline-offset:1px;background:linear-gradient(145deg,#fff0a5,#f5c653)!important}
+#tools button.active::after{content:"";position:absolute;right:3px;top:3px;width:9px;height:9px;border-radius:50%;background:#498c45;border:1px solid #fff8dd}
+#run:not(.route-ready):not(.course-clear){filter:saturate(.55)}
+#run.route-ready{background:linear-gradient(145deg,#eaf5bd,#b4d88a)!important;outline:3px solid #609d45}
+#editFeedback{position:fixed;z-index:9;pointer-events:none;transform:translate(-50%,-50%);width:58px;height:58px;border:3px solid #ffdc72;border-radius:50%;box-shadow:0 0 0 3px #fff7d7aa;opacity:0}
+#editFeedback.pop{animation:editPop .42s ease-out both}#editFeedback.remove{border-color:#df9971}#editFeedback.hold{opacity:1;border-color:#fff5c9;animation:editHold .6s linear both}
+@keyframes editPop{0%{opacity:1;transform:translate(-50%,-50%) scale(.55)}60%{opacity:.85}100%{opacity:0;transform:translate(-50%,-50%) scale(1.35)}}
+@keyframes editHold{from{transform:translate(-50%,-50%) scale(1.1);opacity:.5}to{transform:translate(-50%,-50%) scale(.65);opacity:1}}
+#safeConfirm{position:fixed;inset:0;z-index:40;background:#32291e55;display:grid;place-items:center;padding:16px;touch-action:manipulation}#safeConfirm[hidden]{display:none!important}#safeConfirm section{width:min(340px,100%);background:#fff2db;border:2px solid #c59a65;border-radius:20px;padding:18px;box-shadow:0 5px 0 #9b734a;color:#694422;text-align:center}#safeConfirm h2{font-size:21px;margin:0 0 14px}#safeConfirm .choices{display:flex;gap:12px}#safeConfirm button{flex:1;min-height:58px;font-size:17px!important;color:#694422!important;line-height:1.2!important}#safeConfirm button::before{display:none!important}#safeCancel{background:#d9edc1!important}#safeAccept{background:#f3d8c3!important}
+@media(prefers-reduced-motion:reduce){#editFeedback.pop{animation-duration:.12s}#tools button,#bottom button{transition:none}}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -249,7 +263,7 @@ setTimeout(function(){if(!window.__aoLoaded){const el=document.getElementById('e
  for(const id of ['mode','missionPanel','fleetPicker','cameraControls'])drawer.append(document.getElementById(id));
  function setOpen(open){drawer.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'せっていを とじる':'せっていを ひらく');if(!open){document.getElementById('fleetChoices').hidden=true;document.getElementById('fleetToggle').setAttribute('aria-expanded','false');}}
  toggle.addEventListener('click',()=>setOpen(drawer.hidden));
- document.addEventListener('pointerdown',e=>{if(!drawer.hidden&&!drawer.contains(e.target)&&!toggle.contains(e.target))setOpen(false);},true);
+ document.addEventListener('pointerdown',e=>{if(!drawer.hidden&&!drawer.contains(e.target)&&!toggle.contains(e.target)){setOpen(false);if(e.target.closest('#world')){e.stopPropagation();e.preventDefault();}}},true);
  drawer.addEventListener('click',e=>{if(e.target.closest('#mode button,#missionPicker button,#fleetChoices button,#cameraReset,#viewToggle,#soundToggle'))setOpen(false);});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!drawer.hidden){setOpen(false);toggle.focus();}});
  new MutationObserver(()=>{if(document.body.classList.contains('transferring')&&!drawer.hidden)setOpen(false);}).observe(document.body,{attributes:true,attributeFilter:['class']});
@@ -1360,10 +1374,10 @@ masterLever.addEventListener('keydown',e=>{
  if(e.key==='ArrowDown'||e.key==='ArrowLeft'){e.preventDefault();setDriveGear(driveGear-1)}
 });
 document.querySelectorAll('#leverStops button').forEach(btn=>btn.addEventListener('click',()=>setDriveGear(Number(btn.dataset.gear))));
-document.getElementById('exitDrive').onclick=()=>{
+document.getElementById('exitDrive').onclick=(e)=>{if(e?.isTrusted){askBeforeReset('うんてんを やめる？',()=>document.getElementById('exitDrive').click());return;}
  setCabView(false);playing=false;currentSpeed=0;courseCleared=false;hideBoarding();resetPuzzleRoute();placeTrain();resetMissionState();setDriveGear(1);updateRunButton();updateRouteReady();refreshSpeedDisplay();msg.textContent='🛤️ せんろを つくろう！';
 };
-function selectTool(tool){hideBranchEdit();selectedTool=tool;document.querySelectorAll('#tools button').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool))}
+function selectTool(tool){hideBranchEdit();selectedTool=tool;document.querySelectorAll('#tools button').forEach(b=>{const on=b.dataset.tool===tool;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});}
 function setMode(mode){
  setCabView(false);playing=false;hideBoarding();gameMode=mode;document.body.classList.toggle('free',mode==='free');
  document.getElementById('puzzleMode').classList.toggle('active',mode==='puzzle');document.getElementById('freeMode').classList.toggle('active',mode==='free');
@@ -1543,7 +1557,7 @@ function tickPassing(dt){const p=passingPlan;if(!playing||!p||p.phase!=='moving'
 function makePassingDemo(){if(playing)return;setMode('free');for(let x=1;x<BOARD_LAST;x++)addFreeTile(x,2,'straight',1);addFreeTile(1,2,'branch',3);addFreeTile(5,2,'branch',1);const far=freeTracks.get(key(5,2));far.mirror=true;far.rail.scale.x=-1;
  addFreeTile(1,1,'curve',1);for(let x=2;x<5;x++)addFreeTile(x,1,'straight',1);addFreeTile(5,1,'curve',2);
  updateRouteReady();cameraHome();const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();challengeHint('🚃','すれちがい コース！ はっしゃ しよう');}
-const passingDemo=document.createElement('button');passingDemo.id='passingDemo';passingDemo.type='button';passingDemo.textContent='🚃 すれちがい コース';document.getElementById('settingsDrawer').append(passingDemo);passingDemo.onclick=makePassingDemo;
+const passingDemo=document.createElement('button');passingDemo.id='passingDemo';passingDemo.type='button';passingDemo.textContent='🚃 すれちがい コース';document.getElementById('settingsDrawer').append(passingDemo);passingDemo.onclick=()=>askBeforeReset('すれちがい コースに する？',makePassingDemo);
 
 // Intermediate-stop missions. A station placed on the chosen free route
 // becomes an active pickup point; station decorations off-route are ignored.
@@ -1645,7 +1659,7 @@ function renderTransfer(){
  const visible=t.phase==='load'?pending:pending.slice(0,1);
  transferFigures.forEach((f,i)=>{f.g.visible=visible.includes(i)||t.anim?.i===i;f.person.visible=missionType==='passenger';f.crate.visible=missionType==='cargo';if(f.g.visible&&t.anim?.i!==i){figureAt(i,slotHome(i));f.g.scale.setScalar(t.phase==='load'?1:.75);f.legs.forEach(l=>l.rotation.x=0);f.arms.forEach(a=>a.rotation.x=0);}});
  if(t.left>0&&!t.anim){for(const i of visible)makeToyTarget(i);destinationRing=document.createElement('div');destinationRing.className='toy-destination';transferTargets.append(destinationRing);}
- const back=transferButton('はじめの えきに もどる',getComputedStyle(document.getElementById('exitDrive')).getPropertyValue('--art'),()=>document.getElementById('exitDrive').click(),'transfer-back');transferPanel.append(back);updateTransferTargets();
+ const back=transferButton('はじめの えきに もどる',getComputedStyle(document.getElementById('exitDrive')).getPropertyValue('--art'),()=>askBeforeReset('うんてんを やめる？',()=>document.getElementById('exitDrive').click()),'transfer-back');transferPanel.append(back);updateTransferTargets();
 }
 function beginTransfer(phase,loc){
  const slots=phase==='load'?[0,1,2]:[...aboardSlots].sort((a,b)=>a-b);const chosen=phase==='stop'?slots.slice(0,1):slots;
@@ -1810,8 +1824,8 @@ function onMissionFinish(){
 }
 document.getElementById('passengerMission').onclick=()=>setMissionType('passenger');
 document.getElementById('cargoMission').onclick=()=>setMissionType('cargo');
-document.getElementById('puzzleMode').onclick=()=>setMode('puzzle');
-document.getElementById('freeMode').onclick=()=>setMode('free');
+document.getElementById('puzzleMode').onclick=()=>{if(gameMode!=='puzzle')askBeforeReset('パズルに かえる？',()=>setMode('puzzle'));};
+document.getElementById('freeMode').onclick=()=>{if(gameMode!=='free')askBeforeReset('じゆうに つくる？',()=>setMode('free'));};
 document.querySelectorAll('#tools button').forEach(b=>b.addEventListener('click',()=>selectTool(b.dataset.tool)));
 selectTool('straight');
 
@@ -1880,6 +1894,7 @@ let longPressTimer=null,longPressPointer=null,longPressConsumed=false;
 function cancelLongPress(){
  if(longPressTimer!==null){clearTimeout(longPressTimer);longPressTimer=null;}
  longPressPointer=null;
+ if(editFeedback.classList.contains('hold'))editFeedback.className='';
 }
 function tileAtScreen(x,y){
  const rect=canvas.getBoundingClientRect();
@@ -1893,6 +1908,13 @@ function deleteTileByHold(k){
  removeFreeTile(k);refreshTerrain(k);courseCleared=false;resetPuzzleRoute();placeTrain();resetMissionState();updateRouteReady();if(navigator.vibrate)navigator.vibrate(35);
 }
 
+const editFeedback=document.createElement('div');editFeedback.id='editFeedback';document.body.append(editFeedback);
+function showEditFeedback(x,y,kind){editFeedback.className='';editFeedback.style.left=x+'px';editFeedback.style.top=y+'px';void editFeedback.offsetWidth;editFeedback.className=kind==='hold'?'hold':'pop '+(kind==='remove'?'remove':'');}
+const safeConfirm=document.createElement('div');safeConfirm.id='safeConfirm';safeConfirm.hidden=true;safeConfirm.innerHTML='<section role="dialog" aria-modal="true" aria-labelledby="safeQuestion"><h2 id="safeQuestion"></h2><div class="choices"><button id="safeCancel" type="button">そのまま あそぶ</button><button id="safeAccept" type="button">やりなおす</button></div></section>';document.body.append(safeConfirm);
+let confirmAction=null;function closeSafeConfirm(){safeConfirm.hidden=true;confirmAction=null;}
+function askBeforeReset(question,action){if(!safeConfirm.hidden)return;confirmAction=action;safeConfirm.querySelector('h2').textContent=question;safeConfirm.hidden=false;safeConfirm.querySelector('#safeCancel').focus();}
+safeConfirm.querySelector('#safeCancel').onclick=closeSafeConfirm;safeConfirm.querySelector('#safeAccept').onclick=()=>{const action=confirmAction;closeSafeConfirm();if(action)action();};document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!safeConfirm.hidden)closeSafeConfirm();});
+function editSignature(k){const t=freeTracks.get(k),d=freeDecor.get(k);return JSON.stringify([t?.shape,t?.step,t?.switchChoice,d?.type,d?.step]);}
 let singleStart=null,pinchMid={x:0,y:0};
 function pointerDistance(){const a=[...activePointers.values()];return Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}
 function pointerMidpoint(){const a=[...activePointers.values()];return{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}}
@@ -1910,7 +1932,7 @@ const canvas=renderer.domElement;
 canvas.style.touchAction='none';
 canvas.addEventListener('pointerdown',e=>{
  if(e.button!==0&&e.pointerType==='mouse')return;
- if(cabView||transfer||branchWait)return;
+ if(cabView||transfer||branchWait||!safeConfirm.hidden)return;
  canvas.setPointerCapture(e.pointerId);
  activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(activePointers.size===1){
@@ -1919,11 +1941,11 @@ canvas.addEventListener('pointerdown',e=>{
   if(!playing){
    const heldCell=tileAtScreen(e.clientX,e.clientY);
    if(heldCell&&!isProtected(heldCell)&&(freeTracks.has(heldCell)||freeDecor.has(heldCell))){
-    longPressPointer=e.pointerId;
+    longPressPointer=e.pointerId;showEditFeedback(e.clientX,e.clientY,'hold');
     longPressTimer=setTimeout(()=>{
      longPressTimer=null;
      if(activePointers.size===1&&activePointers.has(e.pointerId)&&!gestureMoved){
-      longPressConsumed=true;gestureMoved=true;deleteTileByHold(heldCell);
+      longPressConsumed=true;gestureMoved=true;deleteTileByHold(heldCell);showEditFeedback(e.clientX,e.clientY,'remove');
      }
      longPressPointer=null;
     },600);
@@ -1937,7 +1959,7 @@ canvas.addEventListener('pointermove',e=>{
  activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(activePointers.size===1){
   if(singleStart&&Math.hypot(e.clientX-singleStart.x,e.clientY-singleStart.y)>9){gestureMoved=true;cancelLongPress();}
-  if(gestureMoved){orbit.theta-=dx*.008;orbit.phi=clamp(orbit.phi-dy*.008,orbitLimits.minPhi,orbitLimits.maxPhi);applyOrbit()}
+  if(gestureMoved&&!longPressConsumed){orbit.theta-=dx*.008;orbit.phi=clamp(orbit.phi-dy*.008,orbitLimits.minPhi,orbitLimits.maxPhi);applyOrbit()}
  }else if(activePointers.size===2){
   const mid=pointerMidpoint();
   const mdx=mid.x-pinchMid.x,mdy=mid.y-pinchMid.y;
@@ -1959,15 +1981,16 @@ function handlePointerEnd(e,cancelled){
  ray.setFromCamera(pointer,camera);if(playing){if(!transfer&&!branchWait)tapRailSignal(ray);return;}
  const hit=ray.intersectObjects(clickable)[0];if(!hit)return;
  const cell=hit.object.userData.tileKey;
- editFreeTile(cell);
+ const before=editSignature(cell);editFreeTile(cell);if(before!==editSignature(cell)){showEditFeedback(e.clientX,e.clientY,'place');if(navigator.vibrate)navigator.vibrate(12);}
 }
 canvas.addEventListener('pointerup',e=>handlePointerEnd(e,false));
 canvas.addEventListener('pointercancel',e=>handlePointerEnd(e,true));
+canvas.addEventListener('lostpointercapture',e=>{if(activePointers.has(e.pointerId))handlePointerEnd(e,true);});
 canvas.addEventListener('wheel',e=>{e.preventDefault();cameraZoom(Math.exp(e.deltaY*.001))},{passive:false});
 document.getElementById('zoomIn').onclick=()=>cameraZoom(.82);
 document.getElementById('zoomOut').onclick=()=>cameraZoom(1.22);
 document.getElementById('cameraReset').onclick=cameraHome;
-document.getElementById('reset').onclick=()=>gameMode==='free'?resetFree():newPuzzle();
+document.getElementById('reset').onclick=()=>askBeforeReset('あたらしい コースに する？',()=>gameMode==='free'?resetFree():newPuzzle());
 document.getElementById('run').onclick=()=>{
  unlockSound();
  if(playing)return;
