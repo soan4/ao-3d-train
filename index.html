@@ -248,7 +248,7 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.6.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.7</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -282,7 +282,9 @@ const mats={grass:new THREE.MeshStandardMaterial({color:0x8cce80}),tile:new THRE
 const stationLampMat=new THREE.MeshStandardMaterial({color:0xfff3cb,emissive:0xffcc76,emissiveIntensity:0,roughness:.55});
 const interiorLampMat=stationLampMat.clone();
 const toyGeometries=new Map();
-function toyBox(w,h,d){const id=[w,h,d].join(',');const r=Math.min(.055,w*.16,h*.16,d*.16);let geo;if(Math.min(w,h,d)<.075){geo=new THREE.BoxGeometry(w,h,d);}else{geo=new THREE.BoxGeometry(w,h,d,4,4,4);const p=geo.attributes.position;const half=[w/2,h/2,d/2];for(let i=0;i<p.count;i++){const v=[p.getX(i),p.getY(i),p.getZ(i)],q=v.map((a,j)=>Math.max(-half[j]+r,Math.min(half[j]-r,a)));const delta=v.map((a,j)=>a-q[j]);const len=Math.hypot(...delta)||1;p.setXYZ(i,...q.map((a,j)=>a+delta[j]*r/len));}geo.computeVertexNormals();}return geo;}
+const sharedToyGeometry=new WeakSet();
+function disposeGeometry(o){if(o.geometry&&!sharedToyGeometry.has(o.geometry))o.geometry.dispose();}
+function toyBox(w,h,d){const id=[w,h,d].join(',');if(toyGeometries.has(id))return toyGeometries.get(id);const r=Math.min(.055,w*.16,h*.16,d*.16);let geo;if(Math.min(w,h,d)<.075){geo=new THREE.BoxGeometry(w,h,d);}else{geo=new THREE.BoxGeometry(w,h,d,4,4,4);const p=geo.attributes.position;const half=[w/2,h/2,d/2];for(let i=0;i<p.count;i++){const v=[p.getX(i),p.getY(i),p.getZ(i)],q=v.map((a,j)=>Math.max(-half[j]+r,Math.min(half[j]-r,a)));const delta=v.map((a,j)=>a-q[j]);const len=Math.hypot(...delta)||1;p.setXYZ(i,...q.map((a,j)=>a+delta[j]*r/len));}geo.computeVertexNormals();}if(toyGeometries.size<384){toyGeometries.set(id,geo);sharedToyGeometry.add(geo);}return geo;}
 function cube(parent,w,h,d,mat,x=0,y=0,z=0){const m=new THREE.Mesh(toyBox(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
 function cylinder(parent,r,h,mat,x,y,z){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,16),mat);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
 // Lightweight procedural surface textures: no extra network assets.
@@ -502,7 +504,7 @@ function attachRiverLife(model,k){
 function setRiverLifeMode(ref,mode){
  if(ref.mode===mode)return;
  const {root}=ref;
- for(const child of [...root.children]){child.traverse(o=>{if(o.geometry)o.geometry.dispose();});root.remove(child);}
+ for(const child of [...root.children]){child.traverse(o=>{disposeGeometry(o);});root.remove(child);}
  for(const mat of ref.ownMats)mat.dispose();
  const ownMats=[],ripples=[];
  const ripplePreset=mode==='none'?[]:mode==='ripples'?[[-.04,.10,.11,0]]:mode==='fish'||mode==='both'?[[-.14,-.12,.09,.4]]:[[.12,.12,.10,.7]];
@@ -1092,8 +1094,8 @@ function sampleRoute(distance){
  return {position,heading:Math.atan2(tangent.x,tangent.z)};
 }
 function routePositionRaw(distance){
- let s=Math.max(0,Math.min(routeLengths.at(-1),distance)),i=0;
- while(i+1<routeLengths.length-1&&routeLengths[i+1]<s)i++;
+ let s=Math.max(0,Math.min(routeLengths.at(-1),distance)),i=0,hi=routeLengths.length-1;
+ while(i+1<hi){const m=(i+hi)>>1;if(routeLengths[m]<=s)i=m;else hi=m;}
  const r=(s-routeLengths[i])/(routeLengths[i+1]-routeLengths[i]);
  return routePoints[i].clone().lerp(routePoints[i+1],r);
 }
@@ -1241,7 +1243,7 @@ function showBranchPreview(t){
  branchPreview={g,t,mats};
 }
 function endBranchView(resumeCab=false){
- if(branchPreview){const {g,t,mats}=branchPreview;scene.remove(g);g.traverse(o=>{if(o.geometry)o.geometry.dispose();});mats.forEach(m=>m.dispose());if(t.highlight)t.highlight.visible=true;branchPreview=null;}
+ if(branchPreview){const {g,t,mats}=branchPreview;scene.remove(g);g.traverse(o=>{disposeGeometry(o);});mats.forEach(m=>m.dispose());if(t.highlight)t.highlight.visible=true;branchPreview=null;}
  if(branchView){const old=branchView;branchView=null;Object.assign(orbit,old.orbit);cameraTarget.copy(old.target);if(resumeCab&&old.cab)setCabView(true);else applyOrbit();}
 }
 function branchDrivingButton(choice){
@@ -1292,7 +1294,7 @@ function stationLabel(x,y,label,color){
  // so the board stays clean and easier to see.
  return null;
 }
-function clearChallenge(){for(const item of challengeTerrain.values()){detachAmbientRef(item);scene.remove(item.group);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose()});}challengeTerrain.clear();requiredStations.clear();for(const label of stationLabels){scene.remove(label);label.material.map.dispose();label.material.dispose();}stationLabels.length=0;}
+function clearChallenge(){for(const item of challengeTerrain.values()){detachAmbientRef(item);scene.remove(item.group);item.group.traverse(o=>{disposeGeometry(o)});}challengeTerrain.clear();requiredStations.clear();for(const label of stationLabels){scene.remove(label);label.material.map.dispose();label.material.dispose();}stationLabels.length=0;}
 function makeChallengeTerrain(x,y,type){
  if(type!=='mountain'){makeTerrain(x,y,type);const k=key(x,y),item=freeDecor.get(k);freeDecor.delete(k);challengeTerrain.set(k,item);return;}
  const group=new THREE.Group();group.position.copy(pos(x,y));scene.add(group);const model=new THREE.Group();group.add(model);
@@ -1300,14 +1302,14 @@ function makeChallengeTerrain(x,y,type){
 }
 function refreshTerrain(k){const item=challengeTerrain.get(k);if(item&&item.type==='mountain')item.group.visible=freeDecor.get(k)?.type!=='tunnel';}
 function challengeHint(icon,words){showMissionBanner(icon,words,2);const now=performance.now();if(soundEnabled&&window.speechSynthesis&&(lastHint!==words||now-lastHintAt>4500)){try{const u=new SpeechSynthesisUtterance(words);u.lang='ja-JP';u.rate=.88;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}catch(e){}lastHint=words;lastHintAt=now;}}
-function updateRouteReady(){const run=document.getElementById('run');const ok=!!findFreeRoute();run.classList.toggle('route-ready',ok&&!courseCleared);run.classList.toggle('course-clear',courseCleared);run.setAttribute('aria-label',courseCleared?'あたらしい コース':'はっしゃ');return ok;}
+function updateRouteReady(){trafficCheckDue=0;const run=document.getElementById('run');const ok=!!findFreeRoute();run.classList.toggle('route-ready',ok&&!courseCleared);run.classList.toggle('course-clear',courseCleared);run.setAttribute('aria-label',courseCleared?'あたらしい コース':'はっしゃ');return ok;}
 function transferArt(){return getComputedStyle(document.getElementById(missionType==='cargo'?'cargoMission':'passengerMission')).getPropertyValue('--art').trim();}
 function deliveryDots(){const d=document.getElementById('deliveryDots');d.replaceChildren();for(let i=0;i<3;i++){const span=document.createElement('span');span.className=deliveredSlots.has(i)?'done':aboardSlots.has(i)?'':'waiting';span.style.backgroundImage=transferArt();d.append(span);}d.setAttribute('aria-label','のっている '+aboardSlots.size+'、とどけた '+deliveredSlots.size);}
 
 const opposite=d=>(d+2)%4;
 function freeCon(t){return t.shape==='branch'?branchEnds(t):t.con.map(d=>(d+t.step)%4)}
-function clearFreeVisual(){for(const k of [...freeDecor.keys()])removeFreeDecor(k);for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()})}freeTracks.clear()}
-function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;if(item.type==='bridge')riverLifeDirty=true;detachAmbientRef(item);scene.remove(item.group);for(let i=crossings.length-1;i>=0;i--)if(crossings[i].g===item.model)crossings.splice(i,1);item.group.traverse(o=>{if(o.geometry)o.geometry.dispose();const i=crossingLights.findIndex(l=>l.mesh===o);if(i>=0)crossingLights.splice(i,1)});freeDecor.delete(k)}
+function clearFreeVisual(){for(const k of [...freeDecor.keys()])removeFreeDecor(k);for(const t of freeTracks.values()){scene.remove(t.rail);t.rail.traverse(o=>{disposeGeometry(o)})}freeTracks.clear()}
+function removeFreeDecor(k){const item=freeDecor.get(k);if(!item)return;if(item.type==='bridge')riverLifeDirty=true;detachAmbientRef(item);scene.remove(item.group);for(let i=crossings.length-1;i>=0;i--)if(crossings[i].g===item.model)crossings.splice(i,1);item.group.traverse(o=>{disposeGeometry(o);const i=crossingLights.findIndex(l=>l.mesh===o);if(i>=0)crossingLights.splice(i,1)});freeDecor.delete(k)}
 function placeFreeDecor(x,y,type){
  const k=key(x,y);removeFreeDecor(k);
  const group=new THREE.Group();group.position.copy(pos(x,y));scene.add(group);
@@ -1329,7 +1331,7 @@ function addFreeTile(x,y,shape,step=0){
  else makeTrack(rail,tileRailPoints(con));
  const t={x,y,shape,con,step,rail,switchChoice:0};rail.rotation.y=-step*Math.PI/2;freeTracks.set(k,t);refreshBranch(t);
 }
-function removeFreeTile(k){removeFreeDecor(k);const t=freeTracks.get(k);if(!t)return;scene.remove(t.rail);t.rail.traverse(o=>{if(o.geometry)o.geometry.dispose()});freeTracks.delete(k)}
+function removeFreeTile(k){removeFreeDecor(k);const t=freeTracks.get(k);if(!t)return;scene.remove(t.rail);t.rail.traverse(o=>{disposeGeometry(o)});freeTracks.delete(k)}
 function updateRunButton(){
  document.getElementById('run').textContent=playing?'🚃💨':'🚦▶️';
  document.body.classList.toggle('driving',playing);if(playing)closeFleet();
@@ -1342,14 +1344,15 @@ function approachSpeed(current,target,dt){
  const rate=target>current?acceleration*(.40+.60*motionEase(current/.45))*(.65+.35*motionEase((target-current)/.45)):braking;
  return current+Math.sign(target-current)*Math.min(Math.abs(target-current),rate*dt);
 }
+function setDriveStatus(value){if(driveStatus.textContent!==value)driveStatus.textContent=value;}
 function refreshSpeedDisplay(){
- driveSpeed.textContent='🚃 '+Math.round(currentSpeed/targetSpeeds[2]*100)+'%';
+ const speedText='🚃 '+Math.round(currentSpeed/targetSpeeds[2]*100)+'%';if(driveSpeed.textContent!==speedText)driveSpeed.textContent=speedText;
  if(!playing)return;
- if(missionWait>0)driveStatus.textContent='🚉';
- else if(driveGear===0)driveStatus.textContent='🛑';
- else if(currentSpeed<targetSpeeds[driveGear]-.12)driveStatus.textContent='⬆️';
- else if(currentSpeed>targetSpeeds[driveGear]+.12)driveStatus.textContent='⬇️';
- else driveStatus.textContent=driveGear===1?'🐢':'🚄';
+ if(missionWait>0)setDriveStatus('🚉');
+ else if(driveGear===0)setDriveStatus('🛑');
+ else if(currentSpeed<targetSpeeds[driveGear]-.12)setDriveStatus('⬆️');
+ else if(currentSpeed>targetSpeeds[driveGear]+.12)setDriveStatus('⬇️');
+ else setDriveStatus(driveGear===1?'🐢':'🚄');
 }
 const masterLever=document.getElementById('masterLever');
 const leverHandle=document.getElementById('leverHandle');
@@ -1732,7 +1735,7 @@ railSignalPanel.append(railRelease);document.body.append(railSignalPanel);
 let waitingRailSignal=null;
 railRelease.onclick=()=>{if(playing&&waitingRailSignal&&waitingRailSignal.manualHold){unlockSound();waitingRailSignal.manualHold=false;updateRailSignals();}};
 function clearRailSignals(){
- for(const sig of railSignals){railSignalRoot.remove(sig.g);sig.g.traverse(o=>{if(o.geometry)o.geometry.dispose();});}
+ for(const sig of railSignals){railSignalRoot.remove(sig.g);sig.g.traverse(o=>{disposeGeometry(o);});}
  railSignals.length=0;waitingRailSignal=null;railSignalPanel.hidden=true;
 }
 function selectRailSignalSites(candidates){
@@ -2100,7 +2103,7 @@ function tickScenery(dt,now){
 // Traffic is rebuilt only when the road layout or orientation changes.
 const trafficRoot=new THREE.Group();scene.add(trafficRoot);
 const trafficPaint=[0xe99b45,0x58a8ca,0x78aa58,0xe16b62].map(color=>new THREE.MeshStandardMaterial({color,roughness:.8}));
-let trafficSignature='',trafficCars=[];
+let trafficSignature='',trafficCars=[];var trafficCheckDue=0;const crossingIds=new WeakMap();let crossingSerial=0;
 function makeRoadCar(paint){
  const g=new THREE.Group();trafficRoot.add(g);
  cube(g,.24,.13,.43,paint,0,.22,0);cube(g,.21,.13,.24,paint,0,.33,-.015);
@@ -2140,9 +2143,9 @@ function rebuildTraffic(){
  if(gameMode==='puzzle'){for(const [k,item] of challengeTerrain)if(item.type==='road'){const [x,y]=k.split(',').map(Number);nodes.set(k,{x,y,axis:'z'});}}
  else for(const [k,item] of freeDecor)if(item.type==='road'){const [x,y]=k.split(',').map(Number);nodes.set(k,{x,y,axis:axis(item.model.rotation.y,Math.PI/2)});}
  for(const c of crossings)if(crossingActive(c))nodes.set(key(c.x,c.y),{x:c.x,y:c.y,axis:axis(c.g.rotation.y,0),cross:c});
- const sig=gameMode+'|'+[...nodes].map(([k,n])=>k+':'+n.axis+':'+!!n.cross).sort().join('|');
+ const sig=gameMode+'|'+[...nodes].map(([k,n])=>k+':'+n.axis+':'+(n.cross?(crossingIds.has(n.cross)?crossingIds.get(n.cross):(crossingIds.set(n.cross,++crossingSerial),crossingSerial)):0)).sort().join('|');
  if(sig===trafficSignature)return;trafficSignature=sig;
- for(const car of trafficCars){trafficRoot.remove(car.g);car.g.traverse(o=>{if(o.geometry)o.geometry.dispose();});}trafficCars=[];
+ for(const car of trafficCars){trafficRoot.remove(car.g);car.g.traverse(o=>{disposeGeometry(o);});}trafficCars=[];
  const seen=new Set();
  for(const [k,n] of nodes){if(seen.has(k))continue;const dx=n.axis==='x'?1:0,dy=1-dx;
   let x=n.x,y=n.y;const matches=(a,b)=>nodes.get(key(a,b))?.axis===n.axis;
@@ -2161,7 +2164,7 @@ function rebuildTraffic(){
  }
 }
 function updateTraffic(dt){
- rebuildTraffic();
+ const now=performance.now();if(now>=trafficCheckDue){rebuildTraffic();trafficCheckDue=now+200;}
  for(const car of trafficCars){
   const {g,origin,dx,dy,length,stops,sign,lane}=car;
   let next=car.s+sign*dt*1.05;
@@ -2173,8 +2176,22 @@ function updateTraffic(dt){
   car.s=next;g.position.set(origin.x+dx*(next-.825)+dy*lane,0,origin.z+dy*(next-.825)-dx*lane);
  }
 }
-let prev=performance.now();function animate(now){
- requestAnimationFrame(animate);const dt=Math.min((now-prev)/1000,.05);prev=now;
+let prev=performance.now(),qualityTime=0,qualityFrames=0,slowWindows=0,fastWindows=0,contextLost=false;
+const maxRenderRatio=Math.min(devicePixelRatio,2),minRenderRatio=Math.min(maxRenderRatio,1.25);let renderRatio=maxRenderRatio;
+function resetFrameClock(){prev=performance.now();qualityTime=0;qualityFrames=0;slowWindows=0;fastWindows=0;}
+function tuneRenderQuality(raw){
+ if(raw<=0||raw>.15)return;qualityTime+=raw;qualityFrames++;
+ if(qualityTime<3)return;const fps=qualityFrames/qualityTime;qualityTime=0;qualityFrames=0;
+ if(fps<38){slowWindows++;fastWindows=0;}else if(fps>55){fastWindows++;slowWindows=0;}else{slowWindows=0;fastWindows=0;}
+ let next=renderRatio;if(slowWindows>=2)next=Math.max(minRenderRatio,renderRatio-.25);else if(fastWindows>=4)next=Math.min(maxRenderRatio,renderRatio+.25);
+ if(next!==renderRatio){renderRatio=next;renderer.setPixelRatio(next);slowWindows=0;fastWindows=0;}
+}
+document.addEventListener('visibilitychange',resetFrameClock);window.addEventListener('pageshow',resetFrameClock);
+renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;quietRailAudio();});
+renderer.domElement.addEventListener('webglcontextrestored',()=>{contextLost=false;resetFrameClock();});
+function animate(now){
+ requestAnimationFrame(animate);if(document.hidden||contextLost){prev=now;return;}
+ const raw=Math.max(0,(now-prev)/1000);prev=now;const dt=Math.min(raw,.05);tuneRenderQuality(raw);
  if(now-lastDaylightCheck>10000){lastDaylightCheck=now;updateDaylight();}
  if(bannerTime>0){bannerTime-=dt;if(bannerTime<=0)bannerEl.classList.remove('show')}
 
