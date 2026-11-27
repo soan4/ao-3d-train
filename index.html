@@ -234,7 +234,7 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.2</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -300,8 +300,8 @@ function pos(x,y){return new THREE.Vector3((x-BOARD_CENTER)*CELL_SIZE,0,(y-BOARD
 function connectionsAt(i){const [x,y]=path[i],arr=[];if(i>0){const [a,b]=path[i-1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}if(i<path.length-1){const [a,b]=path[i+1];arr.push(dir.findIndex(([dx,dy])=>dx===a-x&&dy===b-y))}return arr}
 // Ver.1.2.1: Each tile has genuine continuous 3D rails. Curves use precisely
 // the same rounded corner geometry as the vehicle's path below.
-const railSteel=new THREE.MeshStandardMaterial({color:0xc3ccd1,metalness:.32,roughness:.34});
-const railTop=new THREE.MeshStandardMaterial({color:0xf3e5cb,metalness:.18,roughness:.36});
+const railSteel=new THREE.MeshStandardMaterial({color:0x929da3,metalness:.42,roughness:.42});
+const railTop=new THREE.MeshStandardMaterial({color:0xe5e9e7,metalness:.42,roughness:.31});
 const sleeperMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#c39157",["#bb854b","#d1a16b","#c69760"],true),roughness:.92});
 const ballastMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#d5b78c",["#cba97c","#dfc398","#d7b88d"],true),roughness:1});
 const railGauge=.81,halfTile=.825,curveRadius=.52;
@@ -450,9 +450,13 @@ function buildLivingHouse(model,scale=1,baseY=.15){
  const geo=new THREE.ExtrudeGeometry(shape,{depth:.77,bevelEnabled:false});geo.translate(0,0,-.385);const gable=new THREE.Mesh(geo,houseWall);gable.position.y=.63;gable.castShadow=true;h.add(gable);
  for(const side of [-1,1]){const r=cube(h,.53,.055,.85,roofMat,side*.218,.787,0);r.rotation.z=-side*.58;}
  cube(h,.07,.055,.86,roofMat,0,.936,0);cube(h,.10,.22,.10,trim,.23,.84,-.18);
+ cube(h,.125,.035,.125,roofMat,.23,.962,-.18);
+ for(const side of [-1,1])for(const z of [-.25,0,.25]){const seam=cube(h,.50,.012,.014,roofMat,side*.218,.817,z);seam.rotation.z=-side*.58;}
  const door=new THREE.Group();door.position.set(-.135,.075,.376);h.add(door);cube(door,.27,.36,.035,mats.wood,.135,.18,0);ambientBall(door,.015,mats.yellow,.23,.18,.024);
  for(const x of [-.26,.26]){const wm=mats.window.clone();wm.emissive.setHex(0xffbc6b);wm.emissiveIntensity=0;windowMats.push(wm);ownMats.push(wm);cube(h,.21,.23,.028,trim,x,.405,.38);cube(h,.165,.18,.018,wm,x,.405,.401);cube(h,.012,.18,.022,trim,x,.405,.417);cube(h,.165,.012,.022,trim,x,.405,.417);cube(h,.23,.035,.065,trim,x,.285,.40);}
  cube(h,.27,.032,.23,trim,0,.02,.49);
+ for(const x of [-.153,.153])cube(h,.025,.36,.025,trim,x,.255,.373);
+ cube(h,.33,.025,.025,trim,0,.445,.373);
  const walker=makeAmbientPerson([0x4b96d2,0xe0a24d,0x6eb658][ambientHouses.length%3]);walker.g.scale.setScalar(.70);walker.g.visible=false;h.add(walker.g);
  const now=performance.now();const ref={g:h,walker,door,lit:true,nextLight:now+7000+Math.random()*12000,nextWalk:now+3000+Math.random()*6500,walkActive:false,walkStart:0,walkDur:0,windowMats,walkBaseY:.04,walkBaseZ:.37,walkSpan:.31,ownMats};ambientHouses.push(ref);return ref;
 }
@@ -572,7 +576,8 @@ function addTunnel(x,y,parent=deco){
  cube(g,1.57,.20,1.49,mountain,0,1.84,0);
  for(const z of [-.75,.75])cube(g,1.57,.16,.075,stone,0,1.82,z);
  const peak=new THREE.Mesh(new THREE.SphereGeometry(.69,14,9),mountain);peak.scale.set(1,.30,1);peak.position.y=1.96;peak.castShadow=true;g.add(peak);
- for(const z of [-.78,.78]){for(const side of [-1,1])for(let i=0;i<5;i++)cube(g,.15,.015,.025,steel,side*.71,.26+i*.29,z);cube(g,.32,.065,.025,darkTunnel,0,1.82,z);}
+ for(const z of [-.78,.78]){for(const side of [-1,1])for(let i=0;i<5;i++)cube(g,.15,.015,.025,steel,side*.71,.26+i*.29,z);cube(g,.32,.065,.025,darkTunnel,0,1.82,z);
+ for(const x of [-.54,-.36,.36,.54])cube(g,.012,.105,.012,steel,x,1.82,z);}
  return g;
 }
 function addCrossing(x,y,parent=deco){
@@ -596,9 +601,11 @@ function station(x,y,color,parent=scene){
  cube(g,.033,.012,1.48,mats.yellow,.565,.232,0);
  cube(g,.25,.065,1.15,mats.white,.68,.91,0);
  cube(g,.25,.065,1.15,color,.68,.96,0);
+ for(const z of [-.54,.54])cube(g,.24,.021,.025,steel,.68,.935,z);
  cube(g,.10,.018,.74,stationLampMat,.68,.868,0).castShadow=false;
  for(const z of [-.50,.50])cube(g,.04,.67,.04,steel,.775,.56,z);
  cube(g,.13,.045,.28,mats.wood,.70,.36,0);
+ for(const z of [-.085,0,.085])cube(g,.12,.006,.065,mats.wood,.70,.385,z);
  cube(g,.04,.18,.28,mats.wood,.765,.43,0);
  for(const z of [-.10,.10])cube(g,.035,.13,.035,steel,.70,.29,z);
  cube(g,.05,.16,.24,color,.77,.68,.35);
@@ -648,7 +655,10 @@ const bogiesByCar=[];const wheelSpinners=[];const slidingDoors=[];const rearGang
 const paint=new THREE.MeshStandardMaterial({color:0xde5141,metalness:0,roughness:.36});
 const paintLight=new THREE.MeshStandardMaterial({color:0xf36a50,metalness:0,roughness:.39});
 const cream=new THREE.MeshStandardMaterial({color:0xfff9eb,metalness:.10,roughness:.4});
-paint.map=woodGrain;paintLight.map=woodGrain;cream.map=woodGrain;
+// Fine satin lacquer on painted areas; preserve wood grain on the ivory roof.
+const lacquerGrain=surfaceTexture('#fffdf8',['#fcf7ee','#faf4e9','#fffaf2'],true);
+paint.map=lacquerGrain;paintLight.map=lacquerGrain;cream.map=woodGrain;
+paint.roughness=.52;paintLight.roughness=.55;cream.roughness=.59;
 // Shared body materials allow every car to change livery without rebuilding meshes.
 const fleetColors={red:[0xde5141,0xf36a50],yellow:[0xf0c52d,0xffdb58],blue:[0x287fc7,0x4b9de3]};
 const fleetToggle=document.getElementById('fleetToggle'),fleetChoices=document.getElementById('fleetChoices');
@@ -803,6 +813,7 @@ function railTrainCar(number){
  // Shoulder/roof: a slightly rounded cross-section at the top.
  // Roof equipment: AC units, low-profile pantograph and conduits.
  cube(car,.27,.055,.42,steel,0,1.112,-.18);
+ cube(car,.245,.014,.395,cream,0,1.143,-.18);
  for(const z of [-.39,.31])cube(car,.18,.025,.12,chassisMat,0,1.15,z);
  for(let i=0;i<7;i++)cube(car,.23,.009,.018,chassisMat,0,1.145,-.31+i*.047);
  for(const x of [-.09,.09]){const vent=new THREE.Mesh(new THREE.CylinderGeometry(.046,.046,.013,16),chassisMat);vent.position.set(x,1.146,-.33);car.add(vent);}
@@ -854,6 +865,7 @@ function railTrainCar(number){
  }
  cube(car,.54,.085,.045,cream,0,.41,.642);
  cube(car,.29,.08,.11,chassisMat,0,.34,.671);
+ for(const x of [-.093,.093])cube(car,.045,.038,.012,steel,x,.35,.732);
  cube(car,.22,.028,.045,steel,0,.31,.733);
  // Open rear windshield: narrow edge frames, no opaque sheet behind the glass.
  for(const x of [-.238,.238])cube(car,.025,.24,.025,glassTrim,x,.82,-.632);
@@ -883,6 +895,7 @@ function railTrainCar(number){
     ring.rotation.y=Math.PI/2;ring.position.x=side*.047;spin.add(ring);
     // Small eccentric marker makes wheel rotation visually evident.
     const marker=cube(spin,.018,.032,.040,cream,side*.061,.075,0);
+    const hub=new THREE.Mesh(new THREE.CylinderGeometry(.046,.046,.012,16),chassisMat);hub.rotation.z=Math.PI/2;hub.position.x=side*.057;spin.add(hub);
     wheelSpinners.push(spin);
    }
   }
@@ -907,7 +920,7 @@ function railTrainCar(number){
  for(const x of [-.252,.252])cube(rearGangway,.028,.42,.025,glassTrim,x,.73,-.626);
  for(const y of [.526,.934])cube(rearGangway,.52,.028,.025,glassTrim,0,y,-.626);
  rearGangways[number]=rearGangway;
- for(const x of [-.404,.404]){cube(car,.018,.09,.16,cream,x,.55,-.04);for(const z of [-.40,.40]){cube(car,.016,.022,.29,paintLight,x,.64,z);cube(car,.014,.014,.17,steel,x,.50,z);}}
+ for(const x of [-.404,.404]){cube(car,.012,.045,.13,cream,x,.55,-.40);for(const z of [-.40,.40]){cube(car,.016,.022,.29,paintLight,x,.64,z);cube(car,.014,.014,.17,steel,x,.50,z);}}
  return car;
 }
 for(let i=0;i<3;i++)trainCars.push(railTrainCar(i));
@@ -935,7 +948,8 @@ trainCars[0].add(nightBeam,nightBeam.target);
 const couplerMaterial=new THREE.MeshStandardMaterial({color:0x454e59,metalness:.42,roughness:.5});
 const couplers=[];
 for(let i=0;i<2;i++){
- const bar=new THREE.Mesh(new THREE.CylinderGeometry(.034,.034,1,10),couplerMaterial);
+ const bar=new THREE.Mesh(new THREE.CylinderGeometry(.034,.034,1,12),couplerMaterial);
+ const collar=new THREE.Mesh(new THREE.CylinderGeometry(.047,.047,.32,12),couplerMaterial);bar.add(collar);
  bar.castShadow=true;scene.add(bar);couplers.push(bar);
 }
 const couplerAxis=new THREE.Vector3(0,1,0);
