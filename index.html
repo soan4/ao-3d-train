@@ -234,7 +234,7 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.3</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -622,7 +622,9 @@ function attachPuzzleModule(x,y,model,offset=0){puzzleModules.set(key(x,y),{mode
 const puzzleMidStation=station(2,2,mats.yellow);
 const puzzleGoalStation=station(4,2,mats.blue);
 const freeGoalStation=station(BOARD_LAST,2,mats.blue);freeGoalStation.rotation.y=-Math.PI/2;freeGoalStation.visible=false;
-const startStation=station(0,2,mats.yellow);startStation.rotation.y=Math.PI;
+const startStation=station(0,3,mats.yellow);startStation.rotation.y=Math.PI;
+// Platform on the straight approach, outside the curve and wheel envelope.
+for(const child of startStation.children)child.position.x+=.055;
 attachPuzzleModule(2,2,puzzleMidStation);
 attachPuzzleModule(4,2,puzzleGoalStation);
 attachPuzzleModule(2,3,addBridge(2,3));
@@ -970,10 +972,11 @@ function positionCouplers(){
 }
 
 // Doors slide along the length of the car; 0=closed, 1=open.
+function motionEase(v){v=Math.max(0,Math.min(1,v));return v*v*(3-2*v);}
 let doorOpening=0;
 function setDoorOpening(value){
  doorOpening=THREE.MathUtils.clamp(value,0,1);
- for(const door of slidingDoors)door.panel.position.z=door.baseZ+door.sign*.18*doorOpening;
+ for(const door of slidingDoors)door.panel.position.z=door.baseZ+door.sign*.18*motionEase(doorOpening);
 }
 // Two small, fully 3D passengers walk from the temporary platform into the train.
 const boardingGroup=new THREE.Group();scene.add(boardingGroup);
@@ -1124,16 +1127,16 @@ function tickFollowing(dt){
 }
 function resetPuzzleRoute(){
  clearPassing();clearRailSignals();
- const c=pos(0,2);routePoints=[c.clone().addScaledVector(vecDir(2),3.8),...tileRailPoints([2,1]).map(p=>p.clone().add(c)),c.clone().addScaledVector(vecDir(1),1.65)];rebuildDistances();startDistance=3.8;finishDistance=routeLengths.at(-1);
+ const c=pos(0,2);routePoints=[c.clone().addScaledVector(vecDir(2),5.45),...tileRailPoints([2,1]).map(p=>p.clone().add(c)),c.clone().addScaledVector(vecDir(1),1.65)];rebuildDistances();startDistance=3.8;finishDistance=routeLengths.at(-1);
 }
 function rebuildDistances(){routeLengths=[0];for(let i=1;i<routePoints.length;i++)routeLengths.push(routeLengths.at(-1)+routePoints[i].distanceTo(routePoints[i-1]));}
 function newPuzzle(){
  setCabView(false);playing=false;currentSpeed=0;hideBoarding();clearFreeVisual();clearChallenge();courseCleared=false;deliveredCount=0;
- for(const t of tiles.values())t.rail.visible=false;deco.visible=false;puzzleMidStation.visible=false;puzzleGoalStation.visible=false;freeGoalStation.visible=false;startStation.visible=false;scene.getObjectByName('puzzleStartApproach').visible=false;
+ for(const t of tiles.values())t.rail.visible=false;deco.visible=false;puzzleMidStation.visible=false;puzzleGoalStation.visible=false;freeGoalStation.visible=false;startStation.visible=true;scene.getObjectByName('puzzleStartApproach').visible=false;
  for(const b of clickable)b.material=mats.tile;
  let spec,signature;do{spec=courseSpec();signature=JSON.stringify([spec.r,spec.g,spec.order,spec.stations]);}while(signature===previousCourse);previousCourse=signature;challengeSpec=spec;goalKey=key(BOARD_LAST,spec.g);
  for(let i=0;i<TERRAIN_COLUMNS.length;i++)for(let y=0;y<BOARD_SIZE;y++)makeChallengeTerrain(TERRAIN_COLUMNS[i],y,spec.order[i]);
- addFreeTile(0,2,'curve',1);placeFreeDecor(0,2,'station');
+ addFreeTile(0,2,'curve',1);
  addFreeTile(BOARD_LAST,spec.g,'straight',1);placeFreeDecor(BOARD_LAST,spec.g,'station');const goalModel=freeDecor.get(goalKey).model;for(const o of goalModel.children)if(o.material===mats.yellow)o.material=mats.blue;
  for(const [x,y] of spec.stations){const k=key(x,y);requiredStations.add(k);addFreeTile(x,y,'straight',0);placeFreeDecor(x,y,'station');}
  selectTool('straight');resetPuzzleRoute();placeTrain();resetMissionState();updateRunButton();updateRouteReady();
@@ -1193,7 +1196,7 @@ function focusBranchView(){
  orbit.distance=innerWidth<innerHeight?Math.max(7,3.6/(2*Math.tan(49*Math.PI/360)*innerWidth/innerHeight)):6.4;
  cameraTarget.copy(pos(t.x,t.y));cameraTarget.y=.25;cameraTarget.addScaledVector(vecDir(t.step),.55);
  if(innerWidth>innerHeight){const angle=orbit.theta;cameraTarget.x+=Math.cos(angle)*.55;cameraTarget.z-=Math.sin(angle)*.55;}
- applyOrbit();
+ applyOrbit(true);
 }
 function showBranchPreview(t){
  const g=new THREE.Group();g.position.copy(t.rail.position);g.rotation.y=t.rail.rotation.y;g.scale.x=t.mirror?-1:1;scene.add(g);
@@ -1309,7 +1312,7 @@ const driveSpeed=document.getElementById('driveSpeed');
 const targetSpeeds=[0,1.7,2.75];
 const acceleration=0.95,braking=2.25,stationBraking=2.8;
 function approachSpeed(current,target,dt){
- const rate=target>current?acceleration:braking;
+ const rate=target>current?acceleration*(.40+.60*motionEase(current/.45))*(.65+.35*motionEase((target-current)/.45)):braking;
  return current+Math.sign(target-current)*Math.min(Math.abs(target-current),rate*dt);
 }
 function refreshSpeedDisplay(){
@@ -1418,7 +1421,7 @@ function findFreeRoute(prefix=[]){
 function installFreeRoute(steps,freshSignals=false){
  const points=[],stationPos=pos(0,2),switchEntries=[],stepBounds=[];branchPlan=steps;
  // The approach rail extends south from the start tile.
- points.push(stationPos.clone().addScaledVector(vecDir(2),3.8));
+ points.push(stationPos.clone().addScaledVector(vecDir(2),5.45));
  for(const [index,st] of steps.entries()){
   const t=freeTracks.get(st.k),center=pos(t.x,t.y);
   let local;
@@ -1595,12 +1598,12 @@ function transferButton(label,art,fn,cls=''){
 function clearToyStage(){
  for(const [o,visible] of transferHidden)o.visible=visible;transferHidden=[];
  transferDrag=null;touchTargets.clear();destinationRing=null;transferTargets.replaceChildren();transferTargets.hidden=true;transferToys.visible=false;transferFigures.forEach(o=>o.g.visible=false);transferLight.intensity=0;
- if(transferCamera){Object.assign(orbit,transferCamera.orbit);cameraTarget.copy(transferCamera.target);transferCamera=null;applyOrbit();}
+ if(transferCamera){Object.assign(orbit,transferCamera.orbit);cameraTarget.copy(transferCamera.target);transferCamera=null;applyOrbit(true);}
 }
 function clearTransfer(){transfer=null;aboardSlots.clear();deliveredSlots.clear();clearToyStage();transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
 function transferSide(loc){
  const car=trainCars[0];car.updateWorldMatrix(true,false);
- const model=loc?freeDecor.get(key(loc.x,loc.y))?.model:null;
+ const model=loc?(loc.x===0&&loc.y===3?startStation:freeDecor.get(key(loc.x,loc.y))?.model):null;
  if(model){const platform=model.localToWorld(new THREE.Vector3(.68,0,0));const local=car.worldToLocal(platform);if(Math.abs(local.x)>.12)return Math.sign(local.x);}
  return 1;
 }
@@ -1627,10 +1630,10 @@ function doorPoint(){const t=transfer;const d=t.phase==='load'?new THREE.Vector3
 function updateTransferTargets(){if(!transfer)return;for(const [i,b] of touchTargets){const p=projectToy(markerPoint(i));b.style.left=p.x+'px';b.style.top=p.y+'px';b.style.visibility=p.visible?'visible':'hidden';}if(destinationRing){const p=doorPoint();destinationRing.style.left=p.x+'px';destinationRing.style.top=p.y+'px';destinationRing.style.visibility=p.visible?'visible':'hidden';}}
 function toySound(complete=false){if(!soundEnabled||!audioCtx||audioCtx.state!=='running')return;const at=audioCtx.currentTime;const tones=complete?[523,659,784,1047]:[660,880];tones.forEach((hz,i)=>{const t=at+i*.085,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=hz;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.065,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+.22);o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+.23);});}
 function toyBurst(p,complete){for(let i=0;i<(complete?12:7);i++){const star=document.createElement('span');star.className='toy-star';star.textContent=i%3===0?'✦':'★';star.style.left=p.x+'px';star.style.top=p.y+'px';const angle=i*2.39996,r=complete?68+10*(i%3):35+8*(i%3);star.style.setProperty('--dx',Math.cos(angle)*r+'px');star.style.setProperty('--dy',Math.sin(angle)*r+'px');transferTargets.append(star);star.addEventListener('animationend',()=>star.remove(),{once:true});setTimeout(()=>star.remove(),900);}}
-function focusTransfer(){const t=transfer;if(!transferCamera)transferCamera={orbit:{...orbit},target:cameraTarget.clone()};orbit.theta=trainCars[0].rotation.y+t.side*Math.PI/2+.12;orbit.phi=1.05;orbit.distance=innerWidth<innerHeight?Math.max(6.4,1.65/(Math.tan(49*Math.PI/360)*innerWidth/innerHeight)):5.5;cameraTarget.copy(localPoint(t.side*.68,.40,0));applyOrbit();transferLight.position.copy(localPoint(t.side*2,2,0));transferLight.intensity=2.8;}
+function focusTransfer(){const t=transfer;if(!transferCamera)transferCamera={orbit:{...orbit},target:cameraTarget.clone()};orbit.theta=trainCars[0].rotation.y+t.side*Math.PI/2+.12;orbit.phi=1.05;orbit.distance=innerWidth<innerHeight?Math.max(6.4,1.65/(Math.tan(49*Math.PI/360)*innerWidth/innerHeight)):5.5;cameraTarget.copy(localPoint(t.side*.68,.40,0));applyOrbit(true);transferLight.position.copy(localPoint(t.side*2,2,0));transferLight.intensity=2.8;}
 function dragToy(i,e){const d=transferDrag;if(!d||d.id!==e.pointerId||d.i!==i||!transfer||transfer.anim)return;const dx=e.clientX-d.x,dy=e.clientY-d.y;if(Math.hypot(dx,dy)<9&&!d.moved)return;d.moved=true;const origin=localPoint(d.home.x,d.home.y,d.home.z);const plane=new THREE.Plane(new THREE.Vector3(0,1,0),-origin.y);const r=new THREE.Raycaster();r.setFromCamera(new THREE.Vector2(e.clientX/innerWidth*2-1,1-e.clientY/innerHeight*2),camera);const hit=r.ray.intersectPlane(plane,new THREE.Vector3());if(hit){const local=trainCars[0].worldToLocal(hit);local.x=transfer.side*THREE.MathUtils.clamp(transfer.side*local.x,.28,1.90);local.z=THREE.MathUtils.clamp(local.z,-1.25,1.25);local.y=d.home.y;d.current=local;figureAt(i,local);}e.preventDefault();}
 function makeToyTarget(i){const b=document.createElement('button');b.className='toy-touch';b.type='button';b.setAttribute('aria-label',(missionType==='cargo'?'にもつ':'おきゃくさん')+' '+(i+1)+(transfer.phase==='load'?'をのせる':'をおろす'));transferTargets.append(b);touchTargets.set(i,b);
- b.onpointerdown=e=>{if(transferDrag||!transfer||transfer.anim)return;e.preventDefault();unlockSound();const home=slotHome(i);transferDrag={id:e.pointerId,i,x:e.clientX,y:e.clientY,home,current:home.clone(),moved:false};b.setPointerCapture(e.pointerId);};
+ b.onpointerdown=e=>{if(transferDrag||!transfer||transfer.age<.48||transfer.anim)return;e.preventDefault();unlockSound();const home=slotHome(i);transferDrag={id:e.pointerId,i,x:e.clientX,y:e.clientY,home,current:home.clone(),moved:false};b.setPointerCapture(e.pointerId);};
  b.onpointermove=e=>dragToy(i,e);
  b.onpointerup=e=>{const d=transferDrag;if(!d||d.id!==e.pointerId||d.i!==i)return;transferDrag=null;const p=doorPoint();if(!d.moved||Math.hypot(e.clientX-p.x,e.clientY-p.y)<85){tapTransfer(i,d.current);}else{figureAt(i,d.home);}e.preventDefault();};
  b.onpointercancel=()=>{if(transferDrag?.i===i){figureAt(i,transferDrag.home);transferDrag=null;}};
@@ -1646,12 +1649,13 @@ function renderTransfer(){
 }
 function beginTransfer(phase,loc){
  const slots=phase==='load'?[0,1,2]:[...aboardSlots].sort((a,b)=>a-b);const chosen=phase==='stop'?slots.slice(0,1):slots;
- transfer={phase,loc,slots:chosen,left:chosen.length,anim:null,side:transferSide(loc),age:0,goalDelay:0,departTime:null};currentSpeed=0;setDriveGear(0);setCabView(false);setDoorOpening(1);
- document.body.classList.add('transferring');transferPanel.hidden=false;transferTargets.hidden=false;transferToys.visible=true;const model=loc?freeDecor.get(key(loc.x,loc.y))?.model:null;for(const o of model?.userData.transferHide||[]){transferHidden.push([o,o.visible]);o.visible=false;}focusTransfer();renderTransfer();if(chosen.length===0){if(phase==='goal')finishTransfer();else transfer.departTime=0;}
+ transfer={phase,loc,slots:chosen,left:chosen.length,anim:null,side:transferSide(loc),age:0,goalDelay:0,departTime:null};currentSpeed=0;setDriveGear(0);setCabView(false);setDoorOpening(0);
+ document.body.classList.add('transferring');transferPanel.hidden=false;transferTargets.hidden=false;transferToys.visible=true;const model=loc?(loc.x===0&&loc.y===3?startStation:freeDecor.get(key(loc.x,loc.y))?.model):null;for(const o of model?.userData.transferHide||[]){transferHidden.push([o,o.visible]);o.visible=false;}focusTransfer();renderTransfer();if(chosen.length===0){if(phase==='goal')finishTransfer();else transfer.departTime=0;}
 }
-function tapTransfer(i,from){const t=transfer;if(!t||t.anim||t.left===0||!t.slots.includes(i))return;if(t.phase==='load'?aboardSlots.has(i):!aboardSlots.has(i))return;
+function tapTransfer(i,from){const t=transfer;if(!t||t.age<.48||t.anim||t.left===0||!t.slots.includes(i))return;if(t.phase==='load'?aboardSlots.has(i):!aboardSlots.has(i))return;
  unlockSound();t.anim={i,time:0,from:(from||slotHome(i)).clone(),to:slotDestination(i)};renderTransfer();if(navigator.vibrate)navigator.vibrate(20);}
 function tickTransfer(dt){const t=transfer;if(!t)return;t.age+=dt;
+ if(t.departTime===null&&t.goalDelay===0)setDoorOpening(Math.min(1,t.age/.48));
  if(t.goalDelay>0){t.goalDelay-=dt;if(t.goalDelay<=0)finishTransfer();return;}
  // Automatic departure: let the success effect finish, close doors, ring bell, then move.
  if(t.departTime!==null){
@@ -1661,10 +1665,10 @@ function tickTransfer(dt){const t=transfer;if(!t)return;t.age+=dt;
   if(t.departTime>=2.20)resumeTransfer();
   return;
  }
- if(!t.anim){for(const i of touchTargets.keys()){const f=transferFigures[i];if(transferDrag?.i===i)continue;const v=slotHome(i);v.y+=Math.max(0,Math.sin(t.age*4+i*1.8))*.045;figureAt(i,v);f.arms[1].rotation.x=Math.sin(t.age*4+i)*.35;}updateTransferTargets();return;}
- const a=t.anim,f=transferFigures[a.i];a.time+=dt;const q=Math.min(1,a.time/.90);const ease=q*q*(3-2*q);const v=a.from.clone().lerp(a.to,ease);
+ if(!t.anim){for(const i of touchTargets.keys()){const f=transferFigures[i];if(transferDrag?.i===i)continue;const v=slotHome(i);v.y+=Math.max(0,Math.sin(t.age*3+i*1.8))*.018;figureAt(i,v);f.arms[1].rotation.x=Math.sin(t.age*4+i)*.35;}updateTransferTargets();return;}
+ const a=t.anim,f=transferFigures[a.i];a.time+=dt;const q=Math.min(1,a.time/.90);const ease=motionEase(q);const v=a.from.clone().lerp(a.to,ease);
  // Follow the open door, with a visible little step/hop over the sill.
- v.y+=Math.sin(Math.PI*q)*(missionType==='cargo'?.19:.13);if(t.phase==='load')v.z=a.from.z*(1-Math.min(1,q*1.55));figureAt(a.i,v);f.g.scale.setScalar(t.phase==='load'?1-.25*THREE.MathUtils.smoothstep(q,.35,.75):.75+.25*THREE.MathUtils.smoothstep(q,.15,.6));for(let j=0;j<2;j++){f.legs[j].rotation.x=Math.sin(q*22+j*Math.PI)*.60;f.arms[j].rotation.x=-f.legs[j].rotation.x*.7;}
+ v.y+=Math.sin(Math.PI*q)*(missionType==='cargo'?.13:.07);if(t.phase==='load')v.z=a.from.z*(1-motionEase(q*1.65));figureAt(a.i,v);f.g.scale.setScalar(t.phase==='load'?1-.25*THREE.MathUtils.smoothstep(q,.35,.75):.75+.25*THREE.MathUtils.smoothstep(q,.15,.6));for(let j=0;j<2;j++){f.legs[j].rotation.x=Math.sin(q*22+j*Math.PI)*.60*Math.sin(Math.PI*q);f.arms[j].rotation.x=-f.legs[j].rotation.x*.7;}
  if(q<1)return;const i=a.i;t.anim=null;f.g.visible=false;if(t.phase==='load')aboardSlots.add(i);else{aboardSlots.delete(i);deliveredSlots.add(i);}t.left--;deliveredCount=deliveredSlots.size;missionLoaded=aboardSlots.size>0;deliveryDots();updateMissionVisual();const p=projectToy(localPoint(t.side*.7,.78,0));toySound(t.left===0);toyBurst(p,t.left===0);
  if(t.left===0){if(t.phase==='goal')t.goalDelay=.75;else t.departTime=0;renderTransfer();return;}renderTransfer();}
 function endTransferPanel(){transfer=null;clearToyStage();transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
@@ -1816,6 +1820,7 @@ selectTool('straight');
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();
 const cameraTarget=new THREE.Vector3(0,.22,0);
 const cameraHomeTarget=new THREE.Vector3(0,.22,0);
+let orbitTween=null;
 const orbit={theta:.24,phi:.58,distance:38};
 const orbitLimits={minDist:9,maxDist:75,minPhi:.16,maxPhi:1.33};
 const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
@@ -1846,12 +1851,16 @@ function setCabView(enabled){
  if(cabView)updateCabCamera();else applyOrbit();
 }
 viewToggle.addEventListener('click',()=>setCabView(!cabView));
-function applyOrbit(){
+function applyOrbit(smooth=false){
+ orbitTween=null;
  if(cabView)return;
+ const oldPosition=camera.position.clone(),oldRotation=camera.quaternion.clone();
  const s=Math.sin(orbit.phi);
  camera.position.set(cameraTarget.x+orbit.distance*s*Math.sin(orbit.theta),cameraTarget.y+orbit.distance*Math.cos(orbit.phi),cameraTarget.z+orbit.distance*s*Math.cos(orbit.theta));
  camera.lookAt(cameraTarget);
+ if(smooth){orbitTween={from:oldPosition,to:camera.position.clone(),q0:oldRotation,q1:camera.quaternion.clone(),age:0};camera.position.copy(oldPosition);camera.quaternion.copy(oldRotation);}
 }
+function tickOrbitTween(dt){if(!orbitTween)return;if(cabView){orbitTween=null;return;}const t=orbitTween;t.age+=dt;const q=motionEase(t.age/.42);camera.position.copy(t.from).lerp(t.to,q);camera.quaternion.copy(t.q0).slerp(t.q1,q);if(t.age>=.42)orbitTween=null;}
 // Fit the expanded board to the actual viewport; leave room for the bottom toolbar.
 function homeDistance(aspect,theta,phi){
  const fov=(aspect<1?49:39)*Math.PI/180,tanV=Math.tan(fov/2),tanH=tanV*aspect;
@@ -1966,7 +1975,7 @@ document.getElementById('run').onclick=()=>{
  hideBranchEdit();const selected=findFreeRoute();if(!selected){challengeHint('🛤️','すべての えきと ゴールを せんろで つなごう');return;}
  clearPassing();resetFollowing();branchPassed.clear();branchWait=null;distanceTravelled=0;installFreeRoute(selected,true);
  if(gameMode==='puzzle'&&findMissionStops().length!==requiredStations.size){challengeHint('🚉','とちゅうの えきに とまれるように つなごう');return;}
- placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();if(gameMode==='puzzle')beginTransfer('load',{x:0,y:2});refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
+ placeTrain();elapsed=0;distanceTravelled=0;currentSpeed=0;prepareMission();playing=true;setDriveGear(1);updateRunButton();if(gameMode==='puzzle')beginTransfer('load',{x:0,y:3});refreshSpeedDisplay();msg.textContent='🚃 '+carCount+'りょうで しゅっぱつ しんこう！';
 };
 function resize(){camera.aspect=innerWidth/innerHeight;camera.fov=cabView?65:(innerWidth<innerHeight?49:39);camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);if(transfer)focusTransfer();else if(branchWait)focusBranchView();else if(cabView)updateCabCamera();else applyOrbit()}window.addEventListener('resize',resize);cameraHome();resize();newPuzzle();
 // Local civil time: smoothly blend lighting throughout the day.
@@ -2019,16 +2028,16 @@ function tickScenery(dt,now){
   for(const m of h.windowMats){const target=1.65*glow;m.emissiveIntensity+=(target-m.emissiveIntensity)*Math.min(1,dt*3.5);m.color.setHex(ambientNightLevel>.25?(h.lit?0xffd58e:0x26394b):0x97d4e6);}
   if(!h.walkActive&&now>=h.nextWalk){h.walkActive=true;h.walkStart=now;h.walkDur=5200+Math.random()*1800;h.walker.g.visible=true;h.nextWalk=now+14000+Math.random()*18000;}
   if(h.walkActive){
-   const t=Math.min(1,(now-h.walkStart)/h.walkDur),out=t<.5?t/.5:(1-t)/.5;
+   const t=Math.min(1,(now-h.walkStart)/h.walkDur),out=t<.40?motionEase(t/.40):t<.60?1:motionEase((1-t)/.40);const gait=t<.40?Math.sin(Math.PI*t/.40):t>.60?Math.sin(Math.PI*(1-t)/.40):0;
    const baseY=h.walkBaseY??.02,baseZ=h.walkBaseZ??.72,span=h.walkSpan??.72;
    h.walker.g.position.set(0,baseY,baseZ+out*span);
-   if(h.door)h.door.rotation.y=-1.25*Math.min(1,t*12,(1-t)*12);
-   h.walker.g.rotation.y=t<.5?0:Math.PI;
+   if(h.door)h.door.rotation.y=-1.25*motionEase(Math.min(1,t*12,(1-t)*12));
+   h.walker.g.rotation.y=Math.PI*motionEase((t-.48)/.12);
    h.walker.g.visible=true;
-   h.walker.g.position.y=baseY+Math.sin(t*Math.PI*4)*.015;
-   h.walker.legs.forEach((leg,i)=>leg.rotation.x=Math.sin(t*18+i*Math.PI)*.45);
-   h.walker.arms.forEach((arm,i)=>arm.rotation.x=-Math.sin(t*18+i*Math.PI)*.35);
-   if(t>.36&&t<.62)h.walker.arms[1].rotation.z=.8+Math.sin(t*28)*.28; else h.walker.arms[1].rotation.z=0;
+   h.walker.g.position.y=baseY+Math.abs(Math.sin(t*22))* .014*gait;
+   h.walker.legs.forEach((leg,i)=>leg.rotation.x=Math.sin(t*22+i*Math.PI)*.45*gait);
+   h.walker.arms.forEach((arm,i)=>arm.rotation.x=-Math.sin(t*22+i*Math.PI)*.35*gait);
+   if(t>.36&&t<.62)h.walker.arms[1].rotation.z=(.8+Math.sin(t*28)*.28)*Math.sin(Math.PI*(t-.36)/.26); else h.walker.arms[1].rotation.z=0;
    if(t>=1){h.walkActive=false;h.walker.g.visible=false;h.walker.arms[1].rotation.z=0;}
   }else{h.walker.g.visible=false;if(h.door)h.door.rotation.y=0;}
  }
@@ -2083,8 +2092,8 @@ function updateCrossings(now,dt){
   if(playing&&passingPlan?.phase==='moving'){const p36=passingPlan;for(let d=Math.max(0,p36.head-2*carSpacing-1.15);d<=Math.min(p36.line.total,p36.head+5.6);d+=.20){const q=passingRaw(p36.line,d);if(Math.hypot(p.x-q.x,p.z-q.z)<.45){danger=true;break;}}}
   // Keep the gate down even if the train stops on the crossing.
   if([...trainCars,...(followingTrain.visible?followingCars:[])].some(car=>Math.hypot(car.position.x-p.x,car.position.z-p.z)<1.02))danger=true;
-  c.blocked=danger;c.closed=approachSpeed(c.closed,danger?1:0,dt*2.2);c.closed=Math.max(0,Math.min(1,c.closed));
-  for(const {arm,side} of c.arms)arm.rotation.x=side*(1-c.closed)*Math.PI/2;
+  c.blocked=danger;c.closed+=Math.sign((danger?1:0)-c.closed)*Math.min(Math.abs((danger?1:0)-c.closed),dt*(danger?1.35:1.05));c.closed=Math.max(0,Math.min(1,c.closed));
+  for(const {arm,side} of c.arms)arm.rotation.x=side*(1-motionEase(c.closed))*Math.PI/2;
   c.lamps.forEach((lamp,i)=>lamp.material=(danger||c.closed>.02)&&((Math.floor(now/320)+i)%2===0)?signalRed:signalOff);
  }
 }
@@ -2177,6 +2186,7 @@ let prev=performance.now();function animate(now){
  }
  tickPassing(dt);tickFollowing(dt);updateRailSignals();updateCrossings(now,dt);updateTraffic(dt);
  tickScenery(dt,now);
+ tickOrbitTween(dt);if(transfer)updateTransferTargets();
  updateCabCamera();
  renderer.render(scene,camera)
 }requestAnimationFrame(animate);window.__aoLoaded=true;
