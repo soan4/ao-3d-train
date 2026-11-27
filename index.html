@@ -249,7 +249,7 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.7.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.7.6</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -437,21 +437,37 @@ function scenicTree(x,z,scale=1){
 }
 const ambientSkinMat=new THREE.MeshStandardMaterial({color:0xf6c89a,roughness:.8});
 const ambientHairMat=new THREE.MeshStandardMaterial({color:0x3e352d,roughness:.9});
+const cheekMat=new THREE.MeshStandardMaterial({color:0xf2aaa0,roughness:.92});
+const eyeWhiteMat=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.55});
 function ambientBall(parent,r,mat,x,y,z,sx=1,sy=1,sz=1){const m=new THREE.Mesh(new THREE.SphereGeometry(r,12,8),mat);m.scale.set(sx,sy,sz);m.position.set(x,y,z);m.castShadow=true;parent.add(m);return m}
-function makeAmbientPerson(color=0x4fa0d8){
+function createCuteToyPerson(bodyStyle=0x4fa0d8,opts={}){
  const g=new THREE.Group();
- const cloth=new THREE.MeshStandardMaterial({color,roughness:.72});
- cylinder(g,.075,.17,cloth,0,.20,0);
- ambientBall(g,.08,ambientSkinMat,0,.345,0);
- ambientBall(g,.085,ambientHairMat,0,.405,-.005,1,.34,1);
- for(const x of [-.029,.029]){ambientBall(g,.008,ambientHairMat,x,.35,.074);ambientBall(g,.014,ambientSkinMat,x*2.5,.338,0);}
- ambientBall(g,.009,ambientSkinMat,0,.329,.079);
+ const bodyMat=bodyStyle&&bodyStyle.isMaterial?bodyStyle:new THREE.MeshStandardMaterial({color:bodyStyle,roughness:.74});
+ const hatMat=new THREE.MeshStandardMaterial({color:opts.hatColor??0x355f9e,roughness:.86});
+ const bodyRadius=opts.bodyRadius??.088,bodyHeight=opts.bodyHeight??.19;
+ if(opts.shadow!==false){const sh=new THREE.Mesh(new THREE.CircleGeometry(opts.shadowRadius??.14,18),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:opts.shadowOpacity??.14,depthWrite:false}));sh.rotation.x=-Math.PI/2;sh.position.y=.004;g.add(sh);}
+ const body=cylinder(g,bodyRadius,bodyHeight,bodyMat,0,.18,0);body.scale.set(1,.96,.98);
+ const bibMat=new THREE.MeshStandardMaterial({color:opts.bibColor??0xf7e4c5,roughness:.86});
+ cube(g,bodyRadius*.92,bodyHeight*.42,bodyRadius*.40,bibMat,0,.17,bodyRadius*.58);
+ const head=ambientBall(g,.102,opts.skinMat??ambientSkinMat,0,.355,0,1,.96,1);
+ ambientBall(g,.118,opts.hairMat??ambientHairMat,0,.432,-.008,1,.36,1);
+ if(opts.hat!==false){cube(g,.18,.025,.11,hatMat,0,.465,0);ambientBall(g,.09,hatMat,0,.49,-.006,1,.28,1);}
+ for(const x of [-.036,.036]){
+  ambientBall(g,.019,eyeWhiteMat,x,.362,.090,1,.95,1);
+  ambientBall(g,.009,mats.black,x,.362,.104);
+  ambientBall(g,.017,cheekMat,x*1.24,.334,.094,1,1,.75);
+ }
+ const smile=new THREE.Mesh(new THREE.TorusGeometry(.026,.006,5,14,Math.PI*.82),new THREE.MeshStandardMaterial({color:0xa86b36,roughness:.78}));
+ smile.rotation.z=Math.PI*1.10;smile.position.set(0,.333,.101);g.add(smile);
  const arms=[],legs=[];
  for(const side of [-1,1]){
-  const arm=new THREE.Group();arm.position.set(side*.078,.25,0);g.add(arm);cube(arm,.045,.10,.05,cloth,0,-.045,0);ambientBall(arm,.024,ambientSkinMat,0,-.095,0);arms.push(arm);
-  const leg=new THREE.Group();leg.position.set(side*.035,.10,0);g.add(leg);cube(leg,.046,.10,.055,ambientHairMat,0,-.05,0);legs.push(leg);
+  const arm=new THREE.Group();arm.position.set(side*.10,.235,0);g.add(arm);cube(arm,.05,.10,.055,bodyMat,0,-.045,0);ambientBall(arm,.026,opts.skinMat??ambientSkinMat,0,-.094,0);arms.push(arm);
+  const leg=new THREE.Group();leg.position.set(side*.040,.115,0);g.add(leg);cube(leg,.05,.11,.06,opts.legMat??ambientHairMat,0,-.055,0);cube(leg,.07,.026,.09,new THREE.MeshStandardMaterial({color:0xf1e6d4,roughness:.9}),0,-.115,.012);legs.push(leg);
  }
  return {g,arms,legs};
+}
+function makeAmbientPerson(color=0x4fa0d8){
+ return createCuteToyPerson(color,{shadowRadius:.12,shadowOpacity:.10,bodyRadius:.076,bodyHeight:.17});
 }
 function buildLivingHouse(model,scale=1,baseY=.15){
  const h=new THREE.Group();h.position.y=baseY;h.scale.setScalar(scale);model.add(h);
@@ -659,10 +675,9 @@ const shirtMaterial=new THREE.MeshStandardMaterial({color:0x3899df});
 function addMissionModel(){
  const p=cube(missionProps,.35,.35,.35,parcelMaterial,0,.37,0);
  cube(missionProps,.36,.045,.06,mats.wood,0,.37,.18);
- const person=new THREE.Group();missionProps.add(person);
- cylinder(person,.12,.28,shirtMaterial,0,.39,0);
- const head=new THREE.Mesh(new THREE.SphereGeometry(.14,12,8),skinMaterial);head.position.y=.65;person.add(head);
- return {parcel:p,person};
+ const person=createCuteToyPerson(shirtMaterial,{shadow:false,hat:true,bodyRadius:.10,bodyHeight:.22});
+ person.g.scale.setScalar(.95);person.g.position.set(0,.02,0);missionProps.add(person.g);
+ return {parcel:p,person:person.g};
 }
 const missionModel=addMissionModel();
 function moveMissionModel(x,y){const p=pos(x,y);const item=gameMode==='free'?freeDecor.get(key(x,y))?.model:puzzleMidStation;const angle=item?.rotation.y||0;missionProps.position.copy(p).add(new THREE.Vector3(.68,.11,0).applyAxisAngle(new THREE.Vector3(0,1,0),angle));missionProps.scale.setScalar(.62)}
@@ -1116,12 +1131,10 @@ const boardingGroup=new THREE.Group();scene.add(boardingGroup);
 const boardingPeople=[];
 const clothes=[new THREE.MeshStandardMaterial({color:0x45a4f0}),new THREE.MeshStandardMaterial({color:0xf18b56})];
 function makeBoardingPassenger(i){
- const person=new THREE.Group();boardingGroup.add(person);
- cylinder(person,.105,.27,clothes[i],0,.40,0);
- sphere(person,.125,skinMaterial,0,.64,0);
- for(const sx of [-1,1])cube(person,.055,.20,.075,mats.black,sx*.06,.16,0);
- sphere(person,.14,mats.black,0,.735,-.015,1,.28,1);
- boardingPeople.push(person);
+ const person=createCuteToyPerson(clothes[i],{shadow:true,shadowRadius:.11,shadowOpacity:.12,bodyRadius:.082,bodyHeight:.18,hat:true,hatColor:i===0?0x2f76b2:0xa06a34});
+ person.g.scale.setScalar(.84);
+ boardingGroup.add(person.g);
+ boardingPeople.push(person.g);
 }
 makeBoardingPassenger(0);makeBoardingPassenger(1);
 const platformGroup=new THREE.Group();scene.add(platformGroup);
@@ -1138,7 +1151,7 @@ function setupBoarding(){
  boardingGroup.scale.setScalar(.72);boardingGroup.visible=missionType==='passenger';platformGroup.visible=false;
  for(let i=0;i<boardingPeople.length;i++){
   boardingPeople[i].visible=true;
-  boardingPeople[i].position.set(0,0,i===0?-.28:.28);
+  boardingPeople[i].position.set(0,-.035,i===0?-.28:.28);
  }
  setDoorOpening(0);
 }
@@ -1151,10 +1164,10 @@ function updateBoarding(t){
  for(let i=0;i<boardingPeople.length;i++){
   const p=boardingPeople[i];const begin=1+i*1.12;
   const q=THREE.MathUtils.clamp((t-begin)/1.05,0,1);
-  if(gameMode==='puzzle'){p.position.x=-(boardingGroup.userData.side||1)*.67*(1-q);p.position.z=-.20;p.position.y=.03*Math.abs(Math.sin(t*17));p.visible=i===0&&t>=1;continue;}
+  if(gameMode==='puzzle'){p.position.x=-(boardingGroup.userData.side||1)*.67*(1-q);p.position.z=-.20;p.position.y=-.035+.018*Math.abs(Math.sin(t*17));p.visible=i===0&&t>=1;continue;}
   p.position.x=-(boardingGroup.userData.side||1)*.67*q;
   p.position.z=(i===0?-.28:.28)*(1-q);
-  p.position.y=q>0&&q<1?.026*Math.abs(Math.sin(t*17)):0;
+  p.position.y=-.035+(q>0&&q<1?.018*Math.abs(Math.sin(t*17)):0);
   p.visible=q<.92;
  }
 }
@@ -1715,15 +1728,12 @@ const transferToys=new THREE.Group();scene.add(transferToys);transferToys.visibl
 const transferLight=new THREE.PointLight(0xffe8c4,0,5,2);scene.add(transferLight);
 const toyColors=[0x419bd3,0xf1a43e,0x78b65d];
 const transferFigures=toyColors.map((color,i)=>{
- const g=new THREE.Group();transferToys.add(g);const person=new THREE.Group(),crate=new THREE.Group();g.add(person,crate);
+ const g=new THREE.Group();transferToys.add(g);const crate=new THREE.Group();g.add(crate);
  const coat=new THREE.MeshStandardMaterial({color,roughness:.65});
- cylinder(person,.105,.21,coat,0,.22,0);sphere(person,.113,skinMaterial,0,.41,0);sphere(person,.117,mats.black,0,.479,-.013,1,.33,1);
- for(const x of [-.04,.04])sphere(person,.010,mats.black,x,.424,.102);
- const smile=new THREE.Mesh(new THREE.TorusGeometry(.024,.005,5,12,Math.PI*.8),ambientHairMat);smile.rotation.z=Math.PI*1.1;smile.position.set(0,.392,.105);person.add(smile);
- const legs=[],arms=[];
- for(const side of [-1,1]){const leg=new THREE.Group();leg.position.set(side*.053,.15,0);person.add(leg);cube(leg,.065,.13,.08,mats.black,0,-.065,.012);legs.push(leg);const arm=new THREE.Group();arm.position.set(side*.105,.29,0);person.add(arm);cube(arm,.06,.13,.065,coat,0,-.05,0);sphere(arm,.035,skinMaterial,0,-.12,0);arms.push(arm);}
+ const personKit=createCuteToyPerson(coat,{shadow:true,shadowRadius:.12,shadowOpacity:.12,bodyRadius:.09,bodyHeight:.19,hat:true,hatColor:[0x336fae,0xa47a35,0x4c8d52][i%3]});
+ g.add(personKit.g);
  cube(crate,.29,.29,.29,parcelMaterial,0,.15,0);for(const x of [-.12,.12])cube(crate,.035,.30,.30,mats.wood,x,.15,0);cube(crate,.30,.046,.30,mats.wood,0,.27,0);cube(crate,.305,.075,.305,coat,0,.15,0);
- g.visible=false;return {g,person,crate,legs,arms};
+ g.visible=false;return {g,person:personKit.g,crate,legs:personKit.legs,arms:personKit.arms};
 });
 let transferCamera=null,transferDrag=null,transferHidden=[];const touchTargets=new Map();let destinationRing=null;
 const cargoInside=trainCars.map(car=>{const g=new THREE.Group();car.add(g);cube(g,.24,.24,.23,parcelMaterial,.24,.59,.40);cube(g,.25,.035,.24,mats.wood,.24,.69,.40);g.visible=false;return g;});
@@ -1747,7 +1757,7 @@ function slotHome(i){
  const t=transfer;
  // Ver.3.1.4: keep waiting passengers/cargo clearly outside the carriage.
  // Line them up beside the door instead of spreading them toward the cab.
- if(t.phase==='load')return new THREE.Vector3(t.side*1.38,-.05,(i-1)*.45);
+ if(t.phase==='load')return new THREE.Vector3(t.side*1.38,-.10,(i-1)*.45);
  // During unloading, start just inside the doorway.
  return new THREE.Vector3(t.side*.44,bodyY(.535),0);
 }
@@ -1756,7 +1766,7 @@ function slotDestination(i){
  // After unloading, place them in a neat row on the platform side.
  return t.phase==='load'
   ? new THREE.Vector3(t.side*.22,bodyY(.535),0)
-  : new THREE.Vector3(t.side*1.34,-.05,((i-1)*.42));
+  : new THREE.Vector3(t.side*1.34,-.10,((i-1)*.42));
 }
 function figureAt(i,v){const f=transferFigures[i];f.g.position.copy(localPoint(v.x,v.y,v.z));f.g.rotation.y=trainCars[0].rotation.y+(transfer.side>0?-Math.PI/2:Math.PI/2)+(transfer.phase==='load'?0:Math.PI);}
 function projectToy(v){camera.updateMatrixWorld();const p=v.clone().project(camera);return {x:(p.x+1)*innerWidth*.5,y:(1-p.y)*innerHeight*.5,visible:p.z>=-1&&p.z<=1};}
