@@ -248,7 +248,7 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.7.1</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.7.0</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -321,7 +321,7 @@ const railSteel=new THREE.MeshStandardMaterial({color:0x929da3,metalness:.42,rou
 const railTop=new THREE.MeshStandardMaterial({color:0xe5e9e7,metalness:.42,roughness:.31});
 const sleeperMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#c39157",["#bb854b","#d1a16b","#c69760"],true),roughness:.92});
 const ballastMat=new THREE.MeshStandardMaterial({map:surfaceTexture("#d5b78c",["#cba97c","#dfc398","#d7b88d"],true),roughness:1});
-const railGauge=.81,halfTile=.825,curveRadius=.52;
+const railGauge=.72,halfTile=.825,curveRadius=.52;
 function edge(d){return new THREE.Vector3(dir[d][0]*halfTile,0,dir[d][1]*halfTile)}
 function vecDir(d){return new THREE.Vector3(dir[d][0],0,dir[d][1])}
 function tileRailPoints(con){
@@ -688,11 +688,14 @@ fleetChoices.querySelectorAll('button').forEach(b=>b.addEventListener('click',()
 chooseFleet('red');
 
 const darkGlass=new THREE.MeshStandardMaterial({color:0x193c57,metalness:.25,roughness:.15});
-
-
+const frontMask=new THREE.MeshStandardMaterial({color:0x20262d,metalness:.18,roughness:.22});
+const frontTrim=new THREE.MeshStandardMaterial({color:0xd3d8de,metalness:.55,roughness:.28});
 
 const rubber=new THREE.MeshStandardMaterial({color:0x1a2027,roughness:.96});
-const wheelMetal=new THREE.MeshStandardMaterial({color:0xc8d1da,metalness:.86,roughness:.26});
+const wheelRadius=.092;
+const wheelMetal=new THREE.MeshStandardMaterial({color:0xcbd0d4,metalness:.45,roughness:.29});
+const bogieMetal=new THREE.MeshStandardMaterial({color:0x62676a,metalness:.28,roughness:.58});
+const springMetal=new THREE.MeshStandardMaterial({color:0x454b50,metalness:.32,roughness:.48});
 const wheelRim=new THREE.MeshStandardMaterial({color:0x8e989f,metalness:.62,roughness:.34});
 const lightMat=new THREE.MeshStandardMaterial({color:0xfff6bb,emissive:0xe8b95b,emissiveIntensity:1.2});
 const tailMat=new THREE.MeshStandardMaterial({color:0xff4545,emissive:0x7a1010,emissiveIntensity:.5});
@@ -703,8 +706,9 @@ const doorLine=new THREE.MeshStandardMaterial({color:0x7b2634,roughness:.48});
 const windowRiders=[];
 const riderShirts=[new THREE.MeshStandardMaterial({color:0x55b5e8}),new THREE.MeshStandardMaterial({color:0xffb15e})];
 // Transparent side glazing makes the seats and riders visible from outside.
-const sideGlass=new THREE.MeshStandardMaterial({color:0xb6d9ea,transparent:true,opacity:.30,roughness:.12,metalness:.02,depthWrite:false,side:THREE.DoubleSide});
-const cabGlass=new THREE.MeshStandardMaterial({color:0xf4fbff,transparent:true,opacity:.18,roughness:.06,metalness:.02,depthWrite:false,side:THREE.DoubleSide});
+const sideGlass=new THREE.MeshStandardMaterial({color:0xc1dceb,transparent:true,opacity:.26,roughness:.10,metalness:.03,depthWrite:false,side:THREE.DoubleSide});
+const cabGlass=new THREE.MeshStandardMaterial({color:0xf6fbff,transparent:true,opacity:.20,roughness:.05,metalness:.03,depthWrite:false,side:THREE.DoubleSide});
+const glassReveal=new THREE.MeshStandardMaterial({color:0x6f7780,metalness:.08,roughness:.72});
 const seatMat=new THREE.MeshStandardMaterial({color:0x3b7997,roughness:.8});
 const driverCabCrew=[];
 const conductorCabCrew=[];
@@ -861,75 +865,90 @@ function railTrainCar(number){
   cube(car,.014,.050,1.16,cream,x,.89,0);
   // Middle passenger windows at either end of a central pair of doors.
   for(const z of [-.40,.40]){
-   // Open window aperture with a thin flush frame so the glazing feels integrated
-   // with the body instead of looking like an extra box stuck on the side.
-   const wx=x*1.002;
-   for(const dz of [-.107,.107])cube(car,.022,.235,.014,glassTrim,wx,.770,z+dz);
-   for(const dy of [-.120,.120])cube(car,.022,.015,.210,glassTrim,wx,.770+dy,z);
-   cube(car,.010,.205,.176,sideGlass,x*1.008,.770,z);
-   cube(car,.018,.012,.162,doorLine,x*1.012,.77,z);
+   // Recessed passenger windows: a shallow reveal, thin body-colored frame,
+   // and glass set slightly inboard so the window reads as part of the shell.
+   const face=x*.988;
+   const glassX=x*.978;
+   for(const dz of [-.108,.108])cube(car,.014,.232,.010,paint,face,.770,z+dz);
+   for(const dy of [-.120,.120])cube(car,.014,.010,.208,paint,face,.770+dy,z);
+   cube(car,.006,.205,.174,glassReveal,x*.983,.770,z);
+   cube(car,.004,.196,.166,sideGlass,glassX,.770,z);
   }
-  // Sliding doors stay nearly flush with the outer side wall.
+  // Sliding doors stay flush with the body, with only slim seams and recessed glass.
   for(const sign of [-1,1]){
-   const panel=new THREE.Group();panel.position.set(x*1.012,0,sign*.102);car.add(panel);
-   cube(panel,.018,.46,.19,paintLight,0,.69,0);
-   cube(panel,.012,.20,.105,darkGlass,0,.79,0);
-   cube(panel,.018,.018,.11,steel,0,.79,0);
+   const panel=new THREE.Group();panel.position.set(x*1.001,0,sign*.102);car.add(panel);
+   cube(panel,.012,.46,.19,paintLight,0,.69,0);
+   cube(panel,.004,.19,.100,glassReveal,-Math.sign(x)*.002,.79,0);
+   cube(panel,.003,.182,.092,darkGlass,-Math.sign(x)*.004,.79,0);
+   cube(panel,.010,.018,.102,doorLine,0,.79,0);
    slidingDoors.push({panel,sign,car:number,baseZ:sign*.102});
   }
-  cube(car,.026,.026,.42,steel,x*1.065,.46,0);
+  cube(car,.010,.026,.42,doorLine,x*1.008,.46,0);
   // Thin door handles and sill, outside the glass apertures.
-  for(const panelInfo of slidingDoors.filter(d=>d.car===number&&Math.sign(d.panel.position.x)===Math.sign(x)))cube(panelInfo.panel,.012,.065,.014,steel,0,.665,-panelInfo.sign*.065);
-  cube(car,.018,.035,.32,chassisMat,x*1.02,.425,.02);
+  for(const panelInfo of slidingDoors.filter(d=>d.car===number&&Math.sign(d.panel.position.x)===Math.sign(x)))cube(panelInfo.panel,.008,.062,.010,steel,-Math.sign(x)*.002,.665,-panelInfo.sign*.065);
+  cube(car,.010,.028,.32,chassisMat,x*1.004,.425,.02);
  }
- // Open front windshield: four separate frame edges, never an opaque backing plate.
- for(const x of [-.312,.312])cube(car,.022,.34,.022,glassTrim,x,.81,.634);
- for(const y of [.643,.977])cube(car,.64,.020,.022,glassTrim,0,y,.634);
- cube(car,.59,.28,.010,cabGlass,0,.81,.639);
- // Destination sign is ABOVE the window and does not obscure the crew.
- cube(car,.36,.035,.027,lightMat,0,1.006,.653);
- // Split front windshield with thin center pillar and a tiny wiper.
- cube(car,.014,.29,.028,glassTrim,0,.80,.650);
- const wiper=cube(car,.23,.010,.018,chassisMat,-.13,.705,.651);wiper.rotation.z=-.16;
- // Headlights, tail markers and nose detail.
+ // Front glazing is tucked slightly inside the mask so the face reads as one surface.
+ cube(car,.66,.41,.022,frontMask,0,.82,.628);
+ for(const x of [-.33,.33])cube(car,.022,.38,.014,paint,x,.81,.636);
+ for(const y of [.622,.998])cube(car,.66,.018,.014,paint,0,y,.636);
+ for(const x of [-.278,.278])cube(car,.012,.30,.010,frontTrim,x,.81,.637);
+ for(const y of [.664,.956])cube(car,.56,.010,.010,frontTrim,0,y,.637);
+ cube(car,.020,.276,.008,glassReveal,0,.81,.634);
+ cube(car,.52,.258,.004,cabGlass,0,.81,.632);
+ cube(car,.008,.27,.010,frontTrim,0,.81,.635);
+ // Destination sign sits inside the upper black mask.
+ cube(car,.34,.055,.012,lightMat,0,.958,.634);
+ const wiper=cube(car,.20,.008,.012,chassisMat,-.13,.706,.636);wiper.rotation.z=-.16;
+ const wiper2=cube(car,.16,.007,.010,chassisMat,.10,.734,.636);wiper2.rotation.z=.08;
+ // Headlights and tail markers echo the boxy layout of real Keikyu stock.
  for(const x of [-.28,.28]){
-  sphere(car,.071,glassTrim,x,.56,.637,1,.74,.27);
-  sphere(car,.062,lightMat,x,.56,.656,1,.72,.32);
-  sphere(car,.036,tailMat,x,.47,.647,1,.7,.32);
+  cube(car,.118,.082,.026,frontTrim,x,.505,.638);
+  cube(car,.088,.056,.016,lightMat,x,.505,.646);
+  cube(car,.050,.024,.018,tailMat,x,.442,.646);
  }
- cube(car,.54,.085,.045,cream,0,.41,.642);
- cube(car,.29,.08,.11,chassisMat,0,.34,.671);
- for(const x of [-.093,.093])cube(car,.045,.038,.012,steel,x,.35,.732);
- cube(car,.22,.028,.045,steel,0,.31,.733);
- // Open rear windshield: narrow edge frames, no opaque sheet behind the glass.
- for(const x of [-.238,.238])cube(car,.020,.24,.020,glassTrim,x,.82,-.632);
- for(const y of [.706,.934])cube(car,.50,.018,.020,glassTrim,0,y,-.632);
- cube(car,.45,.18,.010,cabGlass,0,.82,-.639);
+ cube(car,.60,.110,.040,cream,0,.392,.643);
+ cube(car,.40,.095,.090,chassisMat,0,.318,.680);
+ cube(car,.16,.040,.050,frontTrim,0,.362,.724);
+ for(const x of [-.12,.12])cube(car,.050,.040,.012,steel,x,.345,.732);
+ cube(car,.26,.030,.040,steel,0,.300,.732);
+ // Rear glazing also sits slightly inboard to match the cleaner side-window treatment.
+ for(const x of [-.238,.238])cube(car,.012,.24,.012,glassTrim,x,.82,-.632);
+ for(const y of [.706,.934])cube(car,.49,.010,.012,glassTrim,0,y,-.632);
+ cube(car,.010,.19,.008,glassReveal,0,.82,-.635);
+ cube(car,.44,.172,.004,cabGlass,0,.82,-.628);
  // Independent articulated bogies. Their pivots sit under each car; each
  // rotates relative to its car as the underlying track curves.
  cube(car,.68,.075,.92,chassisMat,0,.385,0);
  const bogies=[];
  for(const pivotZ of [-.355,.355]){
   const truck=new THREE.Group();truck.position.set(0,0,pivotZ);car.add(truck);
-  // Smaller silver wheels tucked under the body for a more train-like silhouette.
-  cube(truck,.54,.050,.30,chassisMat,0,.315,0);
-  cube(truck,.40,.040,.17,steel,0,.352,0);
+  // Two-axle commuter bogie: wheels aligned to the rail gauge, static frame,
+  // axle boxes, primary springs and central secondary suspension.
+  cube(truck,.55,.055,.34,bogieMetal,0,.255,0);
+  cube(truck,.44,.065,.14,bogieMetal,0,.335,0);
+  cube(truck,.23,.055,.22,chassisMat,0,.365,0);
   for(const side of [-1,1]){
-   cube(truck,.050,.105,.31,steel,side*.255,.285,0);
-   cube(truck,.072,.042,.22,wheelRim,side*.255,.245,0);
-   cube(truck,.030,.060,.10,steel,side*.170,.315,0);
+   cube(truck,.043,.056,.34,bogieMetal,side*.305,.235,0);
+   cube(truck,.070,.075,.125,bogieMetal,side*.278,.305,0);
+   const air=new THREE.Mesh(new THREE.CylinderGeometry(.050,.055,.045,12),springMetal);air.position.set(side*.23,.338,0);truck.add(air);
   }
   for(const axleZ of [-.105,.105]){
-   const axle=new THREE.Mesh(new THREE.CylinderGeometry(.026,.026,.64,12),steel);
-   axle.rotation.z=Math.PI/2;axle.position.set(0,.205,axleZ);truck.add(axle);
+   const axle=new THREE.Mesh(new THREE.CylinderGeometry(.020,.020,.69,12),bogieMetal);
+   axle.rotation.z=Math.PI/2;axle.position.set(0,.130,axleZ);truck.add(axle);
    for(const side of [-1,1]){
-    const spin=new THREE.Group();spin.position.set(side*.305,.205,axleZ);truck.add(spin);
-    const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.092,.092,.056,24),wheelMetal);
+    const spin=new THREE.Group();spin.position.set(side*railGauge/2,.130,axleZ);truck.add(spin);
+    const wheel=new THREE.Mesh(new THREE.CylinderGeometry(wheelRadius,wheelRadius,.064,24),wheelMetal);
     wheel.rotation.z=Math.PI/2;wheel.castShadow=true;spin.add(wheel);
-    const flange=new THREE.Mesh(new THREE.TorusGeometry(.074,.008,6,18),wheelRim);
-    flange.rotation.y=Math.PI/2;flange.position.x=side*.016;spin.add(flange);
-    const hub=new THREE.Mesh(new THREE.CylinderGeometry(.032,.032,.020,16),steel);hub.rotation.z=Math.PI/2;hub.position.x=side*.022;spin.add(hub);
+    const flange=new THREE.Mesh(new THREE.CylinderGeometry(.099,.099,.012,24),wheelRim);
+    flange.rotation.z=Math.PI/2;flange.position.x=-side*.026;spin.add(flange);
+    const hub=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,.010,16),wheelRim);hub.rotation.z=Math.PI/2;hub.position.x=side*.030;spin.add(hub);
     wheelSpinners.push(spin);
+    // Axle box is inboard, fixed to the frame, not spinning with the wheel.
+    cube(truck,.042,.070,.075,bogieMetal,side*.305,.155,axleZ);
+    cube(truck,.048,.018,.076,wheelRim,side*.305,.205,axleZ);
+    const spring=new THREE.Mesh(new THREE.CylinderGeometry(.026,.026,.058,10),springMetal);spring.position.set(side*.305,.239,axleZ);truck.add(spring);
+    for(const y of [.219,.239,.259]){const coil=new THREE.Mesh(new THREE.TorusGeometry(.026,.0045,5,10),wheelRim);coil.rotation.x=Math.PI/2;coil.position.set(side*.305,y,axleZ);truck.add(coil);}
    }
   }
   bogies.push({group:truck,offset:pivotZ});
@@ -1151,7 +1170,7 @@ function tickFollowing(dt){
  const limit=Math.min(lead-FOLLOW_GAP,stop?stop.stopAt:Infinity),remaining=Math.max(0,limit-followingHead);
  followingSpeed=approachSpeed(followingSpeed,Math.min(1.7,Math.sqrt(2*stationBraking*remaining)),dt);
  const advance=Math.min(remaining,followingSpeed*dt),next=followingHead+advance;
- if(advance>0&&followerClear(next,lead)){followingHead=next;for(const w of followingWheels)w.rotation.x-=advance/.135;positionFollowing();}else followingSpeed=0;
+ if(advance>0&&followerClear(next,lead)){followingHead=next;for(const w of followingWheels)w.rotation.x-=advance/wheelRadius;positionFollowing();}else followingSpeed=0;
 }
 function resetPuzzleRoute(){
  clearPassing();clearRailSignals();
@@ -1565,7 +1584,7 @@ function positionOpposing(p){for(let i=0;i<3;i++){const d=p.head-i*carSpacing,a=
 function beginPassing(){const p=passingPlan;if(!p||p.phase!=='ready')return;currentSpeed=0;p.phase='waiting';const drawer=document.getElementById('settingsDrawer');if(!drawer.hidden)document.getElementById('settingsToggle').click();p.view={orbit:{...orbit},target:cameraTarget.clone(),cab:cabView};if(cabView)setCabView(false);cameraTarget.copy(pos((p.alt.near.x+p.alt.far.x)/2,(p.alt.near.y+p.alt.far.y)/2));orbit.theta=Math.atan2(p.alt.far.x-p.alt.near.x,p.alt.far.y-p.alt.near.y)+.40;orbit.phi=.55;orbit.distance=innerWidth<innerHeight?19:15;applyOrbit();
  const id=document.body.dataset.fleet==='blue'?'yellow':'blue';followingPaint.color.setHex(fleetColors[id][0]);followingPaintLight.color.setHex(fleetColors[id][1]);followingHead=null;followingTrain.visible=true;positionOpposing(p);passingPrompt.textContent='でんしゃが くるよ！';passingGo.hidden=false;passingPanel.hidden=false;document.body.classList.add('passing-wait');challengeHint('🚃','さきに でんしゃを とおそう');}
 passingGo.onclick=()=>{const p=passingPlan;if(!p||p.phase!=='waiting')return;unlockSound();setPassingSwitches(p,true);p.phase='moving';passingGo.hidden=true;passingPrompt.textContent='🚃 すれちがい ちゅう…';departureBell();};
-function tickPassing(dt){const p=passingPlan;if(!playing||!p||p.phase!=='moving')return;const remaining=p.end-p.head;p.speed=approachSpeed(p.speed,Math.min(2.25,Math.sqrt(2*stationBraking*remaining)),dt);const advance=Math.min(remaining,Math.max(.02,p.speed)*dt);p.head+=advance;positionOpposing(p);for(const w of followingWheels)w.rotation.x-=advance/.135;
+function tickPassing(dt){const p=passingPlan;if(!playing||!p||p.phase!=='moving')return;const remaining=p.end-p.head;p.speed=approachSpeed(p.speed,Math.min(2.25,Math.sqrt(2*stationBraking*remaining)),dt);const advance=Math.min(remaining,Math.max(.02,p.speed)*dt);p.head+=advance;positionOpposing(p);for(const w of followingWheels)w.rotation.x-=advance/wheelRadius;
  if(p.end-p.head<.001){p.phase='done';setPassingSwitches(p,false);passingPanel.hidden=true;document.body.classList.remove('passing-wait');if(p.view){Object.assign(orbit,p.view.orbit);cameraTarget.copy(p.view.target);if(p.view.cab)setCabView(true);else applyOrbit();p.view=null;}departureBell();setDriveGear(1);}
 }
 // A ready-made free-build example: two turnouts with the northern one mirrored.
@@ -2230,7 +2249,7 @@ function animate(now){
      advance=remaining;distanceTravelled+=advance;currentSpeed=0;positionAllCars();if(atPassing)beginPassing();else if(atSignal)waitAtRailSignal(signal);else if(atBranch)beginBranchWait(nextBranch);else onStationStop();
     }else distanceTravelled+=advance;
    }else distanceTravelled+=advance;
-   if(advance>0){for(const wheel of wheelSpinners)wheel.rotation.x-=advance/.135;positionAllCars();}
+   if(advance>0){for(const wheel of wheelSpinners)wheel.rotation.x-=advance/wheelRadius;positionAllCars();}
    if(startDistance+distanceTravelled>=finishDistance){
     distanceTravelled=finishDistance-startDistance;positionAllCars();
     hideBoarding();currentSpeed=0;if(gameMode==='puzzle'){const [x,y]=goalKey.split(',').map(Number);beginTransfer('goal',{x,y});}else{playing=false;setCabView(false);updateRunButton();msg.textContent='🎉 '+carCount+'りょう ぜんぶ とうちゃく！';onMissionFinish();}
