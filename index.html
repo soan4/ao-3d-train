@@ -245,10 +245,11 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 @keyframes editHold{from{transform:translate(-50%,-50%) scale(1.1);opacity:.5}to{transform:translate(-50%,-50%) scale(.65);opacity:1}}
 #safeConfirm{position:fixed;inset:0;z-index:40;background:#32291e55;display:grid;place-items:center;padding:16px;touch-action:manipulation}#safeConfirm[hidden]{display:none!important}#safeConfirm section{width:min(340px,100%);background:#fff2db;border:2px solid #c59a65;border-radius:20px;padding:18px;box-shadow:0 5px 0 #9b734a;color:#694422;text-align:center}#safeConfirm h2{font-size:21px;margin:0 0 14px}#safeConfirm .choices{display:flex;gap:12px}#safeConfirm button{flex:1;min-height:58px;font-size:17px!important;color:#694422!important;line-height:1.2!important}#safeConfirm button::before{display:none!important}#safeCancel{background:#d9edc1!important}#safeAccept{background:#f3d8c3!important}
 @media(prefers-reduced-motion:reduce){#editFeedback.pop{animation-duration:.12s}#tools button,#bottom button{transition:none}}
+#cabHUD{position:fixed;top:calc(env(safe-area-inset-top,0px) + 66px);left:12px;display:flex;gap:8px;padding:7px 10px;background:rgba(35,50,55,.88);border:1px solid #aebfc1;border-radius:12px;color:#f2f0df;z-index:8;pointer-events:none;font-family:system-ui,sans-serif;max-width:65vw}#cabHUD[hidden]{display:none}.cabInstrument{display:grid;gap:2px;min-width:66px}.cabInstrument span{font-size:10px}.cabInstrument strong{font-size:16px}.cabMeter{height:4px;background:#53656a;border-radius:3px;overflow:hidden}.cabMeter i{display:block;height:100%;width:0;background:#b7e4a0}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.7.4</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.7.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -712,16 +713,41 @@ const glassReveal=new THREE.MeshStandardMaterial({color:0x6f7780,metalness:.08,r
 const seatMat=new THREE.MeshStandardMaterial({color:0x3b7997,roughness:.8});
 const driverCabCrew=[];
 const conductorCabCrew=[];
+const interiorWall=new THREE.MeshStandardMaterial({color:0xddd9c9,roughness:.85});
+const interiorFloor=new THREE.MeshStandardMaterial({color:0x888f8d,roughness:.9});
+const strapMat=new THREE.MeshStandardMaterial({color:0xece8da,roughness:.65});
+const deskMat=new THREE.MeshStandardMaterial({color:0x52666d,roughness:.67});
 function addInteriorSeats(car){
- for(const side of [-1,1])for(const z of [-.40,.40]){
-  // Seats sit inside the outer shell, under the side windows. Each seat has
-  // a cushion, backrest, support and a thin pale headrest.
-  const x=side*.285;
-  cube(car,.23,.065,.22,seatMat,x,.515,z);
-  cube(car,.055,.28,.22,seatMat,x-side*.105,.648,z);
-  cube(car,.055,.045,.23,cream,x-side*.105,.805,z);
-  cube(car,.055,.20,.055,steel,x,.405,z);
+ const g=new THREE.Group();car.add(g);
+ cube(g,.69,.014,1.15,interiorFloor,0,.542,0);
+ for(const side of [-1,1]){
+  for(const z of [-.40,.40]){
+   cube(g,.18,.055,.24,seatMat,side*.265,.585,z);
+   cube(g,.035,.17,.24,seatMat,side*.345,.66,z);
+   cube(g,.16,.045,.23,interiorWall,side*.265,.548,z);
+  }
+  cube(g,.016,.016,1.00,steel,side*.18,.884,0);
+  for(const z of [-.42,-.20,.20,.42]){
+   cube(g,.012,.045,.012,strapMat,side*.18,.855,z);
+   const ring=new THREE.Mesh(new THREE.TorusGeometry(.023,.005,5,10),strapMat);ring.position.set(side*.18,.815,z);ring.rotation.y=Math.PI/2;g.add(ring);
+  }
+  for(const z of [-.21,.21])cube(g,.014,.33,.014,steel,side*.29,.71,z);
  }
+ for(const x of [-.12,.12])cube(g,.065,.010,.93,interiorLampMat,x,.894,0).castShadow=false;
+}
+function addCabDesk(car,number){
+ if(number!==0&&number!==2)return;
+ const g=new THREE.Group();car.add(g);if(number===2)g.rotation.y=Math.PI;
+ cube(g,.62,.11,.12,deskMat,0,.605,.535);
+ cube(g,.58,.025,.14,deskMat,0,.67,.515);
+ for(const x of [-.15,.08]){
+  const dial=new THREE.Mesh(new THREE.CylinderGeometry(.043,.043,.012,16),mats.black);dial.rotation.x=Math.PI/2;dial.position.set(x,.704,.467);g.add(dial);
+  const needle=cube(g,.006,.029,.008,strapMat,x,.704,.458);needle.rotation.z=-.5;
+ }
+ for(const x of [.20,.24])cube(g,.022,.015,.025,lightMat,x,.689,.515);
+ cube(g,.065,.017,.065,chassisMat,-.24,.69,.49);
+ const lever=cube(g,.014,.055,.014,steel,-.24,.722,.49);lever.rotation.x=-.25;
+ cube(g,.045,.018,.024,chassisMat,-.24,.75,.48);
 }
 function addWindowRiders(car){
  const riders=new THREE.Group();car.add(riders);
@@ -988,7 +1014,7 @@ function railTrainCar(number){
  cube(car,.18,.016,.03,steel,0,.28,.70);
  const interiorStart=car.children.length;
  addInteriorSeats(car);
- cube(car,.12,.018,.96,interiorLampMat,0,.882,0).castShadow=false;
+ addCabDesk(car,number);
  addWindowRiders(car);
  addCabCrew(car,number);
  compressBody(car,car.children.slice(interiorStart));
@@ -1937,11 +1963,18 @@ const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
 // A view just beyond the front windshield keeps the roof and driver model
 // from obscuring the track; its orientation follows the lead car on curves.
 let cabView=false;
+const cabHUD=document.createElement('div');cabHUD.id='cabHUD';cabHUD.hidden=true;
+cabHUD.innerHTML='<div class="cabInstrument"><span>スピード</span><strong id="cabSpeedValue">0%</strong><div class="cabMeter"><i id="cabSpeedBar"></i></div></div><div class="cabInstrument"><span>マスコン</span><strong id="cabGearValue">ゆっくり</strong></div>';
+document.body.appendChild(cabHUD);
+const cabSpeedValue=cabHUD.querySelector('#cabSpeedValue'),cabSpeedBar=cabHUD.querySelector('#cabSpeedBar'),cabGearValue=cabHUD.querySelector('#cabGearValue');
+function updateCabHUD(){if(!cabView)return;const v=Math.round(Math.max(0,Math.min(1,currentSpeed/targetSpeeds[2]))*100),g=['とまる','ゆっくり','はやく'][driveGear]||'とまる';if(cabSpeedValue.textContent!==v+'%'){cabSpeedValue.textContent=v+'%';cabSpeedBar.style.width=v+'%';}if(cabGearValue.textContent!==g)cabGearValue.textContent=g;}
+
 const viewToggle=document.getElementById('viewToggle');
 const cabEye=new THREE.Vector3();
 const cabLook=new THREE.Vector3();
 function updateCabCamera(){
  if(!cabView)return;
+ updateCabHUD();
  const lead=trainCars[0];
  lead.updateMatrixWorld(true);
  lead.localToWorld(cabEye.set(0,bodyY(.84),.76));
@@ -1950,7 +1983,7 @@ function updateCabCamera(){
  camera.lookAt(cabLook);
 }
 function setCabView(enabled){
- cabView=Boolean(enabled);
+ cabView=Boolean(enabled);cabHUD.hidden=!cabView;
  document.body.classList.toggle('cab-view',cabView);
  viewToggle.textContent=cabView?'🌍':'👀';
  viewToggle.setAttribute('aria-pressed',String(cabView));
