@@ -248,7 +248,7 @@ body.passing-wait #drivePanel,body.passing-wait #railSignalPanel,body.passing-wa
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script>
 </head>
-<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.5</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
+<body><div id="world"></div><div id="ui"><div id="title">あおの 3D おとどけでんしゃ <small style="font-size:.65em">v3.6.6</small></div></div><div id="msg">せんろを タッチして つなげよう！</div><div id="mode"><button id="puzzleMode" class="active" aria-label="せんろパズル">🧩</button><button id="freeMode" aria-label="じぶんでつくる">🛠️</button></div><div id="tools"><button data-tool="straight" aria-label="まっすぐ">🛤️</button><button data-tool="curve" aria-label="カーブ">↪️</button><button data-tool="branch" aria-label="ぶんき">🔀</button><button data-tool="station" aria-label="えき">🚉</button><button data-tool="bridge" aria-label="はし">🌉</button><button data-tool="tunnel" aria-label="トンネル">⛰️</button><button data-tool="crossing" aria-label="踏切">🚧</button><button data-tool="river" aria-label="かわ"></button><button data-tool="road" aria-label="どうろ"></button><button data-tool="meadow" aria-label="くさはら"></button><button data-tool="house" aria-label="おうち"></button></div><div id="features">9×9 ひろびろフィールド　🚆 ほんかくしゃりょう　🏞️ ほんかくちけい　🌉 はし　⛰️ トンネル</div><div id="missionPanel"><div id="missionPicker"><button id="passengerMission" class="active" aria-label="おきゃく">🧒</button><button id="cargoMission" aria-label="にもつ">📦</button></div><div id="missionProgress" aria-live="polite">🚉 せんろを つなごう！</div></div><div id="missionBanner" aria-live="polite"></div><div id="deliveryDots" aria-label="おとどけのこり"></div><div id="fleetPicker"><button id="fleetToggle" type="button" data-fleet="red" aria-label="車両を選ぶ" aria-expanded="false"></button><div id="fleetChoices" hidden><button type="button" data-fleet="red" aria-label="京急1000形風" aria-pressed="true"></button><button type="button" data-fleet="yellow" aria-label="ハッピーイエロートレイン風" aria-pressed="false"></button><button type="button" data-fleet="blue" aria-label="ブルースカイトレイン風" aria-pressed="false"></button></div></div><div id="cameraControls"><button id="zoomIn" aria-label="カメラを拡大">🔍➕</button><button id="zoomOut" aria-label="カメラを縮小">🔍➖</button><button id="cameraReset" aria-label="カメラの位置を元に戻す">🏠</button><button id="viewToggle" type="button" aria-label="運転士の視点に切り替える" aria-pressed="false">👀</button><button id="soundToggle" aria-label="発車ベルのオンオフ" aria-pressed="true">🔔</button></div><div id="hint">🔔 おきゃくさんが のったら はっしゃベル！<br>👆 タップ：せんろを回す<br>☝️ スライド：カメラを回す　✌️ 2本指：拡大・縮小 / 移動</div><div id="bottom"><button id="reset" aria-label="あたらしい コース">🔀</button><button id="run" aria-label="はっしゃ">🚦▶️</button></div><div id="drivePanel" aria-label="でんしゃのうんてんだい"><div id="driveHeader"><span>🚃 あおの マスコン</span><span id="driveSpeed" aria-live="off">🚃 0%</span><span id="driveStatus" aria-live="polite">🐢</span></div><div id="cabLayout"><div id="masterArea"><div id="masterLever" role="slider" tabindex="0" aria-label="マスコンレバー" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1" aria-valuetext="ゆっくり"><div id="leverRail"></div><div id="leverHandle">🚃</div></div><div id="leverStops"><button type="button" data-gear="2" aria-label="はやく">🚄</button><button type="button" data-gear="1" aria-label="ゆっくり">🐢</button><button type="button" data-gear="0" aria-label="とまる">🛑</button></div></div><button type="button" id="exitDrive" aria-label="もどる">↩️<span>もどる</span></button></div></div><div id="transferPanel" hidden aria-label="のりおり"></div><div id="error"></div>
 <script>
 window.__aoLoaded=false;
 window.addEventListener('error',function(e){const el=document.getElementById('error');el.style.display='block';el.textContent='ゲームの読み込みエラー：'+(e.message||'通信を確認して再読み込みしてください');});
@@ -781,11 +781,20 @@ function updateCabCrewVisibility(){
 function updateWindowRiders(){windowRiders.forEach((r,i)=>{if(gameMode==='puzzle'){r.visible=missionType==='passenger'&&aboardSlots.has(i);r.children.forEach((p,j)=>p.visible=j===0);}else{r.visible=i===0&&missionType==='passenger'&&missionLoaded;r.children.forEach(p=>p.visible=true);}});}
 // Web Audio uses no external sound files. Creation/resume is initiated by a tap.
 let soundEnabled=true,audioCtx=null;
+// Procedural audio: no downloaded sound samples. All levels are deliberately quiet.
+let railAudio=null,railLastDistance=null,railJoint=0,railWasMoving=false,railPulse=0;
+function toyHaptic(pattern){if(!soundEnabled||document.hidden)return;try{if(typeof navigator.vibrate==='function')navigator.vibrate(pattern);}catch(e){}}
+function railReady(){return soundEnabled&&audioCtx&&audioCtx.state==='running'&&!document.hidden;}
+function railNoiseBuffer(){const b=audioCtx.createBuffer(1,audioCtx.sampleRate,audioCtx.sampleRate),a=b.getChannelData(0);let v=0;for(let i=0;i<a.length;i++){v=.72*v+.28*(Math.random()*2-1);a[i]=v;}return b;}
+function initRailAudio(){if(railAudio||!railReady())return;const c=audioCtx,master=c.createGain(),motor=c.createOscillator(),hum=c.createOscillator(),motorGain=c.createGain(),humGain=c.createGain(),noise=c.createBufferSource(),filter=c.createBiquadFilter(),noiseGain=c.createGain(),echo=c.createDelay(.3),echoGain=c.createGain();master.gain.value=.55;master.connect(c.destination);motor.type='triangle';hum.type='sine';motorGain.gain.value=0;humGain.gain.value=0;noiseGain.gain.value=0;filter.type='lowpass';filter.frequency.value=450;noise.buffer=railNoiseBuffer();noise.loop=true;echo.delayTime.value=.095;echoGain.gain.value=0;motor.connect(motorGain);hum.connect(humGain);noise.connect(filter);filter.connect(noiseGain);for(const g of [motorGain,humGain,noiseGain]){g.connect(master);g.connect(echo);}echo.connect(echoGain);echoGain.connect(master);motor.start();hum.start();noise.start();railAudio={master,motor,hum,motorGain,humGain,noiseGain,filter,echoGain,buffer:noise.buffer};}
+function quietRailAudio(){if(!railAudio||!audioCtx)return;for(const g of [railAudio.motorGain,railAudio.humGain,railAudio.noiseGain,railAudio.echoGain])g.gain.setTargetAtTime(0,audioCtx.currentTime,.035);railLastDistance=null;railJoint=0;railWasMoving=false;railPulse=0;}
+function railTap(kind='wood'){if(!railReady())return;initRailAudio();const c=audioCtx,t=c.currentTime,o=c.createOscillator(),g=c.createGain();o.type='sine';const f=kind==='joint'?145:kind==='door'?210:kind==='remove'?330:510;o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*.55,t+.065);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(kind==='joint'?.032:.07,t+.006);g.gain.exponentialRampToValueAtTime(.0001,t+.105);o.connect(g);g.connect(railAudio.master);o.start(t);o.stop(t+.12);if(kind==='joint'||kind==='door'){const n=c.createBufferSource(),ng=c.createGain(),bp=c.createBiquadFilter();n.buffer=railAudio.buffer;bp.type='bandpass';bp.frequency.value=kind==='joint'?850:1600;ng.gain.setValueAtTime(.09,t);ng.gain.exponentialRampToValueAtTime(.0001,t+.075);n.connect(bp);bp.connect(ng);ng.connect(railAudio.master);n.start(t,0,.085);}}
+function tickRailAudio(dt){railPulse*=Math.exp(-dt*15);if(!railReady()){quietRailAudio();return;}initRailAudio();const a=railAudio,t=audioCtx.currentTime;const v=playing?currentSpeed:0,other=playing?(passingPlan?.phase==='moving'?passingPlan.speed:followingSpeed):0,speed=Math.max(v,other*.45),ratio=Math.min(1,speed/2.75),moving=speed>.035;const p=trainCars[0].position,k=key(Math.round(p.x/CELL_SIZE+BOARD_CENTER),Math.round(p.z/CELL_SIZE+BOARD_CENTER));const tunnel=freeDecor.get(k)?.type==='tunnel';a.motor.frequency.setTargetAtTime(65+ratio*155,t,.13);a.hum.frequency.setTargetAtTime(34+ratio*52,t,.12);a.filter.frequency.setTargetAtTime(250+ratio*1300,t,.12);a.motorGain.gain.setTargetAtTime(moving?.025+ratio*.035:0,t,.1);a.humGain.gain.setTargetAtTime(moving?.035*ratio:0,t,.1);a.noiseGain.gain.setTargetAtTime(moving?.11*ratio:0,t,.1);a.echoGain.gain.setTargetAtTime(tunnel&&moving?.38:0,t,.15);if(playing&&v>.035){if(railLastDistance!==null){const delta=distanceTravelled-railLastDistance;if(delta>=0&&delta<.5){railJoint+=delta;if(railJoint>=.72){railJoint%=.72;railTap('joint');railPulse=1;}}}railLastDistance=distanceTravelled;}else{railLastDistance=null;railJoint=0;}if(!moving&&railWasMoving)railTap('door');railWasMoving=moving;}
 const soundBtn=document.getElementById('soundToggle');
-soundBtn.onclick=()=>{soundEnabled=!soundEnabled;soundBtn.textContent=soundEnabled?'🔔':'🔕';soundBtn.setAttribute('aria-pressed',String(soundEnabled));if(soundEnabled)unlockSound();};
+soundBtn.onclick=()=>{soundEnabled=!soundEnabled;soundBtn.textContent=soundEnabled?'🔔':'🔕';soundBtn.setAttribute('aria-pressed',String(soundEnabled));if(soundEnabled)unlockSound();else{quietRailAudio();try{navigator.vibrate?.(0);}catch(e){}}};
 function unlockSound(){
  if(!soundEnabled)return;
- try{if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});}catch(e){soundBtn.textContent='🔕';soundEnabled=false;}
+ try{if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended'||audioCtx.state==='interrupted')audioCtx.resume().catch(()=>{});}catch(e){soundBtn.textContent='🔕';soundEnabled=false;}
 }
 function departureBell(){
  if(!soundEnabled||!audioCtx||audioCtx.state!=='running')return;
@@ -1667,7 +1676,7 @@ function beginTransfer(phase,loc){
  document.body.classList.add('transferring');transferPanel.hidden=false;transferTargets.hidden=false;transferToys.visible=true;const model=loc?(loc.x===0&&loc.y===3?startStation:freeDecor.get(key(loc.x,loc.y))?.model):null;for(const o of model?.userData.transferHide||[]){transferHidden.push([o,o.visible]);o.visible=false;}focusTransfer();renderTransfer();if(chosen.length===0){if(phase==='goal')finishTransfer();else transfer.departTime=0;}
 }
 function tapTransfer(i,from){const t=transfer;if(!t||t.age<.48||t.anim||t.left===0||!t.slots.includes(i))return;if(t.phase==='load'?aboardSlots.has(i):!aboardSlots.has(i))return;
- unlockSound();t.anim={i,time:0,from:(from||slotHome(i)).clone(),to:slotDestination(i)};renderTransfer();if(navigator.vibrate)navigator.vibrate(20);}
+ unlockSound();t.anim={i,time:0,from:(from||slotHome(i)).clone(),to:slotDestination(i)};renderTransfer();toyHaptic(20);}
 function tickTransfer(dt){const t=transfer;if(!t)return;t.age+=dt;
  if(t.departTime===null&&t.goalDelay===0)setDoorOpening(Math.min(1,t.age/.48));
  if(t.goalDelay>0){t.goalDelay-=dt;if(t.goalDelay<=0)finishTransfer();return;}
@@ -1675,7 +1684,7 @@ function tickTransfer(dt){const t=transfer;if(!t)return;t.age+=dt;
  if(t.departTime!==null){
   const before=t.departTime;t.departTime+=dt;
   setDoorOpening(1-THREE.MathUtils.clamp((t.departTime-.65)/.55,0,1));
-  if(before<1.20&&t.departTime>=1.20)departureBell();
+  if(before<1.20&&t.departTime>=1.20){railTap('door');departureBell();toyHaptic(25);}
   if(t.departTime>=2.20)resumeTransfer();
   return;
  }
@@ -1683,7 +1692,7 @@ function tickTransfer(dt){const t=transfer;if(!t)return;t.age+=dt;
  const a=t.anim,f=transferFigures[a.i];a.time+=dt;const q=Math.min(1,a.time/.90);const ease=motionEase(q);const v=a.from.clone().lerp(a.to,ease);
  // Follow the open door, with a visible little step/hop over the sill.
  v.y+=Math.sin(Math.PI*q)*(missionType==='cargo'?.13:.07);if(t.phase==='load')v.z=a.from.z*(1-motionEase(q*1.65));figureAt(a.i,v);f.g.scale.setScalar(t.phase==='load'?1-.25*THREE.MathUtils.smoothstep(q,.35,.75):.75+.25*THREE.MathUtils.smoothstep(q,.15,.6));for(let j=0;j<2;j++){f.legs[j].rotation.x=Math.sin(q*22+j*Math.PI)*.60*Math.sin(Math.PI*q);f.arms[j].rotation.x=-f.legs[j].rotation.x*.7;}
- if(q<1)return;const i=a.i;t.anim=null;f.g.visible=false;if(t.phase==='load')aboardSlots.add(i);else{aboardSlots.delete(i);deliveredSlots.add(i);}t.left--;deliveredCount=deliveredSlots.size;missionLoaded=aboardSlots.size>0;deliveryDots();updateMissionVisual();const p=projectToy(localPoint(t.side*.7,.78,0));toySound(t.left===0);toyBurst(p,t.left===0);
+ if(q<1)return;const i=a.i;t.anim=null;f.g.visible=false;if(t.phase==='load')aboardSlots.add(i);else{aboardSlots.delete(i);deliveredSlots.add(i);}t.left--;deliveredCount=deliveredSlots.size;missionLoaded=aboardSlots.size>0;deliveryDots();updateMissionVisual();const p=projectToy(localPoint(t.side*.7,.78,0));toySound(t.left===0);toyHaptic(t.left===0?[18,45,22]:15);toyBurst(p,t.left===0);
  if(t.left===0){if(t.phase==='goal')t.goalDelay=.75;else t.departTime=0;renderTransfer();return;}renderTransfer();}
 function endTransferPanel(){transfer=null;clearToyStage();transferPanel.hidden=true;transferPanel.replaceChildren();document.body.classList.remove('transferring');setDoorOpening(0);}
 function resumeTransfer(){if(!playing||!transfer||transfer.left!==0||transfer.anim||transfer.phase==='goal'||transfer.departTime===null||transfer.departTime<2.20)return;endTransferPanel();setDriveGear(1);}
@@ -1850,7 +1859,7 @@ function updateCabCamera(){
  lead.updateMatrixWorld(true);
  lead.localToWorld(cabEye.set(0,.84,.76));
  lead.localToWorld(cabLook.set(0,.76,6));
- camera.position.copy(cabEye);
+ camera.position.copy(cabEye);if(soundEnabled&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)camera.position.y+=railPulse*.009;
  camera.lookAt(cabLook);
 }
 function setCabView(enabled){
@@ -1905,7 +1914,7 @@ function tileAtScreen(x,y){
 }
 function deleteTileByHold(k){
  if(!k||playing||isProtected(k))return;if(!freeTracks.has(k)&&!freeDecor.has(k))return;
- removeFreeTile(k);refreshTerrain(k);courseCleared=false;resetPuzzleRoute();placeTrain();resetMissionState();updateRouteReady();if(navigator.vibrate)navigator.vibrate(35);
+ removeFreeTile(k);refreshTerrain(k);courseCleared=false;resetPuzzleRoute();placeTrain();resetMissionState();updateRouteReady();unlockSound();railTap('remove');toyHaptic(35);
 }
 
 const editFeedback=document.createElement('div');editFeedback.id='editFeedback';document.body.append(editFeedback);
@@ -1981,7 +1990,7 @@ function handlePointerEnd(e,cancelled){
  ray.setFromCamera(pointer,camera);if(playing){if(!transfer&&!branchWait)tapRailSignal(ray);return;}
  const hit=ray.intersectObjects(clickable)[0];if(!hit)return;
  const cell=hit.object.userData.tileKey;
- const before=editSignature(cell);editFreeTile(cell);if(before!==editSignature(cell)){showEditFeedback(e.clientX,e.clientY,'place');if(navigator.vibrate)navigator.vibrate(12);}
+ const before=editSignature(cell);editFreeTile(cell);if(before!==editSignature(cell)){showEditFeedback(e.clientX,e.clientY,'place');unlockSound();railTap('wood');toyHaptic(12);}
 }
 canvas.addEventListener('pointerup',e=>handlePointerEnd(e,false));
 canvas.addEventListener('pointercancel',e=>handlePointerEnd(e,true));
@@ -2037,7 +2046,7 @@ function updateDaylight(date=new Date()){
  sideGlass.emissive.setHex(0xffdb9f);sideGlass.emissiveIntensity=night*.35;
 }
 updateDaylight();let lastDaylightCheck=0;
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDaylight()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateDaylight();else quietRailAudio();});
 window.addEventListener('pageshow',()=>updateDaylight());
 function tickScenery(dt,now){
  for(const t of ambientTrees){
@@ -2208,7 +2217,7 @@ let prev=performance.now();function animate(now){
   refreshSpeedDisplay();
  }
  tickPassing(dt);tickFollowing(dt);updateRailSignals();updateCrossings(now,dt);updateTraffic(dt);
- tickScenery(dt,now);
+ tickScenery(dt,now);tickRailAudio(dt);
  tickOrbitTween(dt);if(transfer)updateTransferTargets();
  updateCabCamera();
  renderer.render(scene,camera)
